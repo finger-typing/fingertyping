@@ -24,13 +24,16 @@ const TypingPractice: React.FC = () => {
   const [isComplete, setIsComplete] = useState<boolean>(false);
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
   const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [isCustomText, setIsCustomText] = useState<boolean>(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const initializeGame = useCallback(() => {
-    const currentWordList = wordLists[language] || wordLists["English"];
-    setRandomText(generateRandomWords(1000, currentWordList));
+    if (!isCustomText) {
+      const currentWordList = wordLists[language] || wordLists["English"];
+      setRandomText(generateRandomWords(1000, currentWordList));
+    }
     setInputValue("");
     setStartTime(null);
     setTimeElapsed(0);
@@ -39,17 +42,25 @@ const TypingPractice: React.FC = () => {
     setIsComplete(false);
     setCurrentWordIndex(0);
     inputRef.current?.blur();
-  }, [language]);
+  }, [language, isCustomText]);
 
   useEffect(() => {
     initializeGame();
   }, [language, initializeGame]);
 
-  useEffect(() => {
-    if (containerRef.current && inputRef.current) {
-      inputRef.current.style.width = `${containerRef.current.offsetWidth}px`;
-    }
-  }, [randomText]);
+  
+
+  const handleCustomTextSubmit = (customText: string) => {
+    setRandomText(customText);
+    setIsCustomText(true);
+    setInputValue("");
+    setStartTime(null);
+    setTimeElapsed(0);
+    setTimeRemaining(60);
+    setHasStarted(false);
+    setIsComplete(false);
+    setCurrentWordIndex(0);
+  };
 
   const startGame = () => {
     setHasStarted(true);
@@ -121,6 +132,7 @@ const TypingPractice: React.FC = () => {
         setLanguage={setLanguage}
         darkMode={darkMode}
         setDarkMode={setDarkMode}
+        onCustomTextSubmit={handleCustomTextSubmit}
       />
 
       <div className="w-full max-w-3xl px-4 mt-8">

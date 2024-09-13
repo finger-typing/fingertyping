@@ -50,7 +50,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   return (
     <div
-      className={`w-full shadow-lg rounded-lg p-4 mb-4 font-medium ${
+      className={`w-full shadow-lg rounded-lg p-4 mb-2 font-medium ${
         darkMode ? "bg-gray-800" : "bg-white border-2 border-gray-300"
       }`}
     >
