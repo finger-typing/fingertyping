@@ -14,111 +14,133 @@ import GameControls from "../components/GameControls";
 import Results from "../components/Results";
 
 const TypingPractice: React.FC = () => {
-  const [language, setLanguage] = useState<string>("English");
-  const [inputValue, setInputValue] = useState<string>("");
-  const [randomText, setRandomText] = useState<string>("");
-  const [startTime, setStartTime] = useState<number | null>(null);
-  const [timeElapsed, setTimeElapsed] = useState<number>(0);
-  const [timeRemaining, setTimeRemaining] = useState<number>(60);
-  const [hasStarted, setHasStarted] = useState<boolean>(false);
-  const [isComplete, setIsComplete] = useState<boolean>(false);
-  const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-  const [isCustomText, setIsCustomText] = useState<boolean>(false);
+  const [gameState, setGameState] = useState({
+    language: "English",
+    inputValue: "",
+    randomText: "",
+    startTime: null as number | null,
+    timeElapsed: 0,
+    timeRemaining: 60,
+    hasStarted: false,
+    isComplete: false,
+    currentWordIndex: 0,
+    isCustomText: false,
+  });
+
+  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [customTime, setCustomTime] = useState<number>(60);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const initializeGame = useCallback(() => {
-    if (!isCustomText) {
-      const currentWordList = wordLists[language] || wordLists["English"];
-      setRandomText(generateRandomWords(1000, currentWordList));
-    }
-    setInputValue("");
-    setStartTime(null);
-    setTimeElapsed(0);
-    setTimeRemaining(60);
-    setHasStarted(false);
-    setIsComplete(false);
-    setCurrentWordIndex(0);
+    setGameState((prev) => ({
+      ...prev,
+      randomText: prev.isCustomText
+        ? prev.randomText
+        : generateRandomWords(
+            10000,
+            wordLists[prev.language] || wordLists["English"]
+          ),
+      inputValue: "",
+      startTime: null,
+      timeElapsed: 0,
+      timeRemaining: customTime,
+      hasStarted: false,
+      isComplete: false,
+      currentWordIndex: 0,
+    }));
     inputRef.current?.blur();
-  }, [language, isCustomText]);
+  }, [customTime]);
 
   useEffect(() => {
     initializeGame();
-  }, [language, initializeGame]);
-
-  
+  }, [gameState.language, initializeGame]);
 
   const handleCustomTextSubmit = (customText: string) => {
-    setRandomText(customText);
-    setIsCustomText(true);
-    setInputValue("");
-    setStartTime(null);
-    setTimeElapsed(0);
-    setTimeRemaining(60);
-    setHasStarted(false);
-    setIsComplete(false);
-    setCurrentWordIndex(0);
+    setGameState((prev) => ({
+      ...prev,
+      randomText: customText,
+      isCustomText: true,
+      inputValue: "",
+      startTime: null,
+      timeElapsed: 0,
+      timeRemaining: customTime,
+      hasStarted: false,
+      isComplete: false,
+      currentWordIndex: 0,
+    }));
+  };
+
+  const handleCustomTimeSubmit = (newTime: number) => {
+    setCustomTime(newTime);
+    setGameState((prev) => ({
+      ...prev,
+      timeRemaining: newTime,
+    }));
   };
 
   const startGame = () => {
-    setHasStarted(true);
-    setInputValue("");
-    setStartTime(Date.now());
-    setTimeout(() => {
-      inputRef.current?.focus();
-    }, 0);
+    setGameState((prev) => ({
+      ...prev,
+      hasStarted: true,
+      inputValue: "",
+      startTime: Date.now(),
+    }));
+    setTimeout(() => inputRef.current?.focus(), 0);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setInputValue(value);
-
-    if (!startTime) setStartTime(Date.now());
-
-    const typedWords = value.split(" ");
-    if (typedWords.length > currentWordIndex + 1) {
-      setCurrentWordIndex(typedWords.length - 1);
-    }
-
-    if (value === randomText) {
-      setIsComplete(true);
-    }
+    setGameState((prev) => {
+      const newState = {
+        ...prev,
+        inputValue: value,
+        startTime: prev.startTime || Date.now(),
+        currentWordIndex: Math.max(
+          value.split(" ").length - 1,
+          prev.currentWordIndex
+        ),
+        isComplete: value === prev.randomText,
+      };
+      return newState;
+    });
   };
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    if (hasStarted && !isComplete && timeRemaining > 0) {
+    if (
+      gameState.hasStarted &&
+      !gameState.isComplete &&
+      gameState.timeRemaining > 0
+    ) {
       interval = setInterval(() => {
-        setTimeElapsed((prev) => prev + 1);
-        setTimeRemaining((prev) => {
-          if (prev <= 1) {
-            clearInterval(interval);
-            setIsComplete(true);
-            return 0;
-          }
-          return prev - 1;
+        setGameState((prev) => {
+          const newTimeRemaining = prev.timeRemaining - 1;
+          return {
+            ...prev,
+            timeElapsed: prev.timeElapsed + 1,
+            timeRemaining: newTimeRemaining,
+            isComplete: newTimeRemaining <= 0,
+          };
         });
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [hasStarted, isComplete, timeRemaining]);
+  }, [gameState.hasStarted, gameState.isComplete, gameState.timeRemaining]);
 
   const calculateWPM = (): string => {
-    const wordsTyped = inputValue.trim().split(" ").length;
-    const minutesElapsed = timeElapsed / 60;
+    const wordsTyped = gameState.inputValue.trim().split(/\s+/).length;
+    const minutesElapsed = gameState.timeElapsed / 60;
     return (wordsTyped / minutesElapsed || 0).toFixed(2);
   };
 
   const calculateAccuracy = (): string => {
-    const correctChars = inputValue
-      .split("")
-      .filter((char, i) => char === randomText[i]).length;
-    return (
-      (correctChars / Math.min(inputValue.length, randomText.length)) *
-      100
-    ).toFixed(2);
+    const inputChars = gameState.inputValue.split("");
+    const correctChars = inputChars.filter(
+      (char, i) => char === gameState.randomText[i]
+    ).length;
+    return ((correctChars / Math.max(inputChars.length, 1)) * 100).toFixed(2);
   };
 
   return (
@@ -128,47 +150,57 @@ const TypingPractice: React.FC = () => {
       }`}
     >
       <Navbar
-        language={language}
-        setLanguage={setLanguage}
+        language={gameState.language}
+        setLanguage={(lang) =>
+          setGameState((prev) => ({ ...prev, language: lang }))
+        }
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         onCustomTextSubmit={handleCustomTextSubmit}
+        onCustomTimeSubmit={handleCustomTimeSubmit}
+        customTime={customTime}
       />
 
       <div className="w-full max-w-3xl px-4 mt-8">
         <div ref={containerRef}>
           <WordDisplay
-            randomText={randomText}
-            inputValue={inputValue}
-            currentWordIndex={currentWordIndex}
+            randomText={gameState.randomText}
+            inputValue={gameState.inputValue}
+            currentWordIndex={gameState.currentWordIndex}
             darkMode={darkMode}
           />
         </div>
 
-        <InputField
-          inputValue={inputValue}
-          handleInputChange={handleInputChange}
-          hasStarted={hasStarted}
-          isComplete={isComplete}
-          darkMode={darkMode}
-          inputRef={inputRef}
-        />
+        {!gameState.isComplete && (
+          <InputField
+            inputValue={gameState.inputValue}
+            handleInputChange={handleInputChange}
+            hasStarted={gameState.hasStarted}
+            isComplete={gameState.isComplete}
+            darkMode={darkMode}
+            inputRef={inputRef}
+          />
+        )}
 
-        <GameControls
-          startGame={startGame}
-          initializeGame={initializeGame}
-          hasStarted={hasStarted}
-          timeRemaining={timeRemaining}
-          darkMode={darkMode}
-        />
+        {!gameState.isComplete && (
+          <GameControls
+            startGame={startGame}
+            initializeGame={initializeGame}
+            hasStarted={gameState.hasStarted}
+            timeRemaining={gameState.timeRemaining}
+            darkMode={darkMode}
+          />
+        )}
 
-        <Results
-          isComplete={isComplete}
-          timeElapsed={timeElapsed}
-          calculateWPM={calculateWPM}
-          calculateAccuracy={calculateAccuracy}
-          darkMode={darkMode}
-        />
+        {gameState.isComplete && (
+          <Results
+            isComplete={gameState.isComplete}
+            timeElapsed={gameState.timeElapsed}
+            calculateWPM={calculateWPM}
+            calculateAccuracy={calculateAccuracy}
+            darkMode={darkMode}
+          />
+        )}
       </div>
     </div>
   );

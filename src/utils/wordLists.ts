@@ -244,7 +244,7 @@ export const wordLists: { [key: string]: string[] } = {
     "vélo", // Bike
     "lait", // Milk
   ],
-  "Spanish": [
+  Spanish: [
     // Longer words (6 to 8 characters)
     "ordenador",  // Computer
     "educación",  // Education
