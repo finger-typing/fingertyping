@@ -58,7 +58,7 @@ export const wordLists: { [key: string]: string[] } = {
     "bike", // Bike
     "milk", // Milk
   ],
-  Bangla: [
+  Bengali: [
     // Longer words (6 to 8 characters)
     "অভিনন্দন", // Congratulations
     "বিজ্ঞাপন", // Advertisement
@@ -127,63 +127,63 @@ export const wordLists: { [key: string]: string[] } = {
   ],
   Arabic: [
     // Longer words (6 to 8 characters)
-    "كمبيوتر",    // Computer
-    "تعليم",      // Education
-    "اقتصاد",     // Economics
-    "علم النفس",  // Psychology
-    "مالية",      // Finance
-    "تكنولوجيا",  // Technology
-    "تنظيم",      // Organization
-    "بحث علمي",   // Research
-    "تطوير",      // Development
-    "جامعة",      // University
-    "معلومات",    // Information
-    "مجتمع",      // Society
-    "ممارسة",     // Practice
-    "مشروع",      // Project
-    "إنترنت",     // Internet
-    "نشر",        // Publication
-    "سؤال",       // Question
-    "مؤسسة",      // Enterprise
-    "احتياجات",   // Needs
-    "عقد",        // Contract
-    "وثيقة",      // Document
-    "إصلاح",      // Reform
-    "إعلانات",    // Advertising
-    "نقل",        // Transport
-    "أخصائي",     // Specialist
-    "نظام",       // System
-    "تغييرات",    // Changes
-    "تحضير",      // Preparation
-    "نشاط",       // Activity
-    "شراكة",      // Partnership
-    "تجربة",      // Experience
-    "تخطيط",      // Planning
+    "كمبيوتر", // Computer
+    "تعليم", // Education
+    "اقتصاد", // Economics
+    "علم النفس", // Psychology
+    "مالية", // Finance
+    "تكنولوجيا", // Technology
+    "تنظيم", // Organization
+    "بحث علمي", // Research
+    "تطوير", // Development
+    "جامعة", // University
+    "معلومات", // Information
+    "مجتمع", // Society
+    "ممارسة", // Practice
+    "مشروع", // Project
+    "إنترنت", // Internet
+    "نشر", // Publication
+    "سؤال", // Question
+    "مؤسسة", // Enterprise
+    "احتياجات", // Needs
+    "عقد", // Contract
+    "وثيقة", // Document
+    "إصلاح", // Reform
+    "إعلانات", // Advertising
+    "نقل", // Transport
+    "أخصائي", // Specialist
+    "نظام", // System
+    "تغييرات", // Changes
+    "تحضير", // Preparation
+    "نشاط", // Activity
+    "شراكة", // Partnership
+    "تجربة", // Experience
+    "تخطيط", // Planning
     "استراتيجية", // Strategy
-    "تطوير",      // Development
-    "إنتاج",      // Production
+    "تطوير", // Development
+    "إنتاج", // Production
 
     // Shorter words (3 to 5 characters)
-    "قط",         // Cat
-    "كلب",        // Dog
-    "كتاب",       // Book
-    "ماء",        // Water
-    "بيت",        // House
-    "مدينة",      // City
-    "طعام",       // Food
-    "مصباح",      // Lamp
-    "طاولة",      // Table
-    "باب",        // Door
-    "شجرة",       // Tree
-    "سمك",        // Fish
-    "يد",         // Hand
-    "شارع",       // Street
-    "شمس",        // Sun
-    "سماء",       // Sky
-    "سيارة",      // Car
-    "حذاء",       // Shoe
-    "دراجة",      // Bike
-    "حليب"        // Milk
+    "قط", // Cat
+    "كلب", // Dog
+    "كتاب", // Book
+    "ماء", // Water
+    "بيت", // House
+    "مدينة", // City
+    "طعام", // Food
+    "مصباح", // Lamp
+    "طاولة", // Table
+    "باب", // Door
+    "شجرة", // Tree
+    "سمك", // Fish
+    "يد", // Hand
+    "شارع", // Street
+    "شمس", // Sun
+    "سماء", // Sky
+    "سيارة", // Car
+    "حذاء", // Shoe
+    "دراجة", // Bike
+    "حليب", // Milk
   ],
   French: [
     // Longer words (6 to 8 characters)
@@ -246,67 +246,66 @@ export const wordLists: { [key: string]: string[] } = {
   ],
   Spanish: [
     // Longer words (6 to 8 characters)
-    "ordenador",  // Computer
-    "educación",  // Education
-    "economía",   // Economics
+    "ordenador", // Computer
+    "educación", // Education
+    "economía", // Economics
     "psicología", // Psychology
-    "finanzas",   // Finance
+    "finanzas", // Finance
     "tecnología", // Technology
     "organización", // Organization
     "investigación", // Research
     "desarrollo", // Development
     "universidad", // University
     "información", // Information
-    "sociedad",    // Society
-    "práctica",    // Practice
-    "proyecto",    // Project
-    "internet",    // Internet
+    "sociedad", // Society
+    "práctica", // Practice
+    "proyecto", // Project
+    "internet", // Internet
     "publicación", // Publication
-    "pregunta",    // Question
-    "empresa",     // Enterprise
+    "pregunta", // Question
+    "empresa", // Enterprise
     "necesidades", // Needs
-    "contrato",    // Contract
-    "documento",   // Document
-    "reforma",     // Reform
-    "publicidad",  // Advertising
-    "transporte",  // Transport
+    "contrato", // Contract
+    "documento", // Document
+    "reforma", // Reform
+    "publicidad", // Advertising
+    "transporte", // Transport
     "especialista", // Specialist
-    "sistema",     // System
-    "cambios",     // Changes
+    "sistema", // System
+    "cambios", // Changes
     "preparación", // Preparation
-    "actividad",   // Activity
+    "actividad", // Activity
     "colaboración", // Collaboration
     "experiencia", // Experience
     "planificación", // Planning
-    "estrategia",  // Strategy
-    "desarrollo",  // Development
-    "producción",  // Production
+    "estrategia", // Strategy
+    "desarrollo", // Development
+    "producción", // Production
 
     // Shorter words (3 to 5 characters)
-    "gato",        // Cat
-    "perro",       // Dog
-    "libro",       // Book
-    "agua",        // Water
-    "casa",        // House
-    "ciudad",      // City
-    "comida",      // Food
-    "lámpara",     // Lamp
-    "mesa",        // Table
-    "puerta",      // Door
-    "árbol",       // Tree
-    "pez",         // Fish
-    "mano",        // Hand
-    "calle",       // Street
-    "sol",         // Sun
-    "cielo",       // Sky
-    "coche",       // Car
-    "zapato",      // Shoe
-    "bicicleta",   // Bike
-    "leche"        // Milk
+    "gato", // Cat
+    "perro", // Dog
+    "libro", // Book
+    "agua", // Water
+    "casa", // House
+    "ciudad", // City
+    "comida", // Food
+    "lámpara", // Lamp
+    "mesa", // Table
+    "puerta", // Door
+    "árbol", // Tree
+    "pez", // Fish
+    "mano", // Hand
+    "calle", // Street
+    "sol", // Sun
+    "cielo", // Sky
+    "coche", // Car
+    "zapato", // Shoe
+    "bicicleta", // Bike
+    "leche", // Milk
   ],
 
   //start bangla words
-  
 
   //start hindi word
   Hindi: [
@@ -674,246 +673,245 @@ export const wordLists: { [key: string]: string[] } = {
 
   Thai: [
     // Longer words (6 to 8 characters)
-    "คอมพิวเตอร์",  // Computer (Komphiyutē)
-    "การศึกษา",    // Education (Kān Sưkṣā)
+    "คอมพิวเตอร์", // Computer (Komphiyutē)
+    "การศึกษา", // Education (Kān Sưkṣā)
     "เศรษฐศาสตร์", // Economics (Sētthāsāt)
-    "จิตวิทยา",    // Psychology (Jit Witthayā)
-    "การเงิน",      // Finance (Kān Ngoen)
-    "เทคโนโลยี",  // Technology (Theknolōyī)
-    "องค์กร",      // Organization (Ongkōn)
-    "การวิจัย",    // Research (Kān Wijāi)
-    "การพัฒนา",    // Development (Kān Phatthanā)
+    "จิตวิทยา", // Psychology (Jit Witthayā)
+    "การเงิน", // Finance (Kān Ngoen)
+    "เทคโนโลยี", // Technology (Theknolōyī)
+    "องค์กร", // Organization (Ongkōn)
+    "การวิจัย", // Research (Kān Wijāi)
+    "การพัฒนา", // Development (Kān Phatthanā)
     "มหาวิทยาลัย", // University (Mahā Withāyālai)
-    "ข้อมูล",      // Information (Khōngmūn)
-    "สังคม",       // Society (Sangkhom)
-    "การปฏิบัติ",  // Practice (Kān Patibat)
-    "โครงการ",     // Project (Khrōngkān)
+    "ข้อมูล", // Information (Khōngmūn)
+    "สังคม", // Society (Sangkhom)
+    "การปฏิบัติ", // Practice (Kān Patibat)
+    "โครงการ", // Project (Khrōngkān)
     "อินเทอร์เน็ต", // Internet (Inthœ̄nēt)
-    "การเผยแพร่",  // Publication (Kān Phēiphraē)
-    "คำถาม",       // Question (Khamthām)
-    "ธุรกิจ",      // Enterprise (Thurakit)
+    "การเผยแพร่", // Publication (Kān Phēiphraē)
+    "คำถาม", // Question (Khamthām)
+    "ธุรกิจ", // Enterprise (Thurakit)
     "ความต้องการ", // Needs (Khwām Tǭngkān)
-    "สัญญา",      // Contract (Sānyā)
-    "เอกสาร",      // Document (Èksān)
-    "การปฏิรูป",   // Reform (Kān Patirūp)
-    "การโฆษณา",   // Advertising (Kān Khōsānā)
-    "การขนส่ง",    // Transport (Kān Khonsong)
+    "สัญญา", // Contract (Sānyā)
+    "เอกสาร", // Document (Èksān)
+    "การปฏิรูป", // Reform (Kān Patirūp)
+    "การโฆษณา", // Advertising (Kān Khōsānā)
+    "การขนส่ง", // Transport (Kān Khonsong)
     "ผู้เชี่ยวชาญ", // Specialist (Phū Chīawchān)
-    "ระบบ",        // System (Rabub)
+    "ระบบ", // System (Rabub)
     "การเปลี่ยนแปลง", // Changes (Kān Plīānplāeng)
     "การเตรียมการ", // Preparation (Kān Triamkān)
-    "กิจกรรม",     // Activity (Kicakkam)
-    "ความร่วมมือ",  // Partnership (Khwām Ruāmmū)
-    "ประสบการณ์",  // Experience (Prāsopkān)
-    "การวางแผน",   // Planning (Kān Wāngphæn)
-    "กลยุทธ์",      // Strategy (Klāyut)
-    "การผลิต",     // Production (Kān Phalit)
+    "กิจกรรม", // Activity (Kicakkam)
+    "ความร่วมมือ", // Partnership (Khwām Ruāmmū)
+    "ประสบการณ์", // Experience (Prāsopkān)
+    "การวางแผน", // Planning (Kān Wāngphæn)
+    "กลยุทธ์", // Strategy (Klāyut)
+    "การผลิต", // Production (Kān Phalit)
 
     // Shorter words (3 to 5 characters)
-    "แมว",        // Cat (Maew)
-    "สุนัข",      // Dog (Sunak)
-    "หนังสือ",    // Book (Nangsu)
-    "น้ำ",        // Water (Nām)
-    "บ้าน",        // House (Bān)
-    "เมือง",      // City (Mūang)
-    "อาหาร",      // Food (Āhān)
-    "หลอด",       // Lamp (Lòt)
-    "โต๊ะ",        // Table (Tō)
-    "ประตู",      // Door (Pratū)
-    "ต้นไม้",     // Tree (Tǭn Mái)
-    "ปลา",        // Fish (Plā)
-    "มือ",        // Hand (Mūa)
-    "ถนน",        // Street (Thanon)
+    "แมว", // Cat (Maew)
+    "สุนัข", // Dog (Sunak)
+    "หนังสือ", // Book (Nangsu)
+    "น้ำ", // Water (Nām)
+    "บ้าน", // House (Bān)
+    "เมือง", // City (Mūang)
+    "อาหาร", // Food (Āhān)
+    "หลอด", // Lamp (Lòt)
+    "โต๊ะ", // Table (Tō)
+    "ประตู", // Door (Pratū)
+    "ต้นไม้", // Tree (Tǭn Mái)
+    "ปลา", // Fish (Plā)
+    "มือ", // Hand (Mūa)
+    "ถนน", // Street (Thanon)
     "พระอาทิตย์", // Sun (Phra Āthit)
-    "ท้องฟ้า",    // Sky (Thōngfā)
-    "รถ",         // Car (Rót)
-    "รองเท้า",    // Shoe (Rōngthāo)
-    "จักรยาน",    // Bike (Jakkāyān)
-    "นม"          // Milk (Nom)
+    "ท้องฟ้า", // Sky (Thōngfā)
+    "รถ", // Car (Rót)
+    "รองเท้า", // Shoe (Rōngthāo)
+    "จักรยาน", // Bike (Jakkāyān)
+    "นม", // Milk (Nom)
   ],
 
   Turkish: [
     // Longer words (6 to 8 characters)
-    "bilgisayar",   // Computer
-    "eğitim",       // Education
-    "ekonomi",      // Economics
-    "psikoloji",    // Psychology
-    "finans",       // Finance
-    "teknoloji",    // Technology
+    "bilgisayar", // Computer
+    "eğitim", // Education
+    "ekonomi", // Economics
+    "psikoloji", // Psychology
+    "finans", // Finance
+    "teknoloji", // Technology
     "organizasyon", // Organization
-    "araştırma",    // Research
-    "gelişim",      // Development
-    "üniversite",   // University
-    "bilgi",        // Information
-    "toplum",       // Society
-    "pratik",       // Practice
-    "proje",        // Project
-    "internet",     // Internet
-    "yayın",        // Publication
-    "soru",         // Question
-    "şirket",       // Enterprise
-    "ihtiyaç",      // Needs
-    "sözleşme",     // Contract
-    "belge",        // Document
-    "reform",       // Reform
-    "reklam",       // Advertising
-    "taşıma",       // Transport
-    "uzman",        // Specialist
-    "sistem",       // System
-    "değişim",      // Changes
-    "hazırlık",     // Preparation
-    "etkinlik",     // Activity
-    "ortaklık",     // Partnership
-    "deneyim",      // Experience
-    "planlama",     // Planning
-    "strateji",     // Strategy
-    "üretim",       // Production
+    "araştırma", // Research
+    "gelişim", // Development
+    "üniversite", // University
+    "bilgi", // Information
+    "toplum", // Society
+    "pratik", // Practice
+    "proje", // Project
+    "internet", // Internet
+    "yayın", // Publication
+    "soru", // Question
+    "şirket", // Enterprise
+    "ihtiyaç", // Needs
+    "sözleşme", // Contract
+    "belge", // Document
+    "reform", // Reform
+    "reklam", // Advertising
+    "taşıma", // Transport
+    "uzman", // Specialist
+    "sistem", // System
+    "değişim", // Changes
+    "hazırlık", // Preparation
+    "etkinlik", // Activity
+    "ortaklık", // Partnership
+    "deneyim", // Experience
+    "planlama", // Planning
+    "strateji", // Strategy
+    "üretim", // Production
 
     // Shorter words (3 to 5 characters)
-    "kedi",        // Cat
-    "köpek",       // Dog
-    "kitap",       // Book
-    "su",          // Water
-    "ev",          // House
-    "şehir",       // City
-    "yemek",       // Food
-    "lamba",       // Lamp
-    "masa",        // Table
-    "kapı",        // Door
-    "ağaç",        // Tree
-    "balık",       // Fish
-    "el",          // Hand
-    "sokak",       // Street
-    "güneş",       // Sun
-    "gökyüzü",     // Sky
-    "araba",       // Car
-    "ayakkabı",    // Shoe
-    "bisiklet",    // Bike
-    "süt"          // Milk
+    "kedi", // Cat
+    "köpek", // Dog
+    "kitap", // Book
+    "su", // Water
+    "ev", // House
+    "şehir", // City
+    "yemek", // Food
+    "lamba", // Lamp
+    "masa", // Table
+    "kapı", // Door
+    "ağaç", // Tree
+    "balık", // Fish
+    "el", // Hand
+    "sokak", // Street
+    "güneş", // Sun
+    "gökyüzü", // Sky
+    "araba", // Car
+    "ayakkabı", // Shoe
+    "bisiklet", // Bike
+    "süt", // Milk
   ],
 
   German: [
     // Longer words (6 to 8 characters)
-    "Computer",    // Computer
-    "Bildung",     // Education
-    "Ökonomie",    // Economics
+    "Computer", // Computer
+    "Bildung", // Education
+    "Ökonomie", // Economics
     "Psychologie", // Psychology
-    "Finanzen",    // Finance
+    "Finanzen", // Finance
     "Technologie", // Technology
     "Organisation", // Organization
-    "Forschung",   // Research
+    "Forschung", // Research
     "Entwicklung", // Development
     "Universität", // University
     "Information", // Information
     "Gesellschaft", // Society
-    "Praxis",      // Practice
-    "Projekt",     // Project
-    "Internet",    // Internet
+    "Praxis", // Practice
+    "Projekt", // Project
+    "Internet", // Internet
     "Veröffentlichung", // Publication
-    "Frage",       // Question
+    "Frage", // Question
     "Unternehmen", // Enterprise
     "Bedürfnisse", // Needs
-    "Vertrag",     // Contract
-    "Dokument",    // Document
-    "Reform",      // Reform
-    "Werbung",     // Advertising
-    "Transport",   // Transport
-    "Spezialist",  // Specialist
-    "System",      // System
-    "Änderungen",  // Changes
+    "Vertrag", // Contract
+    "Dokument", // Document
+    "Reform", // Reform
+    "Werbung", // Advertising
+    "Transport", // Transport
+    "Spezialist", // Specialist
+    "System", // System
+    "Änderungen", // Changes
     "Vorbereitung", // Preparation
-    "Aktivität",   // Activity
+    "Aktivität", // Activity
     "Partnerschaft", // Partnership
-    "Erfahrung",   // Experience
-    "Planung",     // Planning
-    "Strategie",   // Strategy
-    "Produktion",  // Production
+    "Erfahrung", // Experience
+    "Planung", // Planning
+    "Strategie", // Strategy
+    "Produktion", // Production
 
     // Shorter words (3 to 5 characters)
-    "Katze",       // Cat
-    "Hund",        // Dog
-    "Buch",        // Book
-    "Wasser",      // Water
-    "Haus",        // House
-    "Stadt",       // City
-    "Essen",       // Food
-    "Lampe",       // Lamp
-    "Tisch",       // Table
-    "Tür",         // Door
-    "Baum",        // Tree
-    "Fisch",       // Fish
-    "Hand",        // Hand
-    "Straße",      // Street
-    "Sonne",       // Sun
-    "Himmel",      // Sky
-    "Auto",        // Car
-    "Schuh",       // Shoe
-    "Fahrrad",     // Bike
-    "Milch"        // Milk
+    "Katze", // Cat
+    "Hund", // Dog
+    "Buch", // Book
+    "Wasser", // Water
+    "Haus", // House
+    "Stadt", // City
+    "Essen", // Food
+    "Lampe", // Lamp
+    "Tisch", // Table
+    "Tür", // Door
+    "Baum", // Tree
+    "Fisch", // Fish
+    "Hand", // Hand
+    "Straße", // Street
+    "Sonne", // Sun
+    "Himmel", // Sky
+    "Auto", // Car
+    "Schuh", // Shoe
+    "Fahrrad", // Bike
+    "Milch", // Milk
   ],
 
-  //start pashto 
+  //start pashto
   Pashto: [
     // Longer words (6 to 8 characters)
-    "کمپیوتر",    // Computer (Komp'yūtar)
-    "تعلیم",      // Education (Taʿlīm)
-    "اقتصاد",     // Economics (Iqtisād)
-    "روانشناسی",  // Psychology (Ruwānshināsī)
-    "مالیات",     // Finance (Māliyāt)
-    "ټیکنالوجي",  // Technology (Ṭīknālōjī)
-    "سازمان",     // Organization (Sāzmān)
-    "پژوهش",      // Research (Pajwāhish)
-    "پرمختګ",     // Development (Parmakhtag)
-    "پوهنتون",    // University (Puhantūn)
-    "معلومات",    // Information (Malūmāt)
-    "ټولنه",      // Society (Ṭūlanah)
-    "عملیاتي",    // Practice (ʿAmliyātī)
-    "پروژه",      // Project (Projeh)
-    "انټرنیټ",    // Internet (Intarnēt)
-    "انتشار",     // Publication (Intishār)
-    "پوښتنه",     // Question (Pūshtanah)
-    "شرکت",       // Enterprise (Shirkāt)
-    "اړتیاوې",    // Needs (Arṭiyāwē)
-    "قرارداد",    // Contract (Qārārdād)
-    "سند",        // Document (Sand)
-    "اصلاح",      // Reform (Islāḥ)
-    "اعلان",      // Advertising (Aʿlān)
-    "ترانسپورت",  // Transport (Ṭranspōrt)
-    "متخصص",      // Specialist (Mutakhassis)
-    "سیستم",      // System (Sīstəm)
-    "تغییرات",    // Changes (Taghīrāt)
-    "تیاری",      // Preparation (Tīārī)
-    "فعالیت",     // Activity (Faʿāliyat)
-    "شراکت",      // Partnership (Shirākat)
-    "تجربه",      // Experience (Tajriba)
-    "پلان",       // Planning (Plan)
-    "استراتیژي",  // Strategy (Istrātījī)
-    "تولید",       // Production (Tawlīd)
+    "کمپیوتر", // Computer (Komp'yūtar)
+    "تعلیم", // Education (Taʿlīm)
+    "اقتصاد", // Economics (Iqtisād)
+    "روانشناسی", // Psychology (Ruwānshināsī)
+    "مالیات", // Finance (Māliyāt)
+    "ټیکنالوجي", // Technology (Ṭīknālōjī)
+    "سازمان", // Organization (Sāzmān)
+    "پژوهش", // Research (Pajwāhish)
+    "پرمختګ", // Development (Parmakhtag)
+    "پوهنتون", // University (Puhantūn)
+    "معلومات", // Information (Malūmāt)
+    "ټولنه", // Society (Ṭūlanah)
+    "عملیاتي", // Practice (ʿAmliyātī)
+    "پروژه", // Project (Projeh)
+    "انټرنیټ", // Internet (Intarnēt)
+    "انتشار", // Publication (Intishār)
+    "پوښتنه", // Question (Pūshtanah)
+    "شرکت", // Enterprise (Shirkāt)
+    "اړتیاوې", // Needs (Arṭiyāwē)
+    "قرارداد", // Contract (Qārārdād)
+    "سند", // Document (Sand)
+    "اصلاح", // Reform (Islāḥ)
+    "اعلان", // Advertising (Aʿlān)
+    "ترانسپورت", // Transport (Ṭranspōrt)
+    "متخصص", // Specialist (Mutakhassis)
+    "سیستم", // System (Sīstəm)
+    "تغییرات", // Changes (Taghīrāt)
+    "تیاری", // Preparation (Tīārī)
+    "فعالیت", // Activity (Faʿāliyat)
+    "شراکت", // Partnership (Shirākat)
+    "تجربه", // Experience (Tajriba)
+    "پلان", // Planning (Plan)
+    "استراتیژي", // Strategy (Istrātījī)
+    "تولید", // Production (Tawlīd)
 
     // Shorter words (3 to 5 characters)
-    "پیشو",       // Cat (Pēsho)
-    "سپي",        // Dog (Spē)
-    "کتاب",       // Book (Kitāb)
-    "اوبه",       // Water (Ōbah)
-    "کور",        // House (Kōr)
-    "ښار",        // City (Shār)
-    "خوراک",      // Food (Khurāk)
-    "بجلی",       // Lamp (Bijlī)
-    "میز",        // Table (Miz)
-    "دروازه",     // Door (Darwāzah)
-    "درخت",       // Tree (Darakht)
-    "ماهی",       // Fish (Māhī)
-    "لاس",        // Hand (Lās)
-    "کوڅه",       // Street (Kūchah)
-    "لمر",        // Sun (Lamar)
-    "اسمان",      // Sky (Asman)
-    "موټر",       // Car (Mōṭar)
-    "بوټ"         // Shoe (Bōṭ)
+    "پیشو", // Cat (Pēsho)
+    "سپي", // Dog (Spē)
+    "کتاب", // Book (Kitāb)
+    "اوبه", // Water (Ōbah)
+    "کور", // House (Kōr)
+    "ښار", // City (Shār)
+    "خوراک", // Food (Khurāk)
+    "بجلی", // Lamp (Bijlī)
+    "میز", // Table (Miz)
+    "دروازه", // Door (Darwāzah)
+    "درخت", // Tree (Darakht)
+    "ماهی", // Fish (Māhī)
+    "لاس", // Hand (Lās)
+    "کوڅه", // Street (Kūchah)
+    "لمر", // Sun (Lamar)
+    "اسمان", // Sky (Asman)
+    "موټر", // Car (Mōṭar)
+    "بوټ", // Shoe (Bōṭ)
   ],
-
 };
 
-export const WORDS_PER_LINE = 60;
+export const WORDS_PER_LINE = 50;
 export const LINES_TO_SHOW = 1;
 
 export const generateRandomWords = (
