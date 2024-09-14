@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "10 fast finger typeing practice in online useing 10 fast finger",
   icons: {
-    icon: "./favicon.ico",
+    icon: "/favicon-32x32.png",
   },
 };
 
@@ -29,9 +29,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <head>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-      </head> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

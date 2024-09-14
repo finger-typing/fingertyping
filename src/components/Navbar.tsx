@@ -42,14 +42,15 @@ const Navbar: React.FC<NavbarProps> = ({
     "Urdu",
     "Chinese",
     "Hindi",
+    "Russian",
+    "Japanese",
     "German",
     "Spanish",
     "French",
     "Italian",
     "Pashto",
-    "Russian",
     "Turkish",
-    "Japanese",
+    "Portuguese",
     "Indonesian",
     "Ukrainian",
     "Thai",
@@ -162,7 +163,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 type="number"
                 // value={tempCustomTime}
                 onChange={(e) => setTempCustomTime(e.target.value)}
-                placeholder="Set time (s)"
+                placeholder="Set time(s)"
                 className={inputClass + " w-28"}
               />
               <button
@@ -173,7 +174,7 @@ const Navbar: React.FC<NavbarProps> = ({
                     : "bg-green-500 border-green-600"
                 )}
               >
-                Time {/* Button to submit time */}
+                Custom Time {/* Button to submit time */}
               </button>
             </form>
 
@@ -197,7 +198,7 @@ const Navbar: React.FC<NavbarProps> = ({
                     : "bg-blue-500 border-blue-600"
                 )}
               >
-                Set Custom Text {/* Button to submit custom text */}
+                Custom Text {/* Button to submit custom text */}
               </button>
             </form>
           </div>

@@ -244,6 +244,7 @@ export const wordLists: { [key: string]: string[] } = {
     "vélo", // Bike
     "lait", // Milk
   ],
+
   Spanish: [
     // Longer words (6 to 8 characters)
     "ordenador", // Computer
@@ -305,7 +306,7 @@ export const wordLists: { [key: string]: string[] } = {
     "leche", // Milk
   ],
 
-  //start bangla words
+
 
   //start hindi word
   Hindi: [
@@ -371,7 +372,6 @@ export const wordLists: { [key: string]: string[] } = {
   ],
 
   //start urdu
-
   Urdu: [
     "کتاب", // Book (simple)
     "سیب", // Apple (simple)
@@ -908,6 +908,82 @@ export const wordLists: { [key: string]: string[] } = {
     "اسمان", // Sky (Asman)
     "موټر", // Car (Mōṭar)
     "بوټ", // Shoe (Bōṭ)
+  ],
+
+  //portuguese
+  Portuguese: [
+    "computador", // Computer
+    "educação", // Education
+    "economia", // Economics
+    "reconhecimento", // Recognition
+    "financiamento", // Finance
+    "tecnologia", // Technology
+    "organização", // Organization
+    "pesquisa", // Research
+    "desenvolvimento", // Development
+    "universidade", // University
+    "informação", // Information
+    "sociedade", // Society
+    "pratica", // Practice
+    "projeto", // Project
+    "rede", // Internet
+    "publicação", // Publication
+    "questão", // Question
+    "emprego", // Enterprise
+    "necessidade", // Needs
+    "contrato", // Contract
+    "documento", // Document
+    "reforma", // Reform
+    "publicidade", // Advertising
+    "transporte", // Transport
+    "especialista", // Specialist
+    "sistema", // System
+    "alteração", // Changes
+    "preparação", // Preparation
+    "atividade", // Activity
+    "colaboração", // Collaboration
+    "experiência", // Experience
+    "planejamento", // Planning
+    "estratégia", // Strategy
+    "producção", // Production
+  ],
+
+  //japanese
+  Japanese: [
+    "コンピューター", // Computer
+    "教育", // Education
+    "経済", // Economics
+    "認識", // Recognition
+    "財政", // Finance
+    "技術", // Technology
+    "組織", // Organization
+    "研究", // Research
+    "開発", // Development
+    "大学", // University
+    "情報", // Information
+    "協会", // Society
+    "練習", // Practice
+    "プロジェクト", // Project
+    "インターネット", // Internet
+    "公開", // Publication
+    "質問", // Question
+    "企業", // Enterprise
+    "ニーズ", // Needs
+    "契約", // Contract
+    "書類", // Document
+    "改正", // Reform
+    "広告", // Advertising
+    "輸送", // Transport
+    "専門家", // Specialist
+    "システム", // System
+    "変更", // Changes
+    "準備", // Preparation
+    "活動", // Activity
+    "協力", // Collaboration
+    "経験", // Experience
+    "企画", // Planning
+    "戦略", // Strategy
+    "生産", // Production
   ],
 };
 
