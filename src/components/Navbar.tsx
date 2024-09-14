@@ -13,6 +13,7 @@ interface NavbarProps {
   onCustomTimeSubmit: (time: number) => void;
   customTime: number;
 }
+
 const Navbar: React.FC<NavbarProps> = ({
   language,
   setLanguage,
@@ -23,6 +24,15 @@ const Navbar: React.FC<NavbarProps> = ({
   customTime,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Open Gmail directly when the Feedback button is clicked
+  const sendFeedback = () => {
+    const email = "tenfingertypeing@gmail.com";
+    window.open(
+      `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=Feedback&body=Your%20feedback%20here`,
+      "_blank"
+    );
+  };
 
   return (
     <nav
@@ -55,7 +65,17 @@ const Navbar: React.FC<NavbarProps> = ({
             />
           </div>
 
-          <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+          {/* Feedback Button */}
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={sendFeedback}
+              className={`btn ${darkMode ? "bg-gray-600" : "bg-gray-300"} px-4 py-2 rounded`}
+            >
+              Feedback
+            </button>
+
+            <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+          </div>
         </div>
 
         {isMenuOpen && (
