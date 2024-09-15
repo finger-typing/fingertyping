@@ -26,13 +26,10 @@ const Navbar: React.FC<NavbarProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Open Gmail directly when the Feedback button is clicked
-  const sendFeedback = () => {
-    const email = "tenfingertypeing@gmail.com";
-    window.open(
-      `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=Feedback&body=Your%20feedback%20here`,
-      "_blank"
-    );
-  };
+ const sendFeedback = () => {
+   window.open("https://forms.gle/napKwoY9QN7YKuoa7", "_blank");
+ };
+
 
   return (
     <nav
