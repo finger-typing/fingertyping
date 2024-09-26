@@ -1,5 +1,36 @@
 export const wordLists: { [key: string]: string[] } = {
   English: [
+    // Shorter words (3 to 5 characters)
+    "go", // Go
+    "To", // To
+    "my", // My
+    "for", // For
+    "the", // The
+    "of", // Of
+    "cat", // Cat
+    "dog", // Dog
+    "book", // Book
+    "water", // Water
+    "home", // Home
+    "city", // City
+    "food", // Food
+    "lamp", // Lamp
+    "desk", // Desk
+    "door", // Door
+    "tree", // Tree
+    "fish", // Fish
+    "hand", // Hand
+    "road", // Road
+    "sun", // Sun
+    "sky", // Sky
+    "car", // Car
+    "shoe", // Shoe
+    "bike", // Bike
+    "milk", // Milk
+    "an",
+    "a", // A
+
+
     // Longer words (6 to 8 characters)
     "computer", // Computer
     "education", // Education
@@ -35,28 +66,6 @@ export const wordLists: { [key: string]: string[] } = {
     "planning", // Planning
     "strategy", // Strategy
     "development", // Development
-
-    // Shorter words (3 to 5 characters)
-    "cat", // Cat
-    "dog", // Dog
-    "book", // Book
-    "water", // Water
-    "home", // Home
-    "city", // City
-    "food", // Food
-    "lamp", // Lamp
-    "desk", // Desk
-    "door", // Door
-    "tree", // Tree
-    "fish", // Fish
-    "hand", // Hand
-    "road", // Road
-    "sun", // Sun
-    "sky", // Sky
-    "car", // Car
-    "shoe", // Shoe
-    "bike", // Bike
-    "milk", // Milk
   ],
   Bengali: [
     // Longer words (6 to 8 characters)
@@ -305,8 +314,6 @@ export const wordLists: { [key: string]: string[] } = {
     "bicicleta", // Bike
     "leche", // Milk
   ],
-
-
 
   //start hindi word
   Hindi: [

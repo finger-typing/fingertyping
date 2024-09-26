@@ -14,6 +14,7 @@ import GameControls from "../components/GameControls";
 import Results from "../components/Results";
 
 const TypingPractice: React.FC = () => {
+  // Game state
   const [gameState, setGameState] = useState({
     language: "English",
     inputValue: "",
@@ -27,12 +28,14 @@ const TypingPractice: React.FC = () => {
     isCustomText: false,
   });
 
-  const [darkMode, setDarkMode] = useState<boolean>(true);
-  const [customTime, setCustomTime] = useState<number>(60);
+  const [darkMode, setDarkMode] = useState(true);
+  const [customTime, setCustomTime] = useState(60);
 
+  // Refs for input and container elements
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Initialize game settings
   const initializeGame = useCallback(() => {
     setGameState((prev) => ({
       ...prev,
@@ -57,6 +60,7 @@ const TypingPractice: React.FC = () => {
     initializeGame();
   }, [gameState.language, initializeGame]);
 
+  // Handle custom text and time submissions
   const handleCustomTextSubmit = (customText: string) => {
     setGameState((prev) => ({
       ...prev,
@@ -80,6 +84,7 @@ const TypingPractice: React.FC = () => {
     }));
   };
 
+  // Start game
   const startGame = () => {
     setGameState((prev) => ({
       ...prev,
@@ -90,23 +95,22 @@ const TypingPractice: React.FC = () => {
     setTimeout(() => inputRef.current?.focus(), 0);
   };
 
+  // Handle input changes during typing
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setGameState((prev) => {
-      const newState = {
-        ...prev,
-        inputValue: value,
-        startTime: prev.startTime || Date.now(),
-        currentWordIndex: Math.max(
-          value.split(" ").length - 1,
-          prev.currentWordIndex
-        ),
-        isComplete: value === prev.randomText,
-      };
-      return newState;
-    });
+    setGameState((prev) => ({
+      ...prev,
+      inputValue: value,
+      startTime: prev.startTime || Date.now(),
+      currentWordIndex: Math.max(
+        value.split(" ").length - 1,
+        prev.currentWordIndex
+      ),
+      isComplete: value === prev.randomText,
+    }));
   };
 
+  // Timer for countdown during the game
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (
@@ -129,20 +133,66 @@ const TypingPractice: React.FC = () => {
     return () => clearInterval(interval);
   }, [gameState.hasStarted, gameState.isComplete, gameState.timeRemaining]);
 
+
   const calculateWPM = (): string => {
-    const wordsTyped = gameState.inputValue.trim().split(/\s+/).length;
-    const minutesElapsed = gameState.timeElapsed / 60;
-    return (wordsTyped / minutesElapsed || 0).toFixed(2);
+    const wordsTyped = gameState.inputValue
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean).length;
+
+    // If no words typed or no time has elapsed, WPM is zero
+    if (gameState.timeElapsed === 0) return "0.00";
+
+    // Project WPM for a full minute
+    const secondsElapsed = gameState.timeElapsed;
+    const wpm = (wordsTyped / secondsElapsed) * 60;
+
+    return wpm.toFixed(2);
   };
 
   const calculateAccuracy = (): string => {
-    const inputChars = gameState.inputValue.split("");
-    const correctChars = inputChars.filter(
-      (char, i) => char === gameState.randomText[i]
+    const inputWords = gameState.inputValue.trim().split(/\s+/).filter(Boolean);
+    const randomWords = gameState.randomText
+      .trim()
+      .split(/\s+/)
+      .slice(0, inputWords.length);
+
+    // If no words typed, accuracy is 0%
+    if (inputWords.length === 0) return "0.00";
+
+    const correctWords = inputWords.filter(
+      (word, i) => word === randomWords[i]
     ).length;
-    return ((correctChars / Math.max(inputChars.length, 1)) * 100).toFixed(2);
+    const accuracy = (correctWords / inputWords.length) * 100;
+    return accuracy.toFixed(2);
   };
 
+  const correctAndWrongWords = () => {
+    const inputWords = gameState.inputValue.trim().split(/\s+/).filter(Boolean);
+    const randomWords = gameState.randomText
+      .trim()
+      .split(/\s+/)
+      .slice(0, inputWords.length);
+    const correctWords = inputWords.filter(
+      (word, i) => word === randomWords[i]
+    ).length;
+    const wrongWords = inputWords.length - correctWords;
+    return { correctWords, wrongWords };
+  };
+
+  const keystrokes = () => {
+    const inputChars = gameState.inputValue.split("");
+    const referenceChars = gameState.randomText
+      .slice(0, inputChars.length)
+      .split("");
+    const correctChars = inputChars.filter(
+      (char, i) => char === referenceChars[i]
+    ).length;
+    const wrongChars = inputChars.length - correctChars;
+    return { correctKeystrokes: correctChars, wrongKeystrokes: wrongChars };
+  };
+
+  // Render UI
   return (
     <div
       className={`flex flex-col items-center min-h-screen ${
@@ -171,26 +221,22 @@ const TypingPractice: React.FC = () => {
           />
         </div>
 
-        {!gameState.isComplete && (
-          <InputField
-            inputValue={gameState.inputValue}
-            handleInputChange={handleInputChange}
-            hasStarted={gameState.hasStarted}
-            isComplete={gameState.isComplete}
-            darkMode={darkMode}
-            inputRef={inputRef}
-          />
-        )}
+        <InputField
+          inputValue={gameState.inputValue}
+          handleInputChange={handleInputChange}
+          hasStarted={gameState.hasStarted}
+          isComplete={gameState.isComplete}
+          darkMode={darkMode}
+          inputRef={inputRef}
+        />
 
-        {!gameState.isComplete && (
-          <GameControls
-            startGame={startGame}
-            initializeGame={initializeGame}
-            hasStarted={gameState.hasStarted}
-            timeRemaining={gameState.timeRemaining}
-            darkMode={darkMode}
-          />
-        )}
+        <GameControls
+          startGame={startGame}
+          initializeGame={initializeGame}
+          hasStarted={gameState.hasStarted}
+          timeRemaining={gameState.timeRemaining}
+          darkMode={darkMode}
+        />
 
         {gameState.isComplete && (
           <Results
@@ -198,6 +244,8 @@ const TypingPractice: React.FC = () => {
             timeElapsed={gameState.timeElapsed}
             calculateWPM={calculateWPM}
             calculateAccuracy={calculateAccuracy}
+            correctAndWrongWords={correctAndWrongWords()}
+            keystrokes={keystrokes()}
             darkMode={darkMode}
           />
         )}

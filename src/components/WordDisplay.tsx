@@ -41,9 +41,10 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
       }
 
       return (
-        <span key={wordIndex} className={`${wordClass} ${bgClass}`}>
-          {word}{" "}
-        </span>
+        <React.Fragment key={wordIndex}>
+          <span className={`${wordClass} ${bgClass}`}>{word}</span>
+          {wordIndex < displayedWords.length - 1 && " "}
+        </React.Fragment>
       );
     });
   };
@@ -54,7 +55,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
         darkMode ? "bg-gray-800" : "bg-white border-2 border-gray-300"
       }`}
     >
-      <div className="text-2xl leading-relaxed break-all">
+      <div className="text-2xl leading-relaxed whitespace-pre-wrap">
         {getHighlightedText(randomText, inputValue)}
       </div>
     </div>

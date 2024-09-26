@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "10 fast finger typeing practice in online useing 10 fast finger",
   icons: {
-    icon: "/favicon-32x32.png",
+    icon: "/favicon.ico",
   },
 };
 
