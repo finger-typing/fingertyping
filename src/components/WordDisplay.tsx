@@ -1,5 +1,4 @@
-import React from "react";
-import { WORDS_PER_LINE, LINES_TO_SHOW } from "../utils/wordLists";
+import React, { useEffect, useState } from "react";
 
 interface WordDisplayProps {
   randomText: string;
@@ -8,18 +7,44 @@ interface WordDisplayProps {
   darkMode: boolean;
 }
 
+export const WORDS_PER_LINE_SMALL = 25; // For small screens
+export const WORDS_PER_LINE_LARGE = 70; // For medium and large screens
+export const LINES_TO_SHOW = 1;
+
 const WordDisplay: React.FC<WordDisplayProps> = ({
   randomText,
   inputValue,
   currentWordIndex,
   darkMode,
 }) => {
+  const [wordsPerLine, setWordsPerLine] = useState(WORDS_PER_LINE_LARGE);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isSmallScreen = window.innerWidth < 768; // Adjust breakpoint as needed
+      setWordsPerLine(
+        isSmallScreen ? WORDS_PER_LINE_SMALL : WORDS_PER_LINE_LARGE
+      );
+    };
+
+    // Set the initial state
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const getHighlightedText = (text: string, input: string) => {
     const textWords = text.split(" ");
     const inputWords = input.split(" ");
     const startIndex =
-      Math.floor(currentWordIndex / WORDS_PER_LINE) * WORDS_PER_LINE;
-    const endIndex = startIndex + WORDS_PER_LINE * LINES_TO_SHOW;
+      Math.floor(currentWordIndex / wordsPerLine) * wordsPerLine;
+    const endIndex = startIndex + wordsPerLine * LINES_TO_SHOW;
     const displayedWords = textWords.slice(startIndex, endIndex);
 
     return displayedWords.map((word, wordIndex) => {
@@ -51,7 +76,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   return (
     <div
-      className={`w-full shadow-lg rounded-lg p-2 sm:p-4 mb-2 font-medium ${
+      className={`w-full shadow-lg rounded-lg p-2 sm:p-3 mb-2 font-medium ${
         darkMode ? "bg-gray-800" : "bg-white border-2 border-gray-300"
       }`}
     >
