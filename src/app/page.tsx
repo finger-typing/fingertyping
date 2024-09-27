@@ -27,7 +27,7 @@ const TypingPractice: React.FC = () => {
     isCustomText: false,
   });
 
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const [customTime, setCustomTime] = useState(60);
 
   const inputRef = useRef<HTMLInputElement>(null);
