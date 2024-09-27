@@ -14,7 +14,6 @@ import GameControls from "../components/GameControls";
 import Results from "../components/Results";
 
 const TypingPractice: React.FC = () => {
-  // Game state
   const [gameState, setGameState] = useState({
     language: "English",
     inputValue: "",
@@ -31,11 +30,8 @@ const TypingPractice: React.FC = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [customTime, setCustomTime] = useState(60);
 
-  // Refs for input and container elements
   const inputRef = useRef<HTMLInputElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Initialize game settings
   const initializeGame = useCallback(() => {
     setGameState((prev) => ({
       ...prev,
@@ -53,14 +49,13 @@ const TypingPractice: React.FC = () => {
       isComplete: false,
       currentWordIndex: 0,
     }));
-    inputRef.current?.blur();
+    inputRef.current?.focus();
   }, [customTime]);
 
   useEffect(() => {
     initializeGame();
   }, [gameState.language, initializeGame]);
 
-  // Handle custom text and time submissions
   const handleCustomTextSubmit = (customText: string) => {
     setGameState((prev) => ({
       ...prev,
@@ -74,6 +69,7 @@ const TypingPractice: React.FC = () => {
       isComplete: false,
       currentWordIndex: 0,
     }));
+    inputRef.current?.focus();
   };
 
   const handleCustomTimeSubmit = (newTime: number) => {
@@ -84,33 +80,24 @@ const TypingPractice: React.FC = () => {
     }));
   };
 
-  // Start game
-  const startGame = () => {
-    setGameState((prev) => ({
-      ...prev,
-      hasStarted: true,
-      inputValue: "",
-      startTime: Date.now(),
-    }));
-    setTimeout(() => inputRef.current?.focus(), 0);
-  };
-
-  // Handle input changes during typing
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setGameState((prev) => ({
-      ...prev,
-      inputValue: value,
-      startTime: prev.startTime || Date.now(),
-      currentWordIndex: Math.max(
-        value.split(" ").length - 1,
-        prev.currentWordIndex
-      ),
-      isComplete: value === prev.randomText,
-    }));
+    setGameState((prev) => {
+      const newState = {
+        ...prev,
+        inputValue: value,
+        hasStarted: true,
+        startTime: prev.startTime || Date.now(),
+        currentWordIndex: Math.max(
+          value.split(" ").length - 1,
+          prev.currentWordIndex
+        ),
+        isComplete: value === prev.randomText,
+      };
+      return newState;
+    });
   };
 
-  // Timer for countdown during the game
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (
@@ -133,17 +120,14 @@ const TypingPractice: React.FC = () => {
     return () => clearInterval(interval);
   }, [gameState.hasStarted, gameState.isComplete, gameState.timeRemaining]);
 
-
   const calculateWPM = (): string => {
     const wordsTyped = gameState.inputValue
       .trim()
       .split(/\s+/)
       .filter(Boolean).length;
 
-    // If no words typed or no time has elapsed, WPM is zero
     if (gameState.timeElapsed === 0) return "0.00";
 
-    // Project WPM for a full minute
     const secondsElapsed = gameState.timeElapsed;
     const wpm = (wordsTyped / secondsElapsed) * 60;
 
@@ -157,7 +141,6 @@ const TypingPractice: React.FC = () => {
       .split(/\s+/)
       .slice(0, inputWords.length);
 
-    // If no words typed, accuracy is 0%
     if (inputWords.length === 0) return "0.00";
 
     const correctWords = inputWords.filter(
@@ -192,7 +175,6 @@ const TypingPractice: React.FC = () => {
     return { correctKeystrokes: correctChars, wrongKeystrokes: wrongChars };
   };
 
-  // Render UI
   return (
     <div
       className={`flex flex-col items-center min-h-screen ${
@@ -211,15 +193,13 @@ const TypingPractice: React.FC = () => {
         customTime={customTime}
       />
 
-      <div className="w-full max-w-3xl px-4 mt-8">
-        <div ref={containerRef}>
-          <WordDisplay
-            randomText={gameState.randomText}
-            inputValue={gameState.inputValue}
-            currentWordIndex={gameState.currentWordIndex}
-            darkMode={darkMode}
-          />
-        </div>
+      <div className="w-full max-w-3xl px-4 mt-4">
+        <WordDisplay
+          randomText={gameState.randomText}
+          inputValue={gameState.inputValue}
+          currentWordIndex={gameState.currentWordIndex}
+          darkMode={darkMode}
+        />
 
         <InputField
           inputValue={gameState.inputValue}
@@ -228,10 +208,10 @@ const TypingPractice: React.FC = () => {
           isComplete={gameState.isComplete}
           darkMode={darkMode}
           inputRef={inputRef}
+          placeholder="Start typing to begin the game..."
         />
 
         <GameControls
-          startGame={startGame}
           initializeGame={initializeGame}
           hasStarted={gameState.hasStarted}
           timeRemaining={gameState.timeRemaining}

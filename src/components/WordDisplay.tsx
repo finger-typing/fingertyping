@@ -51,11 +51,11 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   return (
     <div
-      className={`w-full shadow-lg rounded-lg p-4 mb-2 font-medium ${
+      className={`w-full shadow-lg rounded-lg p-2 sm:p-4 mb-2 font-medium ${
         darkMode ? "bg-gray-800" : "bg-white border-2 border-gray-300"
       }`}
     >
-      <div className="text-2xl leading-relaxed whitespace-pre-wrap">
+      <div className="text-lg sm:text-lg md:text-2xl leading-relaxed whitespace-pre-wrap">
         {getHighlightedText(randomText, inputValue)}
       </div>
     </div>

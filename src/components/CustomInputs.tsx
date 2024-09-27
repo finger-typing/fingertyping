@@ -46,14 +46,14 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
     <>
       <form
         onSubmit={handleCustomTimeSubmit}
-        className={isMobile ? "flex flex-col space-y-2" : "flex items-center"}
+        className={isMobile ? "flex flex-col" : "flex items-center"}
       >
         <input
           type="number"
           value={tempCustomTime}
           onChange={(e) => setTempCustomTime(e.target.value)}
           placeholder="Set time(s)"
-          className={inputClass + (isMobile ? " w-full" : " w-28")}
+          className={inputClass + (isMobile ? " w-full " : " w-28")}
         />
         <button
           type="submit"
@@ -69,7 +69,7 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
 
       <form
         onSubmit={handleCustomTextSubmit}
-        className={isMobile ? "flex flex-col space-y-2" : "flex items-center"}
+        className={isMobile ? "flex flex-col " : "flex items-center"}
       >
         <input
           type="text"

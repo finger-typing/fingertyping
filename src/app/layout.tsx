@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "TenFingerTypeing",
+  title: "Finger Typing",
   description:
     "10 fast finger typeing practice in online useing 10 fast finger",
   icons: {

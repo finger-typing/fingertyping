@@ -7,19 +7,18 @@ interface InputFieldProps {
   isComplete: boolean;
   darkMode: boolean;
   inputRef: RefObject<HTMLInputElement>;
-  placeholder?: string; // Optional placeholder
-  type?: string; // Optional type prop
+  placeholder?: string;
+  type?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
   inputValue,
   handleInputChange,
-  hasStarted,
   isComplete,
   darkMode,
   inputRef,
-  placeholder = "Start typing here...", // Default placeholder text
-  type = "text", // Default input type
+  placeholder = "Start typing here...",
+  type = "text",
 }) => (
   <div className="w-full mb-4">
     <input
@@ -33,7 +32,7 @@ const InputField: React.FC<InputFieldProps> = ({
           ? "border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-400"
           : "border-gray-400 bg-white text-gray-900 placeholder-gray-500"
       }`}
-      disabled={!hasStarted || isComplete}
+      disabled={isComplete}
       aria-label="Typing input field"
     />
   </div>

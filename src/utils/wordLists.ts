@@ -994,7 +994,7 @@ export const wordLists: { [key: string]: string[] } = {
   ],
 };
 
-export const WORDS_PER_LINE = 50;
+export const WORDS_PER_LINE = 60;
 export const LINES_TO_SHOW = 1;
 
 export const generateRandomWords = (

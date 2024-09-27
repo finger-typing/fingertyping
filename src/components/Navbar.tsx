@@ -25,24 +25,24 @@ const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Open Gmail directly when the Feedback button is clicked
- const sendFeedback = () => {
-   window.open("https://forms.gle/napKwoY9QN7YKuoa7", "_blank");
- };
-
+  const sendFeedback = () => {
+    window.open("https://forms.gle/D2QzunVpsg7nz9mc8", "_blank");
+  };
 
   return (
-    <nav
-      className={`w-full py-2 px-4 ${
-        darkMode ? "bg-gray-800 text-white" : "bg-white text-black"
-      } shadow-md`}
-    >
-      <div className="container mx-auto">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-4">
+    <>
+      <nav
+        className={`w-full py-2 px-4 ${
+          darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+        } shadow-md transition duration-300 ease-in-out`}
+      >
+        <div className="container mx-auto flex flex-wrap items-center justify-between">
+          <div className="flex items-center space-x-2">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden"
+              className={`lg:hidden ${
+                darkMode ? "text-white" : "text-gray-900"
+              } hover:text-gray-500 transition duration-300 ease-in-out p-1`}
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -53,41 +53,80 @@ const Navbar: React.FC<NavbarProps> = ({
             />
           </div>
 
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4 flex-grow justify-center">
             <CustomInputs
               darkMode={darkMode}
               onCustomTextSubmit={onCustomTextSubmit}
               onCustomTimeSubmit={onCustomTimeSubmit}
               customTime={customTime}
+              isMobile={false}
             />
           </div>
 
-          {/* Feedback Button */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             <button
               onClick={sendFeedback}
-              className={`btn ${darkMode ? "bg-gray-600" : "bg-gray-300"} px-4 py-2 rounded`}
+              className={`hidden lg:block ${
+                darkMode
+                  ? "bg-gray-600 text-white"
+                  : "bg-gray-300 text-gray-900"
+              } h-10 px-4 text-sm rounded hover:bg-gray-500 transition duration-300 ease-in-out`}
             >
               Feedback
             </button>
-
             <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
           </div>
         </div>
+      </nav>
 
-        {isMenuOpen && (
-          <div className="mt-4 lg:hidden space-y-4">
-            <CustomInputs
-              darkMode={darkMode}
-              onCustomTextSubmit={onCustomTextSubmit}
-              onCustomTimeSubmit={onCustomTimeSubmit}
-              customTime={customTime}
-              isMobile={true}
-            />
+      {isMenuOpen && (
+        <div
+          className={`fixed inset-0 z-50 ${
+            darkMode ? "bg-gray-900" : "bg-white"
+          } transition-all duration-300 ease-in-out lg:hidden`}
+        >
+          <div className="container mx-auto px-4 py-6 flex flex-col h-full">
+            <div className="flex justify-between items-center mb-3">
+              <h2
+                className={`text-xl font-bold ${
+                  darkMode ? "text-white" : "text-gray-900"
+                }`}
+              >
+                Menu
+              </h2>
+              <button
+                title="menu"
+                onClick={() => setIsMenuOpen(false)}
+                className={`${
+                  darkMode ? "text-white" : "text-gray-900"
+                } hover:text-gray-500 transition duration-300 ease-in-out`}
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <div className="flex-grow overflow-y-auto">
+              <CustomInputs
+                darkMode={darkMode}
+                onCustomTextSubmit={onCustomTextSubmit}
+                onCustomTimeSubmit={onCustomTimeSubmit}
+                customTime={customTime}
+                isMobile={true}
+              />
+              <button
+                onClick={sendFeedback}
+                className={`mt-3 ${
+                  darkMode
+                    ? "bg-gray-600 text-white"
+                    : "bg-gray-300 text-gray-900"
+                } h-10 px-4 rounded hover:bg-gray-500 transition duration-300 ease-in-out w-full`}
+              >
+                Feedback
+              </button>
+            </div>
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      )}
+    </>
   );
 };
 
