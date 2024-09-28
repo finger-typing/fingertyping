@@ -16,7 +16,7 @@ const geistMono = localFont({
 
 // Updated metadata for SEO optimization with keywords
 export const metadata: Metadata = {
-  title: "FingerTyping -Secure and Fast Typing Practice with 10 Fast Fingers",
+  title: "FingerTyping - Secure and Fast",
   description:
     "Secure, ad-free, and fast typing practice with 10 fast fingers on FingerTyping. Improve your typing speed and accuracy with our comprehensive typing lessons and tests. Join now and become a faster typist!",
   icons: {
@@ -65,7 +65,7 @@ export default function RootLayout({
         {/* Open Graph Meta Tags for Social Media */}
         <meta
           property="og:title"
-          content="FingerTyping - Secure and fast Typing Practice with 10 Fast Fingers"
+          content="FingerTyping - Secure and fast "
         />
         <meta
           property="og:description"
@@ -81,7 +81,7 @@ export default function RootLayout({
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="FingerTyping - Fast, Secure Typing Practice"
+          content="FingerTyping - Secure and Fast"
         />
         <meta
           name="twitter:description"
@@ -96,7 +96,7 @@ export default function RootLayout({
             "@type": "WebSite",
             name: "FingerTyping",
             url: "https://www.fingertyping.com",
-            description: "FingerTyping is a typing practice website.",
+            description: "Secure, ad-free, and fast typing practice with 10 fast fingers on FingerTyping. Improve your typing speed and accuracy with our comprehensive typing lessons and tests. Join now and become a faster typist!",
             publisher: {
               "@type": "Organization",
               name: "FingerTyping",

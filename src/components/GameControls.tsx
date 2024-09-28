@@ -21,7 +21,7 @@ const GameControls: React.FC<GameControlsProps> = ({
     {/* Center (Time) */}
     <div className="flex justify-center">
       <p
-        className={`text-2xl font-semibold ${
+        className={`text-2xl font-bold text-green-600 font-mono ${
           darkMode ? "text-gray-300" : "text-gray-900"
         }`}
         aria-live="polite"
@@ -38,7 +38,7 @@ const GameControls: React.FC<GameControlsProps> = ({
           darkMode
             ? "bg-gray-800 text-white hover:bg-gray-600"
             : "bg-gray-200 text-black-900 hover:bg-gray-300"
-        } font-semibold border border-current shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 rounded-lg p-2`}
+        } font-semibold border border-red-500 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 rounded-lg p-2`}
       >
         Reset
       </Button>
