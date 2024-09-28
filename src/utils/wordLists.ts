@@ -29,6 +29,8 @@ export const wordLists: { [key: string]: string[] } = {
     "milk", // Milk
     "an",
     "a", // A
+    "the", // The
+    "I",
 
 
     // Longer words (6 to 8 characters)
@@ -67,7 +69,7 @@ export const wordLists: { [key: string]: string[] } = {
     "strategy", // Strategy
     "development", // Development
   ],
-  Bengali: [
+  Bangla: [
     // Longer words (6 to 8 characters)
     "অভিনন্দন", // Congratulations
     "বিজ্ঞাপন", // Advertisement
