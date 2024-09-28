@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { ChevronDown, Search } from "lucide-react";
 
 interface LanguageDropdownProps {
   language: string;
@@ -13,10 +13,12 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
   darkMode,
 }) => {
   const [showLanguages, setShowLanguages] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const languages = [
     "English",
-    "Bengali",
+    "Bangla",
     "Arabic",
     "Urdu",
     "Chinese",
@@ -35,8 +37,25 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
     "Thai",
   ];
 
+  const filteredLanguages = languages.filter((lang) =>
+    lang.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowLanguages(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setShowLanguages(!showLanguages)}
         className={`flex items-center space-x-1 p-2 rounded border ${
@@ -55,8 +74,25 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
               : "bg-white border-gray-200"
           }`}
         >
+          <div className="p-2">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search language"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className={`w-full pl-8 pr-2 py-1 rounded-md ${
+                  darkMode ? "bg-gray-700 text-white" : "bg-gray-100 text-black"
+                }`}
+              />
+              <Search
+                size={16}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"
+              />
+            </div>
+          </div>
           <div className="overflow-y-auto max-h-72 w-48">
-            {languages.map((lang) => (
+            {filteredLanguages.map((lang) => (
               <div
                 key={lang}
                 onClick={() => {

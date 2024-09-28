@@ -32,9 +32,9 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <nav
-        className={`w-full py-2 px-4 ${
+        className={`w-full py-2 px-3 ${
           darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-        } shadow-md transition duration-300 ease-in-out`}
+        } transition duration-300 ease-in-out relative`}
       >
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <div className="flex items-center space-x-2">
@@ -68,15 +68,17 @@ const Navbar: React.FC<NavbarProps> = ({
               onClick={sendFeedback}
               className={`hidden lg:block ${
                 darkMode
-                  ? "bg-gray-600 text-white"
-                  : "bg-gray-300 text-gray-900"
-              } h-10 px-4 text-sm rounded hover:bg-gray-500 transition duration-300 ease-in-out`}
+                  ? "bg-gray-700 text-white" : "bg-gray-100 text-black"
+              } h-10 px-4 text-sm rounded transition duration-200 ease-in-out border border-gray-400 `}
             >
               Feedback
             </button>
             <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
           </div>
         </div>
+        
+        {/* Beautiful border effect */}
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-200 via-purple-600 to-blue-200"></div>
       </nav>
 
       {isMenuOpen && (
@@ -114,11 +116,10 @@ const Navbar: React.FC<NavbarProps> = ({
               />
               <button
                 onClick={sendFeedback}
-                className={`mt-3 ${
+                className={`mt-3 border border-gray-400 ${
                   darkMode
-                    ? "bg-gray-600 text-white"
-                    : "bg-gray-300 text-gray-900"
-                } h-10 px-4 rounded hover:bg-gray-500 transition duration-300 ease-in-out w-full`}
+                    ? "bg-gray-700 text-white" : "bg-gray-100 text-black"
+                } h-10 px-4 rounded transition duration-300 ease-in-out w-full`}
               >
                 Feedback
               </button>
