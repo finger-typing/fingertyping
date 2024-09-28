@@ -16,9 +16,11 @@ const geistMono = localFont({
 
 // Updated metadata for SEO optimization with keywords
 export const metadata: Metadata = {
+
   title: "FingerTyping - Secure and Fast",
   description:
     "Secure, ad-free, and fast typing practice with 10 fast fingers on FingerTyping. Improve your typing speed and accuracy with our comprehensive typing lessons and tests. Join now and become a faster typist!",
+
   icons: {
     icon: "/favicon.ico",
   },
