@@ -6,10 +6,14 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.fingertyping.com"),
-  title: "FingerTyping - Secure, Fast, and Private Typing Practice",
+
+  title: "FingerTyping - Secure and Fast",
   description:
-    "A secure, ad-free, and typing practice app. With your 10 fast finger complete comprehensive lessons and tests to become a faster typist!",
+    "Secure, ad-free, and fast typing practice with 10 fast fingers on FingerTyping. Improve your typing speed and accuracy with our comprehensive typing lessons and tests. Join now and become a faster typist!",
+
+  icons: {
+    icon: "/favicon.ico",
+  },
   keywords: [
     "typing",
     "typeing",
