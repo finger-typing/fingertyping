@@ -27,7 +27,7 @@ const TypingPractice: React.FC = () => {
     isCustomText: false,
   });
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [customTime, setCustomTime] = useState(60);
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -230,6 +230,7 @@ const TypingPractice: React.FC = () => {
           />
         )}
       </div>
+      {/* <Footer darkMode={false} /> */}
     </div>
   );
 };
