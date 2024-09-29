@@ -50,7 +50,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     return displayedWords.map((word, wordIndex) => {
       const wordPos = startIndex + wordIndex;
       const isCurrentWord = wordPos === currentWordIndex;
-      let wordClass = darkMode ? "text-gray-400" : "text-gray-600";
+      let wordClass = darkMode ? "text-gray-300" : "text-gray-700";
       const bgClass = isCurrentWord
         ? darkMode
           ? "bg-gray-700"
