@@ -13,8 +13,8 @@ const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
   return (
     <button
       onClick={() => setDarkMode(!darkMode)}
-      className={`flex items-center space-x-1 px-2 py-2 rounded border border-gray-400 ${
-        darkMode ? "bg-gray-700 text-white" : "bg-gray-100 text-black"
+      className={`flex items-center space-x-1 px-2 py-2 rounded  ${
+        darkMode ? "bg-gray-700 text-md border border-gray-300 " : "bg-gray-100 text-md border border-gray-600"
       }`}
     >
       {darkMode ? <Sun size={20} /> : <Moon size={20} />}

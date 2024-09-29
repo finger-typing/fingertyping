@@ -36,9 +36,9 @@ const GameControls: React.FC<GameControlsProps> = ({
         onClick={initializeGame}
         className={`${
           darkMode
-            ? "bg-gray-800 text-white hover:bg-gray-600"
-            : "bg-gray-200 text-black-900 hover:bg-gray-300"
-        } font-semibold border border-red-500 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 rounded-lg p-2`}
+            ? "bg-gray-800 text-white hover:bg-gray-600 border border-gray-200  "
+            : "bg-gray-200 text-black-900 hover:bg-gray-300 border border-gray-900  "
+        } font-semibold  shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 rounded-lg p-2`}
       >
         Reset
       </Button>

@@ -59,7 +59,7 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
       <button
         onClick={() => setShowLanguages(!showLanguages)}
         className={`flex items-center space-x-1 p-2 rounded border ${
-          darkMode ? "bg-gray-700 border-gray-600" : "bg-white border-gray-300"
+          darkMode ? "bg-gray-700 border-gray-300" : "bg-white border-gray-600"
         }`}
       >
         <span>{language || "Select Language"}</span>

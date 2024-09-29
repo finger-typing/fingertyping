@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({
     <>
       <nav
         className={`w-full py-2 px-3 ${
-          darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+          darkMode ? "bg-gray-900 text-white " : "bg-white text-gray-900 "
         } transition duration-300 ease-in-out relative`}
       >
         <div className="container mx-auto flex flex-wrap items-center justify-between">
@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`lg:hidden ${
-                darkMode ? "text-white" : "text-gray-900"
+                darkMode ? "text-white " : "text-gray-900"
               } hover:text-gray-500 transition duration-300 ease-in-out p-1`}
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -68,8 +68,8 @@ const Navbar: React.FC<NavbarProps> = ({
               onClick={sendFeedback}
               className={`hidden lg:block ${
                 darkMode
-                  ? "bg-gray-700 text-white" : "bg-gray-100 text-black"
-              } h-10 px-4 text-sm rounded transition duration-200 ease-in-out border border-gray-400 `}
+                  ? "bg-gray-700 text-white border border-gray-300" : "bg-gray-100 text-black border border-gray-600"
+              }   h-10 px-4 text-md rounded transition duration-200 ease-in-out  `}
             >
               Feedback
             </button>
@@ -116,7 +116,7 @@ const Navbar: React.FC<NavbarProps> = ({
               />
               <button
                 onClick={sendFeedback}
-                className={`mt-3 border border-gray-400 ${
+                className={`mt-3 border border-gray-300 ${
                   darkMode
                     ? "bg-gray-700 text-white" : "bg-gray-100 text-black"
                 } h-10 px-4 rounded transition duration-300 ease-in-out w-full`}
