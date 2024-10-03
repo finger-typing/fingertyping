@@ -33,6 +33,8 @@ export default function Terms() {
         be posted on this page. It is your responsibility to review these terms
         periodically.
       </p>
+      <h2 className="mt-8 text-2xl text-yellow-500 font-semibold  flex justify-center items-center">😊 Happy Typing </h2>
+
     </div>
   );
 }

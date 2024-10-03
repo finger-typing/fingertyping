@@ -23,6 +23,7 @@ export default function About() {
           </p>
          
       </div>
+      <h2 className="text-2xl text-yellow-500 font-semibold mb-4 flex justify-center items-center">😊 Happy Typing </h2>
 
      
       </div>
