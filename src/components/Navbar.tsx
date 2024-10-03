@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { Menu, X, BookOpen, MessageSquare } from "lucide-react";
 import LanguageDropdown from "./LanguageDropdown";
 import CustomInputs from "./CustomInputs";
 import DarkModeToggle from "./DarkModeToggle";
@@ -29,31 +30,49 @@ const Navbar: React.FC<NavbarProps> = ({
     window.open("https://forms.gle/D2QzunVpsg7nz9mc8", "_blank");
   };
 
+  const buttonClasses = `h-8 px-1 text-xs sm:px-2 md:px-3 rounded transition duration-200 ease-in-out flex items-center justify-center ${
+    darkMode
+      ? "bg-gray-700 text-white border border-gray-300"
+      : "bg-gray-100 text-black border border-gray-600"
+  }`;
+
+  const navItemClasses = `h-8 px-1 text-xs sm:px-2 md:px-3 rounded flex items-center justify-center transition duration-200 ease-in-out`;
+
   return (
     <>
       <nav
-        className={`w-full py-2 px-3 ${
-          darkMode ? "bg-gray-900 text-white " : "bg-white text-gray-900 "
+        className={`w-full py-2 px-2 sm:px-4 ${
+          darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
         } transition duration-300 ease-in-out relative`}
       >
-        <div className="container mx-auto flex flex-wrap items-center justify-between">
-          <div className="flex items-center space-x-2">
+        <div className="container mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-1 sm:space-x-2">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`lg:hidden ${
-                darkMode ? "text-white " : "text-gray-900"
+              className={`xl:hidden ${
+                darkMode ? "text-white" : "text-gray-900"
               } hover:text-gray-500 transition duration-300 ease-in-out p-1`}
             >
-              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
-            <LanguageDropdown
-              language={language}
-              setLanguage={setLanguage}
-              darkMode={darkMode}
-            />
+            {/* LanguageDropdown - always visible */}
+            <div className={navItemClasses}>
+              <LanguageDropdown
+                language={language}
+                setLanguage={setLanguage}
+                darkMode={darkMode}
+              />
+            </div>
           </div>
 
-          <div className="hidden lg:flex items-center space-x-4 flex-grow justify-center">
+          {/* Learn button - always visible */}
+          
+          <Link href="/learn" className={`${buttonClasses}`}>
+            <BookOpen size={16} className="mr-1" />
+            <span>Learn</span>
+          </Link>
+
+          <div className="hidden xl:flex items-center space-x-2 xl:ml-8">
             <CustomInputs
               darkMode={darkMode}
               onCustomTextSubmit={onCustomTextSubmit}
@@ -63,32 +82,36 @@ const Navbar: React.FC<NavbarProps> = ({
             />
           </div>
 
-          <div className="flex items-center space-x-2">
-            <button
+          <div className="hidden xl:flex items-center space-x-2 xl:ml-8">
+          <button
               onClick={sendFeedback}
-              className={`hidden lg:block ${
-                darkMode
-                  ? "bg-gray-700 text-white border border-gray-300" : "bg-gray-100 text-black border border-gray-600"
-              }   h-10 px-4 text-md rounded transition duration-200 ease-in-out  `}
+              className={`${buttonClasses}`}
             >
+              <MessageSquare size={16} className="mr-1" />
               Feedback
             </button>
-            <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+          </div>
+
+          <div className="flex items-center space-x-1 sm:space-x-2">
+            {/* DarkModeToggle - always visible */}
+            <div className={navItemClasses}>
+              <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+            </div>
           </div>
         </div>
-        
+
         {/* Beautiful border effect */}
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-200 via-purple-600 to-blue-200"></div>
       </nav>
 
       {isMenuOpen && (
         <div
-          className={`fixed inset-0 z-50 ${
+          className={`fixed top-0 left-0 w-full z-50 ${
             darkMode ? "bg-gray-900" : "bg-white"
-          } transition-all duration-300 ease-in-out lg:hidden`}
+          } transition-all duration-300 ease-in-out xl:hidden overflow-y-auto shadow-lg`}
         >
-          <div className="container mx-auto px-4 py-6 flex flex-col h-full">
-            <div className="flex justify-between items-center mb-3">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex justify-between items-center mb-4">
               <h2
                 className={`text-xl font-bold ${
                   darkMode ? "text-white" : "text-gray-900"
@@ -97,7 +120,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 Menu
               </h2>
               <button
-                title="menu"
+                title="Close menu"
                 onClick={() => setIsMenuOpen(false)}
                 className={`${
                   darkMode ? "text-white" : "text-gray-900"
@@ -106,24 +129,20 @@ const Navbar: React.FC<NavbarProps> = ({
                 <X size={24} />
               </button>
             </div>
-            <div className="flex-grow overflow-y-auto">
-              <CustomInputs
-                darkMode={darkMode}
-                onCustomTextSubmit={onCustomTextSubmit}
-                onCustomTimeSubmit={onCustomTimeSubmit}
-                customTime={customTime}
-                isMobile={true}
-              />
-              <button
-                onClick={sendFeedback}
-                className={`mt-3 border border-gray-300 ${
-                  darkMode
-                    ? "bg-gray-700 text-white" : "bg-gray-100 text-black"
-                } h-10 px-4 rounded transition duration-300 ease-in-out w-full`}
-              >
-                Feedback
-              </button>
-            </div>
+            <CustomInputs
+              darkMode={darkMode}
+              onCustomTextSubmit={onCustomTextSubmit}
+              onCustomTimeSubmit={onCustomTimeSubmit}
+              customTime={customTime}
+              isMobile={true}
+            />
+            <button
+              onClick={sendFeedback}
+              className={`mt-4 ${buttonClasses} w-full`}
+            >
+              <MessageSquare size={18} className="mr-1" />
+              Feedback
+            </button>
           </div>
         </div>
       )}

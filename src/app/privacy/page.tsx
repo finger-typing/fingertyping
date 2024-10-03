@@ -8,7 +8,7 @@ export default function Privacy() {
         privacy and are committed to protecting your personal information. This
         Privacy Policy outlines how we collect, use, and safeguard your data.
       </p>
-      <h2 className="text-2xl font-semibold mb-4">Information We Collect</h2>
+      <h2 className="text-2xl font-semibold mb-4">Information Collect and Use</h2>
       <p className="text-lg leading-relaxed mb-6">
         We do not collect any personal information or data on our website. 
       </p>
@@ -20,6 +20,6 @@ export default function Privacy() {
       <p className="text-lg leading-relaxed mb-6">
         We take data security seriously. We do not collect or sell or share your data with third parties.
       </p>
-    </div>
+      <h2 className="text-2xl text-yellow-500 font-semibold mb-4 flex justify-center items-center">😊 Happy Typing </h2>    </div>
   );
 }

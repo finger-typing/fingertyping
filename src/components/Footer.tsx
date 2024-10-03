@@ -9,10 +9,11 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ darkMode }) => {
   const links = [
-    { href: "/", text: "Home" },
+    { href: "/", text: "← Back to Home" },
     { href: "/about", text: "About Us" },
     { href: "/privacy", text: "Privacy Policy" },
-    { href: "/terms", text: "Terms of Service" },
+    { href: "/terms", text: "Terms and Conditions" },
+    { href: "/blog", text: "FingerTyping Blog" },
     {
       href: "https://forms.gle/D2QzunVpsg7nz9mc8",
       text: "Contact Us",
@@ -51,7 +52,7 @@ const Footer: React.FC<FooterProps> = ({ darkMode }) => {
           ))}
         </div>
         <div className="mt-4 text-center text-sm">
-          © {new Date().getFullYear()} FingerTyping. All rights reserved.
+          © {new Date().getFullYear()} FingerTyping.com (All rights reserved)
         </div>
       </div>
     </footer>
