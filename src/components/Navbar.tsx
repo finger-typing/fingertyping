@@ -87,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({
               onClick={sendFeedback}
               className={`${buttonClasses}`}
             >
-              <MessageSquare size={16} className="mr-1" />
+              <MessageSquare size={17} className="mr-1" />
               Feedback
             </button>
           </div>
@@ -126,7 +126,7 @@ const Navbar: React.FC<NavbarProps> = ({
                   darkMode ? "text-white" : "text-gray-900"
                 } hover:text-gray-500 transition duration-300 ease-in-out`}
               >
-                <X size={24} />
+                <X size={25} />
               </button>
             </div>
             <CustomInputs
@@ -140,7 +140,7 @@ const Navbar: React.FC<NavbarProps> = ({
               onClick={sendFeedback}
               className={`mt-4 ${buttonClasses} w-full`}
             >
-              <MessageSquare size={18} className="mr-1" />
+              <MessageSquare size={17} className="mr-1" />
               Feedback
             </button>
           </div>

@@ -31,48 +31,42 @@ export const wordLists: { [key: string]: string[] } = {
     "a", // A
     "the", // The
     "I",
-
+    "you", //you
+    "she",
+    "he",
+    "it",
+    "they",
+    "them",
+    "his",
+    "her",
 
     // Longer words (6 to 8 characters)
-    "computer", // Computer
-    "education", // Education
-    "economics", // Economics
-    "psychology", // Psychology
+    "holiday", // Holiday
+    "friends", // Friends
+    "library", // Library
+    "station", // Station
+    "journey", // Journey
+    "society", // Society
+    "support", // Support
     "finance", // Finance
-    "technology", // Technology
+    "painting", // Painting
+    "solution", // Solution
+    "holiday", // Holiday
+    "balance", // Balance
+    "meeting", // Meeting
     "organization", // Organization
     "research", // Research
-    "development", // Development
     "university", // University
     "information", // Information
-    "society", // Society
-    "practice", // Practice
-    "project", // Project
-    "internet", // Internet
-    "publication", // Publication
-    "question", // Question
-    "enterprise", // Enterprise
-    "needs", // Needs
-    "contract", // Contract
-    "document", // Document
-    "reform", // Reform
-    "advertising", // Advertising
-    "transport", // Transport
-    "specialist", // Specialist
-    "system", // System
-    "changes", // Changes
-    "preparation", // Preparation
-    "activity", // Activity
-    "partnership", // Partnership
-    "experience", // Experience
-    "planning", // Planning
-    "strategy", // Strategy
     "development", // Development
+    "communication", // Communication
+    "environment", // Environment
+    "management", // Management
+    "marketing", // Marketing
   ],
   Bangla: [
     // Longer words (6 to 8 characters)
-    "অভিনন্দন", // Congratulations
-    "বিজ্ঞাপন", // Advertisement
+
     "বিচারক", // Judge
     "বিশ্ববিদ্যালয়", // University
     "পরীক্ষা", // Exam
@@ -89,28 +83,13 @@ export const wordLists: { [key: string]: string[] } = {
     "অর্থনীতি", // Economics
     "সামাজিক", // Social
     "বিচ্ছিন্ন", // Isolated
-    "নির্দেশনা", // Instructions
-    "অভিযোগ", // Complaint
-    "পরিস্থিতি", // Situation
-    "পরিকল্পনা", // Planning
     "উদ্ভাবন", // Innovation
     "মোবাইল", // Mobile
-    "সাহিত্য", // Literature
     "উন্নয়ন", // Development
     "স্বাস্থ্য", // Health
     "সফলতা", // Success
     "কৌশল", // Strategy
     "উপহার", // Gift
-    "প্রযুক্তি", // Technology
-    "নির্বাচন", // Election
-    "সম্প্রচার", // Broadcast
-    "বিনোদন", // Entertainment
-    "স্বল্পকাল", // Short-term
-    "অনুষ্ঠান", // Event
-    "বর্ধিত", // Extended
-    "মধ্যবিত্ত", // Middle-class
-    "ভোগান্তি", // Suffering
-    "দক্ষতা", // Skill
 
     // Shorter words (3 to 5 characters)
 
@@ -135,10 +114,33 @@ export const wordLists: { [key: string]: string[] } = {
     "রঙ", // Color
     "লেবু", // Lemon
     "খাবার", // Food
+    "পাতা", // Page
+    "পাত্র", // Cup
+    "সুবিধা", // Convenience
+    "স্বাস্থ্য", // Health
+    "বাজার", // Market
+    "সাহিত্য", // Success
+    "প্রশ্ন", // Question
+    "অন্যান্য", // Other
+    "সম্পর্ক", // Relationship
+    "সমাজ", // Culture
+    "সম্প্রদায়", // Community
+    "সম্পাদনা", // Editing
+    "সম্পূর্ণ", // Complete
+    "সম্বন্ধ", // Relation
+    "আমি", // I
+    "তুমি", // You
+    "আমাদের", // Our
+    "তাদের", // Their
+    "আমাকে", // Me
+    "তোমাকে", // You
+    "আমার", // My
+    "তার", // Your
+    "তোমার", // Your
+    "আমাকে", // Our
   ],
   Arabic: [
     // Longer words (6 to 8 characters)
-    "كمبيوتر", // Computer
     "تعليم", // Education
     "اقتصاد", // Economics
     "علم النفس", // Psychology
@@ -204,34 +206,7 @@ export const wordLists: { [key: string]: string[] } = {
     "psychologie", // Psychology
     "finance", // Finance
     "technologie", // Technology
-    "organisation", // Organization
-    "recherche", // Research
-    "développement", // Development
-    "université", // University
-    "information", // Information
     "société", // Society
-    "pratique", // Practice
-    "projet", // Project
-    "internet", // Internet
-    "publication", // Publication
-    "question", // Question
-    "entreprise", // Enterprise
-    "besoins", // Needs
-    "contrat", // Contract
-    "document", // Document
-    "réforme", // Reform
-    "publicité", // Advertising
-    "transport", // Transport
-    "spécialiste", // Specialist
-    "système", // System
-    "changements", // Changes
-    "préparation", // Preparation
-    "activité", // Activity
-    "partenariat", // Partnership
-    "expérience", // Experience
-    "planification", // Planning
-    "stratégie", // Strategy
-    "développement", // Development
 
     // Shorter words (3 to 5 characters)
     "chat", // Cat
@@ -254,45 +229,24 @@ export const wordLists: { [key: string]: string[] } = {
     "chaussure", // Shoe
     "vélo", // Bike
     "lait", // Milk
+    "papier", // Paper
+    "pierre", // Iron
+    "feuille", // Leaf
   ],
 
   Spanish: [
     // Longer words (6 to 8 characters)
-    "ordenador", // Computer
-    "educación", // Education
-    "economía", // Economics
-    "psicología", // Psychology
-    "finanzas", // Finance
-    "tecnología", // Technology
-    "organización", // Organization
-    "investigación", // Research
-    "desarrollo", // Development
-    "universidad", // University
-    "información", // Information
+
     "sociedad", // Society
     "práctica", // Practice
     "proyecto", // Project
     "internet", // Internet
-    "publicación", // Publication
     "pregunta", // Question
     "empresa", // Enterprise
     "necesidades", // Needs
     "contrato", // Contract
     "documento", // Document
     "reforma", // Reform
-    "publicidad", // Advertising
-    "transporte", // Transport
-    "especialista", // Specialist
-    "sistema", // System
-    "cambios", // Changes
-    "preparación", // Preparation
-    "actividad", // Activity
-    "colaboración", // Collaboration
-    "experiencia", // Experience
-    "planificación", // Planning
-    "estrategia", // Strategy
-    "desarrollo", // Development
-    "producción", // Production
 
     // Shorter words (3 to 5 characters)
     "gato", // Cat
@@ -304,6 +258,20 @@ export const wordLists: { [key: string]: string[] } = {
     "comida", // Food
     "lámpara", // Lamp
     "mesa", // Table
+    "puerta", // Door
+    "árbol", // Tree
+    "pez", // Fish
+    "mano", // Hand
+    "calle", // Street
+    "sol", // Sun
+    "cielo", // Sky
+    "coche", // Car
+    "zapato", // Shoe
+    "bicicleta", // Bike
+    "leche", // Milk
+    "teléfono", // Phone
+    "papel", // Paper
+    "piso", // Floor
     "puerta", // Door
     "árbol", // Tree
     "pez", // Fish
@@ -331,8 +299,6 @@ export const wordLists: { [key: string]: string[] } = {
     "राजधानी", // Capital
     "स्वास्थ्य", // Health
     "साहित्य", // Literature
-    "प्रौद्योगिकी", // Technology
-    "उपयोगिता", // Utility
     "स्वतंत्रता", // Freedom
     "समय", // Time
     "समाचार", // News
@@ -349,12 +315,6 @@ export const wordLists: { [key: string]: string[] } = {
     "संतुलन", // Balance
     "व्यापार", // Business
     "समय", // Time
-    "मुलाकात", // Meeting
-    "संपर्क", // Contact
-    "प्रेरणा", // Inspiration
-    "संसाधन", // Resource
-    "विश्लेषण", // Analysis
-    "समान", // Same
     "उपहार", // Gift
 
     // Shorter words (3 to 5 characters)
@@ -378,6 +338,9 @@ export const wordLists: { [key: string]: string[] } = {
     "मछली", // Fish
     "चाय", // Tea
     "नदी", // River
+    "बाजार", // Market
+    "जांच", // Inspection
+    "बाजार", // Market
   ],
 
   //start urdu
@@ -506,17 +469,6 @@ export const wordLists: { [key: string]: string[] } = {
     "pendidikan", // Education
     "sistematis", // Systematic
     "penelitian", // Research
-    "pemerintah", // Government
-    "perpustakaan", // Library
-    "pembelajaran", // Learning
-    "kebudayaan", // Culture
-    "teknologi", // Technology
-    "pengetahuan", // Knowledge
-    "ekonomi", // Economy
-    "komunikasi", // Communication
-    "masyarakat", // Society
-    "kesempatan", // Opportunity
-    "pengalaman", // Experience
     "pertanian", // Agriculture
     "pembangunan", // Development
     "politik", // Politics
@@ -564,13 +516,8 @@ export const wordLists: { [key: string]: string[] } = {
     // Longer words (6 to 8 characters)
     "компьютер", // komputer (Computer)
     "образование", // obrazovanie (Education)
-    "производство", // proizvodstvo (Production)
     "наука", // nauka (Science)
     "экономика", // ekonomika (Economics)
-    "психология", // psikhologiya (Psychology)
-    "практика", // praktika (Practice)
-    "финансы", // finansy (Finance)
-    "интернет", // internet (Internet)
     "государство", // gosudarstvo (State)
     "организация", // organizatsiya (Organization)
     "исследование", // issledovaniye (Research)
@@ -580,20 +527,10 @@ export const wordLists: { [key: string]: string[] } = {
     "развитие", // razvitie (Development)
     "университет", // universitet (University)
     "информация", // informatsiya (Information)
-    "общество", // obshchestvo (Society)
-    "контракт", // kontrakt (Contract)
-    "отчет", // otchet (Report)
-    "проблема", // problema (Problem)
-    "публикация", // publikatsiya (Publication)
-    "транспорт", // transport (Transport)
-    "потребление", // potreblenie (Consumption)
-    "импорт", // import (Import)
-    "экспорт", // eksport (Export)
     "площадь", // ploshchad' (Area)
     "учебник", // uchebnik (Textbook)
     "реклама", // reklama (Advertising)
     "документ", // dokument (Document)
-    "проектирование", // proektirovaniye (Design)
 
     // Shorter words (3 to 5 characters)
     "мир", // mir (World)
@@ -628,32 +565,8 @@ export const wordLists: { [key: string]: string[] } = {
     "психологія", // psykholohiya (Psychology)
     "фінанси", // finansy (Finance)
     "технологія", // tekhnolohiya (Technology)
-    "організація", // orhanizatsiya (Organization)
     "наука", // nauka (Science)
-    "розвиток", // rozvytok (Development)
-    "університет", // universytet (University)
-    "інформація", // informatsiya (Information)
-    "суспільство", // suspilʹstvo (Society)
-    "практика", // praktyka (Practice)
-    "дослідження", // doslidzhennya (Research)
-    "проект", // proyekt (Project)
-    "інтернет", // internet (Internet)
-    "публікація", // publika-tsiya (Publication)
-    "запитання", // zapytannya (Question)
-    "підприємство", // pidpryyemstvo (Enterprise)
-    "потреби", // potreby (Needs)
-    "контракт", // kontrakt (Contract)
-    "документ", // dokument (Document)
-    "реформа", // reforma (Reform)
-    "реклама", // reklama (Advertising)
-    "транспорт", // transport (Transport)
-    "спеціаліст", // spetsialist (Specialist)
-    "система", // systema (System)
-    "зміни", // zmini (Changes)
-    "підготовка", // pidhotovka (Preparation)
-    "активність", // aktyvnisť (Activity)
-    "партнерство", // partnerstvo (Partnership)
-    "досвід", // dosvid (Experience)
+    "розвиток", // rozvytok (Devel
 
     // Shorter words (3 to 5 characters)
     "мир", // myr (World)
@@ -691,31 +604,12 @@ export const wordLists: { [key: string]: string[] } = {
     "องค์กร", // Organization (Ongkōn)
     "การวิจัย", // Research (Kān Wijāi)
     "การพัฒนา", // Development (Kān Phatthanā)
-    "มหาวิทยาลัย", // University (Mahā Withāyālai)
-    "ข้อมูล", // Information (Khōngmūn)
-    "สังคม", // Society (Sangkhom)
-    "การปฏิบัติ", // Practice (Kān Patibat)
-    "โครงการ", // Project (Khrōngkān)
     "อินเทอร์เน็ต", // Internet (Inthœ̄nēt)
     "การเผยแพร่", // Publication (Kān Phēiphraē)
     "คำถาม", // Question (Khamthām)
     "ธุรกิจ", // Enterprise (Thurakit)
     "ความต้องการ", // Needs (Khwām Tǭngkān)
     "สัญญา", // Contract (Sānyā)
-    "เอกสาร", // Document (Èksān)
-    "การปฏิรูป", // Reform (Kān Patirūp)
-    "การโฆษณา", // Advertising (Kān Khōsānā)
-    "การขนส่ง", // Transport (Kān Khonsong)
-    "ผู้เชี่ยวชาญ", // Specialist (Phū Chīawchān)
-    "ระบบ", // System (Rabub)
-    "การเปลี่ยนแปลง", // Changes (Kān Plīānplāeng)
-    "การเตรียมการ", // Preparation (Kān Triamkān)
-    "กิจกรรม", // Activity (Kicakkam)
-    "ความร่วมมือ", // Partnership (Khwām Ruāmmū)
-    "ประสบการณ์", // Experience (Prāsopkān)
-    "การวางแผน", // Planning (Kān Wāngphæn)
-    "กลยุทธ์", // Strategy (Klāyut)
-    "การผลิต", // Production (Kān Phalit)
 
     // Shorter words (3 to 5 characters)
     "แมว", // Cat (Maew)
@@ -732,7 +626,7 @@ export const wordLists: { [key: string]: string[] } = {
     "ปลา", // Fish (Plā)
     "มือ", // Hand (Mūa)
     "ถนน", // Street (Thanon)
-    "พระอาทิตย์", // Sun (Phra Āthit)
+    "เซน", // Sun (Sén)
     "ท้องฟ้า", // Sky (Thōngfā)
     "รถ", // Car (Rót)
     "รองเท้า", // Shoe (Rōngthāo)
@@ -742,16 +636,11 @@ export const wordLists: { [key: string]: string[] } = {
 
   Turkish: [
     // Longer words (6 to 8 characters)
-    "bilgisayar", // Computer
     "eğitim", // Education
     "ekonomi", // Economics
     "psikoloji", // Psychology
     "finans", // Finance
     "teknoloji", // Technology
-    "organizasyon", // Organization
-    "araştırma", // Research
-    "gelişim", // Development
-    "üniversite", // University
     "bilgi", // Information
     "toplum", // Society
     "pratik", // Practice
@@ -769,9 +658,6 @@ export const wordLists: { [key: string]: string[] } = {
     "uzman", // Specialist
     "sistem", // System
     "değişim", // Changes
-    "hazırlık", // Preparation
-    "etkinlik", // Activity
-    "ortaklık", // Partnership
     "deneyim", // Experience
     "planlama", // Planning
     "strateji", // Strategy
@@ -807,19 +693,6 @@ export const wordLists: { [key: string]: string[] } = {
     "Ökonomie", // Economics
     "Psychologie", // Psychology
     "Finanzen", // Finance
-    "Technologie", // Technology
-    "Organisation", // Organization
-    "Forschung", // Research
-    "Entwicklung", // Development
-    "Universität", // University
-    "Information", // Information
-    "Gesellschaft", // Society
-    "Praxis", // Practice
-    "Projekt", // Project
-    "Internet", // Internet
-    "Veröffentlichung", // Publication
-    "Frage", // Question
-    "Unternehmen", // Enterprise
     "Bedürfnisse", // Needs
     "Vertrag", // Contract
     "Dokument", // Document
@@ -829,13 +702,6 @@ export const wordLists: { [key: string]: string[] } = {
     "Spezialist", // Specialist
     "System", // System
     "Änderungen", // Changes
-    "Vorbereitung", // Preparation
-    "Aktivität", // Activity
-    "Partnerschaft", // Partnership
-    "Erfahrung", // Experience
-    "Planung", // Planning
-    "Strategie", // Strategy
-    "Produktion", // Production
 
     // Shorter words (3 to 5 characters)
     "Katze", // Cat
@@ -863,22 +729,10 @@ export const wordLists: { [key: string]: string[] } = {
   //start pashto
   Pashto: [
     // Longer words (6 to 8 characters)
-    "کمپیوتر", // Computer (Komp'yūtar)
     "تعلیم", // Education (Taʿlīm)
     "اقتصاد", // Economics (Iqtisād)
-    "روانشناسی", // Psychology (Ruwānshināsī)
     "مالیات", // Finance (Māliyāt)
-    "ټیکنالوجي", // Technology (Ṭīknālōjī)
-    "سازمان", // Organization (Sāzmān)
-    "پژوهش", // Research (Pajwāhish)
-    "پرمختګ", // Development (Parmakhtag)
     "پوهنتون", // University (Puhantūn)
-    "معلومات", // Information (Malūmāt)
-    "ټولنه", // Society (Ṭūlanah)
-    "عملیاتي", // Practice (ʿAmliyātī)
-    "پروژه", // Project (Projeh)
-    "انټرنیټ", // Internet (Intarnēt)
-    "انتشار", // Publication (Intishār)
     "پوښتنه", // Question (Pūshtanah)
     "شرکت", // Enterprise (Shirkāt)
     "اړتیاوې", // Needs (Arṭiyāwē)
@@ -886,7 +740,6 @@ export const wordLists: { [key: string]: string[] } = {
     "سند", // Document (Sand)
     "اصلاح", // Reform (Islāḥ)
     "اعلان", // Advertising (Aʿlān)
-    "ترانسپورت", // Transport (Ṭranspōrt)
     "متخصص", // Specialist (Mutakhassis)
     "سیستم", // System (Sīstəm)
     "تغییرات", // Changes (Taghīrāt)
@@ -895,7 +748,6 @@ export const wordLists: { [key: string]: string[] } = {
     "شراکت", // Partnership (Shirākat)
     "تجربه", // Experience (Tajriba)
     "پلان", // Planning (Plan)
-    "استراتیژي", // Strategy (Istrātījī)
     "تولید", // Production (Tawlīd)
 
     // Shorter words (3 to 5 characters)
@@ -923,14 +775,7 @@ export const wordLists: { [key: string]: string[] } = {
   Portuguese: [
     "computador", // Computer
     "educação", // Education
-    "economia", // Economics
-    "reconhecimento", // Recognition
-    "financiamento", // Finance
-    "tecnologia", // Technology
-    "organização", // Organization
-    "pesquisa", // Research
-    "desenvolvimento", // Development
-    "universidade", // University
+    "economia", // Economicsy
     "informação", // Information
     "sociedade", // Society
     "pratica", // Practice
@@ -943,17 +788,6 @@ export const wordLists: { [key: string]: string[] } = {
     "contrato", // Contract
     "documento", // Document
     "reforma", // Reform
-    "publicidade", // Advertising
-    "transporte", // Transport
-    "especialista", // Specialist
-    "sistema", // System
-    "alteração", // Changes
-    "preparação", // Preparation
-    "atividade", // Activity
-    "colaboração", // Collaboration
-    "experiência", // Experience
-    "planejamento", // Planning
-    "estratégia", // Strategy
     "producção", // Production
   ],
 
@@ -994,9 +828,1620 @@ export const wordLists: { [key: string]: string[] } = {
     "戦略", // Strategy
     "生産", // Production
   ],
+  Abkhaz: [
+    // Shorter words (3 to 5 characters)
+    "аҟ", // Water
+    "аба", // Father
+    "ама", // Mother
+    "ахы", // Head
+    "уа", // You
+    "аи", // Yes
+    "ҭаа", // Go
+    "ахра", // Home
+    "бжьы", // Voice
+    "уаҩ", // Person
+    "нап", // Hand
+    "мыц", // Boat
+    "кьы", // Night
+    "аҭ", // Bird
+    "лых", // Eye
+    "ҿыр", // Fire
+    "зны", // Again
+    "ҩба", // Two
+    "хы", // Head
+    "гәы", // Heart
+    "ԥа", // Boy
+    "ара", // Here
+    "ус", // Work
+
+    // Longer words (6 to 8 characters)
+    "аамҭа", // Time
+    "дырра", // Knowledge
+    "алшара", // Power
+    "ахәаԥш", // Watch
+    "аамҭа", // Time
+    "амилаҭ", // Nation
+    "ачҳара", // Face
+    "ашкол", // School
+    "аԥсабара", // Nature
+    "адырра", // Information
+    "аҭакра", // Answer
+    "агәра", // Belief
+    "аԥсы", // Soul
+    "апсуа", // Abkhazian (person)
+    "аҩны", // House
+    "амшын", // Sea
+    "арацәа", // Stars
+    "ажәа", // Word
+    "ахәа", // Animal
+    "агьа", // Wind
+    "аҭах", // Story
+  ],
+
+  Afrikaans: [
+    // Shorter words (3 to 5 characters)
+    "son", // Sun
+    "see", // Sea
+    "bok", // Goat
+    "kat", // Cat
+    "vis", // Fish
+    "kop", // Head
+    "oog", // Eye
+    "pad", // Road
+    "boek", // Book
+    "huis", // House
+    "wind", // Wind
+    "dorp", // Town
+    "vuur", // Fire
+    "kind", // Child
+    "geld", // Money
+    "boom", // Tree
+    "veld", // Field
+    "lug", // Air
+    "ster", // Star
+    "ys", // Ice
+    "kos", // Food
+    "man", // Man
+    "vrou", // Woman
+    "hond", // Dog
+    "kar", // Car
+    "muur", // Wall
+    "klip", // Stone
+    "lys", // List
+    "reën", // Rain
+    "brug", // Bridge
+
+    // Longer words (6 to 8 characters)
+    "kinders", // Children
+    "gesin", // Family
+    "skool", // School
+    "gesonde", // Healthy
+    "rekenaar", // Computer
+    "vriende", // Friends
+    "universiteit", // University
+    "landbou", // Agriculture
+    "gesondheid", // Health
+    "vakansie", // Holiday
+    "produkte", // Products
+    "natuur", // Nature
+    "samelewing", // Society
+    "diere", // Animals
+    "vliegtuig", // Airplane
+    "onderwys", // Education
+    "bestuur", // Management
+    "lewe", // Life
+    "wêreld", // World
+    "bevolking", // Population
+    "musiek", // Music
+    "vervoer", // Transport
+    "kultuur", // Culture
+  ],
+
+  Vietnamese: [
+    // Shorter words (3 to 5 characters)
+    "mưa", // Rain
+    "nước", // Water
+    "cây", // Tree
+    "bàn", // Table
+    "mắt", // Eye
+    "tai", // Ear
+    "cá", // Fish
+    "trời", // Sky
+    "xe", // Car
+    "mẹ", // Mother
+    "bố", // Father
+    "bé", // Child
+    "nhà", // House
+    "đất", // Land
+    "cửa", // Door
+    "đèn", // Lamp
+    "sách", // Book
+    "bút", // Pen
+    "trẻ", // Young
+    "đường", // Road
+    "hoa", // Flower
+    "mặt", // Face
+    "tóc", // Hair
+    "môi", // Lips
+    "áo", // Shirt
+    "tay", // Hand
+    "bạn", // Friend
+    "chó", // Dog
+    "mèo", // Cat
+    "gió", // Wind
+    "đá", // Stone
+
+    // Longer words (6 to 8 characters)
+    "máy tính", // Computer
+    "người bạn", // Friend
+    "ngôi nhà", // House
+    "giáo dục", // Education
+    "sinh viên", // Student
+    "bệnh viện", // Hospital
+    "thực phẩm", // Food
+    "trường học", // School
+    "gia đình", // Family
+    "thành phố", // City
+    "nông nghiệp", // Agriculture
+    "khoa học", // Science
+    "lịch sử", // History
+    "thiên nhiên", // Nature
+    "cộng đồng", // Community
+    "phát triển", // Development
+    "giao thông", // Transport
+    "sức khỏe", // Health
+    "âm nhạc", // Music
+    "nghệ thuật", // Art
+    "văn hóa", // Culture
+    "thế giới", // World
+    "chính phủ", // Government
+    "công nghệ", // Technology
+  ],
+
+  Tamil: [
+    // Shorter words (3 to 5 characters)
+    "நீர்", // Water
+    "மண்", // Earth
+    "நாய்", // Dog
+    "மரம்", // Tree
+    "கை", // Hand
+    "பூ", // Flower
+    "நகம்", // Nail
+    "கல்", // Stone
+    "வீடு", // House
+    "பால்", // Milk
+    "சோறு", // Rice
+    "மழை", // Rain
+    "நிலை", // Land
+    "வெயில்", // Sun
+    "புத்தகம்", // Book
+    "கார்", // Car
+    "வசந்தம்", // Spring
+    "அம்மா", // Mother
+    "அப்பா", // Father
+    "தோழி", // Friend
+    "விழி", // Eye
+    "காது", // Ear
+    "முயல்", // Rabbit
+    "தம்பி", // Younger brother
+    "படகு", // Boat
+    "மண்", // Soil
+    "மனிதன்", // Man
+    "நெருப்பு", // Fire
+    "சுவர்", // Wall
+    "நகரம்", // City
+
+    // Longer words (6 to 8 characters)
+    "கணினி", // Computer
+    "வளர்ச்சி", // Development
+    "நாடகம்", // Drama
+    "விண்வெளி", // Space
+    "விடுமுறை", // Holiday
+    "மாணவர்", // Student
+    "பயிற்சி", // Training
+    "மருத்துவமனை", // Hospital
+    "மொழி", // Language
+    "கற்பிதம்", // Education
+    "நண்பர்கள்", // Friends
+    "சுற்றுச்சூழல்", // Environment
+    "அரசு", // Government
+    "கலை", // Art
+    "இசை", // Music
+    "நோயாளி", // Patient
+    "அறிவியல்", // Science
+    "உலகம்", // World
+    "சமூகம்", // Society
+    "சுகாதாரம்", // Health
+    "தொழில்நுட்பம்", // Technology
+    "வாணிபம்", // Commerce
+    "வணிகம்", // Business
+    "விளையாட்டு", // Sports
+    "இயற்கை", // Nature
+  ],
+  Telugu: [
+    // Shorter words (3 to 5 characters)
+    "నీరు", // Water
+    "నిహారిక", // Sky
+    "చెట్టు", // Tree
+    "పిల్ల", // Child
+    "పూలు", // Flowers
+    "కలాలు", // Dreams
+    "కళ్లు", // Eyes
+    "రాయి", // Stone
+    "పది", // Ten
+    "కాఫీ", // Coffee
+    "పాలు", // Milk
+    "వాన", // Rain
+    "మాట", // Word
+    "స్నేహం", // Friendship
+    "పుస్తకం", // Book
+    "తల్లి", // Mother
+    "నాన్న", // Father
+    "ఆకాశం", // Sky
+    "తీరం", // Shore
+    "నది", // River
+    "చిలుక", // Parrot
+    "చెప్పు", // Shoe
+    "గాలి", // Wind
+    "నిమ్మ", // Lemon
+    "పండు", // Fruit
+    "పాప", // Baby Girl
+    "వీధి", // Street
+    "సిరి", // Wealth
+    "అమ్మ", // Mom
+    "నివాసం", // Home
+
+    // Longer words (6 to 8 characters)
+    "కంప్యూటర్", // Computer
+    "విద్యార్థి", // Student
+    "విశ్వవిద్యాలయం", // University
+    "విద్య", // Education
+    "ఆరోగ్యం", // Health
+    "వైద్యం", // Medicine
+    "సముద్రం", // Ocean
+    "ప్రగతి", // Progress
+    "సంస్కృతి", // Culture
+    "రాజకీయాలు", // Politics
+    "విహారం", // Tourism
+    "పరిశోధన", // Research
+    "పర్యావరణం", // Environment
+    "పరిశ్రమ", // Industry
+    "వ్యవసాయం", // Agriculture
+    "సమాజం", // Society
+    "ఆర్థికం", // Economics
+    "న్యూస్", // News
+    "సంఘం", // Community
+    "కుటుంబం", // Family
+    "వ్యాపారం", // Business
+    "సేవలు", // Services
+    "సాహిత్యం", // Literature
+    "సంస్కరణలు", // Reforms
+    "పరిశీలన", // Analysis
+    "పరీక్ష", // Exam
+  ],
+  Manipuri: [
+    // Shorter words (3 to 5 characters)
+    "ꯄꯥꯌꯆꯥ", // Water
+    "ꯃꯂꯥ", // House
+    "ꯁꯃꯄꯤ", // Child
+    "ꯃꯇꯝ", // Mother
+    "ꯅꯨꯝ", // Father
+    "ꯇꯅꯤꯡ", // Height
+    "ꯄꯥꯛ", // Book
+    "ꯀꯨꯑꯣ", // Dog
+    "ꯂꯤꯛ", // Wax
+    "ꯄꯅꯥ", // Moon
+    "ꯅꯢꯟ", // Sun
+    "ꯃꯅꯥ", // Rain
+    "ꯈꯔꯤ", // Idol
+    "ꯃꯅ", // Tree
+    "ꯃꯨꯟ", // Talk
+    "ꯈꯪꯂꯤ", // Apple
+    "ꯀꯄꯥ", // Chili
+    "ꯉꯅꯥ", // River
+    "ꯁꯨꯛ", // Road
+    "ꯃꯁꯤꯅ", // Daily
+    "ꯊꯨꯝ", // Music
+    "ꯂꯅꯟ", // Seed
+    "ꯃꯔꯤ", // Soil
+    "ꯃꯤꯡ", // Word
+    "ꯃꯉ", // Black
+    "ꯃꯩ", // White
+    "ꯉꯕ", // Flower
+    "ꯃꯣꯛ", // Boy
+    "ꯃꯤ", // Hard
+    "ꯈꯕ", // Outside
+
+    // Longer words (6 to 8 characters)
+    "ꯁꯤꯛꯄ", // Education
+    "ꯉꯄꯥ", // Student
+    "ꯃꯇ", // Culture
+    "ꯈꯂꯥ", // Success
+    "ꯁꯥ", // Farming
+    "ꯇꯅ", // Social
+    "ꯁꯤꯛ", // Science
+    "ꯉꯟ", // Organization
+    "ꯃꯅꯥ", // Family
+    "ꯇꯅꯥ", // Cultural
+    "ꯂꯥꯂꯤ", // Health
+    "ꯄꯥ", // Politics
+    "ꯇꯅꯥ", // Meeting
+    "ꯄꯥꯔꯥ", // Goodness
+    "ꯋꯠꯅ", // Technical
+    "ꯃꯊꯥ", // Morality
+    "ꯁꯥꯂꯤ", // Sociability
+    "ꯆꯪꯂꯥ", // Love
+    "ꯌꯤ", // Security
+    "ꯇꯅ", // Knowledge
+    "ꯀꯨ", // Games
+    "ꯇꯅꯥ", // Institution
+    "ꯄꯅ", // Potential
+    "ꯄꯥꯔꯥ", // Behavior
+    "ꯆꯝꯂ", // Discussion
+  ],
+
+  Malayalam: [
+    // Shorter words (3 to 5 characters)
+    "വീട്", // House
+    "ജലം", // Water
+    "പൂവ്", // Flower
+    "മരം", // Tree
+    "കൈ", // Hand
+    "വീട്", // Home
+    "പൂ", // Flower
+    "കാക്ക", // Crow
+    "പൂച്ച", // Cat
+    "ആകാശം", // Sky
+    "മഴ", // Rain
+    "പണ്ട്", // Fruit
+    "പനി", // Fever
+    "പാത", // Road
+    "ചൂട്", // Heat
+    "വീട്", // House
+    "മാവ്", // Mango tree
+    "ചെപ്പ്", // Shoe
+    "ചിത്രം", // Picture
+    "കുറി", // Mark
+    "കത്ത്", // Letter
+    "നദി", // River
+    "മണല്", // Sand
+    "കടല്", // Sea
+    "പുഴ", // River
+    "കാട്", // Forest
+    "മണ്", // Soil
+    "വാനം", // Sky
+    "തനി", // Pure
+    "സാധ", // Simple
+
+    // Longer words (6 to 8 characters)
+    "കമ്പ്യൂട്ടർ", // Computer
+    "വിദ്യാർത്ഥി", // Student
+    "ആശുപത്രി", // Hospital
+    "പ്രവർത്തനം", // Work
+    "വായനശാല", // Library
+    "സമൂഹം", // Society
+    "സാഹിത്യം", // Literature
+    "വ്യാപാരം", // Business
+    "പഠനം", // Study
+    "ശാസ്ത്രം", // Science
+    "വിദ്യാലയം", // School
+    "കൃഷി", // Agriculture
+    "പ്രകൃതി", // Nature
+    "സഞ്ചാരം", // Travel
+    "ആരോഗ്യം", // Health
+    "പരിസ്ഥിതി", // Environment
+    "സിനിമ", // Cinema
+    "സമൂഹം", // Community
+    "കവിത", // Poem
+    "കല", // Art
+    "സമരം", // Strike
+    "സന്തോഷം", // Happiness
+    "സംഘടന", // Organization
+    "ഭാരതം", // India
+    "ചരിത്രം", // History
+  ],
+
+  Kashmiri: [
+    // Shorter words (3 to 5 characters)
+    "پانی", // Water
+    "درخت", // Tree
+    "گھر", // House
+    "گاو", // Cow
+    "آسمان", // Sky
+    "پتھ", // Stone
+    "پھل", // Fruit
+    "کتاب", // Book
+    "ہوا", // Wind
+    "دوست", // Friend
+    "آگ", // Fire
+    "پھیر", // Cloud
+    "راستہ", // Road
+    "سرد", // Cold
+    "چای", // Tea
+    "پھول", // Flower
+    "چاند", // Moon
+    "سورج", // Sun
+    "دریا", // River
+    "باد", // Air
+    "رات", // Night
+    "کھیل", // Game
+    "نمک", // Salt
+    "ہاتھ", // Hand
+    "نیل", // Blue
+    "جل", // Burn
+    "مٹی", // Soil
+    "نم", // Wet
+    "بال", // Hair
+    "بیٹی", // Daughter
+
+    // Longer words (6 to 8 characters)
+    "تعلیم", // Education
+    "کامیابی", // Success
+    "کتھوالی", // Storytelling
+    "پریوار", // Family
+    "مہربان", // Kindness
+    "دستکار", // Artisan
+    "اداکار", // Actor
+    "دوستی", // Friendship
+    "صحت", // Health
+    "معاشرت", // Society
+    "معلومات", // Information
+    "ترقی", // Development
+    "زبان", // Language
+    "سفر", // Journey
+    "ثقافت", // Culture
+    "تنظیم", // Organization
+    "فلسفہ", // Philosophy
+    "سائنس", // Science
+    "حکومت", // Government
+    "محبت", // Love
+    "کشمیری", // Kashmiri
+    "معاشرتی", // Social
+    "دوستی", // Friendship
+    "اقتصاد", // Economy
+    "موسیقی", // Music
+  ],
+
+  Gujarati: [
+    // Shorter words (3 to 5 characters)
+    "પાણી", // Water
+    "બાળક", // Child
+    "ઘર", // House
+    "કૂતરો", // Dog
+    "પુસ્તક", // Book
+    "સૂરજ", // Sun
+    "ચાંદ", // Moon
+    "ફૂલો", // Flowers
+    "પંખી", // Bird
+    "લંબો", // Tall
+    "સ્નેહ", // Love
+    "સફેદ", // White
+    "ભૂત", // Ghost
+    "રસ્તો", // Road
+    "ઘડી", // Clock
+    "શાળા", // School
+    "ભાષા", // Language
+    "ખીચો", // Pull
+    "જાતો", // Cast
+    "વૃક્ષ", // Tree
+    "ઝાડ", // Branch
+    "ખેતર", // Farm
+    "ખોરાક", // Food
+    "દર્દ", // Pain
+    "તડકું", // Sunlight
+    "સમંદર", // Ocean
+    "ગરમી", // Heat
+    "સમય", // Time
+    "તરસ", // Thirst
+
+    // Longer words (6 to 8 characters)
+    "શિક્ષણ", // Education
+    "વિદ્યાર્થી", // Student
+    "વિશ્વવિદ્યાલય", // University
+    "વિકાસ", // Development
+    "આરોગ્ય", // Health
+    "સમાજ", // Society
+    "સાંસ્કૃતિક", // Cultural
+    "પ્રેમભાષા", // Love Language
+    "વાણિજ્ય", // Commerce
+    "કાળગતિ", // Time Flow
+    "સંચાર", // Communication
+    "પરિવર્તન", // Change
+    "સંસ્થાન", // Organization
+    "શાંતિ", // Peace
+    "વિશ્વાસ", // Trust
+    "કથાવિદ", // Storyteller
+    "સંભવનાઓ", // Opportunities
+    "યોજનાઓ", // Plans
+    "જ્ઞાન", // Knowledge
+    "પરિપ્રેક્ષ્ય", // Perspective
+    "અર્થશાસ્ત્ર", // Economics
+    "વિજ્ઞાન", // Science
+    "સૃષ્ટિ", // Creation
+    "સંગ્રહ", // Collection
+    "શ્રેષ્ઠતા", // Excellence
+    "સેવા", // Service
+  ],
+
+  Punjabi: [
+    // Shorter words (3 to 5 characters)
+    "ਪਾਣੀ", // Water
+    "ਘਰ", // House
+    "ਬਾਲਕ", // Child
+    "ਮਾਂ", // Mother
+    "ਬਾਪ", // Father
+    "ਕੱਦ", // Height
+    "ਕਿਤਾਬ", // Book
+    "ਕੌਲਾ", // Dog
+    "ਮੋਮ", // Wax
+    "ਚੰਦ", // Moon
+    "ਸੂਰਜ", // Sun
+    "ਮੀਂਹ", // Rain
+    "ਬੁੱਤ", // Idol
+    "ਦਰੱਖਤ", // Tree
+    "ਬਾਤ", // Talk
+    "ਸੇਬ", // Apple
+    "ਮਿਰਚ", // Chili
+    "ਨਦੀਆਂ", // Rivers
+    "ਸੜਕ", // Road
+    "ਨਿੱਤ", // Daily
+    "ਬਾਜਾ", // Music
+    "ਬੀਜ", // Seed
+    "ਮਿੱਟੀ", // Soil
+    "ਗੱਲ", // Word
+    "ਸਿਆਹ", // Black
+    "ਸਫੈਦ", // White
+    "ਫੁੱਲ", // Flower
+    "ਮੁੰਡਾ", // Boy
+    "ਕੜਕ", // Hard
+    "ਬਾਹਰ", // Outside
+
+    // Longer words (6 to 8 characters)
+    "ਸਿੱਖਿਆ", // Education
+    "ਵਿਦਿਆਰਥੀ", // Student
+    "ਸੰਸਕਾਰ", // Culture
+    "ਕਾਮਯਾਬੀ", // Success
+    "ਕਿਸਾਨੀ", // Farming
+    "ਸਮਾਜਿਕ", // Social
+    "ਵਿਜ್ಞಾನ", // Science
+    "ਸੰਗਠਨ", // Organization
+    "ਪਰਿਵਾਰ", // Family
+    "ਸਾਂਸਕ੍ਰਿਤਿਕ", // Cultural
+    "ਸਿਹਤ", // Health
+    "ਰਾਜਨੀਤੀ", // Politics
+    "ਮੁਲਾਕਾਤ", // Meeting
+    "ਚੰਗਾਈ", // Goodness
+    "ਤਕਨੀਕੀ", // Technical
+    "ਨੈਤਿਕਤਾ", // Morality
+    "ਸਮਾਜਿਕਤਾ", // Sociability
+    "ਮੁਹੱਬਤ", // Love
+    "ਸੁਰੱਖਿਆ", // Security
+    "ਵਿਦਿਆ", // Knowledge
+    "ਖੇਡਾਂ", // Games
+    "ਸੰਸਥਾ", // Institution
+    "ਸੰਭਾਵਨਾ", // Potential
+    "ਵਿਵਹਾਰ", // Behavior
+    "ਗੱਲਬਾਤ", // Discussion
+  ],
+
+  Sanskrit: [
+    // Shorter words (3 to 5 characters)
+    "जल", // Water
+    "गृह", // House
+    "बालक", // Child
+    "माता", // Mother
+    "पिता", // Father
+    "पुष्प", // Flower
+    "वृक्ष", // Tree
+    "गाय", // Cow
+    "सूर्य", // Sun
+    "चन्द्र", // Moon
+    "नदी", // River
+    "पथ", // Path
+    "वायु", // Air
+    "पञ्च", // Five
+    "अग्नि", // Fire
+    "कवि", // Poet
+    "धन", // Wealth
+    "दिवस", // Day
+    "रात्रि", // Night
+    "सखा", // Friend
+    "शब्द", // Word
+    "तारक", // Star
+    "धर्म", // Duty
+    "शान्ति", // Peace
+    "राशि", // Amount
+    "कल्याण", // Welfare
+    "धृति", // Patience
+    "कला", // Art
+    "विचार", // Thought
+    "मेष", // Aries
+
+    // Longer words (6 to 8 characters)
+    "विद्या", // Knowledge
+    "शिक्षा", // Education
+    "विश्वविद्यालय", // University
+    "समाज", // Society
+    "कृषि", // Agriculture
+    "स्वास्थ्य", // Health
+    "संस्कृति", // Culture
+    "धर्मशास्त्र", // Religious Text
+    "संपत्ति", // Property
+    "सुखदायी", // Pleasant
+    "परिवर्तन", // Change
+    "संदेश", // Message
+    "शान्तिका", // Peacefulness
+    "संस्कृत", // Refined
+    "आवश्यकता", // Necessity
+    "प्रतिभा", // Talent
+    "समृद्धि", // Prosperity
+    "परिवार", // Family
+    "प्रसन्नता", // Happiness
+    "विश्वास", // Trust
+    "उपकार", // Kindness
+    "व्यवस्था", // Arrangement
+    "सङ्गीत", // Music
+    "योग्यता", // Qualification
+    "उपदेश", // Instruction
+  ],
+
+  Sindhi: [
+    // Shorter words (3 to 5 characters)
+    "پاني", // Water
+    "گهر", // House
+    "بچو", // Child
+    "ماڻھو", // Person
+    "ماءُ", // Mother
+    "بابا", // Father
+    "چنڊ", // Moon
+    "سورج", // Sun
+    "پھول", // Flower
+    "گلاب", // Rose
+    "ڪتا", // Dog
+    "وڻ", // Tree
+    "رستو", // Path
+    "نهر", // Canal
+    "شمع", // Candle
+    "گھڻو", // Much
+    "پڻ", // Also
+    "سالن", // Year
+    "باجي", // Elder sister
+    "دوست", // Friend
+    "ڌرتي", // Earth
+    "غزل", // Ghazal
+    "نغمه", // Melody
+    "بندھ", // Tie
+    "چنر", // Moonlight
+    "رنگ", // Color
+    "چوڪ", // Square
+    "چمچو", // Spoon
+    "دودھ", // Milk
+    "پتنگ", // Kite
+
+    // Longer words (6 to 8 characters)
+    "تعليم", // Education
+    "تعليمات", // Instructions
+    "سماج", // Society
+    "معلومات", // Information
+    "سندھيوار", // Sindhi language
+    "اجتماع", // Gathering
+    "دوستاڻو", // Friendship
+    "ايمان", // Faith
+    "سخاوت", // Generosity
+    "خوشي", // Happiness
+    "صحت", // Health
+    "صديق", // Truthful
+    "وڏيءَ", // Magnificent
+    "آزادي", // Freedom
+    "نظامت", // Administration
+    "سماجي", // Social
+    "ثقافتي", // Cultural
+    "بازار", // Market
+    "خوابن", // Dreams
+    "خوشبو", // Fragrance
+    "روشنائي", // Enlightenment
+    "درد", // Pain
+    "شعراء", // Poets
+    "فلسفہ", // Philosophy
+    "خوبصورتي", // Beauty
+    "دلچسپی", // Interest
+    "موتيا", // Jasmine
+  ],
+  Oriya: [
+    // Shorter words (3 to 5 characters)
+    "ପାଣି", // Water
+    "ଗୃହ", // House
+    "ବାଳକ", // Child
+    "ମା", // Mother
+    "ବାପା", // Father
+    "କୁତ୍ତା", // Dog
+    "ଗଛ", // Tree
+    "ମାଛ", // Fish
+    "ପୁସ୍ତକ", // Book
+    "ଗୋଡ", // Leg
+    "ଚନ୍ଦ୍ର", // Moon
+    "ସୂର୍ୟ", // Sun
+    "ପଥ", // Path
+    "ଜଳ", // Liquid
+    "ସେବ", // Apple
+    "ପ୍ରେମ", // Love
+    "କଥା", // Word
+    "ରାତି", // Night
+    "ସଂଗୀତ", // Music
+    "ବର୍ଷ", // Year
+    "ଶିଶୁ", // Infant
+    "ଭୋଜନ", // Food
+    "ଚିତ୍ର", // Picture
+    "ଗାୟ", // Cow
+    "ଗତି", // Motion
+    "ଦୀପ", // Lamp
+    "ଚିଠି", // Letter
+    "କଳା", // Art
+    "ସମୟ", // Time
+    "ତଳ", // Bottom
+
+    // Longer words (6 to 8 characters)
+    "ଶିକ୍ଷା", // Education
+    "ବିଦ୍ୟାର୍ଥୀ", // Student
+    "କୃଷି", // Agriculture
+    "ସଂସ୍କୃତି", // Culture
+    "ସମାଜ", // Society
+    "ସ୍ୱାସ୍ଥ୍ୟ", // Health
+    "ବିଶ୍ୱବିଦ୍ୟାଳୟ", // University
+    "ଶାନ୍ତି", // Peace
+    "ପରିବାର", // Family
+    "ଆଧୁନିକ", // Modern
+    "ସୃଷ୍ଟି", // Creation
+    "ଆନନ୍ଦ", // Joy
+    "ନିୟମ", // Rule
+    "ପରିବର୍ତ୍ତନ", // Change
+    "ବିଶ୍ୱସ", // Trust
+    "ବିଜ୍ଞାନ", // Science
+    "ବିକାସ", // Development
+    "ଜ୍ଞାନ", // Knowledge
+    "ପରିବେଷ", // Environment
+    "ପ୍ରକୃତି", // Nature
+    "ସମୃଦ୍ଧି", // Prosperity
+    "ବାଣିଜ୍ୟ", // Commerce
+    "ଗୁଣବତ୍ତା", // Quality
+    "ସଙ୍ଗୀତ", // Music
+    "ଦୟା", // Compassion
+    "କୃତି", // Creation
+    "ଶାସନ", // Governance
+  ],
+  Kannada: [
+    // Shorter words (3 to 5 characters)
+    "ನೀರು", // Water
+    "ಮನೆ", // House
+    "ಮಕ್ಕಳ", // Children
+    "ತಾಯಿ", // Mother
+    "ತಂದೆ", // Father
+    "ಕುಕ್ಕರು", // Dog
+    "ಮರ", // Tree
+    "ಮೀನ", // Fish
+    "ಪುಸ್ತಕ", // Book
+    "ಚಂದ್ರ", // Moon
+    "ಸೂರ್ಯ", // Sun
+    "ದಾರಿ", // Path
+    "ಜಲ", // Liquid
+    "ಸೇಬು", // Apple
+    "ಪ್ರೀತಿ", // Love
+    "ಬಾತ್", // Talk
+    "ರಾತ್ರಿ", // Night
+    "ಮೂಡು", // Cloud
+    "ಬೆಳಕು", // Light
+    "ಬಾಯ", // Mouth
+    "ಹಕ್ಕಿ", // Bird
+    "ನಗು", // Smile
+    "ಆಕಾಶ", // Sky
+    "ಕೋಣ", // Angle
+    "ಗಿಡ", // Plant
+    "ಮಂಜು", // Mist
+    "ಕಾಳ", // Dark
+    "ಚುಟುಕು", // Short
+    "ಶಿಕ್ಷ", // Teacher
+
+    // Longer words (6 to 8 characters)
+    "ಶಿಕ್ಷಣ", // Education
+    "ವಿದ್ಯಾರ್ಥಿ", // Student
+    "ಕೃಷಿ", // Agriculture
+    "ಸಂಸ್ಕೃತಿ", // Culture
+    "ಸಮಾಜ", // Society
+    "ಆರೋಗ್ಯ", // Health
+    "ವಿಶ್ವವಿದ್ಯಾಲಯ", // University
+    "ಶಾಂತಿ", // Peace
+    "ಪರಿವಾರ", // Family
+    "ಆಧುನಿಕ", // Modern
+    "ಸೃಷ್ಟಿ", // Creation
+    "ಆನಂದ", // Joy
+    "ನಿಯಮ", // Rule
+    "ಪರಿವರ್ತನೆ", // Change
+    "ನಂಬಿಕೆ", // Trust
+    "ವಿಜ್ಞಾನ", // Science
+    "ವಿಕಾಸ", // Development
+    "ಜ್ಞಾನ", // Knowledge
+    "ಪರಿವೇಶ", // Environment
+    "ಪ್ರಕೃತಿ", // Nature
+    "ಶ್ರೇಣೀಬದ್ಧ", // Organized
+    "ಸಮೃದ್ಧಿ", // Prosperity
+    "ಬಾಣಿಜ್ಯ", // Commerce
+    "ಗुणಮಟ್ಟ", // Quality
+    "ಸಂಗೀತ", // Music
+    "ದಯಾ", // Compassion
+    "ಅಭ್ಯಾಸ", // Practice
+    "ಭಾವನೆ", // Emotion
+  ],
+
+  Chakma: [
+    // Shorter words (3 to 5 characters)
+    "𑄛𑄮𑄢𑄴𑄢𑄴", // Wax
+    "𑄝𑄝𑄨𑄢𑄴𑄢𑄴", // Moon
+    "𑄝𑄇𑄧𑄢𑄴𑄢𑄴", // Sun
+    "𑄝𑄝𑄢𑄧𑄢𑄴𑄢𑄴", // Rain
+    "𑄢𑄪𑄥𑄧𑄢𑄴𑄢𑄴", // Idol
+    "𑄛𑄮𑄢𑄴", // Tree
+    "𑄛𑄮𑄟𑄴", // River
+    "𑄝𑄧𑄇𑄢𑄴", // Fish
+    "𑄖𑄪𑄑𑄴𑄓𑄴", // Book
+    "𑄣𑄪𑄌𑄢𑄴", // Light
+    "𑄉𑄴𑄢𑄴", // Heart
+    "𑄜𑄧𑄢𑄴", // Earth
+    "𑄚𑄧𑄬𑄚𑄴", // Star
+    "𑄚𑄧𑄖𑄴", // Name
+    "𑄟𑄧𑄢𑄴", // Child
+    "𑄝𑄧𑄇𑄴", // Sky
+    "𑄢𑄮𑄚𑄴", // Hand
+    "𑄉𑄦𑄊𑄴", // Peace
+    "𑄖𑄨𑄢𑄴", // Milk
+    "𑄝𑄟𑄬𑄢𑄴", // Flower
+    "𑄃𑄌𑄴", // Fire
+    "𑄝𑄧𑄟𑄴", // Wind
+    "𑄢𑄧𑄖𑄴", // Color
+    "𑄠𑄬𑄇𑄴", // Salt
+    "𑄙𑄦𑄙𑄴", // Road
+    "𑄚𑄖𑄴", // King
+    "𑄟𑄨𑄬𑄴", // Young
+    "𑄖𑄪𑄖𑄴", // Sweet
+    "𑄟𑄖𑄧𑄴", // Joy
+    "𑄇𑄬𑄟𑄴", // Home
+
+    // Longer words (6 to 8 characters)
+    "𑄙𑄪𑄚𑄧𑄠𑄬", // Education
+    "𑄛𑄮𑄟𑄴𑄑𑄴", // Happiness
+    "𑄘𑄪𑄧𑄘𑄴𑄘𑄴", // Friendship
+    "𑄟𑄧𑄚𑄢𑄴𑄡𑄴", // Family
+    "𑄟𑄣𑄴𑄙𑄧𑄢𑄴", // Agriculture
+    "𑄑𑄬𑄘𑄴𑄢𑄴𑄢𑄴", // Environment
+    "𑄝𑄋𑄖𑄴𑄢𑄴", // Science
+    "𑄟𑄧𑄡𑄴𑄢𑄴𑄢𑄴", // Development
+    "𑄘𑄢𑄴𑄘𑄧𑄪𑄣𑄴", // Prosperity
+    "𑄡𑄨𑄛𑄧𑄟𑄴𑄘𑄴", // Creativity
+    "𑄑𑄧𑄘𑄴𑄢𑄧𑄛𑄴", // Tolerance
+    "𑄑𑄧𑄓𑄧𑄪𑄧𑄴", // Wisdom
+    "𑄟𑄖𑄚𑄴𑄢𑄴", // Relation
+    "𑄚𑄖𑄴𑄡𑄴", // Children
+    "𑄅𑄋𑄧𑄟𑄴𑄘𑄴", // Opportunity
+    "𑄝𑄟𑄢𑄴𑄑𑄧𑄟𑄴", // Communication
+    "𑄜𑄖𑄴𑄃𑄬𑄏𑄴", // Satisfaction
+    "𑄞𑄨𑄇𑄴𑄦𑄧𑄴", // Technology
+    "𑄅𑄖𑄬𑄴𑄚𑄴", // Inspiration
+    "𑄞𑄧𑄉𑄨𑄪𑄴", // Kindness
+    "𑄞𑄨𑄃𑄨𑄢𑄴", // Motivation
+    "𑄛𑄧𑄬𑄴𑄌𑄴", // Tradition
+    "𑄅𑄃𑄬𑄬𑄴", // Responsibility
+  ],
+
+  Nepali: [
+    // Shorter words (3 to 5 characters)
+    "पानी", // Water
+    "घर", // House
+    "बालक", // Child
+    "माँ", // Mother
+    "बाबा", // Father
+    "कुकुर", // Dog
+    "रुख", // Tree
+    "माछा", // Fish
+    "किताब", // Book
+    "चाँद", // Moon
+    "सूर्य", // Sun
+    "मार्ग", // Path
+    "आकाश", // Sky
+    "सेब", // Apple
+    "सच्चा", // True
+    "बात", // Word
+    "रात", // Night
+    "धूप", // Sunshine
+    "स्वाद", // Taste
+    "हात", // Hand
+    "नदी", // River
+    "भर", // Full
+    "सुख", // Happiness
+    "दुख", // Sadness
+    "हाँसो", // Smile
+    "दृष्टि", // Vision
+    "जन्म", // Birth
+    "शक्ति", // Power
+    "सुन", // Gold
+    "मोह", // Desire
+    "वायु", // Air
+
+    // Longer words (6 to 8 characters)
+    "शिक्षा", // Education
+    "सुखद", // Pleasant
+    "मित्रता", // Friendship
+    "परिवार", // Family
+    "कृषि", // Agriculture
+    "स्वास्थ्य", // Health
+    "विश्वविद्यालय", // University
+    "शान्ति", // Peace
+    "संस्कृति", // Culture
+    "विकास", // Development
+    "ज्ञान", // Knowledge
+    "पर्यावरण", // Environment
+    "मुक्ति", // Freedom
+    "आनन्द", // Joy
+    "विश्वास", // Trust
+    "सामाजिक", // Social
+    "संघर्ष", // Struggle
+    "प्रगति", // Progress
+    "सपना", // Dream
+    "शक्ति", // Strength
+    "प्रकृति", // Nature
+    "सृजनशीलता", // Creativity
+    "कर्मठता", // Hard work
+    "जिम्मेदारी", // Responsibility
+    "सहयोग", // Cooperation
+    "सफलता", // Success
+    "सङ्गीत", // Music
+    "परिस्थिति", // Situation
+    "मोहकता", // Attractiveness
+    "सकारात्मक", // Positive
+    "नकारात्मक", // Negative
+  ],
+
+  Dari: [
+    // Shorter words (3 to 5 characters)
+    "آب", // Water
+    "خانه", // House
+    "کودک", // Child
+    "مادر", // Mother
+    "پدر", // Father
+    "سگ", // Dog
+    "درخت", // Tree
+    "ماهی", // Fish
+    "کتاب", // Book
+    "ماه", // Moon
+    "خورشید", // Sun
+    "راه", // Path
+    "آسمان", // Sky
+    "سیب", // Apple
+    "خوب", // Good
+    "کلمه", // Word
+    "شب", // Night
+    "نور", // Light
+    "دست", // Hand
+    "رود", // River
+    "پر", // Full
+    "خوشی", // Happiness
+    "غم", // Sadness
+    "لبخند", // Smile
+    "بینش", // Vision
+    "زاده", // Birth
+    "قدرت", // Power
+    "طلا", // Gold
+    "خواسته", // Desire
+    "هوا", // Air
+
+    // Longer words (6 to 8 characters)
+    "تعلیم", // Education
+    "خوشحال", // Happy
+    "دوستی", // Friendship
+    "خانواده", // Family
+    "زراعت", // Agriculture
+    "سلامت", // Health
+    "دانشگاه", // University
+    "صلح", // Peace
+    "فرهنگ", // Culture
+    "توسعه", // Development
+    "علم", // Knowledge
+    "محیط زیست", // Environment
+    "آزادی", // Freedom
+    "شادی", // Joy
+    "اعتماد", // Trust
+    "اجتماعی", // Social
+    "مبارزه", // Struggle
+    "پیشرفت", // Progress
+    "خواب", // Dream
+    "قدرت", // Strength
+    "طبیعت", // Nature
+    "خلاقیت", // Creativity
+    "سخت کوشی", // Hard work
+    "مسئولیت", // Responsibility
+    "همکاری", // Cooperation
+    "موفقیت", // Success
+    "موسیقی", // Music
+    "وضعیت", // Situation
+    "جاذبه", // Attractiveness
+    "مثبت", // Positive
+    "منفی", // Negative
+  ],
+  Dzongkha: [
+    // Shorter words (3 to 5 characters)
+    "ཆུ", // Water
+    "དཀར", // White
+    "ཕྱག", // Hand
+    "བོད", // Tibet
+    "མོ", // Moon
+    "རྒན", // Old
+    "རོགས", // Help
+    "ཕར", // Path
+    "ལོག", // Return
+    "དབང", // Power
+    "མཆོག", // Supreme
+    "མཛོད", // Office
+    "རང", // Self
+    "དང", // And
+    "བསོད", // Happy
+    "མཆོད", // Offer
+    "རིན", // Gold
+    "རྩེ", // Fire
+    "དགོངས", // Thought
+    "རྐང", // Leg
+    "འགོ", // Front
+    "འབྲང", // Sweet
+    "རྒེད", // Fruit
+    "ཉལ", // Sleep
+    "མོང", // Dream
+    "བར", // Light
+    "ཡང", // Again
+    "ལྟ", // Look
+    "ལག", // Instrument
+    "ཁྱེད", // You
+
+    // Longer words (6 to 8 characters)
+    "བོད་པ", // Tibetan (person)
+    "བཀྲ་ཤིས", // Blessing
+    "རིགས་ཆུང་", // Young
+    "ཕོ་བོད", // Father
+    "སངས་པ", // Enlightenment
+    "གཡུལ་འདུག", // Kingdom
+    "བརྒྱབ་པ", // Power
+    "སྐྱོངས", // Protection
+    "ཕྱི་རོལ", // Surrounding
+    "བསྟན་འཛིན", // Teaching
+    "དབང་བསྟན", // Empowerment
+    "བསོད་ནས", // Happiness
+    "དབང་ཕྱག", // Authority
+    "གཟུགས་ཡུག", // Appearance
+    "དབང་དང", // Empower and control
+    "བཟོད་མོ", // Life
+    "ཕོ་བུང", // Young
+    "གོ་བརྩག", // Agriculture
+    "བོད་བདེ", // Tibetan happiness
+    "མངོན་སྟོན", // Visibility
+    "འཕུལ་འཛིན", // Abundance
+    "རིན་བོད", // Gold Tibetan
+    "གནམ་རོལ", // Motivation
+    "སྐྱོན་རོལ", // Strength
+    "བཟང་པ", // Good
+    "ཆོས་ཡོན", // Philosophy
+    "འཛིན་པ", // Observing
+    "འཚམས་རིལ", // Persistence
+    "དབང་འདུག", // Empowered
+    "བརྒྱབ་པ", // Knowledge
+    "དབང་ཡོད", // Control
+  ],
+
+  Korean: [
+    // Shorter words (3 to 5 characters)
+    "가", // Go
+    "나", // I
+    "그", // That
+    "너", // You
+    "물", // Water
+    "사과", // Apple
+    "고양이", // Cat
+    "강아지", // Dog
+    "책", // Book
+    "사람", // Person
+    "집", // House
+    "하늘", // Sky
+    "땅", // Land
+    "바다", // Sea
+    "불", // Fire
+    "공", // Ball
+    "길", // Road
+    "나무", // Tree
+    "산", // Mountain
+    "별", // Star
+    "달", // Moon
+    "눈", // Eye
+    "손", // Hand
+    "코", // Nose
+    "귀", // Ear
+    "말", // Word
+    "음악", // Music
+    "아침", // Morning
+    "저녁", // Evening
+    "친구", // Friend
+
+    // Longer words (6 to 8 characters)
+    "학교", // School
+    "컴퓨터", // Computer
+    "사랑", // Love
+    "행복", // Happiness
+    "자유", // Freedom
+    "문화", // Culture
+    "경제", // Economy
+    "사회", // Society
+    "정치", // Politics
+    "환경", // Environment
+    "건강", // Health
+    "교육", // Education
+    "전통", // Tradition
+    "관계", // Relationship
+    "자연", // Nature
+    "기술", // Technology
+    "문학", // Literature
+    "이해", // Understanding
+    "대화", // Conversation
+    "기억", // Memory
+    "운동", // Exercise
+    "정보", // Information
+    "예술", // Art
+    "연구", // Research
+    "선택", // Choice
+    "지혜", // Wisdom
+    "신뢰", // Trust
+    "개발", // Development
+    "목표", // Goal
+    "전략", // Strategy
+  ],
+
+  Persian: [
+    // Shorter words (3 to 5 characters)
+    "کتاب", // Book
+    "دوست", // Friend
+    "آب", // Water
+    "نور", // Light
+    "روز", // Day
+    "شب", // Night
+    "خورشید", // Sun
+    "ماه", // Moon
+    "گل", // Flower
+    "باد", // Wind
+    "خواب", // Sleep
+    "عشق", // Love
+    "سفر", // Travel
+    "دست", // Hand
+    "چشم", // Eye
+    "پر", // Feather
+    "قلب", // Heart
+    "بزرگ", // Big
+    "کوچک", // Small
+    "زیبا", // Beautiful
+    "غذا", // Food
+    "شیر", // Milk
+    "پول", // Money
+    "دور", // Far
+    "نزدیک", // Close
+    "سخت", // Hard
+    "راست", // Right
+    "چپ", // Left
+    "آرام", // Calm
+    "شکست", // Defeat
+    "پیروزی", // Victory
+
+    // Longer words (6 to 8 characters)
+    "فرهنگ", // Culture
+    "محبت", // Affection
+    "علمی", // Scientific
+    "آزادگی", // Freedom
+    "آینده", // Future
+    "اجتماعی", // Social
+    "مدرسه", // School
+    "دولت", // Government
+    "اقتصاد", // Economy
+    "تحصیلات", // Education
+    "دندان", // Tooth
+    "کشور", // Country
+    "کتابخانه", // Library
+    "همسایه", // Neighbor
+    "سخنرانی", // Speech
+    "بیمارستان", // Hospital
+    "سازمان", // Organization
+    "توسعه", // Development
+    "خوشحالی", // Happiness
+    "مدیریت", // Management
+    "فناوری", // Technology
+    "محیط زیست", // Environment
+    "آموزش", // Training
+    "موسیقی", // Music
+    "زبان", // Language
+    "خدمات", // Services
+    "رسانه", // Media
+    "نظام", // System
+    "مشارکت", // Participation
+    "پیشرفت", // Progress
+    "سازش", // Compromise
+  ],
+  Bhojpuri: [
+    // Shorter words (3 to 5 characters)
+    "जा", // Go
+    "मैं", // I
+    "तू", // You
+    "हम", // We
+    "बात", // Talk
+    "घर", // House
+    "पानी", // Water
+    "सूरज", // Sun
+    "चाँद", // Moon
+    "फूल", // Flower
+    "पेड़", // Tree
+    "किताब", // Book
+    "खाना", // Food
+    "कुत्ता", // Dog
+    "बिल्ली", // Cat
+    "सड़क", // Road
+    "नदी", // River
+    "समय", // Time
+    "आसमान", // Sky
+    "दूर", // Far
+    "नज़दीक", // Close
+    "बड़ा", // Big
+    "छोटा", // Small
+    "खुश", // Happy
+    "गुस्सा", // Angry
+    "नया", // New
+    "पुराना", // Old
+    "सपना", // Dream
+    "दर्द", // Pain
+    "राजा", // King
+
+    // Longer words (6 to 8 characters)
+    "पढ़ाई", // Education
+    "संगीत", // Music
+    "खेलना", // Play
+    "संबंध", // Relationship
+    "अर्थव्यवस्था", // Economy
+    "स्वास्थ्य", // Health
+    "विकास", // Development
+    "समाज", // Society
+    "संस्कृति", // Culture
+    "शिक्षा", // Learning
+    "सफर", // Travel
+    "व्यापार", // Business
+    "समस्या", // Problem
+    "सुरक्षा", // Safety
+    "अनुभव", // Experience
+    "खुशबू", // Fragrance
+    "समझदारी", // Understanding
+    "निर्णय", // Decision
+    "प्रेमिका", // Girlfriend
+    "मौका", // Opportunity
+    "प्रगति", // Progress
+    "खुशियाँ", // Joy
+    "मित्रता", // Friendship
+    "बोलचाल", // Conversation
+    "आवाज़", // Voice
+    "अवसर", // Chance
+    "संपर्क", // Contact
+    "विज्ञान", // Science
+    "संदेश", // Message
+    "विवरण", // Details
+  ],
+
+  Berber: [
+    // Shorter words (3 to 5 characters)
+    "ⴰⵣⵓⵍ", // Hello
+    "ⵜⴰⵎ", // Mother
+    "ⴱⴰⵃⴰⵔ", // Sea
+    "ⵉⵏⴷⵓ", // Fire
+    "ⵍⵃⵓⴱ", // Love
+    "ⵏⵏⴰ", // Father
+    "ⴷⴷⵓ", // Hand
+    "ⵜⴰⵡ", // Water
+    "ⵡⴰⵢ", // Eye
+    "ⵓⵔ", // No
+    "ⵉⵡⴻⵏ", // Time
+    "ⵉⵍⴻⵍ", // Star
+    "ⵙⴰⴼⵉ", // Pure
+    "ⵙⵓⴽⵓ", // Good
+    "ⴰⵎⵓⴷ", // Stone
+    "ⵉⵡⴰⵍⵉ", // Wind
+    "ⵜⵉⵣⵉ", // Mountain
+    "ⵃⴻⵏⴰ", // Sky
+    "ⵜⴰⵍ", // Tree
+    "ⵉⵎⵓⴷ", // Heart
+    "ⵅⵉⵍ", // Sun
+    "ⵎⵉⵔ", // Place
+    "ⵃⵓⵣ", // Life
+    "ⴰⵣⴰ", // Man
+    "ⵏⵏⵉ", // Woman
+    "ⵓⵥⵓ", // Rock
+    "ⵎⵉⵔ", // Soil
+    "ⵓⵇⴻⵍ", // Road
+    "ⴷⴰⵍ", // Child
+
+    // Longer words (6 to 8 characters)
+    "ⴰⴼⵓⵙ", // Finger
+    "ⵜⴰⵎⵓⵔⵜ", // Land
+    "ⵉⵏⵡⴻⵏ", // Language
+    "ⴰⴷⵉⴱ", // Peace
+    "ⵉⴼⵊⵉ", // Health
+    "ⵙⴰⵃⵕⴰ", // Desert
+    "ⵜⴰⴱⵔⴰⵜ", // Blessing
+    "ⵉⴷⵓⵔⴰ", // Mountain
+    "ⴰⵙⵉⵏⵜ", // Society
+    "ⵜⴰⵣⵡⴰⵜ", // Gift
+    "ⵏⵏⵉⵗⵉ", // Freedom
+    "ⵉⵎⴰⵣⵉⵖⴻⵏ", // Berbers
+    "ⵜⴰⵎⴰⵣⵉⵖⵜ", // Berber Language
+    "ⵏⵉⴳⵔⴰ", // Tradition
+    "ⵜⵉⵣⵉⴷ", // Respect
+    "ⵜⵉⵎⵓⴽⴰ", // Community
+    "ⴰⵎⵏⵉⵉ", // Trust
+    "ⵉⴽⵍⵉⵙ", // Dialogue
+    "ⵉⵏⵡⵉⵔ", // History
+    "ⴰⴳⴳⵓ", // Journey
+    "ⵏⴻⵢⴰ", // Family
+    "ⵉⵎⴻⵔ", // Dream
+    "ⵍⴰⵖⴰ", // Waterfall
+    "ⵓⵎⵓⵙ", // Festival
+    "ⴰⵉⵡⴻ", // Nature
+    "ⴰⵎⵉⴷ", // Knowledge
+    "ⵙⵓⵕⴰ", // Love
+    "ⵉⵏⵡⴰ", // Childhood
+  ],
+  Amharic: [
+    // Shorter words (3 to 5 characters)
+    "ይህ", // This
+    "እኔ", // I
+    "አንተ", // You
+    "ውሃ", // Water
+    "ቤት", // House
+    "ሰማይ", // Sky
+    "ወንድ", // Man
+    "ወንድም", // Brother
+    "እህት", // Sister
+    "ተምህር", // Learn
+    "ታይ", // See
+    "ሕይወት", // Life
+    "ዝንባሌ", // Bird
+    "ባለሙያ", // Expert
+    "ወቅታዊ", // Current
+    "ጊዜ", // Time
+    "ዕቃ", // Item
+    "ህይወት", // Existence
+    "ነቃ", // Awake
+    "ሴት", // Woman
+    "ግሩም", // Wonderful
+    "ጌታ", // Lord
+    "አንበሳ", // Lion
+    "የታይ", // Sign
+    "መናታ", // Thank you
+    "ዳንኳር", // Guardian
+
+    // Longer words (6 to 8 characters)
+    "ድምፅ", // Sound
+    "መለኮት", // Heaven
+    "የገንዘብ", // Financial
+    "መምህር", // Teacher
+    "ዕውቀት", // Knowledge
+    "ጥበብ", // Wisdom
+    "ትምህርት", // Education
+    "ንቁ", // Sleep
+    "የነበረ", // Existence
+    "እርዳታ", // Assistance
+    "አሰቃቂ", // Surprise
+    "ምርጥ", // Best
+    "እርግጥ", // Security
+    "አዳራሽ", // Location
+    "አሳማ", // Flag
+    "ምንጭ", // Source
+    "ወጥ", // Fall
+    "እንግዳ", // Guest
+    "በዓለም", // World
+    "አስተያየት", // Observation
+    "መምህር", // Instructor
+    "ማህበረሰብ", // Community
+    "መገኛ", // Solution
+    "መጠን", // Quantity
+    "መነሻ", // Beginning
+    "አዲስ", // New
+    "ዝርዝር", // List
+    "ድንበር", // Border
+    "አመት", // Year
+  ],
+  Yoruba: [
+    // Shorter words (3 to 5 characters)
+    "baba", // Father
+    "iya", // Mother
+    "ẹjẹ", // Blood
+    "ara", // Body
+    "oṣoo", // Moon
+    "orun", // Heaven
+    "iyawo", // Wife
+    "ọrẹ", // Friend
+    "omi", // Water
+    "oko", // Husband
+    "jọ", // Dance
+    "ẹru", // Fear
+    "ọna", // Path
+    "ẹyẹ", // Bird
+    "kò", // No
+    "bẹ́ẹ̀", // Yes
+    "gbigba", // Acceptance
+    "ìbè", // There
+    "ọdún", // Year
+    "ilé", // House
+    "fún", // For
+    "ìwé", // Book
+    "ṣọ́", // Watch
+    "má", // Don’t
+    "sùn", // Sleep
+    "kòṣù", // Frown
+    "ọlọ́run", // God
+    "dá", // Fix
+
+    // Longer words (6 to 8 characters)
+    "ayé", // World
+    "orukọ", // Name
+    "ìdílé", // Family
+    "dàgbà", // Grow
+    "sáré", // Run
+    "tọrọ", // Ask
+    "ààrẹ", // President
+    "iyàwó", // Bride
+    "ọrẹ́rẹ", // Friend
+    "àṣà", // Tradition
+    "ìdàgbàsókè", // Development
+    "ìjìnlẹ̀", // Depth
+    "ìbáṣepọ̀", // Interaction
+    "àgbàlagbà", // Elder
+    "àtẹ́wọ́", // Affirmation
+    "ìmọ̀", // Knowledge
+    "ọdúnṣé", // Celebration
+    "ìkọ́kọ́", // Secret
+    "ìrìnàjò", // Journey
+    "àkànṣe", // Creation
+    "ìdàpọ̀", // Cooperation
+    "àkóso", // Leadership
+    "ìmọ̀tara-ẹni", // Self-awareness
+    "àtúnyẹ́", // Renovation
+    "ìfáṣiṣẹ́", // Employment
+    "ìṣirò", // Calculation
+    "ìrètí", // Hope
+    "àlàyé", // Explanation
+    "fífo", // Warning
+    "ìbèèrè", // Demand
+  ],
+
+  Hausa: [
+    // Shorter words (3 to 5 characters)
+    "baba", // Father
+    "iya", // Mother
+    "ruwa", // Water
+    "gida", // House
+    "gari", // Town
+    "hanya", // Way
+    "suna", // Name
+    "ƙasa", // Country
+    "ƙofa", // Door
+    "doki", // Horse
+    "tashi", // Rise
+    "ƙauna", // Love
+    "baki", // Mouth
+    "ƙaura", // Move
+    "kaya", // Goods
+    "ido", // Eye
+    "mai", // Owner
+    "duka", // All
+    "kudi", // Money
+    "babu", // None
+    "karya", // Lie
+    "yar", // Girl
+    "saka", // Wear
+    "fita", // Go out
+    "soro", // Seek
+    "tana", // She
+    "maka", // Help
+
+    // Longer words (6 to 8 characters)
+    "dariya", // Laughter
+    "muhimmanci", // Importance
+    "sadarwa", // Communication
+    "ilimi", // Knowledge
+    "malamai", // Teachers
+    "mahaifiyata", // My mother
+    "shakatawa", // Relaxation
+    "maraba", // Welcome
+    "koyarwa", // Teaching
+    "jihar", // State
+    "ƙungiya", // Organization
+    "zuciya", // Heart
+    "tallafi", // Support
+    "mazauni", // Resident
+    "tsare-tsare", // Plans
+    "karatu", // Reading
+    "sanyin", // Coolness
+    "ƙarfafa", // Strengthen
+    "harkokin", // Affairs
+    "safar", // Journey
+    "tattalin", // Economy
+    "iyali", // Family
+    "ma'ana", // Meaning
+    "kyautatawa", // Improvement
+    "ta'aziyya", // Condolences
+    "wasa", // Play
+    "karfafawa", // Empowerment
+    "hankali", // Wisdom
+    "gwaninta", // Proficiency
+    "lafiya", // Health
+    "al'ada", // Culture
+    "matar", // Woman
+  ],
+  Zulu: [
+    // Shorter words (3 to 5 characters)
+    "amanzi", // Water
+    "indlu", // House
+    "umntwana", // Child
+    "umama", // Mother
+    "ubaba", // Father
+    "ubude", // Height
+    "incwadi", // Book
+    "inja", // Dog
+    "ubisi", // Wax
+    "inyanga", // Moon
+    "ilanga", // Sun
+    "imvula", // Rain
+    "ithoni", // Idol
+    "isihlahla", // Tree
+    "inkulumo", // Talk
+    "uphaphe", // Apple
+    "ufudo", // Chili
+    "umfula", // River
+    "umgwaqo", // Road
+    "nsukuzonke", // Daily
+    "umculo", // Music
+    "imbewu", // Seed
+    "umhlabathi", // Soil
+    "igama", // Word
+    "umnyama", // Black
+    "mhlophe", // White
+    "isihlahla", // Flower
+    "umfana", // Boy
+    "lukhuni", // Hard
+    "ngaphandle", // Outside
+
+    // Longer words (6 to 8 characters)
+    "imfundo", // Education
+    "umfundi", // Student
+    "isiko", // Culture
+    "impumelelo", // Success
+    "ukulima", // Farming
+    "umphakathi", // Social
+    "isayensi", // Science
+    "umzimba", // Organization
+    "umndeni", // Family
+    "amasiko", // Cultural
+    "impilo", // Health
+    "upolitiki", // Politics
+    "umhlangano", // Meeting
+    "ubuhle", // Goodness
+    "ubuchwepheshe", // Technical
+    "ukuziphatha", // Morality
+    "ukuzwana", // Sociability
+    "uthando", // Love
+    "ukuphepha", // Security
+    "ulwazi", // Knowledge
+    "imidlalo", // Games
+    "inhlangano", // Institution
+    "amathuba", // Potential
+    "ukuziphatha", // Behavior
+    "ingxoxo", // Discussion
+  ],
 };
-
-
 
 export const generateRandomWords = (
   count: number,

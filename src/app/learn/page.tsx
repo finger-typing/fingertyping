@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search, RotateCcw } from "lucide-react";
 
 //language
 
@@ -211,8 +211,7 @@ const languageLetters = {
   Zulu: "abcdefghijklmnopqrstuvwxyz".split(""),
 };
 
-// Define the type for the languages
-type Language = keyof typeof languageLetters; // Ensures currentLanguage is always one of the keys
+type Language = keyof typeof languageLetters;
 
 const TypingPractice = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -221,7 +220,7 @@ const TypingPractice = () => {
   const [isCorrect, setIsCorrect] = useState(true);
   const [time, setTime] = useState(0);
   const [isGameActive, setIsGameActive] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState<Language>("English"); // Type-safe
+  const [currentLanguage, setCurrentLanguage] = useState<Language>("English");
   const [showLanguages, setShowLanguages] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -294,6 +293,17 @@ const TypingPractice = () => {
       .padStart(2, "0")}`;
   };
 
+  const resetGame = () => {
+    setCurrentWordIndex(0);
+    setInput("");
+    setScore(0);
+    setTime(0);
+    setIsGameActive(false);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   const filteredLanguages = Object.keys(languageLetters).filter((lang) =>
     lang.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -303,7 +313,7 @@ const TypingPractice = () => {
       <div className="w-full max-w-3xl">
         <div className="text-center mb-3">
           <div
-            className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold transition-all duration-300 ease-in-out ${
+            className={`text-8xl sm:text-7xl md:text-8xl lg:text-9xl font-bold transition-all duration-300 ease-in-out ${
               isCorrect ? "text-green-500" : "text-red-500"
             } drop-shadow-2xl`}
           >
@@ -324,7 +334,7 @@ const TypingPractice = () => {
           placeholder="Start typing to begin"
         />
 
-        <div className="mt-6 grid grid-cols-4 gap-1 items-center">
+        <div className="mt-6 grid grid-cols-3 gap-4 items-center">
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setShowLanguages(!showLanguages)}
@@ -355,13 +365,9 @@ const TypingPractice = () => {
                     <div
                       key={lang}
                       onClick={() => {
-                        setCurrentLanguage(lang as Language); // Type-casting to ensure proper type usage
+                        setCurrentLanguage(lang as Language);
                         setShowLanguages(false);
-                        setCurrentWordIndex(0);
-                        setInput("");
-                        setScore(0);
-                        setTime(0);
-                        setIsGameActive(false);
+                        resetGame();
                         setSearchTerm("");
                       }}
                       className="p-2 cursor-pointer hover:bg-gray-700"
@@ -375,26 +381,36 @@ const TypingPractice = () => {
           </div>
           <div className="text-center">
             <div className="text-lg sm:text-xl font-semibold text-gray-300">
-              Score
-            </div>
-            <div className="text-xl sm:text-2xl text-gray-100">{score}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg sm:text-xl font-semibold text-gray-300">
               Time
             </div>
             <div className="text-xl sm:text-2xl text-gray-100">
               {formatTime(time)}
             </div>
           </div>
+
           <div className="text-center">
-            <Link
-              href="/"
-              className="text-blue-500 hover:underline inline-block text-lg sm:text-xl font-semibold"
-            >
-              ← Home
-            </Link>
+            <div className="text-lg sm:text-xl font-semibold text-gray-300">
+              Score
+            </div>
+            <div className="text-xl sm:text-2xl text-gray-100">{score}</div>
           </div>
+          
+        </div>
+
+        <div className="mt-4 flex justify-between items-center">
+          <button
+            onClick={resetGame}
+            className="text-yellow-500 hover:underline inline-flex items-center text-lg sm:text-xl font-semibold"
+          >
+            <RotateCcw size={18} className="mr-1" />
+            Reset
+          </button>
+          <Link
+            href="/"
+            className="text-green-500 hover:underline inline-block text-lg sm:text-xl font-semibold"
+          >
+            ← Home
+          </Link>
         </div>
       </div>
     </div>

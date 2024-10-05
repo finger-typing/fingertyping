@@ -17,7 +17,7 @@ const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
         darkMode ? "bg-gray-700 text-md border border-gray-300 " : "bg-gray-100 text-md border border-gray-600"
       }`}
     >
-      {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+      {darkMode ? <Sun size={17} /> : <Moon size={17} />}
       <span>{darkMode ? "Light" : "Dark"}</span>
     </button>
   );
