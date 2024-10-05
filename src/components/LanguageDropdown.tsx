@@ -35,6 +35,32 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
     "Indonesian",
     "Ukrainian",
     "Thai",
+    "Abkhaz",
+    "Afrikaans",
+    "Vietnamese",
+    "Tamil",
+    "Telugu",
+    "Manipuri",
+    "Malayalam",
+    "Kashmiri",
+    "Gujarati",
+    "Punjabi",
+    "Sanskrit",
+    "Sindhi",
+    "Oriya",
+    "Kannada",
+    "Chakma",
+    "Nepali",
+    "Dari",
+    "Dzongkha",
+    "Korean",
+    "Persian",
+    "Bhojpuri",
+    "Berber",
+    "Amharic",
+    "Yoruba",
+    "Hausa",
+    "Zulu",
   ];
 
   const filteredLanguages = languages.filter((lang) =>
@@ -43,7 +69,10 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setShowLanguages(false);
       }
     };

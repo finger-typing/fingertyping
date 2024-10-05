@@ -1,7 +1,11 @@
 // app/terms/page.tsx
+import Link from "next/link";
 export default function Terms() {
   return (
     <div className="max-w-4xl mx-auto py-16 px-4">
+      <Link href="/" className="text-blue-500 hover:underline mb-6 inline-block">
+        ← Back to Home
+      </Link>
       <h1 className="text-4xl font-bold text-center mb-8">
         Terms and Conditions
       </h1>
