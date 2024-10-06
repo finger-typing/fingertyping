@@ -1,4 +1,5 @@
 "use client";
+
 import React, {
   useState,
   useEffect,
@@ -6,12 +7,28 @@ import React, {
   ChangeEvent,
   useCallback,
 } from "react";
+import Link from "next/link";
 import { wordLists, generateRandomWords } from "../utils/wordLists";
 import Navbar from "../components/Navbar";
 import WordDisplay from "../components/WordDisplay";
 import InputField from "../components/InputField";
 import GameControls from "../components/GameControls";
-import Results from "../components/Results";
+import dynamic from "next/dynamic";
+
+const Results = dynamic(() => import("../components/Results"), {
+  ssr: false,
+});
+
+import {
+  FaTwitter,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaTelegramPlane,
+  FaRedditAlien,
+  FaShareAlt,
+  FaWhatsapp,
+  FaFacebookMessenger,
+} from "react-icons/fa";
 
 const TypingPractice: React.FC = () => {
   const [gameState, setGameState] = useState({
@@ -29,7 +46,6 @@ const TypingPractice: React.FC = () => {
 
   const [darkMode, setDarkMode] = useState(true);
   const [customTime, setCustomTime] = useState(60);
-
   const inputRef = useRef<HTMLInputElement>(null);
 
   const initializeGame = useCallback(() => {
@@ -82,20 +98,17 @@ const TypingPractice: React.FC = () => {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setGameState((prev) => {
-      const newState = {
-        ...prev,
-        inputValue: value,
-        hasStarted: true,
-        startTime: prev.startTime || Date.now(),
-        currentWordIndex: Math.max(
-          value.split(" ").length - 1,
-          prev.currentWordIndex
-        ),
-        isComplete: value === prev.randomText,
-      };
-      return newState;
-    });
+    setGameState((prev) => ({
+      ...prev,
+      inputValue: value,
+      hasStarted: true,
+      startTime: prev.startTime || Date.now(),
+      currentWordIndex: Math.max(
+        value.split(" ").length - 1,
+        prev.currentWordIndex
+      ),
+      isComplete: value === prev.randomText,
+    }));
   };
 
   useEffect(() => {
@@ -106,15 +119,12 @@ const TypingPractice: React.FC = () => {
       gameState.timeRemaining > 0
     ) {
       interval = setInterval(() => {
-        setGameState((prev) => {
-          const newTimeRemaining = prev.timeRemaining - 1;
-          return {
-            ...prev,
-            timeElapsed: prev.timeElapsed + 1,
-            timeRemaining: newTimeRemaining,
-            isComplete: newTimeRemaining <= 0,
-          };
-        });
+        setGameState((prev) => ({
+          ...prev,
+          timeElapsed: prev.timeElapsed + 1,
+          timeRemaining: prev.timeRemaining - 1,
+          isComplete: prev.timeRemaining - 1 <= 0,
+        }));
       }, 1000);
     }
     return () => clearInterval(interval);
@@ -125,13 +135,8 @@ const TypingPractice: React.FC = () => {
       .trim()
       .split(/\s+/)
       .filter(Boolean).length;
-
     if (gameState.timeElapsed === 0) return "0.00";
-
-    const secondsElapsed = gameState.timeElapsed;
-    const wpm = (wordsTyped / secondsElapsed) * 60;
-
-    return wpm.toFixed(2);
+    return ((wordsTyped / gameState.timeElapsed) * 60).toFixed(2);
   };
 
   const calculateAccuracy = (): string => {
@@ -140,14 +145,11 @@ const TypingPractice: React.FC = () => {
       .trim()
       .split(/\s+/)
       .slice(0, inputWords.length);
-
     if (inputWords.length === 0) return "0.00";
-
     const correctWords = inputWords.filter(
       (word, i) => word === randomWords[i]
     ).length;
-    const accuracy = (correctWords / inputWords.length) * 100;
-    return accuracy.toFixed(2);
+    return ((correctWords / inputWords.length) * 100).toFixed(2);
   };
 
   const correctAndWrongWords = () => {
@@ -175,6 +177,23 @@ const TypingPractice: React.FC = () => {
     return { correctKeystrokes: correctChars, wrongKeystrokes: wrongChars };
   };
 
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText("https://fingertyping.com");
+      alert("Website URL copied to clipboard!");
+    } catch (err) {
+      alert("Failed to copy: " + err);
+    }
+  };
+
+  const links = [
+    { href: "/learn", text: "Learn to Type", external: false },
+    { href: "/about", text: "About Us", external: false },
+    { href: "/privacy", text: "Privacy Policy", external: false },
+    { href: "/terms", text: "Terms and Conditions", external: false },
+    { href: "/contact", text: "Contact Us", external: false },
+  ];
+
   return (
     <div
       className={`flex flex-col items-center min-h-screen ${
@@ -193,7 +212,7 @@ const TypingPractice: React.FC = () => {
         customTime={customTime}
       />
 
-      <div className="w-full max-w-3xl px-4 mt-4">
+      <main className="w-full max-w-3xl px-4 mt-4">
         <WordDisplay
           randomText={gameState.randomText}
           inputValue={gameState.inputValue}
@@ -229,8 +248,154 @@ const TypingPractice: React.FC = () => {
             darkMode={darkMode}
           />
         )}
-      </div>
-      {/* <Footer darkMode={false} /> */}
+
+        {/* Redesigned Share This Tool Section */}
+        <section
+          className={`mt-10 p-6 rounded-xl shadow-lg ${
+            darkMode ? "bg-gray-800" : "bg-white"
+          }`}
+        >
+          <h2
+            className={`text-2xl font-bold mb-4 ${
+              darkMode ? "text-white" : "text-gray-800"
+            }`}
+          >
+            Share This Tool
+          </h2>
+          <p className={`mb-6 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+            If you really like this website, help us to improve by sharing with
+            your friends and family!
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center mb-6">
+            {[
+              {
+                icon: FaTwitter,
+                bg: "bg-blue-500",
+                hover: "hover:bg-blue-700",
+                link: `https://twitter.com/share?url=https://fingertyping.com`,
+              },
+              {
+                icon: FaFacebookF,
+                bg: "bg-blue-600",
+                hover: "hover:bg-blue-700",
+                link: `https://www.facebook.com/sharer/sharer.php?u=https://fingertyping.com`,
+              },
+              {
+                icon: FaLinkedinIn,
+                bg: "bg-blue-600",
+                hover: "hover:bg-blue-800",
+                link: `https://www.linkedin.com/shareArticle?mini=true&url=https://fingertyping.com&title=FingerTyping.com`,
+              },
+              {
+                icon: FaTelegramPlane,
+                bg: "bg-blue-500",
+                hover: "hover:bg-blue-600",
+                link: `https://telegram.me/share/url?url=https://fingertyping.com`,
+              },
+              {
+                icon: FaRedditAlien,
+                bg: "bg-orange-600",
+                hover: "hover:bg-orange-700",
+                link: `https://www.reddit.com/submit?url=https://fingertyping.com`,
+              },
+              {
+                icon: FaWhatsapp,
+                bg: "bg-green-500",
+                hover: "hover:bg-green-600",
+                link: `https://api.whatsapp.com/send?text=https://fingertyping.com`,
+              },
+              {
+                icon: FaFacebookMessenger,
+                bg: "bg-blue-500",
+                hover: "hover:bg-blue-600",
+                link: `https://me.messenger.com/share?link=https://fingertyping.com`,
+
+              },
+            ].map((item, index) => (
+              <a
+                key={index}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-3 rounded-full transition duration-300 ${item.bg} ${item.hover} text-white`}
+              >
+                <item.icon className="w-6 h-6" />
+              </a>
+            ))}
+          </div>
+          <button
+            onClick={copyToClipboard}
+            className={`w-full py-1 px-4 font-bold text-md rounded-lg transition duration-300 flex items-center justify-center ${
+              darkMode
+                ? "bg-green-700 hover:bg-green-800 text-white"
+                : "bg-green-500 hover:bg-green-600 text-white"
+            }`}
+          >
+            <FaShareAlt className="mr-2" />
+            Copy URL to Clipboard
+          </button>
+        </section>
+
+        {/* Updated Backlink Strategies Section */}
+        <section
+          className={`mt-12 rounded-lg shadow-lg ${
+            darkMode ? "bg-gray-800" : "bg-white"
+          }`}
+        >
+          <div className="max-w-6xl mx-auto px-6 py-8">
+            <div className="flex flex-col sm:flex-row justify-between items-center">
+              <div className="mb-6 sm:mb-0 text-center sm:text-left">
+                <h2
+                  className={`text-3xl font-bold ${
+                    darkMode ? "text-white" : "text-gray-800"
+                  }`}
+                >
+                  FingerTyping
+                </h2>
+                <p
+                  className={`mt-2 ${
+                    darkMode ? "text-gray-300" : "text-gray-600"
+                  }`}
+                >
+                  Secure, Simple and Ads-Free
+                </p>
+              </div>
+              <nav className="flex flex-wrap justify-center sm:justify-end gap-6">
+                {links.map((link) => (
+                  <React.Fragment key={link.href}>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`hover:underline font-bold transition-colors duration-300 ${
+                          darkMode
+                            ? "text-gray-300 hover:text-white"
+                            : "text-gray-600 hover:text-gray-800"
+                        }`}
+                      >
+                        {link.text}
+                      </a>
+                    ) : (
+                      <Link href={link.href}>
+                        <span
+                          className={`hover:underline font-semibold transition-colors duration-300 cursor-pointer ${
+                            darkMode
+                              ? "text-green-400 hover:text-green-300"
+                              : "text-green-600 hover:text-green-700"
+                          }`}
+                        >
+                          {link.text}
+                        </span>
+                      </Link>
+                    )}
+                  </React.Fragment>
+                ))}
+              </nav>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };
