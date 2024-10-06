@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <nav
-        className={`w-full py-2 px-2 sm:px-4 ${
+        className={`w-full py-2 px-1 sm:px-4 ${
           darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
         } transition duration-300 ease-in-out relative`}
       >
@@ -110,7 +110,7 @@ const Navbar: React.FC<NavbarProps> = ({
             darkMode ? "bg-gray-900" : "bg-white"
           } transition-all duration-300 ease-in-out xl:hidden overflow-y-auto shadow-lg`}
         >
-          <div className="container mx-auto px-4 py-4">
+          <div className="container mx-auto px-1 py-4">
             <div className="flex justify-between items-center mb-4">
               <h2
                 className={`text-xl font-bold ${

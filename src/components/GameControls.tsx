@@ -21,7 +21,7 @@ const GameControls: React.FC<GameControlsProps> = ({
     {/* Center (Time) */}
     <div className="flex justify-center">
       <p
-        className={`text-2xl font-bold text-green-600 font-mono ${
+        className={`text-3xl font-bold text-green-500 font-mono ${
           darkMode ? "text-gray-300" : "text-gray-900"
         }`}
         aria-live="polite"
