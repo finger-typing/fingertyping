@@ -43,9 +43,9 @@ const Footer: React.FC<FooterProps> = () => {
 
   return (
     <footer className="w-full py-8 bg-gray-900 text-gray-300">
-      <div className="max-w-6xl mx-auto px-4">
+      
         <hr className="my-6 border-gray-700" />
-        <div className="flex flex-col sm:flex-row justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-center px-10">
           <p className="text-sm text-gray-500 mb-4 sm:mb-0 text-center sm:text-left">
             © {new Date().getFullYear()} FingerTyping
           </p>
@@ -63,7 +63,7 @@ const Footer: React.FC<FooterProps> = () => {
             ))}
           </div>
         </div>
-      </div>
+     
     </footer>
   );
 };

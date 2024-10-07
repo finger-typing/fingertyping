@@ -7,46 +7,41 @@ import { ChevronDown, Search, RotateCcw } from "lucide-react";
 
 const languageLetters = {
   English: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Bangla: "অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ংঃ".split(""),
+  Bangla: "অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ংঃ ঁ".split(""),
   Abkhaz:
     "АаБбВвГгГьДдЕеЁёЖжЗзИиЙйКкҚқЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       ""
     ),
-  Acoli: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Afar: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Akan: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Amharic: "ሀሁሂሃሄህሆለሉሊላሌልሎመሙሚማሜምሞሠሡሢሣሤሥሦረሩሪራሬርሮ".split(""),
   Aragonese: "abcdefghijklmnopqrstuvwxyzáéíñóúÁÉÍÑÓÚ".split(""),
   Armenian: "ԱաԲբԳգԴդԵեԶզԻիԼլԽխԾծԿկՀհԸը".split(""),
   Assyrian: "ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ".split(""),
   Azerbaijani:
     "AaBbCcÇçDdEeFfGgĞğHhIiİiJjKkLlMmNnOoÖöPpQqRrSsŞşTtUuÜüVvYyZz".split(""),
-  Bemba: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Berber:
     "ⴰⴱⴲⴳⴴⴵⴶⴷⴸⴹⴺⴻⴼⴽⵀⵁⵂⵃⵄⵅⵆⵇⵈⵉⵊⵋⵌⵍⵎⵏⵐⵑⵒⵓⵔⵕⵖⵗⵘⵙⵚⵛⵜⵝⵞⵟⵠⵡⵢⵣⵤⵥⵦⵧ⵨⵩⵪⵫⵬⵭⵮ⵯ⵰⵱⵲⵳⵴⵵⵶⵷⵸⵹⵺⵻⵼⵽⵾⵿".split(
       ""
     ),
-  Bislama: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Bosnian: "abcdefghijklmnopqrstuvwxyzčćžČĆŽ".split(""),
   Breton: "abcdefghijklmnopqrstuvwxyzñÑ".split(""),
   Bulgarian: "абвгдежзийклмнопрстуфхцчшщъыьэюя".split(""),
   Catalan: "abcdefghijklmnopqrstuvwxyzçÇ".split(""),
-  Chamorro: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Chewa: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Comorian: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Corsican: "abcdefghijklmnopqrstuvwxyzàèéìòóùÀÈÉÌÒÓÙ".split(""),
   Cree: "ᐁᐃᐄᐅᐆᐊᐋᐍᐏᐑᐓᐕᐖᐘᐚᐛᐤᐦᐧᐨᐩᐪᑊᑋᒼᒽᒾᒿ".split(""),
   Croatian: "abcdefghijklmnopqrstuvwxyzčćđžČĆĐŽ".split(""),
   Danish: "abcdefghijklmnopqrstuvwxyzæøåÆØÅ".split(""),
-  Dinka: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Dutch: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Esperanto: "abcdefghijklmnopqrstuvwxyzĉĝĥĵŝŭĈĜĤĴŜŬ".split(""),
   Estonian: "abcdefghijklmnopqrstuvwxyzäöõüšžÄÖÕÜŠŽ".split(""),
   Faroese: "abcdefghijklmnopqrstuvwxyzáéíóúýÁÉÍÓÚÝ".split(""),
-  Fijian: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Finnish: "abcdefghijklmnopqrstuvwxyzäöÄÖ".split(""),
   French: "àâçéèêëîïôûùüÿœÀÂÇÉÈÊËÎÏÔÛÙÜŸŒabcdefghijklmnopqrstuvwxyz".split(""),
-  Ganda: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Georgian: "აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ".split(""),
   German: "äöüßÄÖÜabcdefghijklmnopqrstuvwxyz".split(""),
   Greek: "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ".split(""),
@@ -61,10 +56,9 @@ const languageLetters = {
     "aábdðeéfghiíjklmnoóprstuúvxyýþæöAÁBDÐEÉFGHIÍJKLMNOÓPRSTUÚVXYÝÞÆÖ".split(
       ""
     ),
-  Igbo: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Indonesian: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Irish: "abcdefghijklmnopqrstuvwxyzáéíóúÁÉÍÓÚ".split(""),
-  Italian: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Japanese:
     "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん".split(
       ""
@@ -75,7 +69,7 @@ const languageLetters = {
     "АаӘәБбВвГгҒғДдЕеЁёЖжЗзИиЙйКкҚқЛлМмНнОоӨөПпРрСсТтҰұФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       ""
     ),
-  Kinyarwanda: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Kirmanjki:
     "a b c ç d e ê f g h ɨ i j k l m n o p q r s ş t u û v y z A B C Ç D E Ê F G H Ɨ I J K L M N O P Q R S Ş T U Û V Y Z".split(
       " "
@@ -83,7 +77,7 @@ const languageLetters = {
   Korean: "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ".split(""),
   Kurdish: "ئەبپتجچحخدرڕزژسشعغفڤقکگلمنھووەی".split(""),
   Lao: "ກຂຄງຈສຊຍດຕຖທນບປຜຝພຟມຢຣລວຫອຮ".split(""),
-  Latin: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Latvian:
     "aābcčdeēfgģhiījkķlļmnņoópqrsštuūvzžAĀBCČDEĒFGĢHIĪJKĶLĻMNŅOÓPQRSŠTUŪVZŽ".split(
       ""
@@ -95,13 +89,12 @@ const languageLetters = {
   Luxembourgish:
     "abcdefghijklmnopqrstuvwxyzäéëüABCDEFGHIJKLMNOPQRSTUVWXYZÄÉËÜ".split(""),
   Macedonian: "абвгдѓежзијклмнњопрстќуфхцчџш".split(""),
-  Malagasy: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Malay: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Malayalam: "അആഇഈഉഊഋഎഏഐഒഓകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹ".split(""),
   Maltese: "abcdefghijklmnopqrstuvwxyzġħżABCDEFGHIJKLMNOPQRSTUVWXYZĠĦŻ".split(
     ""
   ),
-  Manx: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Maori: "abcdefghijklmnopqrstuvwxyzāēīōūABCDEFGHIJKLMNOPQRSTUVWXYZĀĒĪŌŪ".split(
     ""
   ),
@@ -112,7 +105,7 @@ const languageLetters = {
     ),
   Nepali: "अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह".split(""),
   Navajo: "abcdefghijklmnopqrstuvwxyz'".split(""),
-  Ndebele: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Norwegian: "abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ".split(
     ""
   ),
@@ -121,7 +114,7 @@ const languageLetters = {
       ""
     ),
   Odia: "ଅଆଇଈଉଊଋଏଐଓଔକଖଗଘଙଚଛଜଝଞଟଠଡଢଣତଥଦଧନପଫବଭମୟରଲଶଷସହ".split(""),
-  Oromo: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Pashto:
     "ا ب پ ت ټ ث ج ځ چ ح خ د ډ دھ ذ ر ز س ش ص ض ط ظ ع غ ف ږ ق ك ګ ل م ن ڼ و ه ء ی ې ۍ".split(
       ""
@@ -137,7 +130,7 @@ const languageLetters = {
       ""
     ),
   Punjabi: "ਅਆਇਈਉਊਏਐਓਔਕਖਗਘਙਚਛਜਝਞਟਠਡਢਣਤਥਦਧਨਪਫਬਭਮਯਰਲਵਸਹ".split(""),
-  Quechua: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Romanian:
     "aăâbcdefghiîjklmnopqrsștțuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZĂÂÎȘȚ".split(""),
   Romansh:
@@ -155,8 +148,7 @@ const languageLetters = {
     "абвгдђежзијклмнопрстћуфхцчџшABCDEFGHIJKLMNOPQRSTUVWXYZАБВГДЂЕЖЗИЈКЛМНОПРСТЋУФХЦЧЏШ".split(
       ""
     ),
-  Sesotho: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Shona: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Sindhi:
     "ا ب ٻ ت ٹ ٿ ث پ ڀ ج ڄ چ ڃ ح خ د ڊ ڌ ذ ر ز س ش ص ض ط ظ ع غ ف ڦ ق ڪ ک گ ڳ ل م ن ڻ و ه ء ي".split(
       ""
@@ -167,18 +159,16 @@ const languageLetters = {
       ""
     ),
   Slovenian: "abcčdefghijklmnoprsštuvzž".split(""),
-  Somali: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Sotho: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Spanish:
     "abcdefghijklmnopqrstuvwxyzñáéíóúüABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚÜ".split(
       ""
     ),
-  Sundanese: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Swahili: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Swedish: "abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ".split(
     ""
   ),
-  Tagalog: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Tajik:
     "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкҚқЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       ""
@@ -192,7 +182,7 @@ const languageLetters = {
   Thai: "กขคงจฉชซฌญฎฏฐฑฒนบปผฝพฟภมยรลวหออฮ".split(""),
   Tibetan: "ཀཁགངཅཆཇཉཏཐདནཔཕབམཙཚཛཝཞཟའཡརལཤསཧཨ".split(""),
   Tigrinya: "ሀሁሂሃሄህሆለሉሊላሌልሎመሙሚማሜምሞሠሡሢሣሤሥሦረሩሪራሬርሮ".split(""),
-  TokPisin: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Turkish:
     "abcçdefgğhıijklmnoöprsştuüvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZÇĞİÖŞÜ".split(""),
   Turkmen:
@@ -204,11 +194,9 @@ const languageLetters = {
   Uzbek: "aаbбcсdдeеfфgгhҳiиjжkкlлmмnнoоpпqқrрsсtтuуfфvвxхyйzз".split(""),
   Vietnamese: "abcdefghijklmnopqrstuvwxyzăâêôơư".split(""),
   Welsh: "abcdefghijklmnopqrstuvwxyzâêîôŵŷ".split(""),
-  Wolof: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Xhosa: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Yiddish: "א ב ג ד ה ו ז ח ט י כ ל מ נ ס ע פ צ ק ר ש ת".split(""),
   Yoruba: "abcdefghijklmnopqrstuvwxyzẹéíóọù".split(""),
-  Zulu: "abcdefghijklmnopqrstuvwxyz".split(""),
 };
 
 type Language = keyof typeof languageLetters;
@@ -394,7 +382,6 @@ const TypingPractice = () => {
             </div>
             <div className="text-xl sm:text-2xl text-gray-100">{score}</div>
           </div>
-          
         </div>
 
         <div className="mt-4 flex justify-between items-center">
