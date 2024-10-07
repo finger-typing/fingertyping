@@ -273,7 +273,7 @@ const TypingPractice: React.FC = () => {
                 icon: FaTwitter,
                 bg: "bg-blue-500",
                 hover: "hover:bg-blue-700",
-                link: `https://twitter.com/intent/tweet?url=${encodeURIComponent('https://fingertyping.com')}&text=${encodeURIComponent('Improve your typing skills with FingerTyping.com! 🚀⌨️')}`,
+                link: `https://twitter.com/intent/tweet?url=${encodeURIComponent('https://fingertyping.com')}&text=${encodeURIComponent('Secure and ads-free typing practice with FingerTyping.com! 🚀⌨️')}`,
               },
               {
                 icon: FaFacebookF,

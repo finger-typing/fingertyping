@@ -17,11 +17,11 @@ const Footer: React.FC<FooterProps> = () => {
   const socialLinks = [
     {
       icon: FaTwitter,
-      href: `https://twitter.com/share?url=https://fingertyping.com&text=Check out this awesome typing tool!`,
+      href: `https://twitter.com/intent/tweet?url=${encodeURIComponent('https://fingertyping.com')}&text=${encodeURIComponent('Improve your typing skills with FingerTyping.com! 🚀⌨️')}`,
     },
     {
       icon: FaFacebookF,
-      href: `https://www.facebook.com/sharer/sharer.php?u=https://fingertyping.com`,
+      href: `https://www.facebook.com/fingertypingofficial`,
     },
     {
       icon: FaLinkedinIn,
@@ -29,7 +29,7 @@ const Footer: React.FC<FooterProps> = () => {
     },
     {
       icon: FaTelegramPlane,
-      href: `https://telegram.me/share/url?url=https://fingertyping.com&text=Check out this awesome typing tool!`,
+      href: `https://t.me/fingertyping`,
     },
     {
       icon: FaRedditAlien,
@@ -37,7 +37,7 @@ const Footer: React.FC<FooterProps> = () => {
     },
     {
       icon: BsMessenger,
-      href: `https://www.facebook.com/dialog/send?link=https://fingertyping.com`,
+      href: `https://www.facebook.com/dialog/send?link=https://fingertyping.com&redirect_uri=https://fingertyping.com&app_id=966242223397117`,
     },
   ];
 
@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = () => {
           <p className="text-sm text-gray-500 mb-4 sm:mb-0 text-center sm:text-left">
             © {new Date().getFullYear()} FingerTyping
           </p>
-          <div className="flex space-x-4">
+          <div className="flex space-x-2">
             {socialLinks.map(({ icon: Icon, href }, index) => (
               <a
                 key={index}
@@ -58,7 +58,7 @@ const Footer: React.FC<FooterProps> = () => {
                 rel="noopener noreferrer"
                 className="p-2 rounded-full text-gray-500 hover:text-white transition-colors duration-300"
               >
-                <Icon className="h-4 w-4" />
+                <Icon className="h-5 w-5" />
               </a>
             ))}
           </div>
