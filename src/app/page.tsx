@@ -14,6 +14,7 @@ import WordDisplay from "../components/WordDisplay";
 import InputField from "../components/InputField";
 import GameControls from "../components/GameControls";
 import dynamic from "next/dynamic";
+import { Fingerprint } from "lucide-react";
 
 const Results = dynamic(() => import("../components/Results"), {
   ssr: false,
@@ -272,7 +273,7 @@ const TypingPractice: React.FC = () => {
                 icon: FaTwitter,
                 bg: "bg-blue-500",
                 hover: "hover:bg-blue-700",
-                link: `https://twitter.com/share?url=https://fingertyping.com`,
+                link: `https://twitter.com/intent/tweet?url=${encodeURIComponent('https://fingertyping.com')}&text=${encodeURIComponent('Improve your typing skills with FingerTyping.com! 🚀⌨️')}`,
               },
               {
                 icon: FaFacebookF,
@@ -308,8 +309,7 @@ const TypingPractice: React.FC = () => {
                 icon: FaFacebookMessenger,
                 bg: "bg-blue-500",
                 hover: "hover:bg-blue-600",
-                link: `https://me.messenger.com/share?link=https://fingertyping.com`,
-
+                link: `https://www.facebook.com/dialog/send?link=https://fingertyping.com&redirect_uri=https://fingertyping.com&app_id=966242223397117`,
               },
             ].map((item, index) => (
               <a
@@ -337,30 +337,39 @@ const TypingPractice: React.FC = () => {
         </section>
 
         {/* Updated Backlink Strategies Section */}
-        <section
+        <footer
           className={`mt-12 rounded-lg shadow-lg ${
-            darkMode ? "bg-gray-800" : "bg-white"
+            darkMode
+              ? "bg-gray-800"
+              : "bg-gradient-to-r from-blue-50 to-indigo-100"
           }`}
         >
-          <div className="max-w-6xl mx-auto px-6 py-8">
-            <div className="flex flex-col sm:flex-row justify-between items-center">
-              <div className="mb-6 sm:mb-0 text-center sm:text-left">
-                <h2
-                  className={`text-3xl font-bold ${
-                    darkMode ? "text-white" : "text-gray-800"
-                  }`}
-                >
-                  FingerTyping
-                </h2>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="mb-8 md:mb-0 text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start">
+                  <Fingerprint
+                    className={`w-8 h-8 mr-2 ${
+                      darkMode ? "text-indigo-400" : "text-indigo-600"
+                    }`}
+                  />
+                  <h2
+                    className={`text-2xl sm:text-3xl font-bold ${
+                      darkMode ? "text-white" : "text-gray-700"
+                    }`}
+                  >
+                    FingerTyping
+                  </h2>
+                </div>
                 <p
-                  className={`mt-2 ${
+                  className={`mt-2 text-sm sm:text-base ${
                     darkMode ? "text-gray-300" : "text-gray-600"
                   }`}
                 >
                   Secure, Simple and Ads-Free
                 </p>
               </div>
-              <nav className="flex flex-wrap justify-center sm:justify-end gap-6">
+              <nav className="flex flex-wrap justify-center md:justify-end gap-6 mb-6 md:mb-0">
                 {links.map((link) => (
                   <React.Fragment key={link.href}>
                     {link.external ? (
@@ -368,22 +377,24 @@ const TypingPractice: React.FC = () => {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`hover:underline font-bold transition-colors duration-300 ${
-                          darkMode
-                            ? "text-gray-300 hover:text-white"
-                            : "text-gray-600 hover:text-gray-800"
-                        }`}
+                        className={`text-sm sm:text-base font-medium transition-colors duration-300 
+                ${
+                  darkMode
+                    ? "text-indigo-300 hover:text-indigo-100"
+                    : "text-indigo-700 hover:text-indigo-900"
+                } hover:underline`}
                       >
                         {link.text}
                       </a>
                     ) : (
                       <Link href={link.href}>
                         <span
-                          className={`hover:underline font-semibold transition-colors duration-300 cursor-pointer ${
-                            darkMode
-                              ? "text-green-400 hover:text-green-300"
-                              : "text-green-600 hover:text-green-700"
-                          }`}
+                          className={`text-sm sm:text-base font-medium transition-colors duration-300 cursor-pointer 
+                  ${
+                    darkMode
+                      ? "text-indigo-400 hover:text-indigo-200"
+                      : "text-indigo-600 hover:text-indigo-800"
+                  } hover:underline`}
                         >
                           {link.text}
                         </span>
@@ -394,7 +405,7 @@ const TypingPractice: React.FC = () => {
               </nav>
             </div>
           </div>
-        </section>
+        </footer>
       </main>
     </div>
   );

@@ -92,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          <div className="flex items-center space-x-1 sm:space-x-2">
+          <div className="flex items-center space-x-1 sm:space-x-1">
             {/* DarkModeToggle - always visible */}
             <div className={navItemClasses}>
               <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
