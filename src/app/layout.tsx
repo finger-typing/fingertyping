@@ -7,23 +7,52 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "FingerTyping - Secure and Fast",
-  description: "Secure, ad-free, fast typing practice with 10 fast fingers on FingerTyping. Improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  description:
+    "Secure, ad-free, fast typing practice with 10 fast fingers on FingerTyping. Improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
   keywords: [
-    "typing", "typeing", "typing practice", "finger typing", "10 fast fingers", 
-    "touch typing", "typing speed", "typing lessons", "typing tests", 
-    "improve typing", "keyboard skills", "secure typing app", "open source typing", 
-    "privacy-focused typing", "ad-free typing practice", "faster typing", 
-    "typeing website", "bangla typeing", "urdu typeing", "hindi typeing", 
-    "arabic typeing", "chinese typeing", "typing practice app", "typing exercises", 
-    "typing games", "typing software", "keyboard training", "typing tutor", 
-    "speed typing", "typing test online", "fast typing techniques", 
-    "improve typing accuracy", "beginner typing lessons", "advanced typing courses", 
-    "typing competition", "touch typing practice", "typing drills", 
-    "typing improvement tips", "online typing challenges", "typing performance", 
-    "mobile typing practice", "typing accuracy tests", "high-speed typing"
+    "typing",
+    "typeing",
+    "typing practice",
+    "finger typing",
+    "10 fast fingers",
+    "touch typing",
+    "typing speed",
+    "typing lessons",
+    "typing tests",
+    "improve typing",
+    "keyboard skills",
+    "secure typing app",
+    "open source typing",
+    "privacy-focused typing",
+    "ad-free typing practice",
+    "faster typing",
+    "typeing website",
+    "bangla typeing",
+    "urdu typeing",
+    "hindi typeing",
+    "arabic typeing",
+    "chinese typeing",
+    "typing practice app",
+    "typing exercises",
+    "typing games",
+    "typing software",
+    "keyboard training",
+    "typing tutor",
+    "speed typing",
+    "typing test online",
+    "fast typing techniques",
+    "improve typing accuracy",
+    "beginner typing lessons",
+    "advanced typing courses",
+    "typing competition",
+    "touch typing practice",
+    "typing drills",
+    "typing improvement tips",
+    "online typing challenges",
+    "typing performance",
+    "mobile typing practice",
+    "typing accuracy tests",
+    "high-speed typing",
   ],
   authors: [{ name: "FingerTyping Team" }],
   creator: "FingerTyping",
@@ -33,9 +62,19 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+    other: [
+      { rel: "icon", url: "/icon-192x192.png", sizes: "192x192" },
+      { rel: "icon", url: "/icon-512x512.png", sizes: "512x512" },
+    ],
+  },
   openGraph: {
     title: "FingerTyping - Secure, Fast, and Private Typing Practice",
-    description: "A secure, ad-free, typing practice app. With your 10 fast finger complete comprehensive lessons and tests to become a faster typist!",
+    description:
+      "A secure, ad-free, typing practice app. With your 10 fast finger complete comprehensive lessons and tests to become a faster typist!",
     url: "https://www.fingertyping.com",
     siteName: "FingerTyping",
     images: [
@@ -51,7 +90,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "FingerTyping - Secure, Fast, and Private Typing Practice",
-    description: "A secure, ad-free typing practice app. With your 10 fast finger complete comprehensive lessons and tests to become a faster typist!",
+    description:
+      "A secure, ad-free typing practice app. With your 10 fast finger complete comprehensive lessons and tests to become a faster typist!",
     images: ["https://www.fingertyping.com/og-image.png"],
     creator: "@fingertyping",
   },
@@ -68,12 +108,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href="https://www.fingertyping.com" />
+        {/* The icons will be automatically injected by the metadata */}
       </head>
       <body className={inter.className}>
         <script
@@ -85,7 +130,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: "FingerTyping",
               url: "https://www.fingertyping.com",
               logo: "https://www.fingertyping.com/logo.png",
-              description: "A secure, ads-free typing practice app. With your 10 fast finger complete comprehensive lessons and tests to become a faster typist!",
+              description:
+                "A secure, ads-free typing practice app. With your 10 fast finger complete comprehensive lessons and tests to become a faster typist!",
               sameAs: [
                 "https://www.facebook.com/fingertypingofficial",
                 "https://t.me/fingertyping",
