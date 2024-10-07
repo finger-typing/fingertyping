@@ -309,7 +309,7 @@ const TypingPractice: React.FC = () => {
                 icon: FaFacebookMessenger,
                 bg: "bg-blue-500",
                 hover: "hover:bg-blue-600",
-                link: `https://www.facebook.com/dialog/send?link=https://fingertyping.com&redirect_uri=https://fingertyping.com&app_id=966242223397117`,
+                link:`https://www.messenger.com/`,
               },
             ].map((item, index) => (
               <a
