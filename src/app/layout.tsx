@@ -10,8 +10,6 @@ export const metadata: Metadata = {
   description:
     "Secure, ad-free, fast typing practice with 10 fast fingers on FingerTyping. Improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
   keywords: [
-    "typing",
-    "typeing",
     "typing practice",
     "finger typing",
     "10 fast fingers",
@@ -26,12 +24,7 @@ export const metadata: Metadata = {
     "privacy-focused typing",
     "ad-free typing practice",
     "faster typing",
-    "typeing website",
-    "bangla typeing",
-    "urdu typeing",
-    "hindi typeing",
-    "arabic typeing",
-    "chinese typeing",
+    "typing website",
     "typing practice app",
     "typing exercises",
     "typing games",
@@ -63,18 +56,18 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
     apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
-    other: [
-      { rel: "icon", url: "/icon-192x192.png", sizes: "192x192" },
-      { rel: "icon", url: "/icon-512x512.png", sizes: "512x512" },
-    ],
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "FingerTyping - Secure, Fast, and Private Typing Practice",
     description:
-      "A secure, ad-free, typing practice app. With your 10 fast finger complete comprehensive lessons and tests to become a faster typist!",
+      "A secure, ad-free, typing practice app. With your 10 fast fingers, complete comprehensive lessons and tests to become a faster typist!",
     url: "https://www.fingertyping.com",
     siteName: "FingerTyping",
     images: [
@@ -82,6 +75,7 @@ export const metadata: Metadata = {
         url: "https://www.fingertyping.com/og-image.png",
         width: 1200,
         height: 630,
+        alt: "FingerTyping - Improve Your Typing Skills",
       },
     ],
     locale: "en_US",
@@ -91,8 +85,15 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FingerTyping - Secure, Fast, and Private Typing Practice",
     description:
-      "A secure, ad-free typing practice app. With your 10 fast finger complete comprehensive lessons and tests to become a faster typist!",
-    images: ["https://www.fingertyping.com/og-image.png"],
+      "A secure, ad-free typing practice app. With your 10 fast fingers, complete comprehensive lessons and tests to become a faster typist!",
+    images: [
+      {
+        url: "https://www.fingertyping.com/twitter-image.png",
+        width: 1200,
+        height: 630,
+        alt: "FingerTyping - Improve Your Typing Skills",
+      },
+    ],
     creator: "@fingertyping",
   },
   robots: {
@@ -106,6 +107,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  alternates: {
+    canonical: "https://www.fingertyping.com",
+  },
 };
 
 export default function RootLayout({
@@ -117,8 +121,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="canonical" href="https://www.fingertyping.com" />
-        {/* The icons will be automatically injected by the metadata */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={inter.className}>
         <script
@@ -131,7 +134,7 @@ export default function RootLayout({
               url: "https://www.fingertyping.com",
               logo: "https://www.fingertyping.com/logo.png",
               description:
-                "A secure, ads-free typing practice app. With your 10 fast finger complete comprehensive lessons and tests to become a faster typist!",
+                "A secure, ads-free typing practice app. With your 10 fast fingers, complete comprehensive lessons and tests to become a faster typist!",
               sameAs: [
                 "https://www.facebook.com/fingertypingofficial",
                 "https://t.me/fingertyping",
