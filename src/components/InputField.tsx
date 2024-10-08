@@ -23,6 +23,7 @@ const InputField: React.FC<InputFieldProps> = ({
   <div className="w-full mb-4">
     <input
       ref={inputRef}
+      name="input_words"
       value={inputValue}
       onChange={handleInputChange}
       placeholder={placeholder}
