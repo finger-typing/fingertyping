@@ -50,6 +50,7 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
       >
         <input
           type="text"
+          name="input_time"
           value={tempCustomTime}
           onChange={(e) => setTempCustomTime(e.target.value)}
           placeholder="Set time(s)"
@@ -73,6 +74,7 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
       >
         <input
           type="text"
+          name="input_text"
           value={customText}
           onChange={(e) => setCustomText(e.target.value)}
           placeholder="Enter your text"
