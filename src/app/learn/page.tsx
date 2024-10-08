@@ -298,7 +298,7 @@ const TypingPractice = () => {
 
         <div
           className={`text-center text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] font-bold mb-4 sm:mb-8 transition-all duration-300 ease-in-out ${
-            isCorrect ? "text-green-600" : "text-red-600"
+            isCorrect ? "text-green-500" : "text-red-600"
           } drop-shadow-2xl`}
         >
           {languageLetters[currentLanguage][currentWordIndex].toUpperCase()}
@@ -307,13 +307,14 @@ const TypingPractice = () => {
         <input
           ref={inputRef}
           type="text"
+          name="input_letter"
           value={input}
           onChange={handleInputChange}
           placeholder="Start typing to begin"
           className={`w-full text-xl sm:text-2xl p-3 sm:p-4 rounded-lg bg-gray-700 text-center focus:outline-none focus:ring-4 transition-all duration-300 ease-in-out ${
             isCorrect
               ? "focus:ring-green-500 border-green-400"
-              : "focus:ring-red-400 border-red-400"
+              : "focus:ring-red-500 border-red-600"
           }`}
         />
         <div className="mt-6 sm:mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
@@ -332,6 +333,7 @@ const TypingPractice = () => {
                     <div className="relative">
                       <input
                         type="text"
+                        name="search_lang"
                         placeholder="Search language"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
