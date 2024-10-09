@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
-  manifest: "/site.webmanifest",
+  manifest: "/manifest.json",
   openGraph: {
     title: "FingerTyping - Secure, Fast, and Private Typing Practice",
     description: "Secure and ads-free typing on FingerTyping. In Finger Typing With your 10 fast finger, improve your typing speed and accuracy with our comprehensive typing lessons and tests.",

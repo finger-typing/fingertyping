@@ -8,6 +8,7 @@ import {
   Clock,
   Trophy,
   Settings,
+  Home,
 } from "lucide-react";
 
 const languageLetters = {
@@ -201,8 +202,8 @@ const languageLetters = {
 
   Yiddish: "א ב ג ד ה ו ז ח ט י כ ל מ נ ס ע פ צ ק ר ש ת".split(""),
   Yoruba: "abcdefghijklmnopqrstuvwxyzẹéíóọù".split(""),
+  
 };
-
 type Language = keyof typeof languageLetters;
 
 const TypingPractice = () => {
@@ -290,16 +291,12 @@ const TypingPractice = () => {
       .padStart(2, "0")}:${(seconds % 60).toString().padStart(2, "0")}`;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-gray-200 p-4 sm:p-6">
-      <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-4 sm:p-8">
-        <h1 className="text-center text-3xl sm:text-4xl font-bold mb-4 sm:mb-8">
-          FingerTyping
-        </h1>
-
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-gray-200 p-4">
+      <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-6">
         <div
-          className={`text-center text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] font-bold mb-4 sm:mb-8 transition-all duration-300 ease-in-out ${
+          className={`text-center text-9xl sm:text-8xl md:text-9xl font-bold mb-6 transition-all duration-300 ease-in-out ${
             isCorrect ? "text-green-500" : "text-red-600"
-          } drop-shadow-2xl`}
+          }`}
         >
           {languageLetters[currentLanguage][currentWordIndex].toUpperCase()}
         </div>
@@ -311,92 +308,63 @@ const TypingPractice = () => {
           value={input}
           onChange={handleInputChange}
           placeholder="Start typing to begin"
-          className={`w-full text-xl sm:text-2xl p-3 sm:p-4 rounded-lg bg-gray-700 text-center focus:outline-none focus:ring-4 transition-all duration-300 ease-in-out ${
-            isCorrect
-              ? "focus:ring-green-500 border-green-400"
-              : "focus:ring-red-500 border-red-600"
+          className={`w-full text-xl sm:text-2xl p-3 rounded-lg bg-gray-700 text-center focus:outline-none transition-all duration-300 ease-in-out mb-6 ${
+            isCorrect ? "ring-2 ring-green-500" : "ring-2 ring-red-600"
           }`}
         />
-        <div className="mt-6 sm:mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-          <div className="col-span-2 sm:col-span-1">
-            <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => setShowLanguages(!showLanguages)}
-                className="w-full flex items-center justify-between space-x-1 p-2 sm:p-3 rounded-lg bg-gray-700 hover:bg-gray-600 transition-all duration-300"
-              >
-                <span className="font-semibold">{currentLanguage}</span>
-                <ChevronDown size={20} />
-              </button>
-              {showLanguages && (
-                <div className="absolute top-full left-0 mt-2 border rounded-lg shadow-lg z-10 bg-gray-700 w-full">
-                  <div className="p-2">
-                    <div className="relative">
-                      <input
-                        type="text"
-                        name="search_lang"
-                        placeholder="Search language"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full pl-8 pr-2 py-2 rounded-md bg-gray-600 text-gray-200 placeholder-gray-400"
-                      />
-                      <Search
-                        size={16}
-                        className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"
-                      />
-                    </div>
-                  </div>
-                  <div className="overflow-y-auto max-h-20">
-                    {filteredLanguages.map((lang) => (
-                      <div
-                        key={lang}
-                        onClick={() => {
-                          setCurrentLanguage(lang as Language);
-                          setShowLanguages(false);
-                          resetGame();
-                          setSearchTerm("");
-                        }}
-                        className="p-2 cursor-pointer hover:bg-gray-600 hover:rounded-lg transition-all duration-300"
-                      >
-                        {lang}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
 
-          <StatCard
-            icon={<Clock size={24} />}
-            label="Time"
-            value={formatTime(time)}
-          />
-          <StatCard
-            icon={<Trophy size={24} />}
-            label="Score"
-            value={score.toString()}
-          />
-          <StatCard
-            icon={<Settings size={24} />}
-            label="LPM"
-            value={wpm.toString()}
-          />
-        </div>
-
-        <div className="mt-6 sm:mt-8 flex justify-between items-center">
+        
+        <div className="grid grid-cols-2 gap-4 mb-1">
           <button
             onClick={resetGame}
-            className="text-yellow-400 hover:text-yellow-300 inline-flex items-center font-semibold text-lg sm:text-xl transition-colors duration-300"
+            className="bg-gray-700 hover:bg-gray-600 text-yellow-400 hover:text-yellow-300 inline-flex items-center justify-center font-semibold transition-colors duration-300 p-2 rounded-lg"
           >
             <RotateCcw size={20} className="mr-2" />
             Reset
           </button>
           <Link
             href="/"
-            className="text-green-400 hover:text-green-300 inline-block font-semibold text-lg sm:text-xl transition-colors duration-300"
+            className="bg-gray-700 hover:bg-gray-600 text-green-400 hover:text-green-300 inline-flex items-center justify-center font-semibold transition-colors duration-300 p-2 rounded-lg"
           >
-            ← Home
+            <Home size={20} className="mr-2" />
+            Home
           </Link>
+        </div>
+
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-2">
+          <StatCard
+            icon={<Trophy size={20} />}
+            label="Score"
+            value={score.toString()}
+          />
+
+          <StatCard
+            icon={<Clock size={20} />}
+            label="Time"
+            value={formatTime(time)}
+          />
+          <LanguageDropdown
+            currentLanguage={currentLanguage}
+            setCurrentLanguage={setCurrentLanguage}
+            showLanguages={showLanguages}
+            setShowLanguages={setShowLanguages}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            filteredLanguages={filteredLanguages}
+            resetGame={resetGame}
+            dropdownRef={dropdownRef}
+          />
+          <StatCard
+            icon={<Settings size={20} />}
+            label="LPM"
+            value={wpm.toString()}
+          />
+        </div>
+
+        
+        <div className="text-center mt-9 text-sm">
+          <h1>www.fingertyping.com</h1>
         </div>
       </div>
     </div>
@@ -412,12 +380,83 @@ const StatCard = ({
   label: string;
   value: string;
 }) => (
-  <div className="bg-gray-700 rounded-lg p-2 sm:p-2 text-center">
-    <div className="flex justify-center mb-1 sm:mb-1">{icon}</div>
-    <div className="text-sm sm:text-md  font-semibold text-gray-400">
-      {label}
+  <div className="bg-gray-700 rounded-lg p-2 flex flex-col items-center justify-center h-20">
+    <div className="flex items-center mb-1">
+      {icon}
+      <span className="ml-1 text-sm font-semibold text-gray-400">{label}</span>
     </div>
-    <div className="text-lg sm:text-2xl font-bold">{value}</div>
+    <div className="text-lg font-bold">{value}</div>
+  </div>
+);
+
+const LanguageDropdown = ({
+  currentLanguage,
+  setCurrentLanguage,
+  showLanguages,
+  setShowLanguages,
+  searchTerm,
+  setSearchTerm,
+  filteredLanguages,
+  resetGame,
+  dropdownRef,
+}: {
+  currentLanguage: Language;
+  setCurrentLanguage: React.Dispatch<React.SetStateAction<Language>>;
+  showLanguages: boolean;
+  setShowLanguages: React.Dispatch<React.SetStateAction<boolean>>;
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  filteredLanguages: string[];
+  resetGame: () => void;
+  dropdownRef: React.RefObject<HTMLDivElement>;
+}) => (
+  <div className="relative h-20" ref={dropdownRef}>
+    <button
+      onClick={() => setShowLanguages(!showLanguages)}
+      className="w-full h-full flex items-center justify-center space-x-1 rounded-lg bg-gray-700 hover:bg-gray-600 transition-all duration-300"
+    >
+      <span className="font-semibold">{currentLanguage}</span>
+      <ChevronDown size={20} />
+    </button>
+    {showLanguages && (
+      <div className="absolute left-0 right-0 mt-2 border rounded-lg shadow-lg z-10 bg-gray-700">
+        <div className="p-2">
+          <div className="relative">
+            <input
+              type="text"
+              name="search_lang"
+              placeholder="Search language"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-8 pr-2 py-2 rounded-md bg-gray-600 text-gray-200 placeholder-gray-400"
+            />
+            <Search
+              size={16}
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"
+            />
+          </div>
+        </div>
+
+
+        {/* Updated: Set max-height to 3 languages and allow scrolling */}
+        <div className="overflow-y-auto max-h-20">
+          {filteredLanguages.map((lang) => (
+            <div
+              key={lang}
+              onClick={() => {
+                setCurrentLanguage(lang as Language);
+                setShowLanguages(false);
+                resetGame();
+                setSearchTerm("");
+              }}
+              className="p-2 cursor-pointer hover:bg-gray-600 transition-all duration-300"
+            >
+              {lang}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
   </div>
 );
 
