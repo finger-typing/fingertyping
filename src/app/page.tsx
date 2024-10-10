@@ -14,6 +14,7 @@ import InputField from "../components/InputField";
 import GameControls from "../components/GameControls";
 import dynamic from "next/dynamic";
 import { Fingerprint } from "lucide-react";
+import { disableInspection } from "../utils/disableInspection";
 
 const Results = dynamic(() => import("../components/Results"), {
   ssr: false,
@@ -130,6 +131,11 @@ const TypingPractice: React.FC = () => {
     return () => clearInterval(interval);
   }, [gameState.hasStarted, gameState.isComplete, gameState.timeRemaining]);
 
+  //use for disable inspect element
+  useEffect(() => {
+    disableInspection();
+  }, []);
+
   // Improved function to calculate Words Per Minute (WPM) based on correctly typed words
   const calculateWPM = (): string => {
     const inputWords = gameState.inputValue.trim().split(/\s+/); // User's typed words
@@ -189,35 +195,70 @@ const TypingPractice: React.FC = () => {
     return { correctWords, wrongWords };
   };
 
+  //keystoke start
 
-  const keystrokes = () => {
-    const inputChars = gameState.inputValue.split("");
-    const referenceChars = gameState.randomText.split("");
-    
-    let correctKeystrokes = 0;
-    let wrongKeystrokes = 0;
-    
-    for (let i = 0; i < inputChars.length; i++) {
-      if (i < referenceChars.length) {
-        if (inputChars[i] === referenceChars[i]) {
-          correctKeystrokes++;
-        } else {
-          wrongKeystrokes++;
+const keystrokes = () => {
+  const inputWords = gameState.inputValue.trim().split(" ");
+  const referenceWords = gameState.randomText.trim().split(" ");
+
+  let correctKeystrokes = 0;
+  let wrongKeystrokes = 0;
+
+  for (let i = 0; i < inputWords.length; i++) {
+    const inputWord = inputWords[i];
+    const referenceWord = referenceWords[i] || "";
+
+    // Check all words except the last one
+    if (i < inputWords.length - 1) {
+      if (inputWord !== "") {
+        for (let j = 0; j < inputWord.length; j++) {
+          if (j < referenceWord.length) {
+            if (inputWord[j] === referenceWord[j]) {
+              correctKeystrokes++;
+            } else {
+              wrongKeystrokes++;
+            }
+          } else {
+            wrongKeystrokes++;
+          }
         }
-      } else {
-        wrongKeystrokes++;
+        if (inputWord.length < referenceWord.length) {
+          wrongKeystrokes += referenceWord.length - inputWord.length;
+        }
+      }
+    } else {
+      // For the last word, only count typed characters
+      if (inputWord !== "") {
+        for (let j = 0; j < inputWord.length; j++) {
+          if (j < referenceWord.length) {
+            if (inputWord[j] === referenceWord[j]) {
+              correctKeystrokes++;
+            } else {
+              wrongKeystrokes++;
+            }
+          } else {
+            wrongKeystrokes++;
+          }
+        }
       }
     }
-    
-    // Count backspaces as correct keystrokes
-    const backspaceCount = gameState.inputValue.length - inputChars.length;
-    correctKeystrokes += backspaceCount;
-    
-    return { correctKeystrokes, wrongKeystrokes };
-  };
-  
-  
-  
+  }
+
+  const backspaceCount =
+    gameState.inputValue.length - inputWords.join("").length;
+  correctKeystrokes += backspaceCount;
+
+  return { correctKeystrokes, wrongKeystrokes };
+};
+
+
+
+
+
+
+//keystrokes end 
+
+
 
 
   //alert for copying url

@@ -13,6 +13,32 @@ export const wordLists: { [key: string]: string[] } = {
     "water", // Water
     "home", // Home
     "city", // City
+    "apple", // Apple
+    "ball", // Ball
+    "cup", // Cup
+    "doll", // Doll
+    "egg", // Egg
+    "fan", // Fan
+    "gift", // Gift
+    "hat", // Hat
+    "ice", // Ice
+    "jump", // Jump
+    "kite", // Kite
+    "love", // Love
+    "moon", // Moon
+    "nest", // Nest
+    "owl", // Owl
+    "pen", // Pen
+    "quiz", // Quiz
+    "rain", // Rain
+    "star", // Star
+    "toy", // Toy
+    "up", // Up
+    "van", // Van
+    "wind", // Wind
+    "xray", // X-ray
+    "yarn", // Yarn
+    "zero", // Zero
     "food", // Food
     "lamp", // Lamp
     "desk", // Desk
@@ -42,9 +68,9 @@ export const wordLists: { [key: string]: string[] } = {
     "his",
     "her",
     "fire",
-    "dhaka",
-    "mumbai",
-    "dubai",
+    "Kolkata",
+    "Dubai",
+    "Lahore",
     "new",
     "old",
     "good",
@@ -63,8 +89,10 @@ export const wordLists: { [key: string]: string[] } = {
     "holiday", // Holiday
     "balance", // Balance
     "meeting", // Meeting
-    "America", // America
+    "Usa",
     "England", // England
+    "Bangladesh",
+   
     "our",
     "your",
     "his",
@@ -75,26 +103,33 @@ export const wordLists: { [key: string]: string[] } = {
   Bangla: [
     // Longer words (6 to 8 characters)
 
-    "বিচারক", // Judge
-    "বিশ্ববিদ্যালয়", // University
-    "পরীক্ষা", // Exam
-    "নির্মাণ", // Construction
-    "পরিবহন", // Transportation
     "বিশ্বাস", // Trust
-    "সংগীত", // Music
     "ভাষা", // Language
     "তথ্য", // Information
     "স্বপ্ন", // Dream
-    "পাঠ্যপুস্তক", // Textbook
+    "আকাশ", // Sky
+    "সূর্য", // Sun
+    "চাঁদ", // Moon
+    "তারা", // Star
+    "সমুদ্র", // Sea
+    "নদী", // River
+    "পাহাড়", // Mountain
+    "গাছ", // Tree
+    "ফুল", // Flower
+    "ফল", // Fruit
+    "পাখি", // Bird
+    "মাছ", // Fish
+    "বাঘ", // Tiger
+    "হাতি", // Elephant
+    "ঘর", // House
+    "স্কুল", // School
+    "বাজার", // Market
+    "খাবার", // Food
+    "পানি", // Water
+    "আগুন", // Fire
     "নতুন", // New
-    "সম্পর্ক", // Relationship
-    "অর্থনীতি", // Economics
     "সামাজিক", // Social
-    "বিচ্ছিন্ন", // Isolated
-    "উদ্ভাবন", // Innovation
     "মোবাইল", // Mobile
-    "উন্নয়ন", // Development
-    "স্বাস্থ্য", // Health
     "সফলতা", // Success
     "কৌশল", // Strategy
     "উপহার", // Gift

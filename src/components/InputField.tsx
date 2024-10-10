@@ -22,21 +22,25 @@ const InputField: React.FC<InputFieldProps> = ({
   placeholder = "Start typing here...", // Default placeholder text
   type = "text", // Default input type
 }) => (
-  <div className="w-full mb-4">
+  <div className="w-full mb-2">
     <input
       ref={inputRef} // Attach the ref to the input element
-      name="input_words" // Name attribute for the input
+      name="input_words_unique" // A unique name can help prevent browser autofill
       value={inputValue} // Bind the input value to the component's state
       onChange={handleInputChange} // Handle input changes
       placeholder={placeholder} // Set the placeholder text
       type={type} // Set the input type
-      className={`w-full p-4 border-2 rounded-lg text-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+      className={`w-full px-2 py-5 border-2 rounded-lg text-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${
         darkMode
           ? "border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-400" // Dark mode styles
           : "border-gray-400 bg-white text-gray-900 placeholder-gray-500" // Light mode styles
       }`}
       disabled={isComplete} // Disable the input if the game is complete
       aria-label="Typing input field" // Accessibility label
+      spellCheck={false} // Enable spell checking
+      autoComplete="off" // Prevent saving or suggesting previous inputs
+      autoCorrect="off" // Turn off autocorrect
+      autoCapitalize="none" // Turn off automatic capitalization
     />
   </div>
 );
