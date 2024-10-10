@@ -93,13 +93,13 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   return (
     <div
-      className={`w-full shadow-lg rounded-lg p-4 sm:p-6 mb-4 font-medium transition-colors duration-300 ${
+      className={`w-full shadow-lg rounded-lg p-2 sm:p-6 mb-4 font-medium transition-colors duration-300 ${
         darkMode
           ? "bg-gray-800 text-gray-200"
           : "bg-white border-2 border-gray-300 text-gray-800"
       }`}
     >
-      <div className="text-md sm:text-2xl md:text-[1.7rem] md:leading-9  leading-relaxed tracking-wide">
+      <div className="text-xl sm:text-2xl md:text-[1.8rem] md:leading-10  leading-relaxed tracking-wide">
         {getHighlightedText(randomText, inputValue)}
       </div>
     </div>
