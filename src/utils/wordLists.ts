@@ -37,32 +37,40 @@ export const wordLists: { [key: string]: string[] } = {
     "it",
     "they",
     "them",
-    "his",
-    "her",
-
-    // Longer words (6 to 8 characters)
     "holiday", // Holiday
     "friends", // Friends
+    "his",
+    "her",
+    "fire",
+    "dhaka",
+    "mumbai",
+    "dubai",
+    "new",
+    "old",
+    "good",
+    "bad",
     "library", // Library
     "station", // Station
     "journey", // Journey
-    "society", // Society
-    "support", // Support
-    "finance", // Finance
-    "painting", // Painting
     "solution", // Solution
+    "great",
+    "small",
+    "large",
+    "beautiful",
+    "one",
+    "two",
+    "three",
     "holiday", // Holiday
     "balance", // Balance
     "meeting", // Meeting
-    "organization", // Organization
-    "research", // Research
-    "university", // University
-    "information", // Information
-    "development", // Development
-    "communication", // Communication
-    "environment", // Environment
-    "management", // Management
-    "marketing", // Marketing
+    "America", // America
+    "England", // England
+    "our",
+    "your",
+    "his",
+    "Dhaka", // Dhaka
+
+    // Longer words (6 to 8 characters)
   ],
   Bangla: [
     // Longer words (6 to 8 characters)

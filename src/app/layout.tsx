@@ -11,7 +11,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "FingerTyping - Secure and Fast",
+  title: "Finger Typing - Secure and Fast",
   description: "Secure and ads-free typing on FingerTyping. In Finger Typing With your 10 fast finger, improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
   keywords: ["typing practice","typeing","fast typing", "typing","offline typeing app","finger typing", "10 fast fingers", "touch typing", "typing speed", "typing lessons", "typing tests", "improve typing", "keyboard skills", "secure typing app", "open source typing", "privacy-focused typing", "ad-free typing practice", "faster typing", "typing website", "typing practice app", "typing exercises", "typing games", "typing software", "keyboard training", "typing tutor", "speed typing", "typing test online", "fast typing techniques", "improve typing accuracy", "beginner typing lessons", "advanced typing courses", "typing competition", "touch typing practice", "typing drills", "typing improvement tips", "online typing challenges", "typing performance", "mobile typing practice", "typing accuracy tests", "high-speed typing"],
   authors: [{ name: "FingerTyping Team" }],
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "FingerTyping - Secure, Fast, and Private Typing Practice",
+    title: "Finger Typing - Secure, Fast, and Private Typing Practice",
     description: "Secure and ads-free typing on FingerTyping. In Finger Typing With your 10 fast finger, improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
     url: "https://www.fingertyping.com",
     siteName: "FingerTyping",
