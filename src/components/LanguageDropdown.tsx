@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown, Search } from "lucide-react";
 
+// Define the props for the LanguageDropdown component
 interface LanguageDropdownProps {
   language: string;
   setLanguage: (lang: string) => void;
@@ -12,10 +13,14 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
   setLanguage,
   darkMode,
 }) => {
+  // State to control the visibility of the language dropdown
   const [showLanguages, setShowLanguages] = useState(false);
+  // State to store the search term for filtering languages
   const [searchTerm, setSearchTerm] = useState("");
+  // Ref to detect clicks outside the dropdown
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  // List of available languages
   const languages = [
     "English",
     "Bangla",
@@ -63,10 +68,12 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
     "Zulu",
   ];
 
+  // Filter languages based on the search term
   const filteredLanguages = languages.filter((lang) =>
     lang.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Effect to handle clicks outside the dropdown to close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -85,6 +92,7 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
 
   return (
     <div className="relative" ref={dropdownRef}>
+      {/* Button to toggle the visibility of the language dropdown */}
       <button
         onClick={() => setShowLanguages(!showLanguages)}
         className={`flex items-center space-x-1 p-2 rounded border ${
@@ -95,6 +103,7 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
         <ChevronDown size={18} />
       </button>
 
+      {/* Dropdown menu for selecting a language */}
       {showLanguages && (
         <div
           className={`absolute top-full left-0 mt-1 border rounded shadow-lg z-10 ${
@@ -105,6 +114,7 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
         >
           <div className="p-2">
             <div className="relative">
+              {/* Input field for searching languages */}
               <input
                 type="text"
                 placeholder="Search language"
@@ -121,6 +131,7 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
             </div>
           </div>
           <div className="overflow-y-auto max-h-72 w-48">
+            {/* List of filtered languages */}
             {filteredLanguages.map((lang) => (
               <div
                 key={lang}

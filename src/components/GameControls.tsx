@@ -2,6 +2,7 @@ import React from "react";
 import { Clock, RotateCcw } from "lucide-react";
 import Button from "./Button";
 
+// Define the props interface for the GameControls component
 interface GameControlsProps {
   initializeGame: () => void;
   hasStarted: boolean;
@@ -14,6 +15,7 @@ const GameControls: React.FC<GameControlsProps> = ({
   timeRemaining,
   darkMode,
 }) => {
+  // Common classes for styling
   const commonClasses = `
     flex items-center justify-center space-x-2 px-4 py-3 rounded-md
     ${darkMode ? 'bg-gray-700 text-white' : 'bg-white text-gray-800'}
@@ -35,7 +37,7 @@ const GameControls: React.FC<GameControlsProps> = ({
         {/* Left spacer for large screens */}
         <div className="hidden lg:block lg:flex-1"></div>
 
-        {/* Time */}
+        {/* Time display */}
         <div className={`${commonClasses} text-center lg:flex-1`}>
           <Clock className={`${darkMode ? "text-green-400" : "text-green-600"} animate-pulse`} size={25} />
           <p
@@ -52,7 +54,7 @@ const GameControls: React.FC<GameControlsProps> = ({
           className={`${commonClasses} font-semibold lg:flex-1`}
         >
           <RotateCcw size={20} className="animate-spin-slow" />
-          <span className="text-sm sm:text-base lg:text-lg">Reset</span>
+          <span className="text-md sm:text-md lg:text-lg">Reset</span>
         </Button>
 
         {/* Right spacer for large screens */}
