@@ -131,13 +131,27 @@ const TypingPractice: React.FC = () => {
     return () => clearInterval(interval);
   }, [gameState.hasStarted, gameState.isComplete, gameState.timeRemaining]);
 
+  // Improved function to calculate Words Per Minute (WPM) based on correctly typed words
   const calculateWPM = (): string => {
-    const wordsTyped = gameState.inputValue
-      .trim()
-      .split(/\s+/)
-      .filter(Boolean).length;
+    const inputWords = gameState.inputValue.trim().split(/\s+/); // User's typed words
+    const referenceWords = gameState.randomText.trim().split(/\s+/); // Words from the original text
+
+    // Calculate the number of correctly typed words up to the length of user's input
+    let correctWords = 0;
+    for (let i = 0; i < inputWords.length; i++) {
+      if (inputWords[i] === referenceWords[i]) {
+        correctWords++;
+      }
+    }
+
+    // If time elapsed is zero, return "0.00" to prevent division by zero
     if (gameState.timeElapsed === 0) return "0.00";
-    return ((wordsTyped / gameState.timeElapsed) * 60).toFixed(2);
+
+    // Calculate WPM based on correct words only: (correctWords / timeElapsed in seconds) * 60
+    const wpm = correctWords / (gameState.timeElapsed / 60); // Convert timeElapsed to minutes
+
+    // Convert the result to a string with 2 decimal places using toFixed
+    return wpm.toFixed(2);
   };
 
   const calculateAccuracy = (): string => {
@@ -154,30 +168,60 @@ const TypingPractice: React.FC = () => {
   };
 
   const correctAndWrongWords = () => {
+    // Split input and reference words while trimming and filtering out extra spaces
     const inputWords = gameState.inputValue.trim().split(/\s+/).filter(Boolean);
-    const randomWords = gameState.randomText
-      .trim()
-      .split(/\s+/)
-      .slice(0, inputWords.length);
-    const correctWords = inputWords.filter(
-      (word, i) => word === randomWords[i]
-    ).length;
-    const wrongWords = inputWords.length - correctWords;
+    const referenceWords = gameState.randomText.trim().split(/\s+/);
+    // Initialize counters for correct and wrong words
+    let correctWords = 0;
+    let wrongWords = 0;
+    // Iterate over the input words and compare with the reference words
+    inputWords.forEach((word, index) => {
+      // Check if the word matches the corresponding reference word
+      if (word === referenceWords[index]) {
+        correctWords++;
+      } else {
+        wrongWords++;
+      }
+    });
+    // If the user has typed more words than the reference text, consider the extra as wrong
+    if (inputWords.length > referenceWords.length) {
+      wrongWords += inputWords.length - referenceWords.length;
+    }
     return { correctWords, wrongWords };
   };
 
+
   const keystrokes = () => {
     const inputChars = gameState.inputValue.split("");
-    const referenceChars = gameState.randomText
-      .slice(0, inputChars.length)
-      .split("");
-    const correctChars = inputChars.filter(
-      (char, i) => char === referenceChars[i]
-    ).length;
-    const wrongChars = inputChars.length - correctChars;
-    return { correctKeystrokes: correctChars, wrongKeystrokes: wrongChars };
+    const referenceChars = gameState.randomText.split("");
+    
+    let correctKeystrokes = 0;
+    let wrongKeystrokes = 0;
+    
+    for (let i = 0; i < inputChars.length; i++) {
+      if (i < referenceChars.length) {
+        if (inputChars[i] === referenceChars[i]) {
+          correctKeystrokes++;
+        } else {
+          wrongKeystrokes++;
+        }
+      } else {
+        wrongKeystrokes++;
+      }
+    }
+    
+    // Count backspaces as correct keystrokes
+    const backspaceCount = gameState.inputValue.length - inputChars.length;
+    correctKeystrokes += backspaceCount;
+    
+    return { correctKeystrokes, wrongKeystrokes };
   };
+  
+  
+  
 
+
+  //alert for copying url
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText("https://fingertyping.com");
@@ -257,7 +301,7 @@ const TypingPractice: React.FC = () => {
           }`}
         >
           <h2
-            className={`text-2xl font-bold mb-4 ${
+            className={`text-2xl font-bold mb-2 ${
               darkMode ? "text-white" : "text-gray-800"
             }`}
           >
@@ -273,7 +317,11 @@ const TypingPractice: React.FC = () => {
                 icon: FaTwitter,
                 bg: "bg-blue-500",
                 hover: "hover:bg-blue-700",
-                link: `https://twitter.com/intent/tweet?url=${encodeURIComponent('https://fingertyping.com')}&text=${encodeURIComponent('Secure and ads-free typing practice with FingerTyping.com! 🚀⌨️')}`,
+                link: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                  "https://fingertyping.com"
+                )}&text=${encodeURIComponent(
+                  "Secure and ads-free typing practice with FingerTyping.com! 🚀⌨️"
+                )}`,
               },
               {
                 icon: FaFacebookF,
@@ -309,7 +357,7 @@ const TypingPractice: React.FC = () => {
                 icon: FaFacebookMessenger,
                 bg: "bg-blue-500",
                 hover: "hover:bg-blue-600",
-                link:`https://www.messenger.com/`,
+                link: `https://www.messenger.com/`,
               },
             ].map((item, index) => (
               <a
@@ -325,9 +373,9 @@ const TypingPractice: React.FC = () => {
           </div>
           <button
             onClick={copyToClipboard}
-            className={`w-full py-1 px-4 font-bold text-md rounded-lg transition duration-300 flex items-center justify-center ${
+            className={`w-full py-2 px-2 font-md text-md rounded-lg transition duration-200 flex items-center justify-center ${
               darkMode
-                ? "bg-green-700 hover:bg-green-800 text-white"
+                ? "bg-green-600 hover:bg-green-700 text-white"
                 : "bg-green-500 hover:bg-green-600 text-white"
             }`}
           >

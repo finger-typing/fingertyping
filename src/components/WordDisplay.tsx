@@ -7,7 +7,7 @@ interface WordDisplayProps {
   darkMode: boolean;
 }
 
-export const WORDS_PER_LINE_SMALL = 25; // For small screens
+export const WORDS_PER_LINE_SMALL = 35; // For small screens
 export const WORDS_PER_LINE_LARGE = 70; // For medium and large screens
 export const LINES_TO_SHOW = 1;
 
