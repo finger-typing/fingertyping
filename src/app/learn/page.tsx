@@ -11,9 +11,10 @@ import {
   Home,
 } from "lucide-react";
 
+// Define the letters for each language
 const languageLetters = {
   English: "abcdefghijklmnopqrstuvwxyz".split(""),
-  Bangla: "অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ংঃ ঁ".split(""),
+  Bangla: "অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধধনপফবভমযরলশষসহড়ঢ়য়ংঃ ঁ".split(""),
   Abkhaz:
     "АаБбВвГгГьДдЕеЁёЖжЗзИиЙйКкҚқЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       ""
@@ -53,7 +54,7 @@ const languageLetters = {
   Greek: "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ".split(""),
   Hawaiian: "abcdefghijklmnopqrstuvwxyz'".split(""),
   Hebrew: "אבגדהוזחטיכלמנסעפצקרשת".split(""),
-  Hindi: "अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह".split(""),
+  Hindi: "अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतठधनपफबभमयरलवशषसह".split(""),
   Hungarian:
     "aábcdeéfghiíjklmnoóöőprstuúüűvwxyzAÁBCDEÉFGHIÍJKLMNOÓÖŐPRSTUÚÜŰVWXYZ".split(
       ""
@@ -70,7 +71,7 @@ const languageLetters = {
       ""
     ),
   Javanese: "ꦲꦤꦕꦢꦣꦟꦧꦩꦪꦫꦭꦮꦱꦶꦷꦸꦹꦺꦻꦼꦽꦾ".split(""),
-  Kannada: "ಅಆಇಈಉಊಋಎಏಐಒಓಔಕಖಗಘಙಚಛಜಝಞಟಠಡಢಣತಥದಧನಪಫಬಭಮಯರಲವಶಷಸಹ".split(""),
+  Kannada: "ಅಆಇಈಉಊಋಎಏಐಒಓಔಕಖಗಘಙಚಛಜಝಞಟಠಡಢಣತಥದಧಧನಪಫಬಭಮಯರಲವಶಷಸಹ಺಻಼ಽಾಿ".split(""),
   Kazakh:
     "АаӘәБбВвГгҒғДдЕеЁёЖжЗзИиЙйКкҚқЛлМмНнОоӨөПпРрСсТтҰұФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       ""
@@ -96,7 +97,7 @@ const languageLetters = {
     "abcdefghijklmnopqrstuvwxyzäéëüABCDEFGHIJKLMNOPQRSTUVWXYZÄÉËÜ".split(""),
   Macedonian: "абвгдѓежзијклмнњопрстќуфхцчџш".split(""),
 
-  Malayalam: "അആഇഈഉഊഋഎഏഐഒഓകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹ".split(""),
+  Malayalam: "അആഇഈഉഊഋഎഏഐഒഓകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനഩപഫബഭമയരറലളഴവശഷസഹഺ഻഼ഽാിീുൂൃൄൠൡൢൣ൤".split(""),
   Maltese: "abcdefghijklmnopqrstuvwxyzġħżABCDEFGHIJKLMNOPQRSTUVWXYZĠĦŻ".split(
     ""
   ),
@@ -104,12 +105,12 @@ const languageLetters = {
   Maori: "abcdefghijklmnopqrstuvwxyzāēīōūABCDEFGHIJKLMNOPQRSTUVWXYZĀĒĪŌŪ".split(
     ""
   ),
-  Marathi: "अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह".split(""),
+  Marathi: "अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतठधनपफबभमयरलवशषसह".split(""),
   Mongolian:
     "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоӨөПпРрСсТтУуФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       ""
     ),
-  Nepali: "अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह".split(""),
+  Nepali: "अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतठधनपफबभमयरलवशषसह".split(""),
   Navajo: "abcdefghijklmnopqrstuvwxyz'".split(""),
 
   Norwegian: "abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ".split(
@@ -119,10 +120,10 @@ const languageLetters = {
     "abcdefghijklmnopqrstuvwxyzàçèéíòóùüABCDEFGHIJKLMNOPQRSTUVWXYZÀÇÈÉÍÒÓÙÜ".split(
       ""
     ),
-  Odia: "ଅଆଇଈଉଊଋଏଐଓଔକଖଗଘଙଚଛଜଝଞଟଠଡଢଣତଥଦଧନପଫବଭମୟରଲଶଷସହ".split(""),
+  Odia: "ଅଆଇଈଉଊଋଏଐଓଔକଖଗଘଙଚଛଜଝଞଟଠଡଢଣତଥଦଧନ଩ପଫବଭମଯର଱ଲଳ଴ଵଶଷସହ଺଻଼ଽ".split(""),
 
   Pashto:
-    "ا ب پ ت ټ ث ج ځ چ ح خ د ډ دھ ذ ر ز س ش ص ض ط ظ ع غ ف ږ ق ك ګ ل م ن ڼ و ه ء ی ې ۍ".split(
+    "ا ب پ ت ټ ث ج ځ چ ح خ د ډ دھ ذ ر ز س ش ص ض ط ظ ع غ ف ږ ق ك ګ ل م ن ڻ و ه ء ی ې ۍ".split(
       ""
     ),
   Persian:
@@ -132,10 +133,10 @@ const languageLetters = {
       ""
     ),
   Portuguese:
-    "abcdefghijklmnopqrstuvwxyzáâãàçéêíóôõúüABCDEFGHIJKLMNOPQRSTUVWXYZÁÂÃÀÇÉÊÍÓÔÕÚÜ".split(
+    "abcdefghijklmnopqrstuvwxyzñáâãàçéêíóôõúüABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÂÃÀÇÉÊÍÓÔÕÚÜ".split(
       ""
     ),
-  Punjabi: "ਅਆਇਈਉਊਏਐਓਔਕਖਗਘਙਚਛਜਝਞਟਠਡਢਣਤਥਦਧਨਪਫਬਭਮਯਰਲਵਸਹ".split(""),
+  Punjabi: "ਅਆਇਈਉਊਏਐਓਔਕਖਗਘਙਚਛਜਝਞਟਠਡਢਣਤਥਦਧਨ਩ਪਫਬਭਮਯਰ਱ਲਲ਼਴ਵਸ਼਷ਸਹ਺਻਼਽ਾਿ".split(""),
 
   Romanian:
     "aăâbcdefghiîjklmnopqrsștțuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZĂÂÎȘȚ".split(""),
@@ -144,7 +145,7 @@ const languageLetters = {
       ""
     ),
   Russian: "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".split(""),
-  Sanskrit: "अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह".split(""),
+  Sanskrit: "अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतठधनपफबभमयरलवशषसह".split(""),
   ScotsGaelic:
     "abcdefghijklmnopqrstuvwxyzàèéìòùABCDEFGHIJKLMNOPQRSTUVWXYZÀÈÉÌÒÙ".split(
       ""
@@ -178,12 +179,12 @@ const languageLetters = {
     "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкҚқЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       ""
     ),
-  Tamil: "அஆஇஈஉஊஎஏஐஒஓஔக஖கஙச஛ஜ஝ஞட஠ட൦൧൨൩൪൫൬൭൮൯".split(""),
+  Tamil: "அஆஇஈஉஊஎஏஐஒஓஔக஖஗஘ஙச஛ஜ஝ஞட஠஡஢ணத஥த஧஧னபமயரலவஶஷஸஹ஺஻஼஽ாிீூ௃௄௠௡௢௣௤௥௦௧௨௩௪௫௬௭௮௯௰௱௲௳௴௵௶௷௸௹௺௻௼௽௾௿".split(""),
   Tatar:
     "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкҚқЛлМмНнОоӨөПпРрСсТтУуФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       ""
     ),
-  Telugu: "అఆఇఈఉఊఋఎఏఐఒఓఔకఖగఘఙచఛజఝఞటಠడಢణతథదధనపఫబభమయరలవశషసహ".split(""),
+  Telugu: "అఆఇఈఉఊఋఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధన఩పఫబభమయరఱలళఴవశషసహ఺఻఼ఽాిీుూృౄౠౡౢౣ౤౥౦౧౨౩౪౫౬౭౮౯౰౱౲౳౴౵౶౷౸౹౺౻౼౽౾౿".split(""),
   Thai: "กขคงจฉชซฌญฎฏฐฑฒนบปผฝพฟภมยรลวหออฮ".split(""),
   Tibetan: "ཀཁགངཅཆཇཉཏཐདནཔཕབམཙཚཛཝཞཟའཡརལཤསཧཨ".split(""),
   Tigrinya: "ሀሁሂሃሄህሆለሉሊላሌልሎመሙሚማሜምሞሠሡሢሣሤሥሦረሩሪራሬርሮ".split(""),
@@ -207,6 +208,7 @@ const languageLetters = {
 type Language = keyof typeof languageLetters;
 
 const TypingPractice = () => {
+  // State variables for game logic
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [input, setInput] = useState("");
   const [score, setScore] = useState(0);
@@ -221,8 +223,10 @@ const TypingPractice = () => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  // Focus input on component mount
   useEffect(() => inputRef.current?.focus(), []);
 
+  // Timer logic for the game
   useEffect(() => {
     if (isGameActive) {
       timerRef.current = setInterval(
@@ -233,6 +237,7 @@ const TypingPractice = () => {
     return () => clearInterval(timerRef.current!);
   }, [isGameActive]);
 
+  // Close language dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -246,11 +251,13 @@ const TypingPractice = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Calculate words per minute
   useEffect(
     () => setWpm(time > 0 ? Math.round((score / time) * 60) : 0),
     [score, time]
   );
 
+  // Handle input change and game logic
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase();
     const currentWord =
@@ -271,6 +278,7 @@ const TypingPractice = () => {
     }
   };
 
+  // Reset the game state
   const resetGame = () => {
     setCurrentWordIndex(0);
     setInput("");
@@ -281,10 +289,12 @@ const TypingPractice = () => {
     inputRef.current?.focus();
   };
 
+  // Filter languages based on search term
   const filteredLanguages = Object.keys(languageLetters).filter((lang) =>
     lang.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Format time for display
   const formatTime = (seconds: number) =>
     `${Math.floor(seconds / 60)
       .toString()
@@ -313,7 +323,6 @@ const TypingPractice = () => {
           }`}
         />
 
-        
         <div className="grid grid-cols-2 gap-4 mb-1">
           <button
             onClick={resetGame}
@@ -330,7 +339,6 @@ const TypingPractice = () => {
             Home
           </Link>
         </div>
-
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-2">
           <StatCard
@@ -362,7 +370,6 @@ const TypingPractice = () => {
           />
         </div>
 
-        
         <div className="text-center mt-9 text-sm">
           <h1>www.fingertyping.com</h1>
         </div>
@@ -371,6 +378,7 @@ const TypingPractice = () => {
   );
 };
 
+// Component to display statistics
 const StatCard = ({
   icon,
   label,
@@ -389,6 +397,7 @@ const StatCard = ({
   </div>
 );
 
+// Dropdown component for language selection
 const LanguageDropdown = ({
   currentLanguage,
   setCurrentLanguage,
@@ -436,7 +445,6 @@ const LanguageDropdown = ({
             />
           </div>
         </div>
-
 
         {/* Updated: Set max-height to 3 languages and allow scrolling */}
         <div className="overflow-y-auto max-h-20">

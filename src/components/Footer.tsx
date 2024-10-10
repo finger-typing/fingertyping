@@ -1,5 +1,6 @@
 import React from "react";
 
+// Import social media icons from react-icons
 import {
   FaTwitter,
   FaFacebookF,
@@ -9,11 +10,13 @@ import {
 } from "react-icons/fa";
 import { BsMessenger } from "react-icons/bs";
 
+// Define the props interface for the Footer component
 interface FooterProps {
   darkMode: boolean;
 }
 
 const Footer: React.FC<FooterProps> = () => {
+  // Array of social media links with their respective icons and URLs
   const socialLinks = [
     {
       icon: FaTwitter,
@@ -43,27 +46,28 @@ const Footer: React.FC<FooterProps> = () => {
 
   return (
     <footer className="w-full py-8 bg-gray-900 text-gray-300">
-      
-        <hr className="my-6 border-gray-700" />
-        <div className="flex flex-col sm:flex-row justify-between items-center px-10">
-          <p className="text-sm text-gray-500 mb-4 sm:mb-0 text-center sm:text-left">
-            © {new Date().getFullYear()} FingerTyping
-          </p>
-          <div className="flex space-x-2">
-            {socialLinks.map(({ icon: Icon, href }, index) => (
-              <a
-                key={index}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full text-gray-500 hover:text-white transition-colors duration-300"
-              >
-                <Icon className="h-5 w-5" />
-              </a>
-            ))}
-          </div>
+      <hr className="my-6 border-gray-700" />
+      <div className="flex flex-col sm:flex-row justify-between items-center px-10">
+        {/* Copyright notice */}
+        <p className="text-sm text-gray-500 mb-4 sm:mb-0 text-center sm:text-left">
+          © {new Date().getFullYear()} FingerTyping
+        </p>
+        {/* Social media links */}
+        <div className="flex space-x-2">
+          {socialLinks.map(({ icon: Icon, href }, index) => (
+            <a
+              title="social media share"
+              key={index}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full text-gray-500 hover:text-white transition-colors duration-300"
+            >
+              <Icon className="h-5 w-5" />
+            </a>
+          ))}
         </div>
-     
+      </div>
     </footer>
   );
 };

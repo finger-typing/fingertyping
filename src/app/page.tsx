@@ -1,5 +1,4 @@
 "use client";
-
 import React, {
   useState,
   useEffect,
@@ -361,6 +360,7 @@ const TypingPractice: React.FC = () => {
               },
             ].map((item, index) => (
               <a
+                title="social media share"
                 key={index}
                 href={item.link}
                 target="_blank"

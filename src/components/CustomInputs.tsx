@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+// Component props interface
 interface CustomInputsProps {
   darkMode: boolean;
   onCustomTextSubmit: (text: string) => void;
@@ -15,9 +16,12 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
   customTime,
   isMobile = false,
 }) => {
+  // State for custom text input
   const [customText, setCustomText] = useState("");
+  // State for temporary custom time input
   const [tempCustomTime, setTempCustomTime] = useState(customTime.toString());
 
+  // Handler for custom text submission
   const handleCustomTextSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (customText.trim()) {
@@ -26,6 +30,7 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
     }
   };
 
+  // Handler for custom time submission
   const handleCustomTimeSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const newTime = parseInt(tempCustomTime, 10);
@@ -34,16 +39,19 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
     }
   };
 
+  // Dynamic class for input fields based on dark mode
   const inputClass = `p-2 border ${
     darkMode
       ? "bg-gray-700 text-white border-gray-600"
       : "bg-white text-black border-gray-300"
   }`;
 
+  // Dynamic class for buttons
   const buttonClass = (bgColor: string) => `p-2 border ${bgColor} text-white`;
 
   return (
     <>
+      {/* Custom Time Input Form */}
       <form
         onSubmit={handleCustomTimeSubmit}
         className={isMobile ? "flex flex-col-2" : "flex items-center"}
@@ -68,6 +76,7 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
         </button>
       </form>
 
+      {/* Custom Text Input Form */}
       <form
         onSubmit={handleCustomTextSubmit}
         className={isMobile ? "flex flex-col-2 mt-2 " : "flex items-center"}

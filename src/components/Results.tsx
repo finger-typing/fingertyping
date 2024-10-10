@@ -1,15 +1,17 @@
 import React from "react";
 
+// Define the props interface for the Results component
 interface ResultsProps {
-  isComplete: boolean;
-  timeElapsed: number;
-  calculateWPM: () => string;
-  calculateAccuracy: () => string;
-  correctAndWrongWords: { correctWords: number; wrongWords: number };
-  keystrokes: { correctKeystrokes: number; wrongKeystrokes: number };
-  darkMode: boolean;
+  isComplete: boolean; // Indicates if the results should be displayed
+  timeElapsed: number; // Time taken for the task
+  calculateWPM: () => string; // Function to calculate words per minute
+  calculateAccuracy: () => string; // Function to calculate accuracy percentage
+  correctAndWrongWords: { correctWords: number; wrongWords: number }; // Object containing correct and wrong word counts
+  keystrokes: { correctKeystrokes: number; wrongKeystrokes: number }; // Object containing correct and wrong keystroke counts
+  darkMode: boolean; // Flag for dark mode styling
 }
 
+// Results component definition
 const Results: React.FC<ResultsProps> = ({
   isComplete,
   timeElapsed,
@@ -19,6 +21,7 @@ const Results: React.FC<ResultsProps> = ({
   keystrokes,
   darkMode,
 }) => {
+  // If the task is not complete, do not render the results
   if (!isComplete) return null;
 
   return (
@@ -27,7 +30,7 @@ const Results: React.FC<ResultsProps> = ({
         darkMode ? "bg-gray-800 text-gray-200" : "bg-white"
       }`}
     >
-      {/* Time, WPM, Accuracy */}
+      {/* Display Time, WPM, and Accuracy */}
       <div className="flex flex-wrap w-full gap-2 md:gap-4">
         <div
           className={`flex-1 text-center p-2 rounded-lg ${
@@ -59,7 +62,7 @@ const Results: React.FC<ResultsProps> = ({
         </div>
       </div>
 
-      {/* Correct and Wrong Words */}
+      {/* Display Correct and Wrong Words */}
       <div className="flex flex-wrap w-full gap-2 mt-2">
         <div
           className={`flex-1 text-center p-2 rounded-lg ${
@@ -81,7 +84,7 @@ const Results: React.FC<ResultsProps> = ({
         </div>
       </div>
 
-      {/* Correct and Wrong Keystrokes */}
+      {/* Display Correct and Wrong Keystrokes */}
       <div className="flex flex-wrap w-full gap-2 mt-2">
         <div
           className={`flex-1 text-center p-2 rounded-lg ${

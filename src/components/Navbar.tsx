@@ -5,6 +5,7 @@ import LanguageDropdown from "./LanguageDropdown";
 import CustomInputs from "./CustomInputs";
 import DarkModeToggle from "./DarkModeToggle";
 
+// Define the props interface for the Navbar component
 interface NavbarProps {
   language: string;
   setLanguage: (lang: string) => void;
@@ -24,29 +25,36 @@ const Navbar: React.FC<NavbarProps> = ({
   onCustomTimeSubmit,
   customTime,
 }) => {
+  // State to manage mobile menu visibility
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Function to open feedback form in a new tab
   const sendFeedback = () => {
     window.open("https://forms.gle/D2QzunVpsg7nz9mc8", "_blank");
   };
 
+  // Common button classes
   const buttonClasses = `h-8 px-1 text-xs sm:px-2 md:px-3 rounded transition duration-200 ease-in-out flex items-center justify-center ${
     darkMode
       ? "bg-gray-700 text-white border border-gray-300"
       : "bg-gray-100 text-black border border-gray-600"
   }`;
 
+  // Common navigation item classes
   const navItemClasses = `h-8 px-1 text-xs sm:px-2 md:px-3 rounded flex items-center justify-center transition duration-200 ease-in-out`;
 
   return (
     <>
+      {/* Main navigation bar */}
       <nav
         className={`w-full py-2 px-1 sm:px-4 ${
           darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
         } transition duration-300 ease-in-out relative`}
       >
+        {/* Navigation content */}
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-1 sm:space-x-2">
+            {/* Mobile menu toggle button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`xl:hidden ${
@@ -66,12 +74,12 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Learn button - always visible */}
-          
           <Link href="/learn" className={`${buttonClasses}`}>
             <BookOpen size={16} className="mr-1" />
             <span>Learn</span>
           </Link>
 
+          {/* Custom inputs and feedback button for larger screens */}
           <div className="hidden xl:flex items-center space-x-2 xl:ml-8">
             <CustomInputs
               darkMode={darkMode}
@@ -83,7 +91,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <div className="hidden xl:flex items-center space-x-2 xl:ml-8">
-          <button
+            <button
               onClick={sendFeedback}
               className={`${buttonClasses}`}
             >
@@ -104,6 +112,7 @@ const Navbar: React.FC<NavbarProps> = ({
         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-200 via-purple-600 to-blue-200"></div>
       </nav>
 
+      {/* Mobile menu */}
       {isMenuOpen && (
         <div
           className={`fixed top-0 left-0 w-full z-50 ${
@@ -119,6 +128,7 @@ const Navbar: React.FC<NavbarProps> = ({
               >
                 Menu
               </h2>
+              {/* Close menu button */}
               <button
                 title="Close menu"
                 onClick={() => setIsMenuOpen(false)}
@@ -129,6 +139,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 <X size={25} />
               </button>
             </div>
+            {/* Custom inputs for mobile */}
             <CustomInputs
               darkMode={darkMode}
               onCustomTextSubmit={onCustomTextSubmit}
@@ -136,6 +147,7 @@ const Navbar: React.FC<NavbarProps> = ({
               customTime={customTime}
               isMobile={true}
             />
+            {/* Feedback button for mobile */}
             <button
               onClick={sendFeedback}
               className={`mt-4 ${buttonClasses} w-full`}

@@ -10,6 +10,7 @@ export const viewport: Viewport = {
   initialScale: 1.0,
 };
 
+// Metadata for SEO and social media sharing
 export const metadata: Metadata = {
   title: "Finger Typing - Secure and Fast",
   description: "Secure and ads-free typing on FingerTyping. In Finger Typing With your 10 fast finger, improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
