@@ -97,7 +97,10 @@ const languageLetters = {
     "abcdefghijklmnopqrstuvwxyzäéëüABCDEFGHIJKLMNOPQRSTUVWXYZÄÉËÜ".split(""),
   Macedonian: "абвгдѓежзијклмнњопрстќуфхцчџш".split(""),
 
-  Malayalam: "അആഇഈഉഊഋഎഏഐഒഓകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനഩപഫബഭമയരറലളഴവശഷസഹഺ഻഼ഽാിീുൂൃൄൠൡൢൣ൤".split(""),
+  Malayalam:
+    "അആഇഈഉഊഋഎഏഐഒഓകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനഩപഫബഭമയരറലളഴവശഷസഹഺ഻഼ഽാിീുൂൃൄൠൡൢൣ൤".split(
+      ""
+    ),
   Maltese: "abcdefghijklmnopqrstuvwxyzġħżABCDEFGHIJKLMNOPQRSTUVWXYZĠĦŻ".split(
     ""
   ),
@@ -179,12 +182,18 @@ const languageLetters = {
     "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкҚқЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       ""
     ),
-  Tamil: "அஆஇஈஉஊஎஏஐஒஓஔக஖஗஘ஙச஛ஜ஝ஞட஠஡஢ணத஥த஧஧னபமயரலவஶஷஸஹ஺஻஼஽ாிீூ௃௄௠௡௢௣௤௥௦௧௨௩௪௫௬௭௮௯௰௱௲௳௴௵௶௷௸௹௺௻௼௽௾௿".split(""),
+  Tamil:
+    "அஆஇஈஉஊஎஏஐஒஓஔக஖஗஘ஙச஛ஜ஝ஞட஠஡஢ணத஥த஧஧னபமயரலவஶஷஸஹ஺஻஼஽ாிீூ௃௄௠௡௢௣௤௥௦௧௨௩௪௫௬௭௮௯௰௱௲௳௴௵௶௷௸௹௺௻௼௽௾௿".split(
+      ""
+    ),
   Tatar:
     "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкҚқЛлМмНнОоӨөПпРрСсТтУуФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       ""
     ),
-  Telugu: "అఆఇఈఉఊఋఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధన఩పఫబభమయరఱలళఴవశషసహ఺఻఼ఽాిీుూృౄౠౡౢౣ౤౥౦౧౨౩౪౫౬౭౮౯౰౱౲౳౴౵౶౷౸౹౺౻౼౽౾౿".split(""),
+  Telugu:
+    "అఆఇఈఉఊఋఎఏఐఒఓఔకఖగఘఙచఛజఝఞటఠడఢణతథదధన఩పఫబభమయరఱలళఴవశషసహ఺఻఼ఽాిీుూృౄౠౡౢౣ౤౥౦౧౨౩౪౫౬౭౮౯౰౱౲౳౴౵౶౷౸౹౺౻౼౽౾౿".split(
+      ""
+    ),
   Thai: "กขคงจฉชซฌญฎฏฐฑฒนบปผฝพฟภมยรลวหออฮ".split(""),
   Tibetan: "ཀཁགངཅཆཇཉཏཐདནཔཕབམཙཚཛཝཞཟའཡརལཤསཧཨ".split(""),
   Tigrinya: "ሀሁሂሃሄህሆለሉሊላሌልሎመሙሚማሜምሞሠሡሢሣሤሥሦረሩሪራሬርሮ".split(""),
@@ -203,7 +212,6 @@ const languageLetters = {
 
   Yiddish: "א ב ג ד ה ו ז ח ט י כ ל מ נ ס ע פ צ ק ר ש ת".split(""),
   Yoruba: "abcdefghijklmnopqrstuvwxyzẹéíóọù".split(""),
-  
 };
 type Language = keyof typeof languageLetters;
 
@@ -342,9 +350,9 @@ const TypingPractice = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-2">
           <StatCard
-            icon={<Trophy size={20} />}
-            label="Score"
-            value={score.toString()}
+            icon={<Settings size={20} />}
+            label="LPM"
+            value={wpm.toString()}
           />
 
           <StatCard
@@ -363,10 +371,11 @@ const TypingPractice = () => {
             resetGame={resetGame}
             dropdownRef={dropdownRef}
           />
+
           <StatCard
-            icon={<Settings size={20} />}
-            label="LPM"
-            value={wpm.toString()}
+            icon={<Trophy size={20} />}
+            label="Score"
+            value={score.toString()}
           />
         </div>
 

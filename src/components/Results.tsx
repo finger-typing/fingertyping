@@ -38,7 +38,7 @@ const Results: React.FC<ResultsProps> = ({
           }`}
         >
           <p className="text-sm font-semibold">Time</p>
-          <p className="text-sm font-bold">{timeElapsed} s</p>
+          <p className="text-lg font-bold text-green-500">{timeElapsed}s</p>
         </div>
         <div
           className={`flex-1 text-center p-2 rounded-lg ${
@@ -48,7 +48,7 @@ const Results: React.FC<ResultsProps> = ({
           }`}
         >
           <p className="text-sm font-semibold">WPM</p>
-          <p className="text-lg font-bold">{calculateWPM()}</p>
+          <p className="text-lg font-bold text-green-500">{calculateWPM()}</p>
         </div>
         <div
           className={`flex-1 text-center p-2 rounded-lg ${
@@ -58,7 +58,7 @@ const Results: React.FC<ResultsProps> = ({
           }`}
         >
           <p className="text-sm font-semibold">Accuracy</p>
-          <p className="text-lg font-bold">{calculateAccuracy()}%</p>
+          <p className="text-lg font-bold text-green-500">{calculateAccuracy()}%</p>
         </div>
       </div>
 
@@ -70,7 +70,7 @@ const Results: React.FC<ResultsProps> = ({
           }`}
         >
           <p className="text-sm font-semibold">Correct Words</p>
-          <p className="text-lg font-bold">
+          <p className="text-lg font-bold text-green-500">
             {correctAndWrongWords.correctWords}
           </p>
         </div>
@@ -80,7 +80,7 @@ const Results: React.FC<ResultsProps> = ({
           }`}
         >
           <p className="text-sm font-semibold">Wrong Words</p>
-          <p className="text-lg font-bold">{correctAndWrongWords.wrongWords}</p>
+          <p className="text-lg font-bold text-red-500">{correctAndWrongWords.wrongWords}</p>
         </div>
       </div>
 
@@ -94,7 +94,7 @@ const Results: React.FC<ResultsProps> = ({
           }`}
         >
           <p className="text-sm font-semibold">Correct Keystrokes</p>
-          <p className="text-lg font-bold">{keystrokes.correctKeystrokes}</p>
+          <p className="text-lg font-bold text-green-500">{keystrokes.correctKeystrokes}</p>
         </div>
         <div
           className={`flex-1 text-center p-2 rounded-lg ${
@@ -104,7 +104,7 @@ const Results: React.FC<ResultsProps> = ({
           }`}
         >
           <p className="text-sm font-semibold">Wrong Keystrokes</p>
-          <p className="text-lg font-bold">{keystrokes.wrongKeystrokes}</p>
+          <p className="text-lg font-bold text-red-500">{keystrokes.wrongKeystrokes}</p>
         </div>
       </div>
     </div>
