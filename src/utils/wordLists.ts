@@ -1,14 +1,14 @@
 export const wordLists: { [key: string]: string[] } = {
   English: [
     // Shorter words (3 to 5 characters)
-    "go", // Go
+    "go,", // Go
     "To", // To
     "my", // My
     "for", // For
     "the", // The
     "of", // Of
     "cat", // Cat
-    "dog", // Dog
+    "dog.", // Dog
     "book", // Book
     "water", // Water
     "home", // Home
@@ -19,7 +19,7 @@ export const wordLists: { [key: string]: string[] } = {
     "doll", // Doll
     "egg", // Egg
     "fan", // Fan
-    "gift", // Gift
+    "gift,", // Gift
     "hat", // Hat
     "ice", // Ice
     "jump", // Jump
@@ -45,7 +45,7 @@ export const wordLists: { [key: string]: string[] } = {
     "door", // Door
     "tree", // Tree
     "fish", // Fish
-    "hand", // Hand
+    "hand.", // Hand
     "road", // Road
     "sun", // Sun
     "sky", // Sky
@@ -68,7 +68,6 @@ export const wordLists: { [key: string]: string[] } = {
     "his",
     "her",
     "fire",
-    "Kolkata",
     "Dubai",
     "Lahore",
     "new",
@@ -77,8 +76,7 @@ export const wordLists: { [key: string]: string[] } = {
     "bad",
     "library", // Library
     "station", // Station
-    "journey", // Journey
-    "solution", // Solution
+    "solution.", // Solution
     "great",
     "small",
     "large",
@@ -86,17 +84,12 @@ export const wordLists: { [key: string]: string[] } = {
     "one",
     "two",
     "three",
-    "holiday", // Holiday
     "balance", // Balance
     "meeting", // Meeting
-    "Usa",
-    "England", // England
-    "Bangladesh",
-   
+    "Barishal.", // Barishal
     "our",
     "your",
     "his",
-    "Dhaka", // Dhaka
 
     // Longer words (6 to 8 characters)
   ],
