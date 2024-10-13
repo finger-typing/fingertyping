@@ -32,6 +32,7 @@ import {
 } from "react-icons/fa";
 
 const TypingPractice: React.FC = () => {
+  // State to manage the game's various properties
   const [gameState, setGameState] = useState({
     language: "English",
     inputValue: "",
@@ -45,10 +46,12 @@ const TypingPractice: React.FC = () => {
     isCustomText: false,
   });
 
+  // State for dark mode and custom time settings
   const [darkMode, setDarkMode] = useState(true);
   const [customTime, setCustomTime] = useState(60);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Function to initialize or reset the game
   const initializeGame = useCallback(() => {
     setGameState((prev) => ({
       ...prev,
@@ -69,10 +72,12 @@ const TypingPractice: React.FC = () => {
     inputRef.current?.focus();
   }, [customTime]);
 
+  // Effect to initialize game when language changes
   useEffect(() => {
     initializeGame();
   }, [gameState.language, initializeGame]);
 
+  // Handler for custom text submission
   const handleCustomTextSubmit = (customText: string) => {
     setGameState((prev) => ({
       ...prev,
@@ -89,6 +94,7 @@ const TypingPractice: React.FC = () => {
     inputRef.current?.focus();
   };
 
+  // Handler for custom time submission
   const handleCustomTimeSubmit = (newTime: number) => {
     setCustomTime(newTime);
     setGameState((prev) => ({
@@ -97,6 +103,7 @@ const TypingPractice: React.FC = () => {
     }));
   };
 
+  // Handler for input changes during typing
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setGameState((prev) => ({
@@ -112,6 +119,7 @@ const TypingPractice: React.FC = () => {
     }));
   };
 
+  // Effect to manage game timer
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (
@@ -131,12 +139,12 @@ const TypingPractice: React.FC = () => {
     return () => clearInterval(interval);
   }, [gameState.hasStarted, gameState.isComplete, gameState.timeRemaining]);
 
-  //use for disable inspect element
+  // Effect to disable inspection (for security purposes)
   useEffect(() => {
     disableInspection();
   }, []);
 
-  // Improved function to calculate Words Per Minute (WPM) based on correctly typed words
+  // Function to calculate Words Per Minute (WPM)
   const calculateWPM = (): string => {
     const inputWords = gameState.inputValue.trim().split(/\s+/); // User's typed words
     const referenceWords = gameState.randomText.trim().split(/\s+/); // Words from the original text
@@ -159,6 +167,7 @@ const TypingPractice: React.FC = () => {
     return wpm.toFixed(2);
   };
 
+  // Function to calculate typing accuracy
   const calculateAccuracy = (): string => {
     const inputWords = gameState.inputValue.trim().split(/\s+/).filter(Boolean);
     const randomWords = gameState.randomText
@@ -172,6 +181,7 @@ const TypingPractice: React.FC = () => {
     return ((correctWords / inputWords.length) * 100).toFixed(2);
   };
 
+  // Function to count correct and wrong words
   const correctAndWrongWords = () => {
     // Split input and reference words while trimming and filtering out extra spaces
     const inputWords = gameState.inputValue.trim().split(/\s+/).filter(Boolean);
@@ -195,73 +205,62 @@ const TypingPractice: React.FC = () => {
     return { correctWords, wrongWords };
   };
 
-  //keystoke start
+  // Function to count correct and wrong keystrokes
+  const keystrokes = () => {
+    const inputWords = gameState.inputValue.trim().split(" ");
+    const referenceWords = gameState.randomText.trim().split(" ");
 
-const keystrokes = () => {
-  const inputWords = gameState.inputValue.trim().split(" ");
-  const referenceWords = gameState.randomText.trim().split(" ");
+    let correctKeystrokes = 0;
+    let wrongKeystrokes = 0;
 
-  let correctKeystrokes = 0;
-  let wrongKeystrokes = 0;
+    for (let i = 0; i < inputWords.length; i++) {
+      const inputWord = inputWords[i];
+      const referenceWord = referenceWords[i] || "";
 
-  for (let i = 0; i < inputWords.length; i++) {
-    const inputWord = inputWords[i];
-    const referenceWord = referenceWords[i] || "";
-
-    // Check all words except the last one
-    if (i < inputWords.length - 1) {
-      if (inputWord !== "") {
-        for (let j = 0; j < inputWord.length; j++) {
-          if (j < referenceWord.length) {
-            if (inputWord[j] === referenceWord[j]) {
-              correctKeystrokes++;
+      // Check all words except the last one
+      if (i < inputWords.length - 1) {
+        if (inputWord !== "") {
+          for (let j = 0; j < inputWord.length; j++) {
+            if (j < referenceWord.length) {
+              if (inputWord[j] === referenceWord[j]) {
+                correctKeystrokes++;
+              } else {
+                wrongKeystrokes++;
+              }
             } else {
               wrongKeystrokes++;
             }
-          } else {
-            wrongKeystrokes++;
+          }
+          if (inputWord.length < referenceWord.length) {
+            wrongKeystrokes += referenceWord.length - inputWord.length;
           }
         }
-        if (inputWord.length < referenceWord.length) {
-          wrongKeystrokes += referenceWord.length - inputWord.length;
-        }
-      }
-    } else {
-      // For the last word, only count typed characters
-      if (inputWord !== "") {
-        for (let j = 0; j < inputWord.length; j++) {
-          if (j < referenceWord.length) {
-            if (inputWord[j] === referenceWord[j]) {
-              correctKeystrokes++;
+      } else {
+        // For the last word, only count typed characters
+        if (inputWord !== "") {
+          for (let j = 0; j < inputWord.length; j++) {
+            if (j < referenceWord.length) {
+              if (inputWord[j] === referenceWord[j]) {
+                correctKeystrokes++;
+              } else {
+                wrongKeystrokes++;
+              }
             } else {
               wrongKeystrokes++;
             }
-          } else {
-            wrongKeystrokes++;
           }
         }
       }
     }
-  }
 
-  const backspaceCount =
-    gameState.inputValue.length - inputWords.join("").length;
-  correctKeystrokes += backspaceCount;
+    const backspaceCount =
+      gameState.inputValue.length - inputWords.join("").length;
+    correctKeystrokes += backspaceCount;
 
-  return { correctKeystrokes, wrongKeystrokes };
-};
+    return { correctKeystrokes, wrongKeystrokes };
+  };
 
-
-
-
-
-
-//keystrokes end 
-
-
-
-
-  //alert for copying url
+  // Function to copy website URL to clipboard
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText("https://fingertyping.com");
@@ -271,9 +270,11 @@ const keystrokes = () => {
     }
   };
 
+  // Array of links for the footer
   const links = [
     { href: "/learn", text: "Learn to Type", external: false },
     { href: "/about", text: "About Us", external: false },
+    { href: "/blog", text: "Blog", external: false },
     { href: "/privacy", text: "Privacy Policy", external: false },
     { href: "/terms", text: "Terms and Conditions", external: false },
     { href: "/contact", text: "Contact Us", external: false },
@@ -285,6 +286,7 @@ const keystrokes = () => {
         darkMode ? "bg-gray-900 text-gray-200" : "bg-gray-50 text-gray-900"
       }`}
     >
+      {/* Navbar component */}
       <Navbar
         language={gameState.language}
         setLanguage={(lang) =>
@@ -298,6 +300,7 @@ const keystrokes = () => {
       />
 
       <main className="w-full max-w-3xl px-4 mt-4">
+        {/* WordDisplay component to show the text to type */}
         <WordDisplay
           randomText={gameState.randomText}
           inputValue={gameState.inputValue}
@@ -305,6 +308,7 @@ const keystrokes = () => {
           darkMode={darkMode}
         />
 
+        {/* InputField component for user typing */}
         <InputField
           inputValue={gameState.inputValue}
           handleInputChange={handleInputChange}
@@ -315,6 +319,7 @@ const keystrokes = () => {
           placeholder="Start typing to begin the game..."
         />
 
+        {/* GameControls component for game control buttons */}
         <GameControls
           initializeGame={initializeGame}
           hasStarted={gameState.hasStarted}
@@ -322,6 +327,7 @@ const keystrokes = () => {
           darkMode={darkMode}
         />
 
+        {/* Results component to display typing results */}
         {gameState.isComplete && (
           <Results
             isComplete={gameState.isComplete}
@@ -334,7 +340,7 @@ const keystrokes = () => {
           />
         )}
 
-        {/* Redesigned Share This Tool Section */}
+        {/* Share This Tool Section */}
         <section
           className={`mt-10 p-6 rounded-xl shadow-lg ${
             darkMode ? "bg-gray-800" : "bg-white"
@@ -397,7 +403,11 @@ const keystrokes = () => {
                 icon: FaFacebookMessenger,
                 bg: "bg-blue-500",
                 hover: "hover:bg-blue-600",
-                link: `https://www.messenger.com/`,
+                link: `https://www.facebook.com/dialog/send?link=${encodeURIComponent(
+                  "https://fingertyping.com"
+                )}&app_id=291494419107518&redirect_uri=${encodeURIComponent(
+                  "https://fingertyping.com"
+                )}`,
               },
             ].map((item, index) => (
               <a
