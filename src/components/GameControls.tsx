@@ -25,11 +25,11 @@ const GameControls: React.FC<GameControlsProps> = ({
   `;
 
   return (
-    <div 
+    <div
       className={`
         w-full flex flex-col lg:flex-row justify-between items-center
         mb-2 p-3 rounded-lg shadow-lg transition-all duration-300
-        ${darkMode ? 'bg-gray-700/70' : 'bg-gray-200/70'}
+        ${darkMode ? "bg-gray-700/10" : "bg-gray-100/10"}
         backdrop-filter backdrop-blur-lg
       `}
     >
@@ -39,9 +39,14 @@ const GameControls: React.FC<GameControlsProps> = ({
 
         {/* Time display */}
         <div className={`${commonClasses} text-center lg:flex-1`}>
-          <Clock className={`${darkMode ? "text-green-500" : "text-green-600"} animate-pulse`} size={25} />
+          <Clock
+            className={`${
+              darkMode ? "text-green-500" : "text-green-600"
+            } animate-pulse`}
+            size={25}
+          />
           <p
-            className="text-lg sm:text-xl lg:text-2xl font-bold font-mono"
+            className="text-md sm:text-lg lg:text-xl font-bold font-mono"
             aria-live="polite"
           >
             Time:{timeRemaining}s
@@ -54,7 +59,9 @@ const GameControls: React.FC<GameControlsProps> = ({
           className={`${commonClasses} font-semibold lg:flex-1`}
         >
           <RotateCcw size={22} className="animate-spin-slow" />
-          <span className="text-md sm:text-md lg:text-lg">Reset</span>
+          <span className="text-md sm:text-lg lg:text-xl font-bold font-mono">
+            Reset
+          </span>
         </Button>
 
         {/* Right spacer for large screens */}

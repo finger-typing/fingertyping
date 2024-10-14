@@ -424,14 +424,14 @@ const TypingPractice: React.FC = () => {
           </div>
           <button
             onClick={copyToClipboard}
-            className={`w-full py-2 px-2 font-md text-md rounded-lg transition duration-200 flex items-center justify-center ${
+            className={`w-full py-2  px-2 font-md text-sm rounded-lg font-semibold transition duration-200 flex items-center justify-center ${
               darkMode
-                ? "bg-green-600 hover:bg-green-700 text-white"
-                : "bg-green-500 hover:bg-green-600 text-white"
+                ? "bg-slate-700 hover:bg-slate-600 text-white"
+                : "bg-slate-500 hover:bg-slate-600 text-white"
             }`}
           >
             <FaShareAlt className="mr-2" />
-            Copy URL to Clipboard
+            Copy URL 
           </button>
         </section>
 
