@@ -109,7 +109,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
           : "bg-white border-2 border-gray-300 text-gray-800"
       }`}
     >
-      <div className="text-[1.4rem] leading-8 sm:text-2xl md:text-[1.8rem] md:leading-10  tracking-wide">
+      <div className="text-[1.3rem] leading-8 sm:text-xl md:text-[1.7rem] md:leading-10  tracking-wide">
         {getHighlightedText(randomText, inputValue)}
       </div>
     </div>

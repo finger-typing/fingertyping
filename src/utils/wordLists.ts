@@ -8,7 +8,7 @@ export const wordLists: { [key: string]: string[] } = {
     "the", // The
     "of", // Of
     "cat", // Cat
-    "dog.", // Dog
+    "dog", // Dog
     "book", // Book
     "water", // Water
     "home", // Home
@@ -45,7 +45,7 @@ export const wordLists: { [key: string]: string[] } = {
     "door", // Door
     "tree", // Tree
     "fish", // Fish
-    "hand.", // Hand
+    "hand", // Hand
     "road", // Road
     "sun", // Sun
     "sky", // Sky
@@ -76,7 +76,7 @@ export const wordLists: { [key: string]: string[] } = {
     "bad",
     "library", // Library
     "station", // Station
-    "solution.", // Solution
+    "solution,", // Solution
     "great",
     "small",
     "large",
@@ -86,16 +86,21 @@ export const wordLists: { [key: string]: string[] } = {
     "three",
     "balance", // Balance
     "meeting", // Meeting
-    "Barishal.", // Barishal
+    "Barishal", // Barishal
     "our",
     "your",
     "his",
+    "Mrh"
 
     // Longer words (6 to 8 characters)
   ],
   Bangla: [
     // Longer words (6 to 8 characters)
 
+    "বরিশাল", // Barishal
+    "বাংলা", // Bangla
+    "বাণী", // Girl
+    "বাংলাদেশ", // Bangladesh
     "বিশ্বাস", // Trust
     "ভাষা", // Language
     "তথ্য", // Information

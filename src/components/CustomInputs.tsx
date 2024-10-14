@@ -66,10 +66,10 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
         />
         <button
           type="submit"
-          className={buttonClass(
+          className={ buttonClass(
             darkMode
-              ? "bg-green-600 border-green-700"
-              : "bg-green-500 border-green-600"
+              ? "bg-green-600  font-medium border-green-600"
+              : "bg-green-500 font-medium border-green-600"
           )}
         >
           {isMobile ? "Custom Time" : "Custom Time"}
@@ -93,8 +93,8 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
           type="submit"
           className={buttonClass(
             darkMode
-              ? "bg-green-600 border-green-800"
-              : "bg-green-600 border-green-800"
+              ? "bg-green-600 font-medium  border-green-600"
+              : "bg-green-600 font-medium border-green-800"
           )}
         >
           {isMobile ? "Custom Text" : "Custom Text"}
