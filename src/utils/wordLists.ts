@@ -1,7 +1,7 @@
 export const wordLists: { [key: string]: string[] } = {
   English: [
     // Shorter words (3 to 5 characters)
-    "go,", // Go
+    "go", // Go
     "To", // To
     "my", // My
     "for", // For
@@ -76,7 +76,7 @@ export const wordLists: { [key: string]: string[] } = {
     "bad",
     "library", // Library
     "station", // Station
-    "solution,", // Solution
+    "solution", // Solution
     "great",
     "small",
     "large",
