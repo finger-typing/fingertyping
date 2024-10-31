@@ -29,7 +29,7 @@ const GameControls: React.FC<GameControlsProps> = ({
       className={`
         w-full flex flex-col lg:flex-row justify-between items-center
         mb-2 p-3 rounded-lg shadow-lg transition-all duration-300
-        ${darkMode ? "bg-gray-700/10" : "bg-gray-100/10"}
+        ${darkMode ? "bg-gray-600/20" : "bg-gray-100/20"}
         backdrop-filter backdrop-blur-lg
       `}
     >

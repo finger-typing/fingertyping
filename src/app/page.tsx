@@ -272,7 +272,7 @@ const TypingPractice: React.FC = () => {
 
   // Array of links for the footer
   const links = [
-    { href: "/learn", text: "Learn to Type", external: false },
+    { href: "/lesson", text: "Learn to Type", external: false },
     { href: "/about", text: "About Us", external: false },
     { href: "/blog", text: "Blog", external: false },
     { href: "/privacy", text: "Privacy Policy", external: false },
@@ -283,7 +283,7 @@ const TypingPractice: React.FC = () => {
   return (
     <div
       className={`flex flex-col items-center min-h-screen ${
-        darkMode ? "bg-gray-900 text-gray-200" : "bg-gray-50 text-gray-900"
+        darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-50 text-gray-900"
       }`}
     >
       {/* Navbar component */}

@@ -45,8 +45,8 @@ const Footer: React.FC<FooterProps> = () => {
   ];
 
   return (
-    <footer className="w-full py-8 bg-gray-900 text-gray-300">
-      <hr className="my-6 border-gray-700" />
+    <footer className="w-full py-4 bg-gray-900 text-gray-300">
+      <hr className=" border-gray-700" />
       <div className="flex flex-col sm:flex-row justify-between items-center px-10">
         {/* Copyright notice */}
         <p className="text-sm text-gray-500 mb-4 sm:mb-0 text-center sm:text-left">

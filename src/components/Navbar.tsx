@@ -74,9 +74,9 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Learn button - always visible */}
-          <Link href="/learn" className={`${buttonClasses}`}>
+          <Link href="/lesson" className={`${buttonClasses}`}>
             <BookOpen size={16} className="mr-1" />
-            <span>Learn</span>
+            <span>Lesson</span>
           </Link>
 
           {/* Custom inputs and feedback button for larger screens */}
