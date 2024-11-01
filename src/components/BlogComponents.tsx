@@ -5,8 +5,8 @@ interface ProTipProps {
 
 export function ProTip({ title, content }: ProTipProps) {
   return (
-    <div className="bg-blue-900 border-l-4 border-blue-500 p-6 my-8 rounded-r-lg shadow-lg">
-      <h3 className="text-xl font-semibold text-blue-300 mb-2">{title}</h3>
+    <div className="my-8 rounded-r-lg border-l-4 border-blue-500 bg-blue-900 p-6 shadow-lg">
+      <h3 className="mb-2 text-xl font-semibold text-blue-300">{title}</h3>
       <p className="text-gray-300">{content}</p>
     </div>
   );
@@ -26,9 +26,10 @@ export function TipsList({ items }: TipsListProps) {
     <ul className="space-y-4 text-gray-300">
       {items.map((item, index) => (
         <li key={index} className="flex items-start">
-          <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+          <span className="mr-3 mt-2 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-blue-500"></span>
           <div>
-            <strong className="text-gray-100">{item.title}</strong>: {item.description}
+            <strong className="text-gray-100">{item.title}</strong>:{" "}
+            {item.description}
           </div>
         </li>
       ))}

@@ -68,8 +68,9 @@ export const wordLists: { [key: string]: string[] } = {
     "his",
     "her",
     "fire",
-    "Dubai",
-    "Lahore",
+    "Bangla",
+    "Mecca",
+    "Medina",
     "new",
     "old",
     "good",
@@ -90,7 +91,11 @@ export const wordLists: { [key: string]: string[] } = {
     "our",
     "your",
     "his",
-    "Mrh"
+    "Mrh",
+    "God",
+    "soul",
+    "Creator",
+    "Bangaladesh", // Bangladesh
 
     // Longer words (6 to 8 characters)
   ],
@@ -98,6 +103,10 @@ export const wordLists: { [key: string]: string[] } = {
     // Longer words (6 to 8 characters)
 
     "বরিশাল", // Barishal
+    "বাংলাদেশ", // Bangladesh
+    "সৃষ্টিকর্তা", // god
+    "পশ্চিমবঙ্গ", // South Bangla
+    "পূর্ববঙ্গ", // North Bangla
     "বাংলা", // Bangla
     "বাণী", // Girl
     "বাংলাদেশ", // Bangladesh
@@ -107,7 +116,8 @@ export const wordLists: { [key: string]: string[] } = {
     "স্বপ্ন", // Dream
     "আকাশ", // Sky
     "সূর্য", // Sun
-    "চাঁদ", // Moon
+    "বাবা", // Baby
+    "মা", // Mother
     "তারা", // Star
     "সমুদ্র", // Sea
     "নদী", // River
@@ -2486,7 +2496,7 @@ export const wordLists: { [key: string]: string[] } = {
 
 export const generateRandomWords = (
   count: number,
-  wordList: string[]
+  wordList: string[],
 ): string => {
   return Array.from({ length: count })
     .map(() => wordList[Math.floor(Math.random() * wordList.length)])

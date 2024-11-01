@@ -14,8 +14,8 @@ export const LINES_TO_SHOW = 1;
 
 // Section 2: Utility Function
 const getGraphemeClusters = (text: string) => {
-  const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
-  return Array.from(segmenter.segment(text), segment => segment.segment);
+  const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
+  return Array.from(segmenter.segment(text), (segment) => segment.segment);
 };
 
 // Section 3: Main Component
@@ -31,7 +31,9 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
   useEffect(() => {
     const handleResize = () => {
       const isSmallScreen = window.innerWidth < 768;
-      setWordsPerLine(isSmallScreen ? WORDS_PER_LINE_SMALL : WORDS_PER_LINE_LARGE);
+      setWordsPerLine(
+        isSmallScreen ? WORDS_PER_LINE_SMALL : WORDS_PER_LINE_LARGE,
+      );
     };
 
     handleResize();
@@ -43,7 +45,8 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
   const getHighlightedText = (text: string, input: string) => {
     const textWords = text.split(" ");
     const inputWords = input.split(" ");
-    const startIndex = Math.floor(currentWordIndex / wordsPerLine) * wordsPerLine;
+    const startIndex =
+      Math.floor(currentWordIndex / wordsPerLine) * wordsPerLine;
     const endIndex = startIndex + wordsPerLine * LINES_TO_SHOW;
     const displayedWords = textWords.slice(startIndex, endIndex);
 
@@ -62,7 +65,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
         <React.Fragment key={wordIndex}>
           <span
             className={`relative ${
-              isCurrentWord ? "bg-opacity-30 bg-blue-500 p-1 rounded-md" : ""
+              isCurrentWord ? "rounded-md bg-blue-500 bg-opacity-30 p-1" : ""
             }`}
           >
             {wordClusters.map((charCluster, charIndex) => {
@@ -103,13 +106,13 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
   // Section 6: Component Rendering
   return (
     <div
-      className={`w-full shadow-lg mb-2 rounded-lg p-2 sm:p-6  font-medium transition-colors duration-300 ${
+      className={`mb-2 w-full rounded-lg p-2 font-medium shadow-lg transition-colors duration-300 sm:p-6 ${
         darkMode
           ? "bg-gray-800 text-gray-200"
-          : "bg-white border-2 border-gray-300 text-gray-800"
+          : "border-2 border-gray-300 bg-white text-gray-800"
       }`}
     >
-      <div className="text-[1.3rem] leading-8 sm:text-xl md:text-[1.7rem] md:leading-10  tracking-wide">
+      <div className="text-[1.3rem] leading-8 tracking-wide sm:text-xl md:text-[1.7rem] md:leading-10">
         {getHighlightedText(randomText, inputValue)}
       </div>
     </div>

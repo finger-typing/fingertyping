@@ -22,7 +22,7 @@ body {
 }
 
 @layer utilities {
-.text-balance {
+  .text-balance {
     word-break: break-word;
     overflow-wrap: break-word;
   }

@@ -15,7 +15,7 @@ export default function Contact() {
   }, [router]);
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex h-screen items-center justify-center">
       <p className="text-center text-xl">Redirecting to the Contact Form...</p>
     </div>
   );

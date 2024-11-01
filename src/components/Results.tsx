@@ -26,14 +26,14 @@ const Results: React.FC<ResultsProps> = ({
 
   return (
     <div
-      className={`w-full flex flex-wrap gap-2 p-2 mt-4 ${
+      className={`mt-4 flex w-full flex-wrap gap-2 p-2 ${
         darkMode ? "bg-gray-800 text-gray-200" : "bg-white"
       }`}
     >
       {/* Display Time, WPM, and Accuracy */}
-      <div className="flex flex-wrap w-full gap-2 md:gap-4">
+      <div className="flex w-full flex-wrap gap-2 md:gap-4">
         <div
-          className={`flex-1 text-center p-2 rounded-lg ${
+          className={`flex-1 rounded-lg p-2 text-center ${
             darkMode ? "bg-gray-700 text-gray-200" : "bg-gray-100 text-gray-900"
           }`}
         >
@@ -41,7 +41,7 @@ const Results: React.FC<ResultsProps> = ({
           <p className="text-lg font-bold text-green-500">{timeElapsed}s</p>
         </div>
         <div
-          className={`flex-1 text-center p-2 rounded-lg ${
+          className={`flex-1 rounded-lg p-2 text-center ${
             darkMode
               ? "bg-gray-700 text-gray-200"
               : "bg-green-100 text-green-800"
@@ -51,21 +51,23 @@ const Results: React.FC<ResultsProps> = ({
           <p className="text-lg font-bold text-green-500">{calculateWPM()}</p>
         </div>
         <div
-          className={`flex-1 text-center p-2 rounded-lg ${
+          className={`flex-1 rounded-lg p-2 text-center ${
             darkMode
               ? "bg-gray-700 text-gray-200"
               : "bg-purple-100 text-purple-800"
           }`}
         >
           <p className="text-sm font-semibold">Accuracy</p>
-          <p className="text-lg font-bold text-green-500">{calculateAccuracy()}%</p>
+          <p className="text-lg font-bold text-green-500">
+            {calculateAccuracy()}%
+          </p>
         </div>
       </div>
 
       {/* Display Correct and Wrong Words */}
-      <div className="flex flex-wrap w-full gap-2 mt-2">
+      <div className="mt-2 flex w-full flex-wrap gap-2">
         <div
-          className={`flex-1 text-center p-2 rounded-lg ${
+          className={`flex-1 rounded-lg p-2 text-center ${
             darkMode ? "bg-gray-700 text-gray-200" : "bg-blue-100 text-blue-800"
           }`}
         >
@@ -75,36 +77,42 @@ const Results: React.FC<ResultsProps> = ({
           </p>
         </div>
         <div
-          className={`flex-1 text-center p-2 rounded-lg ${
+          className={`flex-1 rounded-lg p-2 text-center ${
             darkMode ? "bg-gray-700 text-gray-200" : "bg-red-100 text-red-800"
           }`}
         >
           <p className="text-sm font-semibold">Wrong Words</p>
-          <p className="text-lg font-bold text-red-500">{correctAndWrongWords.wrongWords}</p>
+          <p className="text-lg font-bold text-red-500">
+            {correctAndWrongWords.wrongWords}
+          </p>
         </div>
       </div>
 
       {/* Display Correct and Wrong Keystrokes */}
-      <div className="flex flex-wrap w-full gap-2 mt-2">
+      <div className="mt-2 flex w-full flex-wrap gap-2">
         <div
-          className={`flex-1 text-center p-2 rounded-lg ${
+          className={`flex-1 rounded-lg p-2 text-center ${
             darkMode
               ? "bg-gray-700 text-gray-200"
               : "bg-green-100 text-green-800"
           }`}
         >
           <p className="text-sm font-semibold">Correct Keystrokes</p>
-          <p className="text-lg font-bold text-green-500">{keystrokes.correctKeystrokes}</p>
+          <p className="text-lg font-bold text-green-500">
+            {keystrokes.correctKeystrokes}
+          </p>
         </div>
         <div
-          className={`flex-1 text-center p-2 rounded-lg ${
+          className={`flex-1 rounded-lg p-2 text-center ${
             darkMode
               ? "bg-gray-700 text-gray-200"
               : "bg-yellow-100 text-yellow-800"
           }`}
         >
           <p className="text-sm font-semibold">Wrong Keystrokes</p>
-          <p className="text-lg font-bold text-red-500">{keystrokes.wrongKeystrokes}</p>
+          <p className="text-lg font-bold text-red-500">
+            {keystrokes.wrongKeystrokes}
+          </p>
         </div>
       </div>
     </div>
