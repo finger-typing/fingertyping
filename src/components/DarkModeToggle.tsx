@@ -16,8 +16,10 @@ const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
     <button
       onClick={() => setDarkMode(!darkMode)}
       // Dynamic classes based on current mode
-      className={`flex items-center space-x-1 px-2 py-2 rounded  ${
-        darkMode ? "bg-gray-700 text-md border border-gray-300 " : "bg-gray-100 text-md border border-gray-600"
+      className={`flex items-center space-x-1 rounded px-2 py-2 ${
+        darkMode
+          ? "text-md border border-gray-300 bg-gray-700"
+          : "text-md border border-gray-600 bg-gray-100"
       }`}
     >
       {/* Icon changes based on current mode */}

@@ -70,7 +70,7 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
 
   // Filter languages based on the search term
   const filteredLanguages = languages.filter((lang) =>
-    lang.toLowerCase().includes(searchTerm.toLowerCase())
+    lang.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   // Effect to handle clicks outside the dropdown to close it
@@ -95,8 +95,8 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
       {/* Button to toggle the visibility of the language dropdown */}
       <button
         onClick={() => setShowLanguages(!showLanguages)}
-        className={`flex items-center space-x-1 p-2 rounded border ${
-          darkMode ? "bg-gray-700 border-gray-300" : "bg-white border-gray-600"
+        className={`flex items-center space-x-1 rounded border p-2 ${
+          darkMode ? "border-gray-300 bg-gray-700" : "border-gray-600 bg-white"
         }`}
       >
         <span>{language || "Select Language"}</span>
@@ -106,10 +106,10 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
       {/* Dropdown menu for selecting a language */}
       {showLanguages && (
         <div
-          className={`absolute top-full left-0 mt-1 border rounded shadow-lg z-10 ${
+          className={`absolute left-0 top-full z-10 mt-1 rounded border shadow-lg ${
             darkMode
-              ? "bg-gray-800 border-gray-700"
-              : "bg-white border-gray-200"
+              ? "border-gray-700 bg-gray-800"
+              : "border-gray-200 bg-white"
           }`}
         >
           <div className="p-2">
@@ -120,17 +120,17 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
                 placeholder="Search language"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className={`w-full pl-8 pr-2 py-1 rounded-md ${
+                className={`w-full rounded-md py-1 pl-8 pr-2 ${
                   darkMode ? "bg-gray-700 text-white" : "bg-gray-100 text-black"
                 }`}
               />
               <Search
                 size={16}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"
+                className="absolute left-2 top-1/2 -translate-y-1/2 transform text-gray-400"
               />
             </div>
           </div>
-          <div className="overflow-y-auto max-h-72 w-48">
+          <div className="max-h-72 w-48 overflow-y-auto">
             {/* List of filtered languages */}
             {filteredLanguages.map((lang) => (
               <div
@@ -139,7 +139,7 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
                   setLanguage(lang);
                   setShowLanguages(false);
                 }}
-                className={`p-2 cursor-pointer ${
+                className={`cursor-pointer p-2 ${
                   darkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"
                 }`}
               >

@@ -1,48 +1,75 @@
-import React, { ChangeEvent, RefObject } from "react";
+import React, { ChangeEvent, RefObject, useCallback } from "react";
+import { audioPlayer } from "../utils/audioUtils";
 
-// Define the props for the InputField component
 interface InputFieldProps {
-  inputValue: string; // The current value of the input field
-  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void; // Function to handle changes in the input field
-  hasStarted: boolean; // Indicates if the typing game has started
-  isComplete: boolean; // Indicates if the typing game is complete
-  darkMode: boolean; // Boolean to toggle dark mode styles
-  inputRef: RefObject<HTMLInputElement>; // Ref object for the input element
-  placeholder?: string; // Optional placeholder text for the input field
-  type?: string; // Optional input type (defaults to "text")
+  inputValue: string;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  hasStarted: boolean;
+  isComplete: boolean;
+  darkMode: boolean;
+  inputRef: RefObject<HTMLInputElement>;
+  placeholder?: string;
+  type?: string;
+  randomText: string; // Add this prop to compare with input
 }
 
-// InputField component definition
 const InputField: React.FC<InputFieldProps> = ({
   inputValue,
   handleInputChange,
   isComplete,
   darkMode,
   inputRef,
-  placeholder = "Start typing here...", // Default placeholder text
-  type = "text", // Default input type
-}) => (
-  <div className="w-full mb-2">
-    <input
-      ref={inputRef} // Attach the ref to the input element
-      name="input_words_unique" // A unique name can help prevent browser autofill
-      value={inputValue} // Bind the input value to the component's state
-      onChange={handleInputChange} // Handle input changes
-      placeholder={placeholder} // Set the placeholder text
-      type={type} // Set the input type
-      className={`w-full px-2 py-5 border-2 rounded-lg text-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${
-        darkMode
-          ? "border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-400" // Dark mode styles
-          : "border-gray-400 bg-white text-gray-900 placeholder-gray-500" // Light mode styles
-      }`}
-      disabled={isComplete} // Disable the input if the game is complete
-      aria-label="Typing input field" // Accessibility label
-      spellCheck={false} // Enable spell checking
-      autoComplete="off" // Prevent saving or suggesting previous inputs
-      autoCorrect="off" // Turn off autocorrect
-      autoCapitalize="none" // Turn off automatic capitalization
-    />
-  </div>
-);
+  placeholder = "Start typing here...",
+  type = "text",
+  randomText,
+}) => {
+  const handleKeyInput = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const newValue = e.target.value;
+      const prevLength = inputValue.length;
+
+      // Only check the last character if it's not a deletion
+      if (newValue.length > prevLength) {
+        const lastCharIndex = newValue.length - 1;
+        const isCorrect = newValue[lastCharIndex] === randomText[lastCharIndex];
+
+        // Play the appropriate sound
+        if (isCorrect) {
+          audioPlayer.playCorrect();
+        } else {
+          audioPlayer.playIncorrect();
+        }
+      }
+
+      // Call the original handler
+      handleInputChange(e);
+    },
+    [inputValue, randomText, handleInputChange],
+  );
+
+  return (
+    <div className="mb-2 w-full">
+      <input
+        ref={inputRef}
+        name="input_words_unique"
+        value={inputValue}
+        onChange={handleKeyInput}
+        placeholder={placeholder}
+        type={type}
+        className={`w-full rounded-lg border-2 px-2 py-5 text-lg shadow-md focus:border-transparent focus:outline-none focus:ring-2 focus:ring-green-500 ${
+          darkMode
+            ? "border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-400"
+            : "border-gray-400 bg-white text-gray-900 placeholder-gray-500"
+        }`}
+        disabled={isComplete}
+        aria-label="Typing input field"
+        spellCheck={false}
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="none"
+      />
+    </div>
+  );
+};
 
 export default InputField;

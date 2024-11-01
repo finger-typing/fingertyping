@@ -59,7 +59,7 @@ const TypingPractice: React.FC = () => {
         ? prev.randomText
         : generateRandomWords(
             10000,
-            wordLists[prev.language] || wordLists["English"]
+            wordLists[prev.language] || wordLists["English"],
           ),
       inputValue: "",
       startTime: null,
@@ -113,7 +113,7 @@ const TypingPractice: React.FC = () => {
       startTime: prev.startTime || Date.now(),
       currentWordIndex: Math.max(
         value.split(" ").length - 1,
-        prev.currentWordIndex
+        prev.currentWordIndex,
       ),
       isComplete: value === prev.randomText,
     }));
@@ -176,7 +176,7 @@ const TypingPractice: React.FC = () => {
       .slice(0, inputWords.length);
     if (inputWords.length === 0) return "0.00";
     const correctWords = inputWords.filter(
-      (word, i) => word === randomWords[i]
+      (word, i) => word === randomWords[i],
     ).length;
     return ((correctWords / inputWords.length) * 100).toFixed(2);
   };
@@ -282,7 +282,7 @@ const TypingPractice: React.FC = () => {
 
   return (
     <div
-      className={`flex flex-col items-center min-h-screen ${
+      className={`flex min-h-screen flex-col items-center ${
         darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-50 text-gray-900"
       }`}
     >
@@ -299,7 +299,7 @@ const TypingPractice: React.FC = () => {
         customTime={customTime}
       />
 
-      <main className="w-full max-w-3xl px-4 mt-4">
+      <main className="mt-4 w-full max-w-3xl px-4">
         {/* WordDisplay component to show the text to type */}
         <WordDisplay
           randomText={gameState.randomText}
@@ -317,6 +317,7 @@ const TypingPractice: React.FC = () => {
           darkMode={darkMode}
           inputRef={inputRef}
           placeholder="Start typing to begin the game..."
+          randomText={gameState.randomText} // Add this prop
         />
 
         {/* GameControls component for game control buttons */}
@@ -342,12 +343,12 @@ const TypingPractice: React.FC = () => {
 
         {/* Share This Tool Section */}
         <section
-          className={`mt-10 p-6 rounded-xl shadow-lg ${
+          className={`mt-10 rounded-xl p-6 shadow-lg ${
             darkMode ? "bg-gray-800" : "bg-white"
           }`}
         >
           <h2
-            className={`text-2xl font-bold mb-2 ${
+            className={`mb-2 text-2xl font-bold ${
               darkMode ? "text-white" : "text-gray-800"
             }`}
           >
@@ -357,16 +358,16 @@ const TypingPractice: React.FC = () => {
             If you really like this website, help us to improve by sharing with
             your friends and family!
           </p>
-          <div className="flex flex-wrap gap-4 justify-center mb-6">
+          <div className="mb-6 flex flex-wrap justify-center gap-4">
             {[
               {
                 icon: FaTwitter,
                 bg: "bg-blue-500",
                 hover: "hover:bg-blue-700",
                 link: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                  "https://fingertyping.com"
+                  "https://fingertyping.com",
                 )}&text=${encodeURIComponent(
-                  "Secure and ads-free typing practice with FingerTyping.com! 🚀⌨️"
+                  "Secure and ads-free typing practice with FingerTyping.com! 🚀⌨️",
                 )}`,
               },
               {
@@ -404,9 +405,9 @@ const TypingPractice: React.FC = () => {
                 bg: "bg-blue-500",
                 hover: "hover:bg-blue-600",
                 link: `https://www.facebook.com/dialog/send?link=${encodeURIComponent(
-                  "https://fingertyping.com"
+                  "https://fingertyping.com",
                 )}&app_id=291494419107518&redirect_uri=${encodeURIComponent(
-                  "https://fingertyping.com"
+                  "https://fingertyping.com",
                 )}`,
               },
             ].map((item, index) => (
@@ -416,22 +417,22 @@ const TypingPractice: React.FC = () => {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-3 rounded-full transition duration-300 ${item.bg} ${item.hover} text-white`}
+                className={`rounded-full p-3 transition duration-300 ${item.bg} ${item.hover} text-white`}
               >
-                <item.icon className="w-6 h-6" />
+                <item.icon className="h-6 w-6" />
               </a>
             ))}
           </div>
           <button
             onClick={copyToClipboard}
-            className={`w-full py-2  px-2 font-md text-sm rounded-lg font-semibold transition duration-200 flex items-center justify-center ${
+            className={`font-md flex w-full items-center justify-center rounded-lg px-2 py-2 text-sm font-semibold transition duration-200 ${
               darkMode
-                ? "bg-slate-700 hover:bg-slate-600 text-white"
-                : "bg-slate-500 hover:bg-slate-600 text-white"
+                ? "bg-slate-700 text-white hover:bg-slate-600"
+                : "bg-slate-500 text-white hover:bg-slate-600"
             }`}
           >
             <FaShareAlt className="mr-2" />
-            Copy URL 
+            Copy URL
           </button>
         </section>
 
@@ -443,17 +444,17 @@ const TypingPractice: React.FC = () => {
               : "bg-gradient-to-r from-blue-50 to-indigo-100"
           }`}
         >
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="mb-8 md:mb-0 text-center md:text-left">
+          <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+            <div className="flex flex-col items-center justify-between md:flex-row">
+              <div className="mb-8 text-center md:mb-0 md:text-left">
                 <div className="flex items-center justify-center md:justify-start">
                   <Fingerprint
-                    className={`w-8 h-8 mr-2 ${
+                    className={`mr-2 h-8 w-8 ${
                       darkMode ? "text-indigo-400" : "text-indigo-600"
                     }`}
                   />
                   <h2
-                    className={`text-2xl sm:text-3xl font-bold ${
+                    className={`text-2xl font-bold sm:text-3xl ${
                       darkMode ? "text-white" : "text-gray-700"
                     }`}
                   >
@@ -468,7 +469,7 @@ const TypingPractice: React.FC = () => {
                   Secure, Simple and Ads-Free
                 </p>
               </div>
-              <nav className="flex flex-wrap justify-center md:justify-end gap-6 mb-6 md:mb-0">
+              <nav className="mb-6 flex flex-wrap justify-center gap-6 md:mb-0 md:justify-end">
                 {links.map((link) => (
                   <React.Fragment key={link.href}>
                     {link.external ? (
@@ -476,24 +477,22 @@ const TypingPractice: React.FC = () => {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`text-sm sm:text-base font-medium transition-colors duration-300 
-                ${
-                  darkMode
-                    ? "text-indigo-300 hover:text-indigo-100"
-                    : "text-indigo-700 hover:text-indigo-900"
-                } hover:underline`}
+                        className={`text-sm font-medium transition-colors duration-300 sm:text-base ${
+                          darkMode
+                            ? "text-indigo-300 hover:text-indigo-100"
+                            : "text-indigo-700 hover:text-indigo-900"
+                        } hover:underline`}
                       >
                         {link.text}
                       </a>
                     ) : (
                       <Link href={link.href}>
                         <span
-                          className={`text-sm sm:text-base font-medium transition-colors duration-300 cursor-pointer 
-                  ${
-                    darkMode
-                      ? "text-indigo-400 hover:text-indigo-200"
-                      : "text-indigo-600 hover:text-indigo-800"
-                  } hover:underline`}
+                          className={`cursor-pointer text-sm font-medium transition-colors duration-300 sm:text-base ${
+                            darkMode
+                              ? "text-indigo-400 hover:text-indigo-200"
+                              : "text-indigo-600 hover:text-indigo-800"
+                          } hover:underline`}
                         >
                           {link.text}
                         </span>

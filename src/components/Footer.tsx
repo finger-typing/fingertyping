@@ -20,7 +20,7 @@ const Footer: React.FC<FooterProps> = () => {
   const socialLinks = [
     {
       icon: FaTwitter,
-      href: `https://twitter.com/intent/tweet?url=${encodeURIComponent('https://fingertyping.com')}&text=${encodeURIComponent('Improve your typing skills with FingerTyping.com! 🚀⌨️')}`,
+      href: `https://twitter.com/intent/tweet?url=${encodeURIComponent("https://fingertyping.com")}&text=${encodeURIComponent("Improve your typing skills with FingerTyping.com! 🚀⌨️")}`,
     },
     {
       icon: FaFacebookF,
@@ -45,11 +45,11 @@ const Footer: React.FC<FooterProps> = () => {
   ];
 
   return (
-    <footer className="w-full py-4 bg-gray-900 text-gray-300">
-      <hr className=" border-gray-700" />
-      <div className="flex flex-col sm:flex-row justify-between items-center px-10">
+    <footer className="w-full bg-gray-900 py-4 text-gray-300">
+      <hr className="border-gray-700" />
+      <div className="flex flex-col items-center justify-between px-10 sm:flex-row">
         {/* Copyright notice */}
-        <p className="text-sm text-gray-500 mb-4 sm:mb-0 text-center sm:text-left">
+        <p className="mb-4 text-center text-sm text-gray-500 sm:mb-0 sm:text-left">
           © {new Date().getFullYear()} FingerTyping
         </p>
         {/* Social media links */}
@@ -61,7 +61,7 @@ const Footer: React.FC<FooterProps> = () => {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full text-gray-500 hover:text-white transition-colors duration-300"
+              className="rounded-full p-2 text-gray-500 transition-colors duration-300 hover:text-white"
             >
               <Icon className="h-5 w-5" />
             </a>
