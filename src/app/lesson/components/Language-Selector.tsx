@@ -41,7 +41,7 @@ export default function LanguageSelector(
   }, [isLanguageDropdownOpen]);
 
   return (
-    <div className="relative mb-6">
+    <div className="relative mb-4">
       <div
         className="flex w-full cursor-pointer items-center justify-between rounded-lg border bg-gray-100 p-2 transition-colors duration-200 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
         onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
@@ -64,7 +64,7 @@ export default function LanguageSelector(
       </div>
 
       {isLanguageDropdownOpen && (
-        <div className="absolute z-10 mt-2 w-full rounded-lg border bg-white shadow-lg dark:bg-gray-800">
+        <div className="absolute z-10 mt-1 w-full rounded-lg border bg-white shadow-lg dark:bg-gray-800">
           <div className="border-b p-3">
             <div className="relative">
               <input
@@ -91,13 +91,13 @@ export default function LanguageSelector(
             </div>
           </div>
 
-          <div className="max-h-28 overflow-y-auto">
+          <div className="max-h-20 overflow-y-auto">
             {filteredLanguages.length > 0 ? (
               filteredLanguages.map((lang) => (
                 <div
                   key={lang}
                   onClick={() => handleLanguageSelect(lang)}
-                  className="flex cursor-pointer items-center space-x-3 p-3 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="flex cursor-pointer items-center space-x-2 p-3 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500 font-bold text-white">
                     {lang[0]}
