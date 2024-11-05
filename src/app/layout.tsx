@@ -16,12 +16,13 @@ export const metadata: Metadata = {
   description:
     "Secure and ads-free typing on FingerTyping. In Finger Typing With your 10 fast finger, improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
   keywords: [
+    "finger typing",
     "typing practice",
     "typeing",
     "fast typing",
     "typing",
     "offline typeing app",
-    "finger typing",
+    "finger typeing",
     "10 fast fingers",
     "touch typing",
     "typing speed",
@@ -144,12 +145,17 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "WebSite",
               name: "FingerTyping",
-              url: "https://www.fingertyping.com",
-              logo: "https://www.fingertyping.com/logo.png",
+              url: "https://fingertyping.com",
               description:
-                "Secure and ads-free typing on FingerTyping. In Finger Typing With your 10 fast finger, improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
+                "Secure and ads-free typing practice to improve your typing speed and accuracy.",
+              potentialAction: {
+                "@type": "SearchAction",
+                target:
+                  "https://www.fingertyping.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
               sameAs: [
                 "https://www.facebook.com/fingertypingofficial",
                 "https://t.me/fingertyping",

@@ -10,7 +10,7 @@ interface InputFieldProps {
   inputRef: RefObject<HTMLInputElement>;
   placeholder?: string;
   type?: string;
-  randomText: string; // Add this prop to compare with input
+  randomText: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -28,16 +28,28 @@ const InputField: React.FC<InputFieldProps> = ({
       const newValue = e.target.value;
       const prevLength = inputValue.length;
 
-      // Only check the last character if it's not a deletion
+      // Check if it's not a deletion
       if (newValue.length > prevLength) {
-        const lastCharIndex = newValue.length - 1;
-        const isCorrect = newValue[lastCharIndex] === randomText[lastCharIndex];
+        const currentWords = randomText.split(" ");
+        const typedWords = newValue.split(" ");
+        const currentWordIndex = typedWords.length - 1;
 
-        // Play the appropriate sound
-        if (isCorrect) {
-          audioPlayer.playCorrect();
-        } else {
+        // Get the current word being typed
+        const currentTargetWord = currentWords[currentWordIndex] || "";
+        const currentTypedWord = typedWords[currentWordIndex] || "";
+
+        // Play sound based on whether the typed word matches the target word so far
+        const isTypedWordCorrect =
+          currentTargetWord.startsWith(currentTypedWord);
+
+        // Check if we've typed more characters than the target word
+        const isExtraCharacters =
+          currentTypedWord.length > currentTargetWord.length;
+
+        if (isExtraCharacters || !isTypedWordCorrect) {
           audioPlayer.playIncorrect();
+        } else {
+          audioPlayer.playCorrect();
         }
       }
 
