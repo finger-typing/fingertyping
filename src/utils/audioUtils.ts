@@ -7,7 +7,7 @@ class AudioPlayer {
   private enabled: boolean;
 
   constructor() {
-    this.volume = 0.5; // Default volume
+    this.volume = 0.2; // Default volume
     this.enabled = true;
 
     // Only create audio objects if running in the browser
