@@ -83,7 +83,7 @@ const Navbar: React.FC<NavbarProps> = ({
               {/* Mobile menu toggle button */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`sm:hidden p-1.5 rounded-lg
+                className={`lg:hidden p-1.5 rounded-lg
                   ${darkMode 
                     ? 'hover:bg-slate-800/60 active:bg-slate-700/60' 
                     : 'hover:bg-slate-100 active:bg-slate-200'
@@ -108,20 +108,20 @@ const Navbar: React.FC<NavbarProps> = ({
               </div>
 
               {/* Navigation buttons - hidden on mobile */}
-              <div className="hidden sm:flex items-center space-x-2">
+              <div className="hidden lg:flex items-center space-x-2">
                 <Link 
                   href="/lesson" 
                   className={`${buttonClasses} group
                     ${darkMode 
-                      ? 'bg-sky-500/10 hover:bg-sky-500/20 text-sky-200 border-sky-500/20' 
-                      : 'bg-sky-50 hover:bg-sky-100/80 text-sky-700 border-sky-400/20'
+                      ? 'bg-teal-500/10 hover:bg-teal-500/20 text-teal-200 border-teal-500/20' 
+                      : 'bg-teal-50 hover:bg-teal-100/80 text-teal-700 border-teal-400/20'
                     }
                   `}
                 >
                   <BookOpen size={16} className="mr-1.5 group-hover:rotate-6 transition-transform duration-300" />
                   <span className="relative">
                     Lesson
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-sky-500 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-teal-500 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
 
@@ -129,22 +129,22 @@ const Navbar: React.FC<NavbarProps> = ({
                   href="/game" 
                   className={`${buttonClasses} group
                     ${darkMode 
-                      ? 'bg-fuchsia-500/10 hover:bg-fuchsia-500/20 text-fuchsia-200 border-fuchsia-500/20' 
-                      : 'bg-fuchsia-50 hover:bg-fuchsia-100/80 text-fuchsia-700 border-fuchsia-400/20'
+                       ? 'bg-teal-500/10 hover:bg-teal-500/20 text-teal-200 border-teal-500/20' 
+                      : 'bg-teal-50 hover:bg-teal-100/80 text-teal-700 border-teal-400/20'
                     }
                   `}
                 >
                   <Gamepad size={16} className="mr-1.5 group-hover:rotate-12 transition-transform duration-300" />
                   <span className="relative">
                     Game
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-fuchsia-500 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-teal-500 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </Link>
               </div>
             </div>
 
             {/* Center section - Custom inputs */}
-            <div className="hidden sm:flex flex-1 justify-center mx-3">
+            <div className="hidden lg:flex flex-1 justify-center mx-3">
               <div className={`
                 ${darkMode ? 'bg-slate-800/40 hover:bg-slate-800/60' : 'bg-slate-50/80 hover:bg-slate-100/80'}
                 backdrop-blur-sm rounded-xl p-1
@@ -166,7 +166,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
             {/* Right section */}
             <div className="flex items-center space-x-2">
-              <div className="hidden sm:flex items-center space-x-2">
+              <div className="hidden lg:flex items-center space-x-2">
                 <button 
                   onClick={sendFeedback} 
                   className={`${buttonClasses} group
@@ -177,7 +177,7 @@ const Navbar: React.FC<NavbarProps> = ({
                   `}
                 >
                   <MessageSquare size={16} className="mr-1.5 group-hover:rotate-12 transition-transform duration-300" />
-                  <span className="hidden sm:inline relative">
+                  <span className="hidden lg:inline relative">
                     Feedback
                     <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-teal-500 group-hover:w-full transition-all duration-300"></span>
                   </span>
@@ -187,8 +187,8 @@ const Navbar: React.FC<NavbarProps> = ({
                   onClick={toggleSound}
                   className={`${buttonClasses} group
                     ${darkMode 
-                      ? 'bg-amber-500/10 hover:bg-amber-500/20 text-amber-200 border-amber-500/20' 
-                      : 'bg-amber-50 hover:bg-amber-100/80 text-amber-700 border-amber-400/20'
+                       ? 'bg-teal-500/10 hover:bg-teal-500/20 text-teal-200 border-teal-500/20' 
+                      : 'bg-teal-50 hover:bg-teal-100/80 text-teal-700 border-teal-400/20'
                     }
                   `}
                   aria-label="Toggle sound"
@@ -199,9 +199,9 @@ const Navbar: React.FC<NavbarProps> = ({
                   ) : (
                     <VolumeX size={16} className="group-hover:scale-110 transition-transform duration-300" />
                   )}
-                  <span className="hidden sm:ml-1.5 sm:inline relative">
+                  <span className="hidden lg:ml-1.5 lg:inline relative">
                     Sound
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-amber-500 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-teal-500 group-hover:w-full transition-all duration-300"></span>
                   </span>
                 </button>
               </div>
@@ -223,7 +223,7 @@ const Navbar: React.FC<NavbarProps> = ({
         <div
           className={`fixed inset-0 z-50 ${
             darkMode ? "bg-slate-900/95" : "bg-white/95"
-          } backdrop-blur-md overflow-y-auto transition-all duration-300 ease-in-out sm:hidden`}
+          } backdrop-blur-md overflow-y-auto transition-all duration-300 ease-in-out lg:hidden`}
         >
           <div className="container mx-auto px-4 py-6">
             <div className="mb-6 flex items-center justify-between">

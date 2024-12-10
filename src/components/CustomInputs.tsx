@@ -74,18 +74,18 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
           name="input_time"
           value={tempCustomTime}
           onChange={(e) => setTempCustomTime(e.target.value)}
-          placeholder="Time (s)"
+          placeholder="Time(s)"
           className={`${inputClass} px-2.5 py-1.5 w-full min-w-[70px] max-w-[100px]`}
         />
         <button
           type="submit"
           className={`${buttonClass(
             darkMode
-              ? "bg-sky-500/10 hover:bg-sky-500/20 text-sky-200 border border-sky-500/20"
-              : "bg-sky-50 hover:bg-sky-100/80 text-sky-700 border border-sky-400/20"
+              ? "bg-fuchsia-500/10 hover:bg-fuchsia-500/20 text-white border border-fuchsia-500"
+              : "bg-fuchsia-50 hover:bg-fuchsia-100/80 text-black-700 border border-fuchsia-500/20"
           )} px-3 py-1.5 min-w-[60px] whitespace-nowrap`}
         >
-          Time
+         Custom Time
         </button>
       </form>
 
@@ -99,18 +99,18 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
           name="input_text"
           value={customText}
           onChange={(e) => setCustomText(e.target.value)}
-          placeholder="Custom text"
-          className={`${inputClass} px-2.5 py-1.5 w-full min-w-[70px] max-w-[100px]`}
+          placeholder="Enter text"
+          className={`${inputClass} px-1.5 py-1.5 w-full min-w-[70px] max-w-[150px]`}
         />
         <button
           type="submit"
           className={`${buttonClass(
             darkMode
-              ? "bg-fuchsia-500/10 hover:bg-fuchsia-500/20 text-fuchsia-200 border border-fuchsia-500/20"
+              ? "bg-fuchsia-500/10 hover:bg-fuchsia-500/20 text-white border border-fuchsia-500"
               : "bg-fuchsia-50 hover:bg-fuchsia-100/80 text-fuchsia-700 border border-fuchsia-400/20"
           )} px-3 py-1.5 min-w-[60px] whitespace-nowrap`}
         >
-          Text
+           Custom Text
         </button>
       </form>
     </div>
