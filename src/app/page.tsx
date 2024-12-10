@@ -21,15 +21,15 @@ const Results = dynamic(() => import("../components/Results"), {
 });
 
 import {
-  FaTwitter,
+  FaXTwitter,
   FaFacebookF,
   FaLinkedinIn,
-  FaTelegramPlane,
+  FaTelegram,
   FaRedditAlien,
-  FaShareAlt,
+  FaShareNodes ,
   FaWhatsapp,
   FaFacebookMessenger,
-} from "react-icons/fa";
+} from "react-icons/fa6";
 
 const TypingPractice: React.FC = () => {
   // State to manage the game's various properties
@@ -283,7 +283,7 @@ const TypingPractice: React.FC = () => {
   return (
     <div
       className={`flex min-h-screen flex-col items-center ${
-        darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-50 text-gray-900"
+        darkMode ? "bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100" : "bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900"
       }`}
     >
       {/* Navbar component */}
@@ -299,7 +299,7 @@ const TypingPractice: React.FC = () => {
         customTime={customTime}
       />
 
-      <main className="mt-4 w-full max-w-3xl px-4">
+      <main className="mt-4 w-full max-w-4xl px-4 space-y-5">
         {/* WordDisplay component to show the text to type */}
         <WordDisplay
           randomText={gameState.randomText}
@@ -317,7 +317,7 @@ const TypingPractice: React.FC = () => {
           darkMode={darkMode}
           inputRef={inputRef}
           placeholder="Start typing to begin the game..."
-          randomText={gameState.randomText} // Add this prop
+          randomText={gameState.randomText}
         />
 
         {/* GameControls component for game control buttons */}
@@ -343,133 +343,141 @@ const TypingPractice: React.FC = () => {
 
         {/* Share This Tool Section */}
         <section
-          className={`mt-10 rounded-xl p-6 shadow-lg ${
-            darkMode ? "bg-gray-800" : "bg-white"
+          className={`mt-12 rounded-3xl p-8 shadow-2xl backdrop-blur-lg transition-all duration-300 ${
+            darkMode 
+              ? "bg-gradient-to-br from-gray-800/90 via-gray-800/80 to-gray-900/90 ring-1 ring-gray-700/50" 
+              : "bg-gradient-to-br from-white/95 via-gray-50/95 to-white/95 ring-1 ring-gray-200/50"
           }`}
         >
-          <h2
-            className={`mb-2 text-2xl font-bold ${
-              darkMode ? "text-white" : "text-gray-800"
-            }`}
-          >
-            Share This Tool
-          </h2>
-          <p className={`mb-6 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-            If you really like this website, help us to improve by sharing with
-            your friends and family!
-          </p>
-          <div className="mb-6 flex flex-wrap justify-center gap-4">
-            {[
-              {
-                icon: FaTwitter,
-                bg: "bg-blue-500",
-                hover: "hover:bg-blue-700",
-                link: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                  "https://fingertyping.com",
-                )}&text=${encodeURIComponent(
-                  "Secure and ads-free typing practice with FingerTyping.com! 🚀⌨️",
-                )}`,
-              },
-              {
-                icon: FaFacebookF,
-                bg: "bg-blue-600",
-                hover: "hover:bg-blue-700",
-                link: `https://www.facebook.com/sharer/sharer.php?u=https://fingertyping.com`,
-              },
-              {
-                icon: FaLinkedinIn,
-                bg: "bg-blue-600",
-                hover: "hover:bg-blue-800",
-                link: `https://www.linkedin.com/shareArticle?mini=true&url=https://fingertyping.com&title=FingerTyping.com`,
-              },
-              {
-                icon: FaTelegramPlane,
-                bg: "bg-blue-500",
-                hover: "hover:bg-blue-600",
-                link: `https://telegram.me/share/url?url=https://fingertyping.com`,
-              },
-              {
-                icon: FaRedditAlien,
-                bg: "bg-orange-600",
-                hover: "hover:bg-orange-700",
-                link: `https://www.reddit.com/submit?url=https://fingertyping.com`,
-              },
-              {
-                icon: FaWhatsapp,
-                bg: "bg-green-500",
-                hover: "hover:bg-green-600",
-                link: `https://api.whatsapp.com/send?text=https://fingertyping.com`,
-              },
-              {
-                icon: FaFacebookMessenger,
-                bg: "bg-blue-500",
-                hover: "hover:bg-blue-600",
-                link: `https://www.facebook.com/dialog/send?link=${encodeURIComponent(
-                  "https://fingertyping.com",
-                )}&app_id=291494419107518&redirect_uri=${encodeURIComponent(
-                  "https://fingertyping.com",
-                )}`,
-              },
-            ].map((item, index) => (
-              <a
-                title="social media share"
-                key={index}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`rounded-full p-3 transition duration-300 ${item.bg} ${item.hover} text-white`}
+          <div className="flex flex-col items-center space-y-6">
+            {/* Header */}
+            <div className="text-center">
+              <h2
+                className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${
+                  darkMode 
+                    ? "from-indigo-400 via-fuchsia-400 to-indigo-400" 
+                    : "from-indigo-600 via-fuchsia-600 to-indigo-600"
+                }`}
               >
-                <item.icon className="h-6 w-6" />
-              </a>
-            ))}
+                Share FingerTyping
+              </h2>
+              <p className={`mt-3 text-sm ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                Help others improve their typing skills by sharing!
+              </p>
+            </div>
+
+            {/* Social Media Grid */}
+            <div className="grid grid-cols-4 gap-4 w-full max-w-xl">
+              {[
+                {
+                  icon: FaXTwitter,
+                  label: "X",
+                  bg: "from-gray-800 to-gray-700",
+                  link: `https://twitter.com/intent/tweet?url=${encodeURIComponent("https://fingertyping.com")}&text=${encodeURIComponent("Improve your typing with FingerTyping.com! 🚀⌨️")}`,
+                },
+                {
+                  icon: FaFacebookF,
+                  label: "Facebook",
+                  bg: "from-blue-500 to-blue-700",
+                  link: `https://www.facebook.com/sharer/sharer.php?u=https://fingertyping.com`,
+                },
+                {
+                  icon: FaLinkedinIn,
+                  label: "LinkedIn",
+                  bg: "from-blue-600 to-blue-800",
+                  link: `https://www.linkedin.com/shareArticle?mini=true&url=https://fingertyping.com&title=FingerTyping.com`,
+                },
+                {
+                  icon: FaTelegram,
+                  label: "Telegram",
+                  bg: "from-blue-400 to-blue-600",
+                  link: `https://telegram.me/share/url?url=https://fingertyping.com`,
+                },
+                {
+                  icon: FaRedditAlien,
+                  label: "Reddit",
+                  bg: "from-orange-500 to-orange-700",
+                  link: `https://www.reddit.com/submit?url=https://fingertyping.com`,
+                },
+                {
+                  icon: FaWhatsapp,
+                  label: "WhatsApp",
+                  bg: "from-green-400 to-green-600",
+                  link: `https://api.whatsapp.com/send?text=https://fingertyping.com`,
+                },
+                {
+                  icon: FaFacebookMessenger,
+                  label: "Messenger",
+                  bg: "from-blue-400 to-blue-600",
+                  link: `https://www.facebook.com/dialog/send?link=${encodeURIComponent("https://fingertyping.com")}&app_id=291494419107518&redirect_uri=${encodeURIComponent("https://fingertyping.com")}`,
+                },
+                {
+                  icon: FaShareNodes,
+                  label: "Copy URL",
+                  bg: "from-indigo-400 to-indigo-600",
+                  onClick: copyToClipboard,
+                },
+              ].map((item, index) => (
+                item.onClick ? (
+                  <button
+                    key={index}
+                    onClick={item.onClick}
+                    className={`group flex flex-col items-center justify-center p-3 rounded-xl bg-gradient-to-br ${item.bg} text-white transition-all duration-300 hover:scale-105 hover:shadow-md`}
+                  >
+                    <item.icon className="h-4 w-4 mb-1 transition-transform group-hover:scale-110" />
+                    <span className="text-xs font-medium">{item.label}</span>
+                  </button>
+                ) : (
+                  <a
+                    key={index}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group flex flex-col items-center justify-center p-3 rounded-xl bg-gradient-to-br ${item.bg} text-white transition-all duration-300 hover:scale-105 hover:shadow-md`}
+                  >
+                    <item.icon className="h-4 w-4 mb-1 transition-transform group-hover:scale-110" />
+                    <span className="text-xs font-medium">{item.label}</span>
+                  </a>
+                )
+              ))}
+            </div>
           </div>
-          <button
-            onClick={copyToClipboard}
-            className={`font-md flex w-full items-center justify-center rounded-lg px-2 py-2 text-sm font-semibold transition duration-200 ${
-              darkMode
-                ? "bg-slate-700 text-white hover:bg-slate-600"
-                : "bg-slate-500 text-white hover:bg-slate-600"
-            }`}
-          >
-            <FaShareAlt className="mr-2" />
-            Copy URL
-          </button>
         </section>
 
-        {/* Updated Backlink Strategies Section */}
+        {/* Updated footer Strategies Section */}
         <footer
-          className={`mt-12 rounded-lg shadow-lg ${
+          className={`mt-16 rounded-2xl shadow-xl transition-all duration-300 ${
             darkMode
-              ? "bg-gray-800"
-              : "bg-gradient-to-r from-blue-50 to-indigo-100"
+              ? "bg-gray-800/80 backdrop-blur-sm ring-1 ring-gray-700"
+              : "bg-gradient-to-r from-indigo-50 to-blue-50 ring-1 ring-gray-200"
           }`}
         >
-          <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
-            <div className="flex flex-col items-center justify-between md:flex-row">
-              <div className="mb-8 text-center md:mb-0 md:text-left">
+          <div className="mx-auto max-w-7xl px-6 py-12">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+              <div className="text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start">
                   <Fingerprint
-                    className={`mr-2 h-8 w-8 ${
+                    className={`mr-3 h-8 w-8 transition-colors duration-300 ${
                       darkMode ? "text-indigo-400" : "text-indigo-600"
                     }`}
                   />
                   <h2
-                    className={`text-2xl font-bold sm:text-3xl ${
-                      darkMode ? "text-white" : "text-gray-700"
+                    className={`text-3xl font-bold tracking-tight ${
+                      darkMode ? "text-white" : "text-gray-800"
                     }`}
                   >
                     FingerTyping
                   </h2>
                 </div>
                 <p
-                  className={`mt-2 text-sm sm:text-base ${
+                  className={`mt-2 font-medium ${
                     darkMode ? "text-gray-300" : "text-gray-600"
                   }`}
                 >
                   Secure, Simple and Ads-Free
                 </p>
               </div>
-              <nav className="mb-6 flex flex-wrap justify-center gap-6 md:mb-0 md:justify-end">
+              <nav className="flex flex-wrap justify-center gap-6 md:justify-end">
                 {links.map((link) => (
                   <React.Fragment key={link.href}>
                     {link.external ? (
@@ -477,9 +485,9 @@ const TypingPractice: React.FC = () => {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`text-sm font-medium transition-colors duration-300 sm:text-base ${
+                        className={`text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 ${
                           darkMode
-                            ? "text-indigo-300 hover:text-indigo-100"
+                            ? "text-indigo-300 hover:text-indigo-200"
                             : "text-indigo-700 hover:text-indigo-900"
                         } hover:underline`}
                       >
@@ -488,9 +496,9 @@ const TypingPractice: React.FC = () => {
                     ) : (
                       <Link href={link.href}>
                         <span
-                          className={`cursor-pointer text-sm font-medium transition-colors duration-300 sm:text-base ${
+                          className={`cursor-pointer text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 ${
                             darkMode
-                              ? "text-indigo-400 hover:text-indigo-200"
+                              ? "text-indigo-400 hover:text-indigo-300"
                               : "text-indigo-600 hover:text-indigo-800"
                           } hover:underline`}
                         >

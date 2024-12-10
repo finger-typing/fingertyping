@@ -19,7 +19,7 @@ export const wordLists: { [key: string]: string[] } = {
     "doll", // Doll
     "egg", // Egg
     "fan", // Fan
-    "gift,", // Gift
+    "gift", // Gift
     "hat", // Hat
     "ice", // Ice
     "jump", // Jump
@@ -68,7 +68,7 @@ export const wordLists: { [key: string]: string[] } = {
     "his",
     "her",
     "fire",
-    "Bangla",
+    "bangla",
     "Mecca",
     "Medina",
     "new",
@@ -91,20 +91,20 @@ export const wordLists: { [key: string]: string[] } = {
     "our",
     "your",
     "his",
-    "Mrh",
+    "mrh",
     "God",
     "soul",
     "Creator",
-    "Bangaladesh", // Bangladesh
+    "Bangladesh", // Bangladesh
 
     // Longer words (6 to 8 characters)
   ],
   Bangla: [
     // Longer words (6 to 8 characters)
-
+    "সৃষ্টিকর্তা", // god
     "বরিশাল", // Barishal
     "বাংলাদেশ", // Bangladesh
-    "সৃষ্টিকর্তা", // god
+   
     "পশ্চিমবঙ্গ", // South Bangla
     "পূর্ববঙ্গ", // North Bangla
     "বাংলা", // Bangla
@@ -113,7 +113,7 @@ export const wordLists: { [key: string]: string[] } = {
     "বিশ্বাস", // Trust
     "ভাষা", // Language
     "তথ্য", // Information
-    "স্বপ্ন", // Dream
+    
     "আকাশ", // Sky
     "সূর্য", // Sun
     "বাবা", // Baby
@@ -141,6 +141,7 @@ export const wordLists: { [key: string]: string[] } = {
     "সফলতা", // Success
     "কৌশল", // Strategy
     "উপহার", // Gift
+    "সুবিধা", // Convenience
 
     // Shorter words (3 to 5 characters)
 
@@ -175,8 +176,6 @@ export const wordLists: { [key: string]: string[] } = {
     "অন্যান্য", // Other
     "সম্পর্ক", // Relationship
     "সমাজ", // Culture
-    "সম্প্রদায়", // Community
-    "সম্পাদনা", // Editing
     "সম্পূর্ণ", // Complete
     "সম্বন্ধ", // Relation
     "আমি", // I

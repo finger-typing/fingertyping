@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ChevronDown, Search } from "lucide-react";
+import {  Search, Globe } from "lucide-react";
 
 // Define the props for the LanguageDropdown component
 interface LanguageDropdownProps {
@@ -90,17 +90,27 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
     };
   }, []);
 
+  const buttonClasses = `
+    flex items-center px-2.5 py-1.5 rounded-lg font-medium text-sm
+    ${darkMode 
+      ? 'bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-200' 
+      : 'bg-indigo-50 hover:bg-indigo-100/80 text-indigo-700'
+    }
+    transform hover:scale-105 active:scale-95
+    transition-all duration-200 ease-in-out
+    hover:shadow-md
+    border border-indigo-500/20
+  `;
+
   return (
     <div className="relative" ref={dropdownRef}>
       {/* Button to toggle the visibility of the language dropdown */}
       <button
         onClick={() => setShowLanguages(!showLanguages)}
-        className={`flex items-center space-x-1 rounded border p-2 ${
-          darkMode ? "border-gray-300 bg-gray-700" : "border-gray-600 bg-white"
-        }`}
+        className={buttonClasses}
       >
-        <span>{language || "Select Language"}</span>
-        <ChevronDown size={18} />
+        <Globe size={16} className="mr-1.5 group-hover:rotate-12 transition-transform duration-300" />
+        {language.toUpperCase()}
       </button>
 
       {/* Dropdown menu for selecting a language */}

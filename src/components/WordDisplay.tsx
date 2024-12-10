@@ -32,7 +32,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     const handleResize = () => {
       const isSmallScreen = window.innerWidth < 768;
       setWordsPerLine(
-        isSmallScreen ? WORDS_PER_LINE_SMALL : WORDS_PER_LINE_LARGE,
+        isSmallScreen ? WORDS_PER_LINE_SMALL : WORDS_PER_LINE_LARGE
       );
     };
 
@@ -64,8 +64,10 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
       return (
         <React.Fragment key={wordIndex}>
           <span
-            className={`relative ${
-              isCurrentWord ? "rounded-md bg-blue-500 bg-opacity-30 p-1" : ""
+            className={`relative inline-block transition-all duration-300 ease-out ${
+              isCurrentWord
+                ? "rounded-md bg-gradient-to-r from-blue-400/20 via-indigo-400/30 to-blue-400/20 px-[1rem] py-[0.1rem] shadow-sm"
+                : ""
             }`}
           >
             {wordClusters.map((charCluster, charIndex) => {
@@ -73,26 +75,35 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
               if (charIndex < inputClusters.length) {
                 if (charCluster === inputClusters[charIndex]) {
-                  charClass = darkMode ? "text-green-500" : "text-green-500";
+                  charClass = darkMode
+                    ? "text-emerald-400 font-bold scale-110 origin-bottom transform transition-all duration-200 ease-out hover:scale-125"
+                    : "text-emerald-500 font-bold scale-110 origin-bottom transform transition-all duration-200 ease-out hover:scale-125";
                 } else {
-                  charClass = darkMode ? "text-red-600" : "text-red-600";
+                  charClass = darkMode
+                    ? "text-rose-500 font-bold -translate-y-px transform transition-all duration-200 ease-out"
+                    : "text-rose-600 font-bold -translate-y-px transform transition-all duration-200 ease-out";
                 }
               } else if (isPastWord) {
-                // Highlight missed letters in past words
-                charClass = darkMode ? "text-red-600" : "text-red-600";
+                charClass = darkMode
+                  ? "text-rose-500/80 font-bold transition-opacity duration-300"
+                  : "text-rose-600/80 font-bold transition-opacity duration-300";
               }
 
               return (
                 <span
                   key={charIndex}
-                  className={`${charClass} transition-colors duration-150`}
+                  className={`${charClass} inline-block`}
                 >
                   {charCluster}
                 </span>
               );
             })}
             {inputClusters.length > wordClusters.length && (
-              <span className={darkMode ? "text-red-600" : "text-red-600"}>
+              <span
+                className={`${
+                  darkMode ? "text-rose-600" : "text-rose-600"
+                } font-bold`}
+              >
                 {inputWord.slice(word.length)}
               </span>
             )}
@@ -106,15 +117,22 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
   // Section 6: Component Rendering
   return (
     <div
-      className={`mb-2 w-full rounded-lg p-2 font-medium shadow-lg transition-colors duration-300 sm:p-6 ${
+      className={`relative mb-1 w-full overflow-hidden rounded-xl p-5 font-medium shadow-xl backdrop-blur-sm transition-all duration-500 sm:p-6 ${
         darkMode
-          ? "bg-gray-800 text-gray-200"
-          : "border-2 border-gray-300 bg-white text-gray-800"
+          ? "bg-gradient-to-br from-gray-800/95 via-gray-900/95 to-gray-800/95 text-gray-200 ring-1 ring-gray-700"
+          : "bg-gradient-to-br from-white/95 via-gray-50/95 to-white/95 text-gray-800 ring-1 ring-gray-200"
       }`}
     >
-      <div className="text-[1.3rem] leading-8 tracking-wide sm:text-xl md:text-[1.7rem] md:leading-10">
+      <div className="text-[1.5rem] font-bold leading-2 tracking-wide sm:text-2xl md:text-[2rem] md:leading-[3rem]">
         {getHighlightedText(randomText, inputValue)}
       </div>
+      <div
+        className={`absolute bottom-0 left-0 h-1 w-full ${
+          darkMode
+            ? "bg-gradient-to-r from-green-400 via-violet-500 to-green-500"
+            : "bg-gradient-to-r from-green-500 via-blue-500 to-indigo-500"
+        } opacity-50 backdrop-blur-sm`}
+      />
     </div>
   );
 };
