@@ -39,68 +39,81 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
     }
   };
 
-  // Dynamic class for input fields based on dark mode
-  const inputClass = `p-2 border ${
-    darkMode
-      ? "bg-gray-700 text-white border-gray-600"
-      : "bg-white text-black border-gray-300"
-  }`;
+  // Common input classes
+  const inputClass = `
+    rounded-lg text-sm
+    ${darkMode 
+      ? "bg-slate-800/80 text-slate-100 border-slate-700/30" 
+      : "bg-white text-slate-800 border-slate-200/80"
+    }
+    border
+    focus:ring-1 focus:ring-sky-500 focus:border-sky-500/50
+    placeholder:text-slate-400
+    shadow-sm
+    transition-all duration-200
+  `;
 
-  // Dynamic class for buttons
-  const buttonClass = (bgColor: string) => `p-2 border ${bgColor} text-white`;
+  // Common button styles with colors
+  const buttonClass = (bgColor: string) => `
+    rounded-lg text-sm font-medium
+    transition-all duration-200
+    hover:scale-105 active:scale-95
+    shadow-sm hover:shadow-md
+    ${bgColor}
+  `;
 
   return (
-    <>
+    <div className={`flex ${isMobile ? 'flex-col space-y-2 w-full' : 'flex-row items-center justify-center space-x-2'}`}>
       {/* Custom Time Input Form */}
       <form
         onSubmit={handleCustomTimeSubmit}
-        className={isMobile ? "flex-col-2 flex" : "flex items-center"}
+        className={`flex items-center ${isMobile ? 'w-full space-x-2' : 'space-x-2'}`}
       >
         <input
           type="text"
           name="input_time"
           value={tempCustomTime}
           onChange={(e) => setTempCustomTime(e.target.value)}
-          placeholder="Set time(s)"
-          className={inputClass + (isMobile ? " w-full" : " w-28")}
+          placeholder="Time (s)"
+          className={`${inputClass} px-2.5 py-1.5 w-full min-w-[70px] max-w-[100px]`}
         />
         <button
           type="submit"
-          className={buttonClass(
+          className={`${buttonClass(
             darkMode
-              ? "border-green-600 bg-green-600 font-medium"
-              : "border-green-600 bg-green-500 font-medium",
-          )}
+              ? "bg-sky-500/10 hover:bg-sky-500/20 text-sky-200 border border-sky-500/20"
+              : "bg-sky-50 hover:bg-sky-100/80 text-sky-700 border border-sky-400/20"
+          )} px-3 py-1.5 min-w-[60px] whitespace-nowrap`}
         >
-          {isMobile ? "Custom Time" : "Custom Time"}
+          Time
         </button>
       </form>
 
       {/* Custom Text Input Form */}
       <form
         onSubmit={handleCustomTextSubmit}
-        className={isMobile ? "flex-col-2 mt-2 flex" : "flex items-center"}
+        className={`flex items-center ${isMobile ? 'w-full space-x-2' : 'space-x-2'}`}
       >
         <input
           type="text"
           name="input_text"
           value={customText}
           onChange={(e) => setCustomText(e.target.value)}
-          placeholder="Enter your text"
-          className={inputClass + (isMobile ? " w-full" : " w-32")}
+          placeholder="Custom text"
+          className={`${inputClass} px-2.5 py-1.5 w-full min-w-[70px] max-w-[100px]`}
         />
         <button
           type="submit"
-          className={buttonClass(
+          className={`${buttonClass(
             darkMode
-              ? "border-green-600 bg-green-600 font-medium"
-              : "border-green-800 bg-green-600 font-medium",
-          )}
+              ? "bg-fuchsia-500/10 hover:bg-fuchsia-500/20 text-fuchsia-200 border border-fuchsia-500/20"
+              : "bg-fuchsia-50 hover:bg-fuchsia-100/80 text-fuchsia-700 border border-fuchsia-400/20"
+          )} px-3 py-1.5 min-w-[60px] whitespace-nowrap`}
         >
-          {isMobile ? "Custom Text" : "Custom Text"}
+          Text
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
