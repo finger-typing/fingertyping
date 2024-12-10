@@ -2,7 +2,7 @@ export const wordLists: { [key: string]: string[] } = {
   English: [
     // Shorter words (3 to 5 characters)
     "go", // Go
-    "To", // To
+    "to", // To
     "my", // My
     "for", // For
     "the", // The
