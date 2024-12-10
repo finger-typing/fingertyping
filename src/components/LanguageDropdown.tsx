@@ -93,13 +93,13 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
   const buttonClasses = `
     flex items-center px-2.5 py-1.5 rounded-lg font-medium text-sm
     ${darkMode 
-      ? 'bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-200' 
-      : 'bg-indigo-50 hover:bg-indigo-100/80 text-indigo-700'
+      ? 'bg-teal-500/10 hover:bg-teal-500/20 text-teal-200' 
+      : 'bg-teal-50 hover:bg-teal-100/80 text-teal-700'
     }
     transform hover:scale-105 active:scale-95
     transition-all duration-200 ease-in-out
     hover:shadow-md
-    border border-indigo-500/20
+    border border-teal-500/20
   `;
 
   return (
