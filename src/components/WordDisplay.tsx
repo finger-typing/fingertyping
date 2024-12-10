@@ -66,7 +66,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
           <span
             className={`relative inline-block transition-all duration-300 ease-out ${
               isCurrentWord
-                ? "rounded-md bg-gradient-to-r from-blue-400/20 via-indigo-400/30 to-blue-400/20 px-[1rem] py-[0.1rem] shadow-sm"
+                ? "rounded-md bg-gradient-to-r from-blue-400/20 via-indigo-400/30 to-blue-400/10 px-[1rem] py-[0.1rem] shadow-lg"
                 : ""
             }`}
           >
@@ -76,17 +76,17 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
               if (charIndex < inputClusters.length) {
                 if (charCluster === inputClusters[charIndex]) {
                   charClass = darkMode
-                    ? "text-emerald-400 font-bold scale-110 origin-bottom transform transition-all duration-200 ease-out hover:scale-125"
+                    ? "text-green-500 font-bold scale-110 origin-bottom transform transition-all duration-200 ease-out hover:scale-125"
                     : "text-emerald-500 font-bold scale-110 origin-bottom transform transition-all duration-200 ease-out hover:scale-125";
                 } else {
                   charClass = darkMode
-                    ? "text-rose-500 font-bold -translate-y-px transform transition-all duration-200 ease-out"
-                    : "text-rose-600 font-bold -translate-y-px transform transition-all duration-200 ease-out";
+                    ? "text-red-500 font-bold -translate-y-px transform transition-all duration-200 ease-out"
+                    : "text-red-600 font-bold -translate-y-px transform transition-all duration-200 ease-out";
                 }
               } else if (isPastWord) {
                 charClass = darkMode
-                  ? "text-rose-500/80 font-bold transition-opacity duration-300"
-                  : "text-rose-600/80 font-bold transition-opacity duration-300";
+                  ? "text-rose-400 font-bold transition-opacity duration-300"
+                  : "text-rose-400 font-bold transition-opacity duration-300";
               }
 
               return (
@@ -129,8 +129,8 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
       <div
         className={`absolute bottom-0 left-0 h-1 w-full ${
           darkMode
-            ? "bg-gradient-to-r from-green-400 via-violet-500 to-green-500"
-            : "bg-gradient-to-r from-green-500 via-blue-500 to-indigo-500"
+            ? "bg-gradient-to-r from-white via-violet-500 to-white"
+            : "bg-gradient-to-r from-gray-900 via-blue-500 to-gray-900"
         } opacity-50 backdrop-blur-sm`}
       />
     </div>

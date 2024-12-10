@@ -343,17 +343,17 @@ const TypingPractice: React.FC = () => {
 
         {/* Share This Tool Section */}
         <section
-          className={`mt-12 rounded-3xl p-8 shadow-2xl backdrop-blur-lg transition-all duration-300 ${
+          className={`mt-10 rounded-3xl p-4 sm:p-8 shadow-2xl backdrop-blur-lg transition-all duration-300 ${
             darkMode 
               ? "bg-gradient-to-br from-gray-800/90 via-gray-800/80 to-gray-900/90 ring-1 ring-gray-700/50" 
               : "bg-gradient-to-br from-white/95 via-gray-50/95 to-white/95 ring-1 ring-gray-200/50"
           }`}
         >
-          <div className="flex flex-col items-center space-y-6">
+          <div className="flex flex-col items-center space-y-4 sm:space-y-6">
             {/* Header */}
             <div className="text-center">
               <h2
-                className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${
+                className={`text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${
                   darkMode 
                     ? "from-indigo-400 via-fuchsia-400 to-indigo-400" 
                     : "from-indigo-600 via-fuchsia-600 to-indigo-600"
@@ -361,13 +361,13 @@ const TypingPractice: React.FC = () => {
               >
                 Share FingerTyping
               </h2>
-              <p className={`mt-3 text-sm ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+              <p className={`mt-2 text-xs sm:text-sm ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
                 Help others improve their typing skills by sharing!
               </p>
             </div>
 
             {/* Social Media Grid */}
-            <div className="grid grid-cols-4 gap-4 w-full max-w-xl">
+            <div className="grid grid-cols-4 gap-2 sm:gap-4 w-full max-w-xs sm:max-w-md">
               {[
                 {
                   icon: FaXTwitter,
@@ -422,10 +422,10 @@ const TypingPractice: React.FC = () => {
                   <button
                     key={index}
                     onClick={item.onClick}
-                    className={`group flex flex-col items-center justify-center p-3 rounded-xl bg-gradient-to-br ${item.bg} text-white transition-all duration-300 hover:scale-105 hover:shadow-md`}
+                    className={`group flex flex-col items-center justify-center p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${item.bg} text-white transition-all duration-300 hover:scale-105 hover:shadow-md`}
                   >
-                    <item.icon className="h-4 w-4 mb-1 transition-transform group-hover:scale-110" />
-                    <span className="text-xs font-medium">{item.label}</span>
+                    <item.icon className="h-3 w-3 sm:h-4 sm:w-4 mb-1 transition-transform group-hover:scale-130" />
+                    <span className="text-[10px] sm:text-xs font-medium">{item.label}</span>
                   </button>
                 ) : (
                   <a
@@ -433,10 +433,10 @@ const TypingPractice: React.FC = () => {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex flex-col items-center justify-center p-3 rounded-xl bg-gradient-to-br ${item.bg} text-white transition-all duration-300 hover:scale-105 hover:shadow-md`}
+                    className={`group flex flex-col items-center justify-center p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${item.bg} text-white transition-all duration-300 hover:scale-105 hover:shadow-md`}
                   >
-                    <item.icon className="h-4 w-4 mb-1 transition-transform group-hover:scale-110" />
-                    <span className="text-xs font-medium">{item.label}</span>
+                    <item.icon className="h-3 w-3 sm:h-4 sm:w-4 mb-1 transition-transform group-hover:scale-110" />
+                    <span className="text-[10px] sm:text-xs font-medium">{item.label}</span>
                   </a>
                 )
               ))}
