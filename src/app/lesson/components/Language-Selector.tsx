@@ -91,7 +91,7 @@ export default function LanguageSelector(
             </div>
           </div>
 
-          <div className="max-h-20 overflow-y-auto">
+          <div className="max-h-28 overflow-y-auto">
             {filteredLanguages.length > 0 ? (
               filteredLanguages.map((lang) => (
                 <div

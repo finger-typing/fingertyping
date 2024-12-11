@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import {
@@ -13,27 +15,19 @@ import LanguageDropdown from "./LanguageDropdown";
 import CustomInputs from "./CustomInputs";
 import DarkModeToggle from "./DarkModeToggle";
 import { audioPlayer } from "../utils/audioUtils";
+import { useApp } from "@/context/AppContext";
 
-// Update the props interface to include sound-related props
-interface NavbarProps {
-  language: string;
-  setLanguage: (lang: string) => void;
-  darkMode: boolean;
-  setDarkMode: (mode: boolean) => void;
-  onCustomTextSubmit: (text: string) => void;
-  onCustomTimeSubmit: (time: number) => void;
-  customTime: number;
-}
+const Navbar: React.FC = () => {
+  const {
+    language,
+    setLanguage,
+    darkMode,
+    setDarkMode,
+    onCustomTextSubmit,
+    onCustomTimeSubmit,
+    customTime,
+  } = useApp();
 
-const Navbar: React.FC<NavbarProps> = ({
-  language,
-  setLanguage,
-  darkMode,
-  setDarkMode,
-  onCustomTextSubmit,
-  onCustomTimeSubmit,
-  customTime,
-}) => {
   // State for mobile menu and sound
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);

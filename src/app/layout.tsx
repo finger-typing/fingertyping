@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { AppProvider } from "@/context/AppContext";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,9 +14,13 @@ export const viewport: Viewport = {
 
 // Metadata for SEO and social media sharing
 export const metadata: Metadata = {
-  title: "Finger Typing - Secure and Fast",
+  metadataBase: new URL('https://www.fingertyping.com'),
+  title: {
+    default: "Finger Typing - Best Free Online Typing Practice & Speed Test",
+    template: "%s | FingerTyping"
+  },
   description:
-    "Secure and ads-free typing on FingerTyping. In Finger Typing With your 10 fast finger, improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
+    "Master touch typing with FingerTyping - Free online typing practice, speed tests, and lessons. Improve your typing speed and accuracy with our secure, ad-free platform. Perfect for beginners and advanced typists.",
   keywords: [
     "finger typing",
     "typing practice",
@@ -57,6 +63,16 @@ export const metadata: Metadata = {
     "mobile typing practice",
     "typing accuracy tests",
     "high-speed typing",
+    "finger typing practice",
+    "finger typing test",
+    "finger typing online",
+    "finger typing game",
+    "finger typing tutorial",
+    "finger typing course",
+    "learn finger typing",
+    "finger typing for beginners",
+    "finger typing exercises",
+    "finger typing speed test",
   ],
   authors: [{ name: "FingerTyping Team" }],
   creator: "FingerTyping",
@@ -78,9 +94,9 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title: "Finger Typing - Secure, Fast, and Private Typing Practice",
+    title: "FingerTyping - Best Free Online Typing Practice & Speed Test",
     description:
-      "Secure and ads-free typing on FingerTyping. In Finger Typing With your 10 fast finger, improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
+      "Master touch typing with FingerTyping - Free online typing practice, speed tests, and lessons. Improve your typing speed and accuracy with our secure, ad-free platform.",
     url: "https://www.fingertyping.com",
     siteName: "FingerTyping",
     images: [
@@ -88,8 +104,8 @@ export const metadata: Metadata = {
         url: "https://www.fingertyping.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "FingerTyping - Improve Your Typing Skills",
-      },
+        alt: "FingerTyping - Best Online Typing Practice Platform",
+      }
     ],
     locale: "en_US",
     type: "website",
@@ -123,6 +139,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.fingertyping.com",
   },
+  verification: {
+    google: "your-google-site-verification-code",
+    yandex: "your-yandex-verification-code",
+  },
 };
 
 export default function RootLayout({
@@ -138,33 +158,34 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-      </head>
-      <body className={inter.className}>
+        <meta name="msvalidate.01" content="your-bing-verification-code" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "FingerTyping",
-              url: "https://fingertyping.com",
-              description:
-                "Secure and ads-free typing practice to improve your typing speed and accuracy.",
-              potentialAction: {
-                "@type": "SearchAction",
-                target:
-                  "https://www.fingertyping.com/search?q={search_term_string}",
-                "query-input": "required name=search_term_string",
+              "@type": "WebApplication",
+              "name": "FingerTyping",
+              "applicationCategory": "EducationalApplication",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
               },
-              sameAs: [
-                "https://www.facebook.com/fingertypingofficial",
-                "https://t.me/fingertyping",
-              ],
-            }),
+              "description": "Free online typing practice platform to improve typing speed and accuracy",
+              "operatingSystem": "Any",
+              "browserRequirements": "Requires JavaScript",
+              "url": "https://www.fingertyping.com"
+            })
           }}
         />
-        {children}
-        <Footer darkMode={true} />
+      </head>
+      <body className={inter.className}>
+        <AppProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </AppProvider>
       </body>
     </html>
   );
