@@ -8,21 +8,12 @@ interface TypingInterfaceProps {
   typedWords: string[];
 }
 
-export default function TypingInterface(
-  {
-    currentWord,
-    isCorrect,
-    input,
-    handleInputChange,
-    typedWords,
-  }: TypingInterfaceProps = {
-    currentWord: "",
-    isCorrect: true,
-    input: "",
-    handleInputChange: () => {},
-    typedWords: [],
-  },
-) {
+export default function TypingInterface({
+  currentWord,
+  isCorrect,
+  input,
+  handleInputChange,
+}: TypingInterfaceProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -44,10 +35,8 @@ export default function TypingInterface(
             isCorrect ? "border-green-500" : "border-red-500"
           } bg-white text-gray-800 dark:bg-gray-700 dark:text-white`}
           placeholder="Type here..."
+          autoFocus
         />
-        <div className="mt-2 overflow-x-auto whitespace-nowrap p-2 text-lg text-gray-500 dark:text-gray-400">
-          {typedWords.join(" ")}
-        </div>
       </div>
     </div>
   );
