@@ -69,7 +69,9 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
           >
             {wordClusters.map((charCluster, charIndex) => {
               let charClass = darkMode ? "text-gray-300" : "text-gray-700";
-              const isCurrentChar = isCurrentWord && charIndex === inputClusters.length;
+              const isCurrentChar = isCurrentWord && 
+                ((inputClusters.length === charIndex) || 
+                 (inputClusters.length < wordClusters.length && inputClusters.length === charIndex));
 
               if (charIndex < inputClusters.length) {
                 if (charCluster === inputClusters[charIndex]) {
@@ -88,17 +90,24 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
                   </span>
                   {isCurrentChar && (
                     <span 
-                      className={`absolute bottom-0 left-0 h-[3.3px] w-full ${
+                      className={`absolute bottom-0 left-0 h-[2px] w-full cursor-blink ${
                         darkMode ? 'bg-white' : 'bg-black'
-                      } animate-[pulse_0.8s_ease-in-out_infinite]`}
+                      }`}
                     />
                   )}
                 </span>
               );
             })}
-            {inputClusters.length > wordClusters.length && (
-              <span className={darkMode ? "text-red-600" : "text-red-600"}>
-                {inputWord.slice(word.length)}
+            {inputClusters.length > wordClusters.length && isCurrentWord && (
+              <span className="relative">
+                <span className={darkMode ? "text-red-600" : "text-red-600"}>
+                  {inputWord.slice(word.length)}
+                </span>
+                <span 
+                  className={`absolute bottom-0 left-0 h-[2px] w-full cursor-blink ${
+                    darkMode ? 'bg-white' : 'bg-black'
+                  }`}
+                />
               </span>
             )}
           </span>
@@ -110,17 +119,28 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   // Section 6: Component Rendering
   return (
-    <div
-      className={`mb-2 w-full rounded-lg p-2 font-medium shadow-lg transition-colors duration-300 sm:p-6 ${
-        darkMode
-          ? "bg-gray-800 text-gray-200"
-          : "border-2 border-gray-300 bg-white text-gray-800"
-      }`}
-    >
-      <div className="text-[1.5rem] leading-10 tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[3.2rem]">
-        {getHighlightedText(randomText, inputValue)}
+    <>
+      <style jsx global>{`
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+        .cursor-blink {
+          animation: blink 1s ease-in-out infinite;
+        }
+      `}</style>
+      <div
+        className={`mb-2 w-full rounded-lg p-2 font-medium shadow-lg transition-colors duration-300 sm:p-6 ${
+          darkMode
+            ? "bg-gray-800 text-gray-200"
+            : "border-2 border-gray-300 bg-white text-gray-800"
+        }`}
+      >
+        <div className="text-[1.5rem] leading-10 tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[3.2rem] break-normal">
+          {getHighlightedText(randomText, inputValue)}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
