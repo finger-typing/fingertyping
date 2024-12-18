@@ -58,7 +58,6 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
       const wordClusters = getGraphemeClusters(word);
       const inputClusters = getGraphemeClusters(inputWord);
 
-      // Check if we've moved past this word
       const isPastWord = wordPos < currentWordIndex;
 
       return (
@@ -70,6 +69,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
           >
             {wordClusters.map((charCluster, charIndex) => {
               let charClass = darkMode ? "text-gray-300" : "text-gray-700";
+              const isCurrentChar = isCurrentWord && charIndex === inputClusters.length;
 
               if (charIndex < inputClusters.length) {
                 if (charCluster === inputClusters[charIndex]) {
@@ -78,16 +78,21 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
                   charClass = darkMode ? "text-red-600" : "text-red-600";
                 }
               } else if (isPastWord) {
-                // Highlight missed letters in past words
                 charClass = darkMode ? "text-red-600" : "text-red-600";
               }
 
               return (
-                <span
-                  key={charIndex}
-                  className={`${charClass} transition-colors duration-150`}
-                >
-                  {charCluster}
+                <span key={charIndex} className="relative">
+                  <span className={`${charClass} transition-colors duration-150`}>
+                    {charCluster}
+                  </span>
+                  {isCurrentChar && (
+                    <span 
+                      className={`absolute bottom-0 left-0 h-[3.3px] w-full ${
+                        darkMode ? 'bg-white' : 'bg-black'
+                      } animate-[pulse_0.8s_ease-in-out_infinite]`}
+                    />
+                  )}
                 </span>
               );
             })}

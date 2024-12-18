@@ -85,7 +85,7 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
               : "bg-fuchsia-50 hover:bg-fuchsia-100/80 text-black-700 border border-fuchsia-500/20"
           )} px-3 py-1.5 min-w-[60px] whitespace-nowrap`}
         >
-         Custom Time
+         Set Time
         </button>
       </form>
 
@@ -110,7 +110,7 @@ const CustomInputs: React.FC<CustomInputsProps> = ({
               : "bg-fuchsia-50 hover:bg-fuchsia-100/80 text-fuchsia-700 border border-fuchsia-400/20"
           )} px-3 py-1.5 min-w-[60px] whitespace-nowrap`}
         >
-           Custom Text
+           Set Text
         </button>
       </form>
     </div>
