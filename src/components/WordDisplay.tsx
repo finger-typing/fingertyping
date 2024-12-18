@@ -64,14 +64,18 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
         <React.Fragment key={wordIndex}>
           <span
             className={`relative ${
-              isCurrentWord ? "rounded-md bg-blue-800 bg-opacity-30 p-[0.5rem]" : ""
+              isCurrentWord
+                ? "rounded-md bg-blue-800 bg-opacity-30 p-[0.5rem]"
+                : ""
             }`}
           >
             {wordClusters.map((charCluster, charIndex) => {
               let charClass = darkMode ? "text-gray-300" : "text-gray-700";
-              const isCurrentChar = isCurrentWord && 
-                ((inputClusters.length === charIndex) || 
-                 (inputClusters.length < wordClusters.length && inputClusters.length === charIndex));
+              const isCurrentChar =
+                isCurrentWord &&
+                (inputClusters.length === charIndex ||
+                  (inputClusters.length < wordClusters.length &&
+                    inputClusters.length === charIndex));
 
               if (charIndex < inputClusters.length) {
                 if (charCluster === inputClusters[charIndex]) {
@@ -85,13 +89,15 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
               return (
                 <span key={charIndex} className="relative">
-                  <span className={`${charClass} transition-colors duration-150`}>
+                  <span
+                    className={`${charClass} transition-colors duration-150`}
+                  >
                     {charCluster}
                   </span>
                   {isCurrentChar && (
-                    <span 
-                      className={`absolute bottom-0 left-0 h-[2px] w-full cursor-blink ${
-                        darkMode ? 'bg-white' : 'bg-black'
+                    <span
+                      className={`cursor-blink absolute bottom-0 left-0 h-[2px] w-full ${
+                        darkMode ? "bg-white" : "bg-black"
                       }`}
                     />
                   )}
@@ -103,9 +109,9 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
                 <span className={darkMode ? "text-red-600" : "text-red-600"}>
                   {inputWord.slice(word.length)}
                 </span>
-                <span 
-                  className={`absolute bottom-0 left-0 h-[2px] w-full cursor-blink ${
-                    darkMode ? 'bg-white' : 'bg-black'
+                <span
+                  className={`cursor-blink absolute bottom-0 left-0 h-[2px] w-full ${
+                    darkMode ? "bg-white" : "bg-black"
                   }`}
                 />
               </span>
@@ -122,8 +128,13 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     <>
       <style jsx global>{`
         @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
+          0%,
+          100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
         }
         .cursor-blink {
           animation: blink 1s ease-in-out infinite;
@@ -136,7 +147,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
             : "border-2 border-gray-300 bg-white text-gray-800"
         }`}
       >
-        <div className="text-[1.5rem] leading-10 tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[3.2rem] break-normal">
+        <div className="break-normal text-[1.5rem] leading-10 tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[3.2rem]">
           {getHighlightedText(randomText, inputValue)}
         </div>
       </div>
