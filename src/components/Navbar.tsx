@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
       <nav
         className={`w-full backdrop-blur-md ${
           darkMode ? "bg-slate-900/95 text-white" : "bg-white/95 text-slate-900"
-        }  transition-all duration-300 ease-in-out shadow-md z-50 sticky top-0`}
+        } transition-all duration-300 ease-in-out shadow-md z-50`}
       >
         {/* Navigation content */}
         <div className="container mx-auto px-3 py-2">
