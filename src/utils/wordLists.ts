@@ -1,4 +1,4 @@
-export const wordLists: { [key: string]: string[] } = {
+export const wordLists: Record<string, string[]> = {
   English: [
     // Shorter words (3 to 5 characters)
     "go", // Go
@@ -1100,7 +1100,7 @@ export const wordLists: { [key: string]: string[] } = {
     "நோயாளி", // Patient
     "அறிவியல்", // Science
     "உலகம்", // World
-    "சமூகம்", // Society
+    "சமூ��ம்", // Society
     "சுகாதாரம்", // Health
     "தொழில்நுட்பம்", // Technology
     "வாணிபம்", // Commerce
@@ -1216,8 +1216,7 @@ export const wordLists: { [key: string]: string[] } = {
     "ꯂꯥꯂꯤ", // Health
     "ꯄꯥ", // Politics
     "ꯇꯅꯥ", // Meeting
-    "ꯄꯥꯔꯥ", // Goodness
-    "ꯋꯠꯅ", // Technical
+    "ꯄꯠꯅ", // Technical
     "ꯃꯊꯥ", // Morality
     "ꯁꯥꯂꯤ", // Sociability
     "ꯆꯪꯂꯥ", // Love
@@ -1699,7 +1698,7 @@ export const wordLists: { [key: string]: string[] } = {
     "ಸಮಾಜ", // Society
     "ಆರೋಗ್ಯ", // Health
     "ವಿಶ್ವವಿದ್ಯಾಲಯ", // University
-    "ಶಾಂತಿ", // Peace
+    "ಶಾಂ���ಿ", // Peace
     "ಪರಿವಾರ", // Family
     "ಆಧುನಿಕ", // Modern
     "ಸೃಷ್ಟಿ", // Creation
@@ -1894,7 +1893,7 @@ export const wordLists: { [key: string]: string[] } = {
     "فرهنگ", // Culture
     "توسعه", // Development
     "علم", // Knowledge
-    "محیط زیست", // Environment
+    "مح��ط زیست", // Environment
     "آزادی", // Freedom
     "شادی", // Joy
     "اعتماد", // Trust
@@ -1904,7 +1903,7 @@ export const wordLists: { [key: string]: string[] } = {
     "خواب", // Dream
     "قدرت", // Strength
     "طبیعت", // Nature
-    "خلاقیت", // Creativity
+    "خلاق��ت", // Creativity
     "سخت کوشی", // Hard work
     "مسئولیت", // Responsibility
     "همکاری", // Cooperation
@@ -2328,7 +2327,7 @@ export const wordLists: { [key: string]: string[] } = {
     "fún", // For
     "ìwé", // Book
     "ṣọ́", // Watch
-    "má", // Don’t
+    "má", // Don't
     "sùn", // Sleep
     "kòṣù", // Frown
     "ọlọ́run", // God
@@ -2501,3 +2500,51 @@ export const generateRandomWords = (
     .map(() => wordList[Math.floor(Math.random() * wordList.length)])
     .join(" ");
 };
+
+// Add this if it doesn't exist
+export const LANGUAGES = [
+  "English",
+  "Bangla",
+  "Arabic",
+  "Urdu",
+  "Chinese",
+  "Hindi",
+  "Russian",
+  "Japanese",
+  "German",
+  "Spanish",
+  "French",
+  "Italian",
+  "Pashto",
+  "Turkish",
+  "Portuguese",
+  "Indonesian",
+  "Ukrainian",
+  "Thai",
+  "Abkhaz",
+  "Afrikaans",
+  "Vietnamese",
+  "Tamil",
+  "Telugu",
+  "Manipuri",
+  "Malayalam",
+  "Kashmiri",
+  "Gujarati",
+  "Punjabi",
+  "Sanskrit",
+  "Sindhi",
+  "Oriya",
+  "Kannada",
+  "Chakma",
+  "Nepali",
+  "Dari",
+  "Dzongkha",
+  "Korean",
+  "Persian",
+  "Bhojpuri",
+  "Berber",
+  "Amharic",
+  "Yoruba",
+  "Hausa",
+  "Zulu"
+] as const;

@@ -8,8 +8,6 @@ interface InputFieldProps {
   isComplete: boolean;
   darkMode: boolean;
   inputRef: RefObject<HTMLInputElement>;
-  placeholder?: string;
-  type?: string;
   randomText: string;
 }
 
@@ -19,41 +17,20 @@ const InputField: React.FC<InputFieldProps> = ({
   isComplete,
   darkMode,
   inputRef,
-  placeholder = "Start typing here...",
-  type = "text",
   randomText,
 }) => {
   const handleKeyInput = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       const newValue = e.target.value;
-      const prevLength = inputValue.length;
 
-      // Check if it's not a deletion
-      if (newValue.length > prevLength) {
-        const currentWords = randomText.split(" ");
-        const typedWords = newValue.split(" ");
-        const currentWordIndex = typedWords.length - 1;
+      if (newValue.length > inputValue.length) {
+        const [currentTargetWord = "", currentTypedWord = ""] =
+          getCurrentWordPair(randomText, newValue);
 
-        // Get the current word being typed
-        const currentTargetWord = currentWords[currentWordIndex] || "";
-        const currentTypedWord = typedWords[currentWordIndex] || "";
-
-        // Play sound based on whether the typed word matches the target word so far
-        const isTypedWordCorrect =
-          currentTargetWord.startsWith(currentTypedWord);
-
-        // Check if we've typed more characters than the target word
-        const isExtraCharacters =
-          currentTypedWord.length > currentTargetWord.length;
-
-        if (isExtraCharacters || !isTypedWordCorrect) {
-          audioPlayer.playIncorrect();
-        } else {
-          audioPlayer.playCorrect();
-        }
+        const isCorrect = validateInput(currentTargetWord, currentTypedWord);
+        playFeedbackSound(isCorrect);
       }
 
-      // Call the original handler
       handleInputChange(e);
     },
     [inputValue, randomText, handleInputChange],
@@ -63,25 +40,64 @@ const InputField: React.FC<InputFieldProps> = ({
     <div className="mb-2 w-full">
       <input
         ref={inputRef}
-        name="input_words_unique"
         value={inputValue}
         onChange={handleKeyInput}
-        placeholder={placeholder}
-        type={type}
-        className={`w-full rounded-lg border-2 px-2 py-5 text-lg shadow-md focus:border-transparent focus:outline-none focus:ring-2 focus:ring-green-500 ${
-          darkMode
-            ? "border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-400"
-            : "border-gray-400 bg-white text-gray-900 placeholder-gray-500"
-        }`}
         disabled={isComplete}
-        aria-label="Typing input field"
-        spellCheck={false}
-        autoComplete="off"
-        autoCorrect="off"
-        autoCapitalize="none"
+        className={getInputClassName(darkMode)}
+        {...getInputAttributes()}
       />
     </div>
   );
 };
+
+// Utility functions
+const getCurrentWordPair = (
+  randomText: string,
+  inputValue: string,
+): [string, string] => {
+  const currentWords = randomText.split(" ");
+  const typedWords = inputValue.split(" ");
+  const currentIndex = typedWords.length - 1;
+
+  return [currentWords[currentIndex] || "", typedWords[currentIndex] || ""];
+};
+
+const validateInput = (targetWord: string, typedWord: string): boolean => {
+  return (
+    targetWord.startsWith(typedWord) && typedWord.length <= targetWord.length
+  );
+};
+
+const playFeedbackSound = (isCorrect: boolean): void => {
+  if (isCorrect) {
+    audioPlayer.playCorrect();
+  } else {
+    audioPlayer.playIncorrect();
+  }
+};
+
+const getInputClassName = (darkMode: boolean): string => {
+  const baseClasses =
+    "w-full rounded-lg border-2 px-4 py-4 text-lg shadow-sm " +
+    "focus:border-transparent focus:outline-none focus:ring-2 focus:ring-green-500";
+
+  const themeClasses = darkMode
+    ? "border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-400"
+    : "border-gray-300 bg-white text-gray-900 placeholder-gray-500";
+
+  return `${baseClasses} ${themeClasses}`;
+};
+
+const getInputAttributes = () => ({
+  name: "typing_input",
+  placeholder: "Start typing...",
+  type: "text",
+  spellCheck: false,
+  autoComplete: "off",
+  autoCorrect: "off",
+  autoCapitalize: "none",
+  autoFocus: true,
+  "aria-label": "Typing input field",
+});
 
 export default InputField;

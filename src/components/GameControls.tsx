@@ -2,65 +2,84 @@ import React from "react";
 import { Clock, RotateCcw } from "lucide-react";
 import Button from "./Button";
 
-// Define the props interface for the GameControls component
 interface GameControlsProps {
   initializeGame: () => void;
-  hasStarted: boolean;
   timeRemaining: number;
   darkMode: boolean;
 }
+
+const formatTimeDisplay = (seconds: number): string => {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+};
 
 const GameControls: React.FC<GameControlsProps> = ({
   initializeGame,
   timeRemaining,
   darkMode,
 }) => {
-  // Common classes for styling
-  const commonClasses = `
-    flex items-center justify-center space-x-2 px-4 py-3 rounded-md
+  const buttonClasses = `
+    flex items-center justify-center gap-2 px-4 py-3 rounded-md
     ${darkMode ? "bg-gray-700 text-white" : "bg-white text-gray-800"}
-    shadow-md hover:shadow-lg transition-all duration-300 ease-in-out
+    shadow-md hover:shadow-lg 
     transform hover:scale-105 focus:outline-none focus:ring-2
-    ${darkMode ? "focus:ring-green-400 hover:bg-gray-600" : "focus:ring-green-600 hover:bg-gray-100"}
+    ${
+      darkMode
+        ? "focus:ring-green-400 hover:bg-gray-600"
+        : "focus:ring-green-600 hover:bg-gray-100"
+    }
+    transition-transform duration-200 ease-in-out
   `;
 
   return (
     <div
-      className={`mb-2 flex w-full flex-col items-center justify-between rounded-lg p-3 shadow-lg transition-all duration-300 lg:flex-row ${darkMode ? "bg-gray-600/20" : "bg-gray-100/20"} backdrop-blur-lg backdrop-filter`}
+      className={`
+        mb-2 flex w-full flex-col items-center justify-between 
+        rounded-lg p-3 shadow-lg lg:flex-row
+        ${darkMode ? "bg-gray-600/20" : "bg-gray-100/20"}
+        backdrop-blur-lg backdrop-filter
+        transition-colors duration-200
+      `}
+      role="group"
+      aria-label="Game controls"
     >
       <div className="grid w-full grid-cols-2 gap-4 lg:flex lg:flex-row lg:items-center lg:justify-between">
-        {/* Left spacer for large screens */}
-        <div className="hidden lg:block lg:flex-1"></div>
+        <div className="hidden lg:block lg:flex-1" aria-hidden="true" />
 
-        {/* Time display */}
-        <div className={`${commonClasses} text-center lg:flex-1`}>
+        <div
+          className={`${buttonClasses} text-center lg:flex-1`}
+          role="timer"
+          aria-label={`Time remaining: ${formatTimeDisplay(timeRemaining)}`}
+        >
           <Clock
             className={`${
               darkMode ? "text-green-500" : "text-green-600"
             } animate-pulse`}
             size={25}
+            aria-hidden="true"
           />
-          <p
-            className="text-md font-mono font-bold sm:text-lg lg:text-xl"
-            aria-live="polite"
-          >
-            Time:{timeRemaining}s
+          <p className="text-md font-mono font-bold sm:text-lg lg:text-xl">
+            {formatTimeDisplay(timeRemaining)}s
           </p>
         </div>
 
-        {/* Reset Button */}
         <Button
           onClick={initializeGame}
-          className={`${commonClasses} font-semibold lg:flex-1`}
+          className={`${buttonClasses} font-semibold lg:flex-1`}
+          aria-label="Reset game"
         >
-          <RotateCcw size={22} className="animate-spin-slow" />
+          <RotateCcw
+            size={22}
+            className="animate-spin-slow"
+            aria-hidden="true"
+          />
           <span className="text-md font-mono font-bold sm:text-lg lg:text-xl">
             Reset
           </span>
         </Button>
 
-        {/* Right spacer for large screens */}
-        <div className="hidden lg:block lg:flex-1"></div>
+        <div className="hidden lg:block lg:flex-1" aria-hidden="true" />
       </div>
     </div>
   );

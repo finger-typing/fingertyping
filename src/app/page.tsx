@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { disableInspection } from "../utils/disableInspection";
 import { wordLists, generateRandomWords } from "../utils/wordLists";
 import WordDisplay from "../components/WordDisplay";
-import InputField from "../components/InputField";
+import InputField from './lesson/components/InputField';
 import GameControls from "../components/GameControls";
 import ShareSection from "../components/ShareSection";
 import Mainpagefooter from "../components/Mainpagefooter";
@@ -150,7 +150,6 @@ const TypingPractice: React.FC = () => {
 
         <GameControls
           initializeGame={initializeGame}
-          hasStarted={gameState.hasStarted}
           timeRemaining={gameState.timeRemaining}
           darkMode={darkMode}
         />

@@ -36,7 +36,9 @@ export const LessonOptions: Record<LessonOption, string> = {
 
 export const languageLetters = {
   English: "abcdefghijklmnopqrstuvwxyz".split(""),
+
   Bangla: "অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধধনপফবভমযরলশষসহড়ঢ়য়ংঃ ঁ".split(""),
+  Arabic: "ابتثجحخدذرزسشصضطظعغفقكلمنهويءأؤإئآة".split(""),
   Abkhaz:
     "АаБбВвГгГьДдЕеЁёЖжЗзИиЙйКкҚқЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЪъЫыЬьЭэЮюЯя".split(
       "",

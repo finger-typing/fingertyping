@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import {  Search, Globe } from "lucide-react";
+import { Search, Globe } from "lucide-react";
+import { wordLists } from "@/utils/wordLists";
+import { languageLetters, Language } from "@/app/lesson/components/Letter-list";
+import { usePathname } from 'next/navigation';
 
-// Define the props for the LanguageDropdown component
 interface LanguageDropdownProps {
   language: string;
   setLanguage: (lang: string) => void;
@@ -13,126 +15,109 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
   setLanguage,
   darkMode,
 }) => {
-  // State to control the visibility of the language dropdown
-  const [showLanguages, setShowLanguages] = useState(false);
-  // State to store the search term for filtering languages
+  const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  // Ref to detect clicks outside the dropdown
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const pathname = usePathname();
+  const isLessonPage = pathname === '/lesson';
 
-  // List of available languages
-  const languages = [
-    "English",
-    "Bangla",
-    "Arabic",
-    "Urdu",
-    "Chinese",
-    "Hindi",
-    "Russian",
-    "Japanese",
-    "German",
-    "Spanish",
-    "French",
-    "Italian",
-    "Pashto",
-    "Turkish",
-    "Portuguese",
-    "Indonesian",
-    "Ukrainian",
-    "Thai",
-    "Abkhaz",
-    "Afrikaans",
-    "Vietnamese",
-    "Tamil",
-    "Telugu",
-    "Manipuri",
-    "Malayalam",
-    "Kashmiri",
-    "Gujarati",
-    "Punjabi",
-    "Sanskrit",
-    "Sindhi",
-    "Oriya",
-    "Kannada",
-    "Chakma",
-    "Nepali",
-    "Dari",
-    "Dzongkha",
-    "Korean",
-    "Persian",
-    "Bhojpuri",
-    "Berber",
-    "Amharic",
-    "Yoruba",
-    "Hausa",
-    "Zulu",
-  ];
+  // Get available languages based on the current page
+  const getAvailableLanguages = () => {
+    if (isLessonPage) {
+      // On lesson page, only show languages that have letters defined
+      return Object.keys(languageLetters) as Language[];
+    } else {
+      // On main page, only show languages that have words defined
+      return Object.keys(wordLists) as string[];
+    }
+  };
 
-  // Filter languages based on the search term
-  const filteredLanguages = languages.filter((lang) =>
-    lang.toLowerCase().includes(searchTerm.toLowerCase()),
+  // Filter languages based on search term
+  const filteredLanguages = getAvailableLanguages().filter((lang: string) =>
+    lang.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Effect to handle clicks outside the dropdown to close it
+  // Handle language selection with validation
+  const handleLanguageSelect = (selectedLang: string) => {
+    if (isLessonPage && !(selectedLang in languageLetters)) {
+      console.warn(`Language "${selectedLang}" does not have letters defined`);
+      return;
+    }
+    if (!isLessonPage && !(selectedLang in wordLists)) {
+      console.warn(`Language "${selectedLang}" does not have words defined`);
+      return;
+    }
+    setLanguage(selectedLang);
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setShowLanguages(false);
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    if (isOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isOpen]);
 
   const buttonClasses = `
     flex items-center px-2.5 py-1.5 rounded-lg font-medium text-sm
     ${darkMode 
-      ? 'bg-teal-500/10 hover:bg-teal-500/20 text-teal-200' 
-      : 'bg-teal-50 hover:bg-teal-100/80 text-teal-700'
+      ? 'bg-teal-500/20 hover:bg-teal-500/30 text-white' 
+      : 'bg-teal-500/20 hover:bg-teal-500/30 text-white'
     }
     transform hover:scale-105 active:scale-95
     transition-all duration-200 ease-in-out
-    hover:shadow-md
+    hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-500
     border border-teal-500/20
   `;
 
   return (
     <div className="relative" ref={dropdownRef}>
-      {/* Button to toggle the visibility of the language dropdown */}
       <button
-        onClick={() => setShowLanguages(!showLanguages)}
+        onClick={() => setIsOpen(!isOpen)}
         className={buttonClasses}
+        aria-label="Select language"
       >
-        <Globe size={16} className="mr-1.5 group-hover:rotate-12 transition-transform duration-300" />
-        {language.toUpperCase()}
+        <Globe 
+          size={16} 
+          className="mr-1.5 transition-transform duration-300" 
+        />
+        <span>{language}</span>
       </button>
 
-      {/* Dropdown menu for selecting a language */}
-      {showLanguages && (
+      {isOpen && (
         <div
-          className={`absolute left-0 top-full z-10 mt-1 rounded border shadow-lg ${
-            darkMode
+          className={`absolute left-0 top-full z-50 mt-1 rounded-lg border shadow-lg
+            ${darkMode
               ? "border-gray-700 bg-gray-800"
               : "border-gray-200 bg-white"
-          }`}
+            }`}
         >
           <div className="p-2">
             <div className="relative">
-              {/* Input field for searching languages */}
               <input
+                ref={searchInputRef}
                 type="text"
                 placeholder="Search language"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className={`w-full rounded-md py-1 pl-8 pr-2 ${
-                  darkMode ? "bg-gray-700 text-white" : "bg-gray-100 text-black"
-                }`}
+                className={`w-full rounded-md py-1.5 pl-8 pr-2 text-sm
+                  ${darkMode 
+                    ? "bg-gray-700 text-white placeholder-gray-400" 
+                    : "bg-gray-100 text-black placeholder-gray-500"
+                  }
+                  focus:outline-none focus:ring-2 focus:ring-teal-500
+                `}
               />
               <Search
                 size={16}
@@ -140,18 +125,19 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
               />
             </div>
           </div>
+
           <div className="max-h-72 w-48 overflow-y-auto">
-            {/* List of filtered languages */}
-            {filteredLanguages.map((lang) => (
+            {filteredLanguages.map((lang: string) => (
               <div
                 key={lang}
-                onClick={() => {
-                  setLanguage(lang);
-                  setShowLanguages(false);
-                }}
-                className={`cursor-pointer p-2 ${
-                  darkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"
-                }`}
+                onClick={() => handleLanguageSelect(lang)}
+                className={`cursor-pointer px-3 py-2 text-sm
+                  ${darkMode 
+                    ? "hover:bg-gray-700" 
+                    : "hover:bg-gray-100"
+                  }
+                  ${language === lang ? "font-medium" : ""}
+                `}
               >
                 {lang}
               </div>
