@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import {
   Menu,
@@ -18,24 +18,34 @@ import { audioPlayer } from "../utils/audioUtils";
 import { useApp } from "@/context/AppContext";
 import { usePathname } from 'next/navigation';
 
-const NavButton: React.FC<{
+// Component Props Type
+interface NavButtonProps {
   onClick?: () => void;
   href?: string;
   icon: React.ReactNode;
   label: string;
   darkMode: boolean;
   className?: string;
-}> = ({ onClick, href, icon, label, darkMode, className }) => {
+}
+
+const NavButton: React.FC<NavButtonProps> = ({
+  onClick,
+  href,
+  icon,
+  label,
+  darkMode,
+  className,
+}) => {
   const baseClasses = `
     flex items-center px-2.5 py-1.5 rounded-lg font-medium text-sm
     ${darkMode 
       ? "border-teal-500/20 bg-teal-500/20 text-white hover:bg-teal-500/30" 
-      : "border-teal-500/20 bg-teal-500/20 text-white hover:bg-teal-500/30"}
+      : "border-teal-600 bg-teal-700 text-white hover:bg-teal-800"}
     transform hover:scale-105 active:scale-95
     transition-all duration-200 ease-in-out
     hover:shadow-md border
     ${className || ""}
-  `;
+  `.trim();
 
   const content = (
     <>
@@ -47,11 +57,15 @@ const NavButton: React.FC<{
     </>
   );
 
-  return href ? (
-    <Link href={href} className={`${baseClasses} group`}>
-      {content}
-    </Link>
-  ) : (
+  if (href) {
+    return (
+      <Link href={href} className={`${baseClasses} group`}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
     <button onClick={onClick} className={`${baseClasses} group`}>
       {content}
     </button>
@@ -71,12 +85,12 @@ const Navbar: React.FC = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const pathname = usePathname();
+  const isLessonPage = pathname === "/lesson";
 
-  const toggleSound = () => {
-    setSoundEnabled(audioPlayer.toggleSound());
-  };
+  const toggleSound = () => setSoundEnabled(audioPlayer.toggleSound());
 
-  const navItems = [
+  const navItems = useMemo(() => [
     {
       href: "/lesson",
       icon: <BookOpen size={16} className="mr-1.5 transition-transform duration-300 group-hover:rotate-6" />,
@@ -99,13 +113,9 @@ const Navbar: React.FC = () => {
       ) : (
         <VolumeX size={16} className="mr-1.5 transition-transform duration-300 group-hover:scale-110" />
       ),
-      label: "Sound",
+      label: soundEnabled ? "Sound On" : "Sound Off",
     },
-  ];
-
-  const pathname = usePathname();
-
-  const isLessonPage = pathname === "/lesson";
+  ], [soundEnabled]);
 
   return (
     <>

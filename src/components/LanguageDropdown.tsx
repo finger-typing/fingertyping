@@ -73,8 +73,7 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
     flex items-center px-2.5 py-1.5 rounded-lg font-medium text-sm
     ${darkMode 
       ? 'bg-teal-500/20 hover:bg-teal-500/30 text-white' 
-      : 'bg-teal-500/20 hover:bg-teal-500/30 text-white'
-    }
+      : 'bg-teal-700 hover:bg-teal-800 text-white'}
     transform hover:scale-105 active:scale-95
     transition-all duration-200 ease-in-out
     hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-500

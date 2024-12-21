@@ -49,9 +49,9 @@ const Character = memo(({ charCluster, inputCluster, isCurrentChar, isPastWord, 
       </span>
       {isCurrentChar && (
         <span
-          className={`cursor-blink absolute bottom-[-2px] left-0 h-[3.5px] w-full rounded-full ${
+          className={`absolute bottom-[-2px] left-0 h-[3.5px] w-full rounded-full ${
             darkMode ? "bg-white" : "bg-black"
-          }`}
+          } animate-cursor`}
         />
       )}
     </span>
@@ -103,7 +103,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
       <React.Fragment key={wordIndex}>
         <span
           className={`relative whitespace-nowrap ${
-            isCurrentWord ? "rounded-md bg-blue-800 bg-opacity-30 p-[0.2rem]" : ""
+            isCurrentWord ? "rounded-md bg-blue-800/30 p-[0.2rem]" : ""
           }`}
         >
           {wordClusters.map((charCluster, charIndex) => (
@@ -123,13 +123,13 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
           ))}
           {inputClusters.length > wordClusters.length && isCurrentWord && (
             <span className="relative">
-              <span className={darkMode ? "text-red-600" : "text-red-600"}>
+              <span className="text-red-600">
                 {inputWord.slice(word.length)}
               </span>
               <span
-                className={`cursor-blink absolute bottom-0 left-0 h-[3.3px] w-full rounded-full ${
+                className={`absolute bottom-0 left-0 h-[3.3px] w-full rounded-full ${
                   darkMode ? "bg-white" : "bg-black"
-                }`}
+                } animate-cursor`}
               />
             </span>
           )}
@@ -142,28 +142,26 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
   const startIndex = Math.floor(currentWordIndex / wordsPerLine) * wordsPerLine;
 
   return (
-    <>
+    <div
+      className={`mb-2 w-full rounded-lg p-2 font-medium shadow-lg transition-colors duration-300 sm:p-6 ${
+        darkMode
+          ? "bg-gray-800 text-gray-200"
+          : "border-2 border-gray-300 bg-white text-gray-800"
+      }`}
+    >
       <style jsx global>{`
-        @keyframes blink {
+        @keyframes cursor {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
         }
-        .cursor-blink {
-          animation: blink 1s ease-in-out infinite;
+        .animate-cursor {
+          animation: cursor 1s ease-in-out infinite;
         }
       `}</style>
-      <div
-        className={`mb-2 w-full rounded-lg p-2 font-medium shadow-lg transition-colors duration-300 sm:p-6 ${
-          darkMode
-            ? "bg-gray-800 text-gray-200"
-            : "border-2 border-gray-300 bg-white text-gray-800"
-        }`}
-      >
-        <div className="overflow-hidden break-normal text-[1.5rem] leading-10 tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[3.2rem]">
-          {displayedWords.map((word, index) => renderWord(word, index, startIndex))}
-        </div>
+      <div className="overflow-hidden break-normal text-[1.5rem] leading-10 tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[3.2rem]">
+        {displayedWords.map((word, index) => renderWord(word, index, startIndex))}
       </div>
-    </>
+    </div>
   );
 };
 

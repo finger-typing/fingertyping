@@ -119,7 +119,7 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
     ${
       darkMode
         ? "bg-teal-500/10 hover:bg-teal-500/20 text-white border border-teal-500"
-        : "bg-teal-50 hover:bg-teal-100/80 text-teal-700 border border-teal-400/20"
+        : "bg-teal-50 hover:bg-teal-100/80 text-teal-700 border border-teal-400"
     }
   `;
 
