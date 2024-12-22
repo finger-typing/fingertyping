@@ -1,37 +1,43 @@
 {
-  "name": "FingerTyping",
+  "name": "Finger Typing - #1 Free Online Typing Practice & Speed Test",
   "short_name": "Finger Typing",
-  "description": "A secure and ads free typing practice app. In Finger Typing With your 10 fast fingers, improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
+  "description": "Master touch typing with FingerTyping - The best free online typing practice and speed test platform. Improve your typing speed and accuracy with our secure, ad-free lessons.",
   "start_url": "/",
   "lang": "en",
   "scope": "/",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#ffffff",
   "theme_color": "#000000",
-  
+  "categories": ["education", "productivity", "tools"],
+  "screenshots": [
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Desktop View of Finger Typing"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Mobile View of Finger Typing"
+    }
+  ],
   "icons": [
     {
       "src": "/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshots/screenshot-desktop.png",
-      "sizes": "1280x720",
       "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshots/screenshot-mobile.png",
-      "sizes": "360x640",
-      "type": "image/png"
+      "purpose": "any maskable"
     }
   ]
 }

@@ -158,7 +158,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
           animation: cursor 1s ease-in-out infinite;
         }
       `}</style>
-      <div className="overflow-hidden break-normal text-[1.5rem] leading-10 tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[3.2rem]">
+      <div className="overflow-hidden break-normal text-[1.5rem] leading-8 tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[2.8rem]">
         {displayedWords.map((word, index) => renderWord(word, index, startIndex))}
       </div>
     </div>
