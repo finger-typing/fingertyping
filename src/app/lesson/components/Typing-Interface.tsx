@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 interface TypingInterfaceProps {
   currentWord: string;
@@ -18,6 +18,13 @@ export default function TypingInterface({
 }: TypingInterfaceProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Auto-focus input field when component mounts
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
     <div className="mb-6 text-center">
       <div
@@ -35,11 +42,13 @@ export default function TypingInterface({
           type="text"
           value={input}
           onChange={handleInputChange}
-          className={`w-full rounded border-2 p-2 text-center text-xl focus:outline-none md:p-4 md:text-3xl ${
-            isCorrect ? "border-green-500" : "border-red-500"
-          } bg-white text-gray-800 dark:bg-gray-700 dark:text-white`}
+          className="w-full rounded-lg border-2 px-4 py-4 text-lg shadow-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-green-500 border-gray-300 bg-white text-gray-900 placeholder-gray-500 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-200 dark:placeholder-gray-400"
           placeholder={practiceType === 'words' ? "Type the word..." : "Type here..."}
-          autoFocus
+          spellCheck={false}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="none"
+          aria-label="Typing input field"
         />
       </div>
     </div>

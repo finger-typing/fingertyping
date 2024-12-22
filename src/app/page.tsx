@@ -10,6 +10,7 @@ import ShareSection from "../components/ShareSection";
 import Mainpagefooter from "../components/Mainpagefooter";
 import usePerformanceMetrics from "../components/PerformanceMetrics";
 import { useApp } from "@/context/AppContext";
+import { audioPlayer } from "../utils/audioUtils";
 
 const Results = dynamic(() => import("../components/Results"), {
   ssr: false,
@@ -32,6 +33,13 @@ const TypingPractice: React.FC = () => {
   });
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Auto-focus input field when component mounts
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   // Update game state when language changes
   useEffect(() => {
@@ -71,6 +79,26 @@ const TypingPractice: React.FC = () => {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
+    const prevValue = gameState.inputValue;
+    
+    // Play sound based on word accuracy
+    if (value.length > prevValue.length) {  // Only check when adding characters
+      const inputWords = value.split(" ");
+      const targetWords = gameState.randomText.split(" ");
+      const currentWordIndex = inputWords.length - 1;
+      const currentInputWord = inputWords[currentWordIndex] || "";
+      const currentTargetWord = targetWords[currentWordIndex] || "";
+      
+      // Compare up to the length of the input word
+      const isCorrectSoFar = currentTargetWord.startsWith(currentInputWord);
+      
+      if (isCorrectSoFar) {
+        audioPlayer.playCorrect();
+      } else {
+        audioPlayer.playIncorrect();
+      }
+    }
+
     setGameState((prev) => ({
       ...prev,
       inputValue: value,
