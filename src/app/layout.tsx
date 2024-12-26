@@ -17,34 +17,15 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-// Metadata for SEO and social media sharing
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.fingertyping.com'),
+  metadataBase: new URL("https://www.fingertyping.com"),
   title: {
-    default: "Finger Typing - #1 Free Online Typing Practice & Speed Test",
-    template: "%s | FingerTyping"
+    default: "Finger Typing",
+    template: "%s | FingerTyping",
   },
   description:
-    "Master touch typing with FingerTyping - The best free online typing practice and speed test platform. Improve your typing speed and accuracy with our secure, ad-free lessons. Perfect for beginners and advanced typists.",
-  keywords: [
-    "finger typing",
-    "finger type",
-    "typing practice",
-    "typing test",
-    "typing speed test",
-    "touch typing",
-    "typing tutor",
-    "learn typing",
-    "typing games",
-    "typing lessons",
-    "improve typing speed",
-    "keyboard practice",
-    "online typing",
-    "free typing practice",
-    "typing exercises"
-  ],
+    "Improve your typing speed and accuracy with our secure, ad-free lessons. Perfect for beginners and advanced typists.",
   authors: [{ name: "FingerTyping Team" }],
-  creator: "FingerTyping",
   publisher: "FingerTyping",
   formatDetection: {
     email: false,
@@ -52,30 +33,25 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-    ],
+    icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
   manifest: "/manifest.json",
   openGraph: {
-    type: 'website',
-    title: 'Finger Typing - #1 Free Online Typing Practice & Speed Test',
-    description: 'Master touch typing with FingerTyping - The best free online typing practice and speed test platform.',
-    images: ['/og-image.png'],
+    type: "website",
+    title: "Finger Typing",
+    description: "Free typing lessons and speed tests for all skill levels.",
+    images: ["https://www.fingertyping.com/og-image.png"],
     url: "https://www.fingertyping.com",
     siteName: "FingerTyping",
     locale: "en_US",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Finger Typing - #1 Free Online Typing Practice & Speed Test',
-    description: 'Master touch typing with FingerTyping - The best free online typing practice and speed test platform.',
-    images: ['/og-image.png'],
+    card: "summary_large_image",
+    title: "Finger Typing",
+    description: "Improve typing skills with free and secure lessons.",
+    images: ["https://www.fingertyping.com/og-image.png"],
     creator: "@fingertyping",
   },
   robots: {
@@ -84,13 +60,13 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   alternates: {
-    canonical: 'https://www.fingertyping.com',
+    canonical: "https://www.fingertyping.com",
   },
   verification: {
     google: "your-google-site-verification-code",
@@ -105,7 +81,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+     <head>
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
