@@ -128,7 +128,7 @@ const ShareSection: React.FC<ShareSectionProps> = ({
       } `}
     >
       <div className="mb-4">
-        <h2 className="mb-2 text-2xl font-bold">Share This Tool</h2>
+        <h2 className="mb-2 text-2xl font-bold">Share This Tool And Contribute on GitHub</h2>
         <p
           className={`text-sm ${darkMode ? "text-gray-300" : "text-gray-600"} `}
         >

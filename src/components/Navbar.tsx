@@ -9,7 +9,8 @@ import {
   MessageSquare,
   Volume2,
   VolumeX,
-  Gamepad,
+ 
+  Github,
 } from "lucide-react";
 import LanguageDropdown from "./LanguageDropdown";
 import CustomInputs from "./CustomInputs";
@@ -38,8 +39,8 @@ const NavButton: React.FC<NavButtonProps> = ({
 }) => {
   const baseClasses = `
     flex items-center px-2.5 py-1.5 rounded-lg font-medium text-sm
-    ${darkMode 
-      ? "border-teal-500/20 bg-teal-500/20 text-white hover:bg-teal-500/30" 
+    ${darkMode
+      ? "border-teal-500/20 bg-teal-500/20 text-white hover:bg-teal-500/30"
       : "border-teal-600 bg-teal-700 text-white hover:bg-teal-800"}
     transform hover:scale-105 active:scale-95
     transition-all duration-200 ease-in-out
@@ -90,32 +91,61 @@ const Navbar: React.FC = () => {
 
   const toggleSound = () => setSoundEnabled(audioPlayer.toggleSound());
 
-  const navItems = useMemo(() => [
-    {
-      href: "/lesson",
-      icon: <BookOpen size={16} className="mr-1.5 transition-transform duration-300 group-hover:rotate-6" />,
-      label: "Lesson",
-    },
-    {
-      href: "/game",
-      icon: <Gamepad size={16} className="mr-1.5 transition-transform duration-300 group-hover:rotate-12" />,
-      label: "Game",
-    },
-    {
-      onClick: () => window.open("https://forms.gle/D2QzunVpsg7nz9mc8", "_blank"),
-      icon: <MessageSquare size={16} className="mr-1.5 transition-transform duration-300 group-hover:rotate-12" />,
-      label: "Feedback",
-    },
-    {
-      onClick: toggleSound,
-      icon: soundEnabled ? (
-        <Volume2 size={16} className="mr-1.5 transition-transform duration-300 group-hover:scale-110" />
-      ) : (
-        <VolumeX size={16} className="mr-1.5 transition-transform duration-300 group-hover:scale-110" />
-      ),
-      label: soundEnabled ? "Sound On" : "Sound Off",
-    },
-  ], [soundEnabled]);
+  const navItems = useMemo(
+    () => [
+      {
+        href: "/lesson",
+        icon: (
+          <BookOpen
+            size={16}
+            className="mr-1.5 transition-transform duration-300 group-hover:rotate-6"
+          />
+        ),
+        label: "Lesson",
+      },
+      {
+        onClick: () =>
+          window.open(
+            "https://github.com/Mdhasibulislamgit/fingertyping",
+            "_blank",
+          ),
+        icon: (
+          <Github
+            size={16}
+            className="mr-1.5 transition-transform duration-300 group-hover:rotate-12"
+          />
+        ),
+        label: "Github",
+      },
+      {
+        onClick: () =>
+          window.open("https://forms.gle/D2QzunVpsg7nz9mc8", "_blank"),
+        icon: (
+          <MessageSquare
+            size={16}
+            className="mr-1.5 transition-transform duration-300 group-hover:rotate-12"
+          />
+        ),
+        label: "Feedback",
+      },
+      {
+        onClick: toggleSound,
+        icon: soundEnabled ? (
+          <Volume2
+            size={16}
+            className="mr-1.5 transition-transform duration-300 group-hover:scale-110"
+          />
+        ) : (
+          <VolumeX
+            size={16}
+            className="mr-1.5 transition-transform duration-300 group-hover:scale-110"
+          />
+        ),
+        label: soundEnabled ? "Sound On" : "Sound Off",
+      },
+    ],
+    [soundEnabled],
+  );
 
   return (
     <>
@@ -213,10 +243,10 @@ const Navbar: React.FC = () => {
                   />
                 ))}
               </div>
-              
+
               <div className={`mt-8 rounded-xl border ${
-                darkMode 
-                  ? "bg-slate-800/40 border-slate-700/30" 
+                darkMode
+                  ? "bg-slate-800/40 border-slate-700/30"
                   : "bg-slate-50/80 border-slate-200/80"
               } p-5 backdrop-blur-sm shadow-lg`}>
                 <h3 className={`mb-4 font-medium ${

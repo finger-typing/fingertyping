@@ -4,7 +4,6 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import { AppProvider } from "@/context/AppContext";
 import Navbar from "@/components/Navbar";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,11 +19,27 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fingertyping.com"),
   title: {
-    default: "Finger Typing",
+    default: "Finger Typing - Open Source Typing Practice",
     template: "%s | FingerTyping",
   },
   description:
-    "Improve your typing speed and accuracy with our secure, ad-free lessons. Perfect for beginners and advanced typists.",
+    "Improve your typing speed and accuracy with our secure, ad-free lessons. Perfect for beginners and advanced typists. Open source and fully secure.",
+  keywords: [
+    "typing practice",
+    "typing lessons",
+    "typing speed",
+    "typing accuracy",
+    "open source typing",
+    "secure typing",
+    "free typing lessons",
+    "typing tests",
+    "typing exercises",
+    "typing games",
+    "typing practice software",
+    "typing software",
+    "finger typeing",
+    "fingertyping"
+  ],
   authors: [{ name: "FingerTyping Team" }],
   publisher: "FingerTyping",
   formatDetection: {
@@ -40,8 +55,8 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   openGraph: {
     type: "website",
-    title: "Finger Typing",
-    description: "Free typing lessons and speed tests for all skill levels.",
+    title: "Finger Typing - Open Source Typing Practice",
+    description: "Free typing lessons and speed tests for all skill levels. Open source and fully secure.",
     images: ["https://www.fingertyping.com/og-image.png"],
     url: "https://www.fingertyping.com",
     siteName: "FingerTyping",
@@ -49,8 +64,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Finger Typing",
-    description: "Improve typing skills with free and secure lessons.",
+    title: "Finger Typing - Open Source Typing Practice",
+    description: "Improve typing skills with free and secure lessons. Open source and fully secure.",
     images: ["https://www.fingertyping.com/og-image.png"],
     creator: "@fingertyping",
   },
@@ -81,7 +96,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-     <head>
+      <head>
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -101,7 +116,7 @@ export default function RootLayout({
                 "price": "0",
                 "priceCurrency": "USD"
               },
-              "description": "Free online typing practice platform to improve typing speed and accuracy",
+              "description": "Free online typing practice platform to improve typing speed and accuracy. Open source and fully secure.",
               "operatingSystem": "Any",
               "browserRequirements": "Requires JavaScript",
               "url": "https://www.fingertyping.com"
@@ -110,7 +125,6 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <GoogleAnalytics />
         <AppProvider>
           <Navbar />
           <main>{children}</main>

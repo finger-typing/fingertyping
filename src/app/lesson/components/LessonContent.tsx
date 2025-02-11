@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { RefreshCcw, Undo2 } from "lucide-react";
+import { RefreshCcw, Undo2, Fingerprint } from "lucide-react";
 import { useSearchParams } from 'next/navigation';
 import Sidebar from "./Sidebar";
 import TypingInterface from "./Typing-Interface";
@@ -74,8 +74,8 @@ export default function LessonContent() {
     if (practiceType === 'words' && wordList) {
       return wordList.split(',');
     }
-    return currentLanguage === "English" 
-      ? LessonOptions[currentLesson].split("") 
+    return currentLanguage === "English"
+      ? LessonOptions[currentLesson].split("")
       : languageLetters[currentLanguage];
   };
 
@@ -91,25 +91,25 @@ export default function LessonContent() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const content = getCurrentContent();
-    
+
     if (practiceType === 'words') {
       const cleanValue = value.trim();
       const expectedWord = content[currentWordIndex];
-      
+
       if (cleanValue === expectedWord) {
         setInput('');
         setIsCorrect(true);
         playSound(true);
         setScore((prevScore) => prevScore + 1);
         setTypedWords(prev => [...prev, cleanValue]);
-        
+
         setCurrentWordIndex((prevIndex) => {
           if (prevIndex >= content.length - 1) {
             return 0;
           }
           return prevIndex + 1;
         });
-        
+
         if (!isGameActive) setIsGameActive(true);
       } else {
         setInput(value);
@@ -159,7 +159,7 @@ export default function LessonContent() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="flex min-h-screen flex-col md:flex-row">
-        <div className="md:w-64 md:min-w-[250px] md:max-h-screen md:overflow-y-auto">
+        <div className="md:max-h-screen md:w-64 md:min-w-[250px] md:overflow-y-auto">
           <Sidebar
             lessonOptions={LessonOptions}
             currentLesson={currentLesson}
@@ -169,16 +169,17 @@ export default function LessonContent() {
         </div>
 
         <div className="flex-1 p-2 md:p-4">
-          <div className="mx-auto max-w-3xl rounded-xl border border-gray-300 bg-white p-4 shadow-lg 
-                       transition-all duration-300 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
+          <div className="mx-auto max-w-3xl rounded-xl border border-gray-300 bg-white p-4 shadow-lg transition-all duration-300 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
             <div className="mb-4 text-center">
-              <h1 className="text-xl font-bold text-gray-900 dark:text-gray-50 md:text-2xl">
-                Finger Typing
-              </h1>
+              <a href="/" className="flex items-center space-x-2 text-2xl text-bold justify-center">
+                <Fingerprint
+                  className={`h-8 w-8 ${contextDarkMode ? "text-indigo-400" : "text-indigo-600"}`}
+                />
+                <span>FingerTyping</span>
+              </a>
             </div>
 
-            <div className="mb-4 rounded-lg border border-gray-300 bg-white p-4 
-                         shadow-sm dark:border-gray-600 dark:bg-gray-800">
+            <div className="mb-4 rounded-lg border border-gray-300 bg-white p-4 shadow-sm dark:border-gray-600 dark:bg-gray-800">
               <TypingInterface
                 currentWord={getCurrentContent()[currentWordIndex]}
                 isCorrect={isCorrect}
@@ -189,8 +190,7 @@ export default function LessonContent() {
               />
             </div>
 
-            <div className="mb-4 rounded-lg border border-gray-300 p-4 
-                         dark:border-gray-600">
+            <div className="mb-4 rounded-lg border border-gray-300 p-4 dark:border-gray-600">
               <StatsDisplay
                 wpm={wpm}
                 time={time}
@@ -203,12 +203,10 @@ export default function LessonContent() {
               <select
                 title="mobile_lesson"
                 value={currentLesson}
-                onChange={(e) => setCurrentLesson(e.target.value as LessonOption)}
-                className="w-full rounded-lg border border-gray-300 bg-white p-2 
-                        text-gray-900 transition-all duration-200 
-                        focus:border-green-600 focus:outline-none focus:ring-1 
-                        focus:ring-green-600 dark:border-gray-600 
-                        dark:bg-gray-700 dark:text-white"
+                onChange={(e) =>
+                  setCurrentLesson(e.target.value as LessonOption)
+                }
+                className="w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-900 transition-all duration-200 focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
                 disabled={currentLanguage !== "English"}
               >
                 {Object.keys(LessonOptions).map((option) => (
@@ -222,17 +220,13 @@ export default function LessonContent() {
             <div className="flex flex-col gap-2 md:flex-row md:justify-between">
               <button
                 onClick={resetGame}
-                className="flex items-center justify-center rounded-lg bg-green-600 
-                       px-4 py-2 text-white transition-all duration-200 
-                       hover:-translate-y-0.5 hover:bg-green-700 hover:shadow-md"
+                className="flex items-center justify-center rounded-lg bg-green-600 px-4 py-2 text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-700 hover:shadow-md"
               >
                 <RefreshCcw className="mr-2 h-4 w-4" /> Reset
               </button>
               <Link
                 href="/"
-                className="flex items-center justify-center rounded-lg bg-green-600 
-                       px-4 py-2 text-white transition-all duration-200 
-                       hover:-translate-y-0.5 hover:bg-green-700 hover:shadow-md"
+                className="flex items-center justify-center rounded-lg bg-green-600 px-4 py-2 text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-700 hover:shadow-md"
               >
                 <Undo2 className="mr-2 h-4 w-4" /> Home
               </Link>
@@ -242,4 +236,4 @@ export default function LessonContent() {
       </div>
     </div>
   );
-} 
+}
