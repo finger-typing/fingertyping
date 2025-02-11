@@ -1,6 +1,6 @@
 # FingerTyping
 
-![FingerTyping Logo](/public/icon-512x512.png)
+![FingerTyping Logo](/public/logo.png)
 
 FingerTyping is a web application designed to help users improve their typing speed and accuracy. It offers a variety of features to make learning and practicing typing fun and engaging. Built with Next.js, FingerTyping is fully open-source and secure.
 
