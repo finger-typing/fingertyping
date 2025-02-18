@@ -154,10 +154,10 @@ const TypingPractice: React.FC = () => {
   return (
     <div
       className={`flex min-h-screen flex-col items-center ${
-        darkMode ? "bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100" : "bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900"
+        darkMode ? "bg-gray-900 text-gray-100" : "bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900"
       }`}
     >
-      <main className="mt-4 w-full max-w-4xl px-4 space-y-5">
+      <main className=" w-full max-w-4xl space-y-2">
         <WordDisplay
           randomText={gameState.randomText}
           inputValue={gameState.inputValue}
@@ -172,7 +172,7 @@ const TypingPractice: React.FC = () => {
           isComplete={gameState.isComplete}
           darkMode={darkMode}
           inputRef={inputRef}
-          placeholder="Start typing to begin the game..."
+          placeholder="Start typing to begin......."
           randomText={gameState.randomText}
         />
 

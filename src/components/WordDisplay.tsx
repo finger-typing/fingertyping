@@ -36,21 +36,21 @@ const getGraphemeClusters = (text: string): string[] => {
 const Character = memo(({ charCluster, inputCluster, isCurrentChar, isPastWord, darkMode }: CharacterProps) => {
   const getCharacterClass = () => {
     if (!inputCluster && !isPastWord) return darkMode ? "text-gray-300" : "text-gray-700";
-    if (!inputCluster && isPastWord) return darkMode ? "text-red-600" : "text-red-600";
+    if (!inputCluster && isPastWord) return darkMode ? "text-red-500" : "text-red-600";
     return charCluster === inputCluster
       ? "text-green-500"
-      : "text-red-600";
+      : "text-red-500";
   };
 
   return (
-    <span className="relative">
-      <span className={`${getCharacterClass()} transition-colors duration-150`}>
+    <span className="relative inline-block">
+      <span className={`${getCharacterClass()} transition-colors duration-150 ease-in-out`}>
         {charCluster}
       </span>
       {isCurrentChar && (
         <span
-          className={`absolute bottom-[-2px] left-0 h-[3.5px] w-full rounded-full ${
-            darkMode ? "bg-white" : "bg-black"
+          className={`absolute bottom-[-2px] left-0 h-[3px] w-full rounded-full ${
+            darkMode ? "bg-white" : "bg-gray-900"
           } animate-cursor`}
         />
       )}
@@ -103,7 +103,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
       <React.Fragment key={wordIndex}>
         <span
           className={`relative whitespace-nowrap ${
-            isCurrentWord ? "rounded-md bg-blue-800/30 p-[0.2rem]" : ""
+            isCurrentWord ? "rounded-md bg-blue-800/20 px-2 py-0.5" : ""
           }`}
         >
           {wordClusters.map((charCluster, charIndex) => (
@@ -123,12 +123,12 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
           ))}
           {inputClusters.length > wordClusters.length && isCurrentWord && (
             <span className="relative">
-              <span className="text-red-600">
+              <span className="text-red-500">
                 {inputWord.slice(word.length)}
               </span>
               <span
-                className={`absolute bottom-0 left-0 h-[3.3px] w-full rounded-full ${
-                  darkMode ? "bg-white" : "bg-black"
+                className={`absolute bottom-0 left-0 h-[2px] w-full rounded-full ${
+                  darkMode ? "bg-white" : "bg-gray-900"
                 } animate-cursor`}
               />
             </span>
@@ -143,22 +143,13 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   return (
     <div
-      className={`mb-2 w-full rounded-lg p-2 font-medium shadow-lg transition-colors duration-300 sm:p-6 ${
+      className={`w-full rounded-xl p-3 font-medium shadow-lg transition-all duration-300 ease-in-out sm:p-6 ${
         darkMode
-          ? "bg-gray-800 text-gray-200"
-          : "border-2 border-gray-300 bg-white text-gray-800"
+          ? "bg-gray-800 text-gray-200 shadow-gray-900/20"
+          : "border border-gray-200 bg-white text-gray-800 shadow-gray-200/50"
       }`}
     >
-      <style jsx global>{`
-        @keyframes cursor {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-        .animate-cursor {
-          animation: cursor 1s ease-in-out infinite;
-        }
-      `}</style>
-      <div className="overflow-hidden break-normal text-[1.5rem] leading-8 tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[2.8rem]">
+      <div className="overflow-hidden break-normal text-[1.5rem] leading-relaxed tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[2.8rem]">
         {displayedWords.map((word, index) => renderWord(word, index, startIndex))}
       </div>
     </div>

@@ -19,7 +19,7 @@ const MainPageFooter: React.FC<MainPageFooterProps> = ({ darkMode }) => {
   const getThemeClasses = (isDark: boolean) => ({
     footer: isDark 
       ? "bg-gray-800" 
-      : "bg-gradient-to-r from-blue-50 to-indigo-100",
+      : "bg-white",
     icon: isDark ? "text-indigo-400" : "text-indigo-600",
     title: isDark ? "text-white" : "text-gray-700",
     subtitle: isDark ? "text-gray-300" : "text-gray-600",
@@ -42,7 +42,7 @@ const MainPageFooter: React.FC<MainPageFooterProps> = ({ darkMode }) => {
               </h2>
             </div>
             <p className={`mt-2 text-sm sm:text-base ${theme.subtitle}`}>
-              Secure, Simple and Ads-Free
+              Simple, Open Source and Ads-Free
             </p>
           </div>
 

@@ -43,7 +43,7 @@ const Top10TypingWebsites = () => {
       name: "FingerTyping",
       url: "https://fingertyping.com",
       description:
-        "A modern, user-friendly typing website with customizable exercises and real-time feedback.",
+        "A open source, user-friendly typing website with customizable exercises and real-time feedback.",
       features: [
         "Customizable exercises",
         "No ads",

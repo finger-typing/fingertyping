@@ -78,12 +78,12 @@ const playFeedbackSound = (isCorrect: boolean): void => {
 
 const getInputClassName = (darkMode: boolean): string => {
   const baseClasses =
-    "w-full rounded-lg border-2 px-4 py-4 text-lg shadow-sm " +
-    "focus:border-transparent focus:outline-none focus:ring-2 focus:ring-green-500";
+    "w-full rounded-lg border-2 px-4 py-4 text-xl shadow-sm " +
+    "focus:border-transparent focus:outline-none focus:ring-6 focus:ring-green-500";
 
   const themeClasses = darkMode
-    ? "border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-400"
-    : "border-gray-300 bg-white text-gray-900 placeholder-gray-500";
+    ? "border-white bg-gray-900 text-gray-100 placeholder-gray-400"
+    : "border-black bg-gray-300 text-gray-900 placeholder-gray-500";
 
   return `${baseClasses} ${themeClasses}`;
 };

@@ -1,8 +1,8 @@
-# FingerTyping
+# Finger Typing
 
 ![FingerTyping Logo](/public/logo.png)
 
-FingerTyping is a web application designed to help users improve their typing speed and accuracy. It offers a variety of features to make learning and practicing typing fun and engaging. Built with Next.js, FingerTyping is fully open-source and secure.
+Finger Typing is a  application designed as user-friendly, to help users improve their typing speed and accuracy. It offers a variety of features to make learning and practicing typing fun and engaging. Built with Next.js and TypeScript.  Finger Typing is fully open-source and secure.
 
 ## Contributing
 
@@ -21,7 +21,7 @@ Contributions are welcome! Please follow these guidelines:
 - **Performance Metrics**: Track your progress with detailed performance metrics.
 - **Dark Mode**: Enjoy a comfortable typing experience with dark mode.
 - **Responsive Design**: Works seamlessly on desktop and mobile devices.
-- **Open Source**: Fully open-source with a permissive MIT License.
+- **Open Source**: Fully open-source with a permissive GPL-3.0 License.
 - **Secure**: Built with security best practices to ensure your data is safe.
 
 ## Installation

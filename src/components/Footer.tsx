@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
   return (
     <footer
       className={`w-full border-t ${
-        darkMode ? "border-gray-800 bg-gray-800" : "border-gray-100 bg-white"
+        darkMode ? "border-gray-800 bg-gray-800" : "border-gray-900 bg-white"
       }`}
     >
       <hr />

@@ -20,7 +20,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Lato', sans-serif;
-  @apply select-none;
+
 }
 
 @layer utilities {
@@ -28,4 +28,16 @@ body {
     word-break: break-word;
     overflow-wrap: break-word;
   }
+}
+@keyframes cursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-cursor {
+  animation: cursor 1s ease-in-out infinite;
 }

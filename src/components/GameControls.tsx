@@ -37,7 +37,7 @@ const GameControls: React.FC<GameControlsProps> = ({
       className={`
         mb-2 flex w-full flex-col items-center justify-between 
         rounded-lg p-3 shadow-lg lg:flex-row
-        ${darkMode ? "bg-gray-600/20" : "bg-gray-100/20"}
+        ${darkMode ? "bg-gray-600/20" : "bg-white"}
         backdrop-blur-lg backdrop-filter
         transition-colors duration-200
       `}
@@ -54,10 +54,10 @@ const GameControls: React.FC<GameControlsProps> = ({
         >
           <Clock
             className={`${
-              darkMode ? "text-green-500" : "text-green-600"
-            } animate-pulse`}
-            size={25}
-            aria-hidden="true"
+              darkMode ? "text-red-500" : "text-red-500"
+            }`}
+            size={30}
+          
           />
           <p className="text-md font-mono font-bold sm:text-lg lg:text-xl">
             {formatTimeDisplay(timeRemaining)}s
@@ -70,7 +70,7 @@ const GameControls: React.FC<GameControlsProps> = ({
           aria-label="Reset game"
         >
           <RotateCcw
-            size={22}
+            size={28}
             className="animate-spin-slow"
             aria-hidden="true"
           />
