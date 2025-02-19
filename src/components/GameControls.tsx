@@ -56,7 +56,7 @@ const GameControls: React.FC<GameControlsProps> = ({
             className={`${
               darkMode ? "text-red-500" : "text-red-500"
             }`}
-            size={30}
+            size={25}
           
           />
           <p className="text-md font-mono font-bold sm:text-lg lg:text-xl">
@@ -70,7 +70,7 @@ const GameControls: React.FC<GameControlsProps> = ({
           aria-label="Reset game"
         >
           <RotateCcw
-            size={28}
+            size={25}
             className="animate-spin-slow"
             aria-hidden="true"
           />

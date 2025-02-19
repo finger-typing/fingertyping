@@ -37,7 +37,7 @@ const InputField: React.FC<InputFieldProps> = ({
   );
 
   return (
-    <div className="mb-2 w-full">
+    <div >
       <input
         ref={inputRef}
         value={inputValue}
@@ -78,7 +78,7 @@ const playFeedbackSound = (isCorrect: boolean): void => {
 
 const getInputClassName = (darkMode: boolean): string => {
   const baseClasses =
-    "w-full rounded-lg border-2 px-4 py-4 text-xl shadow-sm " +
+    "w-full rounded-lg border-2 px-4 py-8  text-xl shadow-sm " +
     "focus:border-transparent focus:outline-none focus:ring-6 focus:ring-green-500";
 
   const themeClasses = darkMode

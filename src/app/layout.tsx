@@ -19,11 +19,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fingertyping.com"),
   title: {
-    default: "Finger Typing - Open Source Typing Practice",
-    template: "%s | FingerTyping",
+    default: "FingerTyping - Open Source Typing Application",
+    template: "%s | FingerTyping - Enhance Your Typing Skills",
   },
   description:
-    "Improve your typing speed and accuracy with our secure, ad-free lessons. Perfect for beginners and advanced typists. Open source and fully secure.",
+    "FingerTyping: A open-source, free typing application designed to boost your typing speed and accuracy. No ads, no tracking, just pure typing practice.",
   keywords: [
     "typing practice",
     "typing lessons",
@@ -37,8 +37,13 @@ export const metadata: Metadata = {
     "typing games",
     "typing practice software",
     "typing software",
-    "finger typeing",
-    "fingertyping"
+    "finger typing",
+    "learn to type",
+    "typing tutor",
+    "keyboarding skills",
+    "touch typing",
+    "typing improvement",
+    "online typing",
   ],
   authors: [{ name: "FingerTyping Team" }],
   publisher: "FingerTyping",
@@ -55,8 +60,9 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   openGraph: {
     type: "website",
-    title: "Finger Typing - Open Source Typing Practice",
-    description: "Free typing lessons and speed tests for all skill levels. Open source and fully secure.",
+    title: "FingerTyping - Open Source Typing Application",
+    description:
+      "FingerTyping: A open-source, free typing application designed to boost your typing speed and accuracy. No ads, no tracking, just pure typing practice.",
     images: ["https://www.fingertyping.com/og-image.png"],
     url: "https://www.fingertyping.com",
     siteName: "FingerTyping",
@@ -64,8 +70,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Finger Typing - Open Source Typing Practice",
-    description: "Improve typing skills with free and secure lessons. Open source and fully secure.",
+    title: "FingerTyping - Open Source Typing Application",
+    site: "@fingertyping",
+    description:
+      "FingerTyping: A open-source, free typing application designed to boost your typing speed and accuracy. No ads, no tracking, just pure typing practice.",
     images: ["https://www.fingertyping.com/og-image.png"],
     creator: "@fingertyping",
   },
@@ -83,10 +91,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.fingertyping.com",
   },
-  verification: {
-    google: "your-google-site-verification-code",
-    yandex: "your-yandex-verification-code",
-  },
 };
 
 export default function RootLayout({
@@ -102,25 +106,38 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <meta name="msvalidate.01" content="your-bing-verification-code" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              "name": "FingerTyping",
-              "applicationCategory": "EducationalApplication",
-              "offers": {
+              name: "FingerTyping",
+              applicationCategory: "EducationalApplication",
+              offers: {
                 "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
+                price: "0",
+                priceCurrency: "USD",
               },
-              "description": "Free online typing practice platform to improve typing speed and accuracy. Open source and fully secure.",
-              "operatingSystem": "Any",
-              "browserRequirements": "Requires JavaScript",
-              "url": "https://www.fingertyping.com"
-            })
+              description:
+                "FingerTyping: A open-source, free typing application designed to boost your typing speed and accuracy. No ads, no tracking, just pure typing practice.",
+              operatingSystem: "Any",
+              browserRequirements:
+                "Requires JavaScript and a modern web browser",
+              url: "https://www.fingertyping.com",
+              featureList: [
+                "Typing lessons for all skill levels",
+                "Customizable typing tests",
+                "Open source typing website",
+                "No ads, no tracking",
+                "Real-time performance tracking",
+                "Multiple language support",
+                "Interactive typing games",
+                "Open-source and community-driven",
+              ],
+              educationalUse: "Typing practice and skill development",
+              isAccessibleForFree: true,
+            }),
           }}
         />
       </head>
