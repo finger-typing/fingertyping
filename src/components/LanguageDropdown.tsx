@@ -71,14 +71,13 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
 
   const buttonClasses = `
     flex items-center px-2.5 py-1.5 rounded-lg font-medium text-sm
-    ${darkMode 
-      ? 'bg-teal-500/20 hover:bg-teal-500/30 text-white' 
-      : 'bg-teal-700 hover:bg-teal-800 text-white'}
-    transform hover:scale-105 active:scale-95
+    ${darkMode
+      ? 'bg-slate-800/40 hover:bg-slate-700/50 text-white border border-white/20 hover:border-slate-400/50'
+      : 'bg-white/50 hover:bg-slate-100 text-slate-800 border border-slate-200 hover:border-slate-300'}
+    transform hover:scale-102 active:scale-98
     transition-all duration-200 ease-in-out
-    hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-500
-    border border-teal-500/20
-  `;
+    backdrop-blur-sm
+  `.trim();
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -96,10 +95,10 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
 
       {isOpen && (
         <div
-          className={`absolute left-0 top-full z-50 mt-1 rounded-lg border shadow-lg
+          className={`absolute left-0 top-full z-50 mt-1 rounded-lg border shadow-lg backdrop-blur-lg
             ${darkMode
-              ? "border-gray-700 bg-gray-800"
-              : "border-gray-200 bg-white"
+              ? "border-slate-700/30 bg-slate-800/90"
+              : "border-slate-200 bg-white/90"
             }`}
         >
           <div className="p-2">
@@ -110,12 +109,13 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
                 placeholder="Search language"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className={`w-full rounded-md py-1.5 pl-8 pr-2 text-sm
-                  ${darkMode 
-                    ? "bg-gray-700 text-white placeholder-gray-400" 
-                    : "bg-gray-100 text-black placeholder-gray-500"
+                className={`w-full rounded-lg py-1.5 pl-8 pr-2 text-sm border backdrop-blur-sm
+                  ${darkMode
+                    ? "bg-slate-800/40 border-slate-600/30 text-white placeholder-slate-400 focus:border-slate-400/50 focus:ring-slate-400/20"
+                    : "bg-white/50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-slate-300 focus:ring-slate-300/30"
                   }
-                  focus:outline-none focus:ring-2 focus:ring-teal-500
+                  focus:outline-none focus:ring-1
+                  transition-all duration-200 ease-in-out
                 `}
               />
               <Search
@@ -130,12 +130,16 @@ const LanguageDropdown: React.FC<LanguageDropdownProps> = ({
               <div
                 key={lang}
                 onClick={() => handleLanguageSelect(lang)}
-                className={`cursor-pointer px-3 py-2 text-sm
-                  ${darkMode 
-                    ? "hover:bg-gray-700" 
-                    : "hover:bg-gray-100"
+                className={`cursor-pointer px-3 py-2 text-sm transition-all duration-200
+                  ${darkMode
+                    ? "hover:bg-slate-700/50"
+                    : "hover:bg-slate-100/80"
                   }
-                  ${language === lang ? "font-medium" : ""}
+                  ${language === lang
+                    ? darkMode
+                      ? "bg-slate-700/30 font-medium"
+                      : "bg-slate-100/50 font-medium"
+                    : ""}
                 `}
               >
                 {lang}

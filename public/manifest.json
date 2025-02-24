@@ -1,7 +1,7 @@
 {
   "name": "FingerTyping",
   "short_name": "Finger Typing",
-  "description": "A secure and ads free typing practice app. In Finger Typing With your 10 fast fingers, improve your typing speed and accuracy with our comprehensive typing lessons and tests.",
+  "description": "Finger Typing: Open Source Secure Typing Practice App, With Clean Ui",
   "start_url": "/",
   "lang": "en",
   "scope": "/",

@@ -14,13 +14,12 @@ export default function DarkModeToggle({
 }: DarkModeToggleProps) {
   const buttonClasses = [
     "flex items-center px-2.5 py-1.5 rounded-lg font-medium text-sm",
-    darkMode 
-      ? "bg-teal-500/20 hover:bg-teal-500/30 text-white" 
-      : " bg-teal-700 text-white hover:bg-teal-800",
-    "transform hover:scale-105 active:scale-95",
+    darkMode
+      ? "bg-slate-800/40 hover:bg-slate-700/50 text-white border border-white/20 hover:border-slate-400/50"
+      : "bg-white/50 hover:bg-slate-100 text-slate-800 border border-slate-200 hover:border-slate-300",
+    "transform hover:scale-102 active:scale-98",
     "transition-all duration-200 ease-in-out",
-    "focus:outline-none focus:ring-2 focus:ring-teal-500/50",
-    "border border-teal-500/20"
+    "backdrop-blur-sm"
   ].join(" ");
 
   const iconClasses = "mr-1.5 transition-transform duration-300 hover:rotate-180";

@@ -26,9 +26,9 @@ export default function TypingInterface({
   }, []);
 
   return (
-    <div className="mb-6 text-center">
+    <div className="mb-2 mt-2 text-center">
       <div
-        className={`mb-4 ${
+        className={`mb-2 ${
           practiceType === 'words' ? 'text-4xl md:text-5xl' : 'text-8xl md:text-9xl'
         } font-bold ${
           isCorrect ? "text-green-500" : "text-red-500"

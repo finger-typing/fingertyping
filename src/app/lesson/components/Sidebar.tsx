@@ -54,7 +54,7 @@ export default function Sidebar({
                 disabled={currentLanguage !== "English"}
               >
                 <span className="flex items-center justify-between">
-                  <span className="line-clamp-1 text-base md:text-lg">{option}</span>
+                  <span className="line-clamp-1 text-base md:text-sm">{option}</span>
                   <svg
                     className="h-4 w-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                     fill="none"

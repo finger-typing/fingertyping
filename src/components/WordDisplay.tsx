@@ -18,7 +18,7 @@ interface CharacterProps {
 
 // Constants
 export const WORDS_PER_LINE_SMALL = 20;
-export const WORDS_PER_LINE_LARGE = 40;
+export const WORDS_PER_LINE_LARGE = 50;
 export const LINES_TO_SHOW = 1;
 
 // Utility functions
@@ -86,8 +86,8 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     return textWords.slice(startIndex, endIndex);
   }, [randomText, currentWordIndex, wordsPerLine]);
 
-  const inputWords = useMemo(() => 
-    inputValue.split(" "),
+  const inputWords = useMemo(
+    () => inputValue.split(" "),
     [inputValue]
   );
 
@@ -127,7 +127,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
                 {inputWord.slice(word.length)}
               </span>
               <span
-                className={`absolute bottom-0 left-0 h-[2px] w-full rounded-full ${
+                className={`absolute bottom-0 left-0 h-[1px] w-full rounded-full ${
                   darkMode ? "bg-white" : "bg-gray-900"
                 } animate-cursor`}
               />
@@ -143,7 +143,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   return (
     <div
-      className={`w-full rounded-xl p-3 font-medium shadow-lg transition-all duration-300 ease-in-out sm:p-6 ${
+      className={`w-full rounded-xl p-3 mb-0.5 font-medium shadow-lg transition-all duration-300 ease-in-out sm:p-6 ${
         darkMode
           ? "bg-gray-800 text-gray-200 shadow-gray-900/20"
           : "border border-gray-200 bg-white text-gray-800 shadow-gray-200/50"

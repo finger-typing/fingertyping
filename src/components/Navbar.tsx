@@ -9,7 +9,6 @@ import {
   MessageSquare,
   Volume2,
   VolumeX,
- 
   Github,
 } from "lucide-react";
 import LanguageDropdown from "./LanguageDropdown";
@@ -17,9 +16,8 @@ import CustomInputs from "./CustomInputs";
 import DarkModeToggle from "./DarkModeToggle";
 import { audioPlayer } from "../utils/audioUtils";
 import { useApp } from "@/context/AppContext";
-import { usePathname } from 'next/navigation';
 
-// Component Props Type
+// NavButton Component
 interface NavButtonProps {
   onClick?: () => void;
   href?: string;
@@ -38,13 +36,13 @@ const NavButton: React.FC<NavButtonProps> = ({
   className,
 }) => {
   const baseClasses = `
-    flex items-center px-2.5 py-1.5 rounded-lg font-medium text-sm
+    flex items-center px-3 py-1.5 rounded-lg font-medium text-sm
     ${darkMode
-      ? "border-teal-500/20 bg-teal-500/20 text-white hover:bg-teal-500/30"
-      : "border-teal-600 bg-teal-700 text-white hover:bg-teal-800"}
-    transform hover:scale-105 active:scale-95
+      ? "border-white/10 bg-slate-800/40 text-white hover:bg-slate-700/50 hover:border-slate-400/50"
+      : "border-slate-200 bg-white/50 text-slate-800 hover:bg-slate-100 hover:border-slate-300"}
+    transform hover:scale-102 active:scale-98
     transition-all duration-200 ease-in-out
-    hover:shadow-md border
+    border backdrop-blur-sm
     ${className || ""}
   `.trim();
 
@@ -73,6 +71,7 @@ const NavButton: React.FC<NavButtonProps> = ({
   );
 };
 
+// Navbar Component
 const Navbar: React.FC = () => {
   const {
     language,
@@ -86,8 +85,6 @@ const Navbar: React.FC = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const pathname = usePathname();
-  const isLessonPage = pathname === "/lesson";
 
   const toggleSound = () => setSoundEnabled(audioPlayer.toggleSound());
 
@@ -97,8 +94,8 @@ const Navbar: React.FC = () => {
         href: "/lesson",
         icon: (
           <BookOpen
-            size={16}
-            className="mr-1.5 transition-transform duration-300 group-hover:rotate-6"
+            size={18}
+            className="mr-2 transition-transform duration-300 group-hover:rotate-6"
           />
         ),
         label: "Lesson",
@@ -111,8 +108,8 @@ const Navbar: React.FC = () => {
           ),
         icon: (
           <Github
-            size={16}
-            className="mr-1.5 transition-transform duration-300 group-hover:rotate-12"
+            size={18}
+            className="mr-2 transition-transform duration-300 group-hover:rotate-12"
           />
         ),
         label: "Github",
@@ -122,8 +119,8 @@ const Navbar: React.FC = () => {
           window.open("https://forms.gle/D2QzunVpsg7nz9mc8", "_blank"),
         icon: (
           <MessageSquare
-            size={16}
-            className="mr-1.5 transition-transform duration-300 group-hover:rotate-12"
+            size={18}
+            className="mr-2 transition-transform duration-300 group-hover:rotate-12"
           />
         ),
         label: "Feedback",
@@ -132,13 +129,13 @@ const Navbar: React.FC = () => {
         onClick: toggleSound,
         icon: soundEnabled ? (
           <Volume2
-            size={16}
-            className="mr-1.5 transition-transform duration-300 group-hover:scale-110"
+            size={18}
+            className="mr-2 transition-transform duration-300 group-hover:scale-110"
           />
         ) : (
           <VolumeX
-            size={16}
-            className="mr-1.5 transition-transform duration-300 group-hover:scale-110"
+            size={18}
+            className="mr-2 transition-transform duration-300 group-hover:scale-110"
           />
         ),
         label: soundEnabled ? "Sound On" : "Sound Off",
@@ -149,19 +146,19 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`w-full backdrop-blur-md ${
-        darkMode ? "bg-slate-900/95 text-white" : "bg-white/95 text-slate-900"
-      } sticky top-0 z-50 shadow-md transition-all duration-300 ${isLessonPage ? 'some-class' : 'other-class'}`}>
-        <div className="container mx-auto px-3 py-2">
+      <nav className={`w-full backdrop-blur-lg ${
+        darkMode ? "bg-slate-900/90 text-white" : "bg-white/90 text-slate-900"
+      } sticky top-0 z-50 shadow-lg transition-all duration-300`}>
+        <div className="container mx-auto px-2 py-1">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`rounded-lg p-1.5 lg:hidden ${
+                className={`rounded-lg p-2 lg:hidden ${
                   darkMode ? "hover:bg-slate-800/60" : "hover:bg-slate-100"
                 } transition-all duration-200`}
               >
-                {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
 
               <LanguageDropdown
@@ -182,8 +179,8 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className="mx-3 hidden flex-1 justify-center lg:flex">
-              <div className={`rounded-xl border-2 p-1 shadow-lg backdrop-blur-sm ${
-                darkMode ? "bg-slate-800/40 border-slate-600/50" : "bg-slate-50/80 border-slate-300/80"
+              <div className={`rounded-lg border p-1 shadow-md backdrop-blur-lg ${
+                darkMode ? "bg-slate-800/30 border-slate-600/30" : "bg-white/50 border-slate-200"
               }`}>
                 <CustomInputs
                   darkMode={darkMode}
@@ -215,18 +212,22 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className={`fixed inset-0 z-50 ${
           darkMode ? "bg-slate-900/95" : "bg-white/95"
-        } overflow-y-auto backdrop-blur-md lg:hidden`}>
+        } overflow-y-auto backdrop-blur-lg lg:hidden`}>
           <div className="container mx-auto px-4 py-6">
             <div className="mb-8 flex items-center justify-between">
-              <h2 className={`text-xl font-semibold ${darkMode ? "text-white" : "text-gray-900"}`}>
+              <h2 className={`text-xl font-semibold ${
+                darkMode ? "text-white/90" : "text-slate-800"
+              }`}>
                 Menu
               </h2>
               <button
                 title="Close menu"
                 onClick={() => setIsMenuOpen(false)}
-                className={`rounded-lg p-2 ${
-                  darkMode ? "hover:bg-slate-800/60" : "hover:bg-slate-100"
-                } transition-all duration-200`}
+                className={`rounded-lg p-2.5 ${
+                  darkMode
+                    ? "hover:bg-slate-800/60 text-white/90"
+                    : "hover:bg-slate-100 text-slate-800"
+                } transition-all duration-200 hover:scale-105 active:scale-95`}
               >
                 <X size={20} />
               </button>
@@ -246,11 +247,11 @@ const Navbar: React.FC = () => {
 
               <div className={`mt-8 rounded-xl border ${
                 darkMode
-                  ? "bg-slate-800/40 border-slate-700/30"
-                  : "bg-slate-50/80 border-slate-200/80"
-              } p-5 backdrop-blur-sm shadow-lg`}>
+                  ? "bg-slate-800/30 border-slate-700/30"
+                  : "bg-white/50 border-slate-200"
+              } p-6 backdrop-blur-lg shadow-lg`}>
                 <h3 className={`mb-4 font-medium ${
-                  darkMode ? "text-slate-200" : "text-slate-700"
+                  darkMode ? "text-white/90" : "text-slate-800"
                 }`}>
                   Custom Settings
                 </h3>

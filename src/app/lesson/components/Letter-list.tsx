@@ -2,10 +2,10 @@
 export type LessonOption =
   | "Letters(a-z)"
   | "Home-Row"
-  | "Home-Row Capital"
   | "Upper-Row"
-  | "Upper-Row Capital"
   | "Lower-Row"
+  | "Home-Row Capital"
+   | "Upper-Row Capital"
   | "Lower-Row Capital"
   | "Numbers"
   | "Symbols practice"
@@ -18,10 +18,13 @@ export type LessonOption =
 export const LessonOptions: Record<LessonOption, string> = {
   "Letters(a-z)": "abcdefghijklmnopqrstuvwxyz",
   "Home-Row": "asdfghjkl;;lkjhgfdsa",
-  "Home-Row Capital": "ASDFGHJKL::LKJHGFDSA",
+
   "Upper-Row": "qwertyuioppoiuytrewq",
-  "Upper-Row Capital": "QWERTYUIOPPOIUYTREWQ",
+
   "Lower-Row": "zxcvbnm,.//.,mnbvcxz",
+
+  "Home-Row Capital": "ASDFGHJKL::LKJHGFDSA",
+  "Upper-Row Capital": "QWERTYUIOPPOIUYTREWQ",
   "Lower-Row Capital": "ZXCVBNM<>??><MNBVCXZ",
   Numbers: "12345678900987654321",
   "Symbols practice": "!@#$%^&*()_+-=[]{}|;:,.<>?",

@@ -24,20 +24,18 @@ const InputField: React.FC<InputFieldProps> = ({
       const newValue = e.target.value;
 
       if (newValue.length > inputValue.length) {
-        const [currentTargetWord = "", currentTypedWord = ""] =
-          getCurrentWordPair(randomText, newValue);
-
+        const [currentTargetWord, currentTypedWord] = getCurrentWordPair(randomText, newValue);
         const isCorrect = validateInput(currentTargetWord, currentTypedWord);
         playFeedbackSound(isCorrect);
       }
 
       handleInputChange(e);
     },
-    [inputValue, randomText, handleInputChange],
+    [inputValue, randomText, handleInputChange]
   );
 
   return (
-    <div >
+    <div className="input-container">
       <input
         ref={inputRef}
         value={inputValue}
@@ -51,10 +49,8 @@ const InputField: React.FC<InputFieldProps> = ({
 };
 
 // Utility functions
-const getCurrentWordPair = (
-  randomText: string,
-  inputValue: string,
-): [string, string] => {
+
+const getCurrentWordPair = (randomText: string, inputValue: string): [string, string] => {
   const currentWords = randomText.split(" ");
   const typedWords = inputValue.split(" ");
   const currentIndex = typedWords.length - 1;
@@ -63,9 +59,7 @@ const getCurrentWordPair = (
 };
 
 const validateInput = (targetWord: string, typedWord: string): boolean => {
-  return (
-    targetWord.startsWith(typedWord) && typedWord.length <= targetWord.length
-  );
+  return targetWord.startsWith(typedWord) && typedWord.length <= targetWord.length;
 };
 
 const playFeedbackSound = (isCorrect: boolean): void => {
@@ -78,8 +72,7 @@ const playFeedbackSound = (isCorrect: boolean): void => {
 
 const getInputClassName = (darkMode: boolean): string => {
   const baseClasses =
-    "w-full rounded-lg border-2 px-4 py-8  text-xl shadow-sm " +
-    "focus:border-transparent focus:outline-none focus:ring-6 focus:ring-green-500";
+    "w-full rounded-lg border-1 px-6 py-6 text-xl shadow-sm focus:border-transparent focus:outline-none focus:ring-6 focus:ring-green-500";
 
   const themeClasses = darkMode
     ? "border-white bg-gray-900 text-gray-100 placeholder-gray-400"

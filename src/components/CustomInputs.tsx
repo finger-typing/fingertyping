@@ -47,7 +47,7 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
 }) => {
   const [customText, setCustomText] = useState("");
   const [tempCustomTime, setTempCustomTime] = useState(
-    formatTimeToMinSec(customTime)
+    formatTimeToMinSec(customTime),
   );
   const [timeError, setTimeError] = useState<string>("");
 
@@ -64,7 +64,7 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
         setCustomText("");
       }
     },
-    [customText, onCustomTextSubmit]
+    [customText, onCustomTextSubmit],
   );
 
   const handleCustomTimeSubmit = useCallback(
@@ -80,7 +80,7 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
       const totalSeconds = parseTimeInput(tempCustomTime);
       onCustomTimeSubmit(totalSeconds);
     },
-    [tempCustomTime, onCustomTimeSubmit]
+    [tempCustomTime, onCustomTimeSubmit],
   );
 
   const handleTimeChange = useCallback(
@@ -91,42 +91,45 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
         setTimeError("");
       }
     },
-    []
+    [],
   );
 
   const inputClassName = `
-    rounded-lg px-2.5 py-1.5 text-sm
+    rounded-lg px-4 py-1.5 text-sm
     w-full min-w-[70px]
-    border
-    focus:outline-none focus:ring-2
-    ${darkMode 
-      ? 'bg-gray-800 border-gray-600 text-white focus:border-green-500 focus:ring-green-500/50' 
-      : 'bg-gray-100 border-gray-300 text-gray-900 focus:border-green-500 focus:ring-green-500/50'
-    }
+    border-2 backdrop-blur-sm
+    focus:outline-none focus:ring-2 focus:ring-opacity-50
     transition-all duration-200 ease-in-out
-    placeholder:text-gray-500
+    placeholder:text-gray-400
+    ${
+      darkMode
+        ? "bg-slate-800/40 border-slate-600/30 text-white focus:border-slate-400/50 focus:ring-slate-400/20"
+        : "bg-white/50 border-slate-200 text-slate-900 focus:border-slate-300 focus:ring-slate-300/30"
+    }
   `;
 
   const buttonClassName = `
-    rounded-lg px-3 py-1.5 text-sm font-medium
+    rounded-lg px-4 py-1.5 text-sm font-medium
     min-w-[60px] whitespace-nowrap
-    ${isMobile ? 'flex-shrink-0 w-[85px] text-xs' : ''} 
+    ${isMobile ? "flex-shrink-0 w-[85px] text-xs" : ""}
     transition-all duration-200
     hover:scale-105 active:scale-95
-    shadow-sm hover:shadow-md
+    backdrop-blur-sm
     disabled:opacity-50 disabled:cursor-not-allowed
     disabled:hover:scale-100
     ${
       darkMode
-        ? "bg-teal-500/10 hover:bg-teal-500/20 text-white border border-teal-500"
-        : "bg-teal-50 hover:bg-teal-100/80 text-teal-700 border border-teal-400"
+        ? "bg-slate-800/40 hover:bg-slate-700/50 text-white border border-white/20 hover:border-slate-400/50"
+        : "bg-white/50 hover:bg-slate-100 text-slate-800 border border-slate-200 hover:border-slate-300"
     }
   `;
 
   return (
     <div
       className={`flex ${
-        isMobile ? "flex-col space-y-4" : "flex-row items-center justify-center space-x-2"
+        isMobile
+          ? "flex-col space-y-4"
+          : "flex-row items-center justify-center space-x-4"
       }`}
       role="group"
       aria-label="Custom game settings"
@@ -137,7 +140,7 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
           isMobile ? "w-full space-x-3" : "space-x-2"
         }`}
       >
-        <div className="relative flex flex-col flex-1">
+        <div className="relative flex flex-1 flex-col">
           <input
             type="text"
             id="custom-time"
@@ -147,15 +150,17 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
             aria-label="Custom time in minutes:seconds"
             aria-describedby={timeError ? "time-error" : undefined}
             className={`${inputClassName} ${
-              isMobile ? "w-full max-w-none py-2.5 text-sm" : "max-w-[100px]"
+              isMobile ? "w-full py-2 text-sm" : "max-w-[100px]"
             } ${
-              timeError ? "border-red-500 focus:border-red-500 focus:ring-red-500" : ""
+              timeError
+                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                : ""
             }`}
           />
           {timeError && (
             <span
               id="time-error"
-              className="absolute -bottom-5 left-0 text-xs font-medium text-red-500 bg-red-50 dark:bg-red-900/20 px-2 py-0.5 rounded-md whitespace-nowrap"
+              className="absolute -bottom-5 left-0 whitespace-nowrap rounded-md bg-red-50 px-2 py-0.5 text-xs font-medium text-red-500 dark:bg-red-900/20"
               role="alert"
             >
               {timeError}
@@ -185,7 +190,7 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
           placeholder="Enter text"
           aria-label="Custom text input"
           className={`${inputClassName} ${
-            isMobile ? "w-full max-w-none py-2.5 text-sm" : "max-w-[150px]"
+            isMobile ? "w-full py-2 text-sm" : "max-w-[150px]"
           }`}
         />
         <button

@@ -56,7 +56,7 @@ export const wordLists: Record<string, string[]> = {
     "an",
     "a", // A
     "the", // The
-    "I",
+    "i",
     "you", //you
     "she",
     "he",
@@ -69,8 +69,7 @@ export const wordLists: Record<string, string[]> = {
     "her",
     "fire",
     "bangla",
-    "Mecca",
-    "Medina",
+    "mecca",
     "new",
     "old",
     "good",
@@ -87,7 +86,7 @@ export const wordLists: Record<string, string[]> = {
     "three",
     "balance", // Balance
     "meeting", // Meeting
-    "Barishal", // Barishal
+    "barishal", // Barishal
     "our",
     "your",
     "his",
@@ -95,7 +94,7 @@ export const wordLists: Record<string, string[]> = {
     "God",
     "soul",
     "Creator",
-    "Bangladesh", // Bangladesh
+    
 
     // Longer words (6 to 8 characters)
   ],
@@ -109,7 +108,7 @@ export const wordLists: Record<string, string[]> = {
     "পূর্ববঙ্গ", // North Bangla
     "বাংলা", // Bangla
     "বাণী", // Girl
-    "বাংলাদেশ", // Bangladesh
+   
     "বিশ্বাস", // Trust
     "ভাষা", // Language
     "তথ্য", // Information
@@ -177,7 +176,6 @@ export const wordLists: Record<string, string[]> = {
     "সম্পর্ক", // Relationship
     "সমাজ", // Culture
     "সম্পূর্ণ", // Complete
-    "সম্বন্ধ", // Relation
     "আমি", // I
     "তুমি", // You
     "আমাদের", // Our
