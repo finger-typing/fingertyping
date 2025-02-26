@@ -2,7 +2,7 @@
 
 ![FingerTyping Logo](/public/logo.png)
 
-Finger Typing is a  application designed as user-friendly, to help users improve their typing speed and accuracy. It offers a variety of features to make learning and practicing typing fun and engaging. Built with Next.js and TypeScript.  Finger Typing is fully open-source and secure.
+Finger Typing is a  application designed as user-friendly and clean ui. It offers a variety of features to make learning and practicing typing fun and engaging. Built with Next.js and TypeScript.  Finger Typing is fully open-source and secure.
 
 ## Contributing
 
@@ -30,12 +30,12 @@ To run FingerTyping locally very easily , just  follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/mdhasibulislamgit/fingertyping.git
+   git clone https://github.com/finger-typing/fingertyping.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd FingerTyping
+   cd fingertyping
    ```
 
 3. Install the dependencies:
@@ -65,4 +65,4 @@ This project is licensed under the GPL-3.0 License. See the [LICENSE](LICENSE) f
 
 For any questions or support, please contact us
 
-                               Made with ❤️ by Md Hasibul Islam
+                            Made with ❤️ by Md Hasibul Islam

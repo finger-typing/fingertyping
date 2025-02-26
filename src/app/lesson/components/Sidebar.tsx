@@ -44,7 +44,7 @@ export default function Sidebar({
               <button
                 key={option}
                 onClick={() => setCurrentLesson(option)}
-                className={`group relative w-full rounded-lg border border-gray-200 bg-white/50 px-4 py-3.5 text-left text-base font-medium backdrop-blur-sm transition-all duration-200 
+                className={`group relative w-full rounded-lg border border-gray-200 bg-white/50 px-4 py-3.5 text-left text-base font-medium backdrop-blur-sm transition-all duration-200
                   ${
                     currentLanguage !== "English"
                       ? "cursor-not-allowed opacity-50"

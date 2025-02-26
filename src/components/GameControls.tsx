@@ -20,8 +20,8 @@ const GameControls: React.FC<GameControlsProps> = ({
   darkMode,
 }) => {
   const buttonClasses = `
-    flex items-center justify-center gap-2 px-4 py-3 rounded-md
-    ${darkMode ? "bg-gray-700 text-white" : "bg-white text-gray-800"}
+    flex items-center justify-center gap-2 px-6 py-3 rounded-md
+    ${darkMode ? "bg-gray-700/60 text-white" : "bg-white text-gray-800"}
     shadow-md hover:shadow-lg 
     transform hover:scale-105 focus:outline-none focus:ring-2
     ${
@@ -34,13 +34,7 @@ const GameControls: React.FC<GameControlsProps> = ({
 
   return (
     <div
-      className={`
-        mb-2 flex w-full flex-col items-center justify-between 
-        rounded-lg p-3 shadow-lg lg:flex-row
-        ${darkMode ? "bg-gray-600/20" : "bg-white"}
-        backdrop-blur-lg backdrop-filter
-        transition-colors duration-200
-      `}
+      className={`mb-2 flex w-full flex-col items-center justify-between rounded-lg p-5 lg:flex-row ${darkMode ? "bg-gray-800/40" : "bg-white"} `}
       role="group"
       aria-label="Game controls"
     >
@@ -53,13 +47,10 @@ const GameControls: React.FC<GameControlsProps> = ({
           aria-label={`Time remaining: ${formatTimeDisplay(timeRemaining)}`}
         >
           <Clock
-            className={`${
-              darkMode ? "text-red-500" : "text-red-500"
-            }`}
+            className={`${darkMode ? "text-red-500" : "text-red-500"}`}
             size={25}
-          
           />
-          <p className="text-md font-mono font-bold sm:text-lg lg:text-xl">
+          <p className="text-md font-mono font-medium sm:text-lg lg:text-xl">
             {formatTimeDisplay(timeRemaining)}s
           </p>
         </div>
@@ -69,12 +60,8 @@ const GameControls: React.FC<GameControlsProps> = ({
           className={`${buttonClasses} font-semibold lg:flex-1`}
           aria-label="Reset game"
         >
-          <RotateCcw
-            size={25}
-            className="animate-spin-slow"
-            aria-hidden="true"
-          />
-          <span className="text-md font-mono font-bold sm:text-lg lg:text-xl">
+          <RotateCcw size={25} />
+          <span className="text-md font-mono font-medium sm:text-lg lg:text-lg">
             Reset
           </span>
         </Button>

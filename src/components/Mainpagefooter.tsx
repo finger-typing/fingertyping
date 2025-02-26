@@ -18,7 +18,7 @@ const footerLinks = [
 const MainPageFooter: React.FC<MainPageFooterProps> = ({ darkMode }) => {
   const getThemeClasses = (isDark: boolean) => ({
     footer: isDark 
-      ? "bg-gray-800" 
+      ? "bg-gray-800/40" 
       : "bg-white",
     icon: isDark ? "text-indigo-400" : "text-indigo-600",
     title: isDark ? "text-white" : "text-gray-700",

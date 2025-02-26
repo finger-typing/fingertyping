@@ -124,14 +124,12 @@ const ShareSection: React.FC<ShareSectionProps> = ({
   return (
     <div
       className={`rounded-2xl p-6 shadow-xl transition-colors duration-300 ${
-        darkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-800"
-      } `}
+        darkMode ? "bg-gray-800/20 text-gray-100" : "bg-white text-gray-800"
+      }`}
     >
       <div className="mb-4">
-        <h2 className="mb-2 text-2xl font-bold">Share This Tool And Contribute on GitHub</h2>
-        <p
-          className={`text-sm ${darkMode ? "text-gray-300" : "text-gray-600"} `}
-        >
+        <h2 className="mb-2 text-2xl font-bold">Share And Contribute on GitHub</h2>
+        <p className={`text-sm ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
           Help us grow! Share this tool with your network.
         </p>
       </div>
@@ -153,7 +151,31 @@ const ShareSection: React.FC<ShareSectionProps> = ({
       </div>
 
       {/* Copy URL Button with State Feedback */}
-      <button type="button" onClick={copyToClipboard} aria-label={copied ? "Link Copied" : "Copy Share Link"} disabled={copied} className={`flex w-full items-center justify-center rounded-lg px-3 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ${ darkMode ? "border border-gray-500 bg-gray-800 text-white hover:bg-gray-700 focus:ring-gray-600" : "border border-gray-200 bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-300" } ${copied ? "pointer-events-none cursor-default bg-green-500 text-white" : ""} group relative overflow-hidden`} > <div className="flex items-center space-x-2"> {copied ? ( <> <FaCheck className="h-5 w-5 transform transition-transform text-white" /> <span className="font-semibold">Copied!</span> </> ) : ( <> <FaCopy className="h-5 w-5 transition-transform group-hover:scale-110" /> <span>Copy Share Link</span> </> )} </div> </button>
+      <button
+        type="button"
+        onClick={copyToClipboard}
+        aria-label={copied ? "Link Copied" : "Copy Share Link"}
+        disabled={copied}
+        className={`flex w-full items-center justify-center rounded-lg px-3 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+          darkMode
+            ? "border border-gray-500 bg-gray-800/20 text-white hover:bg-gray-700 focus:ring-gray-600"
+            : "border border-gray-200 bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-300"
+        } ${copied ? "pointer-events-none cursor-default bg-green-500 text-white" : ""} group relative overflow-hidden`}
+      >
+        <div className="flex items-center space-x-2">
+          {copied ? (
+            <>
+              <FaCheck className="h-5 w-5 transform transition-transform text-white" />
+              <span className="font-semibold">Copied!</span>
+            </>
+          ) : (
+            <>
+              <FaCopy className="h-5 w-5 transition-transform group-hover:scale-110" />
+              <span>Copy Share Link</span>
+            </>
+          )}
+        </div>
+      </button>
     </div>
   );
 };

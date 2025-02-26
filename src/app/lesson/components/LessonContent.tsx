@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { RefreshCcw, Undo2, Fingerprint } from "lucide-react";
+import { RefreshCcw, Undo2 } from "lucide-react";
 import { useSearchParams } from 'next/navigation';
 import Sidebar from "./Sidebar";
 import TypingInterface from "./Typing-Interface";
@@ -168,18 +168,11 @@ export default function LessonContent() {
           />
         </div>
 
-        <div className="flex-1 p-2 md:p-4">
-          <div className="mx-auto max-w-3xl rounded-xl border border-gray-300 bg-white p-4 shadow-lg transition-all duration-300 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
-            <div className="mb-4 text-center">
-              <a href="/" className="flex items-center space-x-2 text-2xl text-bold justify-center">
-                <Fingerprint
-                  className={`h-8 w-8 ${contextDarkMode ? "text-indigo-400" : "text-indigo-600"}`}
-                />
-                <span>FingerTyping</span>
-              </a>
-            </div>
+        <div className="flex-1">
+          <div className="mx-auto max-w-5xl rounded-sm bg-white p-5   dark:bg-gray-900">
+            
 
-            <div className="mb-4 rounded-lg border border-gray-300 bg-white p-4 shadow-sm dark:border-gray-600 dark:bg-gray-800">
+            <div className="mb-9 rounded-lg border border-gray-300 bg-white p-2 shadow-sm dark:border-gray-500 dark:bg-gray-800">
               <TypingInterface
                 currentWord={getCurrentContent()[currentWordIndex]}
                 isCorrect={isCorrect}
@@ -190,7 +183,7 @@ export default function LessonContent() {
               />
             </div>
 
-            <div className="mb-4 rounded-lg border border-gray-300 p-4 dark:border-gray-600">
+            <div className="mb-6 rounded-lg border border-gray-300 p-4 dark:border-gray-600">
               <StatsDisplay
                 wpm={wpm}
                 time={time}
@@ -220,13 +213,13 @@ export default function LessonContent() {
             <div className="flex flex-col gap-2 md:flex-row md:justify-between">
               <button
                 onClick={resetGame}
-                className="flex items-center justify-center rounded-lg bg-green-600 px-4 py-2 text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-700 hover:shadow-md"
+                className="flex items-center justify-center rounded-lg border px-4 py-2 transition-all duration-200 dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-400 dark:hover:text-white border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900 hover:-translate-y-0.5 hover:shadow-sm"
               >
                 <RefreshCcw className="mr-2 h-4 w-4" /> Reset
               </button>
               <Link
                 href="/"
-                className="flex items-center justify-center rounded-lg bg-green-600 px-4 py-2 text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-700 hover:shadow-md"
+                className="flex items-center justify-center rounded-lg border px-4 py-2 transition-all duration-200 dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-400 dark:hover:text-white border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900 hover:-translate-y-0.5 hover:shadow-sm"
               >
                 <Undo2 className="mr-2 h-4 w-4" /> Home
               </Link>

@@ -22,33 +22,33 @@ export default function StatsDisplay(
 
   return (
     <div className="mb-2 grid grid-cols-2 gap-2 md:grid-cols-4">
-      <div className="rounded bg-gray-100 p-2 shadow dark:bg-gray-700">
-        <h3 className="mb-2 font-bold text-gray-600 dark:text-gray-300">LPM</h3>
-        <p className="text-2xl text-gray-800 dark:text-white md:text-3xl">
+      <div className="rounded bg-gray-100 p-2 shadow-md transition-transform transform hover:scale-105 dark:bg-gray-800 flex flex-col items-center justify-center">
+        <h3 className="mb-1 font-bold text-gray-600 dark:text-gray-300">LPM</h3>
+        <p className="text-xl text-gray-800 dark:text-white md:text-2xl">
           {wpm}
         </p>
       </div>
-      <div className="rounded bg-gray-100 p-2 shadow dark:bg-gray-700">
-        <h3 className="mb-2 font-bold text-gray-600 dark:text-gray-300">
+      <div className="rounded bg-gray-100 p-2 shadow-md transition-transform transform hover:scale-105 dark:bg-gray-800 flex flex-col items-center justify-center">
+        <h3 className="mb-1 font-bold text-gray-600 dark:text-gray-300">
           Time
         </h3>
-        <p className="text-2xl text-gray-800 dark:text-white md:text-3xl">
+        <p className="text-xl text-gray-800 dark:text-white md:text-2xl">
           {formatTime(time)}s
         </p>
       </div>
-      <div className="rounded bg-gray-100 p-2 shadow dark:bg-gray-700">
-        <h3 className="mb-2 font-bold text-gray-600 dark:text-gray-300">
+      <div className="rounded bg-gray-100 p-2 shadow-md transition-transform transform hover:scale-105 dark:bg-gray-800 flex flex-col items-center justify-center">
+        <h3 className="mb-1 font-bold text-gray-600 dark:text-gray-300">
           Score
         </h3>
-        <p className="text-2xl text-gray-800 dark:text-white md:text-3xl">
+        <p className="text-xl text-gray-800 dark:text-white md:text-2xl">
           {score}
         </p>
       </div>
-      <div className="rounded bg-gray-100 p-2 shadow dark:bg-gray-700">
-        <h3 className="mb-2 font-bold text-gray-600 dark:text-gray-300">
+      <div className="rounded bg-gray-100 p-2 shadow-md transition-transform transform hover:scale-105 dark:bg-gray-800 flex flex-col items-center justify-center">
+        <h3 className="mb-1 font-bold text-gray-600 dark:text-gray-300">
           Lesson
         </h3>
-        <p className="text-sm text-gray-800 dark:text-white md:text-lg">
+        <p className="text-sm text-gray-800 dark:text-white md:text-base">
           {currentLesson}
         </p>
       </div>
