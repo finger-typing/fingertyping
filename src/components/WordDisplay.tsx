@@ -6,6 +6,7 @@ interface WordDisplayProps {
   inputValue: string;
   currentWordIndex: number;
   darkMode: boolean;
+  onNeedMore?: () => void;
 }
 
 interface CharacterProps {
@@ -17,8 +18,8 @@ interface CharacterProps {
 }
 
 // Constants
-export const WORDS_PER_LINE_SMALL = 20;
-export const WORDS_PER_LINE_LARGE = 34;
+export const WORDS_PER_LINE_SMALL = 15;
+export const WORDS_PER_LINE_LARGE = 20;
 export const LINES_TO_SHOW = 1;
 
 // Utility functions
@@ -49,7 +50,7 @@ const Character = memo(({ charCluster, inputCluster, isCurrentChar, isPastWord, 
       </span>
       {isCurrentChar && (
         <span
-          className={`absolute bottom-[-2px] left-0 h-[3px] w-full rounded-full ${
+          className={`absolute bottom-[-1px] left-0 h-[2px] w-full rounded-full ${
             darkMode ? "bg-white" : "bg-gray-900"
           } animate-cursor`}
         />
@@ -66,6 +67,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
   inputValue,
   currentWordIndex,
   darkMode,
+  onNeedMore
 }) => {
   const [wordsPerLine, setWordsPerLine] = useState(WORDS_PER_LINE_LARGE);
 
@@ -79,12 +81,55 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const displayedWords = useMemo(() => {
+  const { displayedWords, startIndex, needsMoreWords } = useMemo(() => {
     const textWords = randomText.split(" ");
-    const startIndex = Math.floor(currentWordIndex / wordsPerLine) * wordsPerLine;
-    const endIndex = startIndex + wordsPerLine * LINES_TO_SHOW;
-    return textWords.slice(startIndex, endIndex);
+    
+    // Calculate visible lines based on current word
+    const currentLine = Math.floor(currentWordIndex / wordsPerLine);
+    
+    // Show 3 lines before current line and 2 lines after
+    const linesToShowBefore = 3;
+    const linesToShowAfter = 2;
+    
+    // Calculate start and end indices
+    const startLine = Math.max(0, currentLine - linesToShowBefore);
+    const startIndex = startLine * wordsPerLine;
+    const endLine = currentLine + linesToShowAfter;
+    const endIndex = Math.min((endLine + 1) * wordsPerLine, textWords.length);
+    
+    // Request more words when approaching the end
+    const needsMoreWords = endIndex + wordsPerLine >= textWords.length;
+    
+    return {
+      displayedWords: textWords.slice(startIndex, endIndex),
+      startIndex,
+      needsMoreWords
+    };
   }, [randomText, currentWordIndex, wordsPerLine]);
+
+  // Request more words when approaching the end
+  useEffect(() => {
+    if (needsMoreWords && onNeedMore) {
+      onNeedMore();
+    }
+  }, [needsMoreWords, onNeedMore]);
+
+  useEffect(() => {
+    const container = document.querySelector('.word-display-container') as HTMLElement | null;
+    const currentWord = document.querySelector('.current-word') as HTMLElement | null;
+    if (container && currentWord) {
+      const containerHeight = container.clientHeight;
+      const currentWordTop = currentWord.offsetTop;
+      
+      // Keep current word in the middle of the container
+      const targetPosition = Math.max(0, currentWordTop - containerHeight / 2);
+      
+      container.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, [currentWordIndex]);
 
   const inputWords = useMemo(
     () => inputValue.split(" "),
@@ -102,8 +147,8 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     return (
       <React.Fragment key={wordIndex}>
         <span
-          className={`relative whitespace-nowrap ${
-            isCurrentWord ? "rounded-md bg-blue-800/20 px-2 py-0.5" : ""
+          className={`relative inline-flex items-center mx-0.5 ${
+            isCurrentWord ? "rounded bg-blue-800/20 px-1 py-[1px] current-word" : "px-0.5"
           }`}
         >
           {wordClusters.map((charCluster, charIndex) => (
@@ -139,18 +184,37 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     );
   };
 
-  const startIndex = Math.floor(currentWordIndex / wordsPerLine) * wordsPerLine;
-
   return (
     <div
-      className={`w-full rounded-xl p-3 mb-0.5 font-medium shadow-lg transition-all duration-300 ease-in-out sm:p-6 ${
+      className={`max-w-7xl mx-auto h-[30vh] sm:h-[50vh] rounded-xl p-1 mb-0.5 font-medium shadow-lg transition-all duration-300 ease-in-out sm:p-4 ${
         darkMode
           ? "bg-gray-800/50 text-gray-200 shadow-gray-900/20"
           : "border border-gray-200 bg-white text-gray-800 shadow-gray-200/50"
       }`}
     >
-      <div className="overflow-hidden break-normal text-[1.5rem] leading-relaxed tracking-wide sm:text-xl md:text-[2.1rem] md:leading-[2.8rem]">
+      <div
+        className="h-full overflow-y-auto break-words text-xl leading-[1.6] tracking-normal sm:text-3xl md:text-[2.5rem] md:leading-[1.4] p-2 word-display-container"
+        style={{
+          scrollbarWidth: 'thin',
+          scrollbarColor: darkMode ? '#9ca3af #4b5563' : '#d1d5db #f3f4f6'
+        }}
+      >
         {displayedWords.map((word, index) => renderWord(word, index, startIndex))}
+        <style jsx>{`
+          .word-display-container::-webkit-scrollbar {
+            width: 4px;
+          }
+          .word-display-container::-webkit-scrollbar-track {
+            background: ${darkMode ? '#4b5563' : '#f3f4f6'};
+            border-radius: 10px;
+          }
+          .word-display-container::-webkit-scrollbar-thumb {
+            background-color: ${darkMode ? 'rgba(156, 163, 175, 0.5)' : 'rgba(209, 213, 219, 0.5)'};
+            border-radius: 10px;
+            border: 1px solid ${darkMode ? '#4b5563' : '#f3f4f6'};
+            backdrop-filter: blur(5px);
+          }
+        `}</style>
       </div>
     </div>
   );

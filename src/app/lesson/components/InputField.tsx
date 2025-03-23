@@ -30,7 +30,7 @@ const InputField: React.FC<InputFieldProps> = ({
       disabled={isComplete}
       ref={inputRef}
       placeholder={placeholder}
-      className={`w-full p-4 rounded-lg text-lg transition-all duration-200 ${
+      className={`w-full h-20 p-8 rounded-lg text-lg transition-all duration-200 ${
         darkMode 
           ? 'bg-gray-800 text-white' 
           : 'bg-white text-gray-800'

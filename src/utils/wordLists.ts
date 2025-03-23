@@ -1,8 +1,8 @@
 export const wordLists: Record<string, string[]> = {
   English: [
     // Shorter words (3 to 5 characters)
-    "go", // Go
-    "to", // To
+    "go to bed", // Go
+    "to enjoy", // To
     "my", // My
     "for", // For
     "the", // The
@@ -2494,9 +2494,34 @@ export const generateRandomWords = (
   count: number,
   wordList: string[],
 ): string => {
-  return Array.from({ length: count })
-    .map(() => wordList[Math.floor(Math.random() * wordList.length)])
-    .join(" ");
+  // Create a copy of the wordList to avoid modifying the original
+  let availableWords = [...wordList];
+  const result = [];
+
+  // Helper function to shuffle array using Fisher-Yates algorithm
+  const shuffle = (array: string[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  // Initial shuffle
+  availableWords = shuffle(availableWords);
+
+  // Generate words
+  while (result.length < count) {
+    // If we've used all words, reshuffle the list
+    if (availableWords.length === 0) {
+      availableWords = shuffle([...wordList]);
+    }
+    
+    // Take the next word from our shuffled list
+    result.push(availableWords.pop()!);
+  }
+
+  return result.join(" ");
 };
 
 // Add this if it doesn't exist

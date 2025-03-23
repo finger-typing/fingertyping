@@ -72,7 +72,7 @@ const playFeedbackSound = (isCorrect: boolean): void => {
 
 const getInputClassName = (darkMode: boolean): string => {
   const baseClasses =
-    "w-full rounded-lg border-1 px-6 py-6 text-xl shadow-sm focus:border-transparent focus:outline-none focus:ring-6 focus:ring-green-500";
+    "w-full rounded-lg border-1 px-6 py-8 text-xl shadow-sm focus:border-transparent focus:outline-none focus:ring-6 focus:ring-green-500";
 
   const themeClasses = darkMode
     ? "border-white bg-gray-800 text-gray-100 placeholder-gray-400"
