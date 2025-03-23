@@ -1,11 +1,13 @@
 import React from "react";
-import { Clock, RotateCcw } from "lucide-react";
+import { Clock, RotateCcw, File } from "lucide-react";
 import Button from "./Button";
 
 interface GameControlsProps {
   initializeGame: () => void;
   timeRemaining: number;
   darkMode: boolean;
+  isBlankPage: boolean;
+  toggleBlankPage?: () => void;
 }
 
 const formatTimeDisplay = (seconds: number): string => {
@@ -18,6 +20,8 @@ const GameControls: React.FC<GameControlsProps> = ({
   initializeGame,
   timeRemaining,
   darkMode,
+  isBlankPage,
+  toggleBlankPage,
 }) => {
   const buttonClasses = `
     flex items-center justify-center gap-2 px-6 py-3 rounded-md
@@ -38,8 +42,17 @@ const GameControls: React.FC<GameControlsProps> = ({
       role="group"
       aria-label="Game controls"
     >
-      <div className="grid w-full grid-cols-2 gap-4 lg:flex lg:flex-row lg:items-center lg:justify-between">
-        <div className="hidden lg:block lg:flex-1" aria-hidden="true" />
+      <div className="grid w-full grid-cols-3 gap-4 lg:flex lg:flex-row lg:items-center lg:justify-between">
+        <Button
+          onClick={toggleBlankPage || (() => {})}
+          className={`${buttonClasses} ${isBlankPage ? 'bg-blue-600 text-white' : ''} font-semibold lg:flex-1`}
+          aria-label="Toggle blank page mode"
+        >
+          <File size={25} />
+          <span className="text-md font-mono font-medium sm:text-lg lg:text-lg">
+            Blank
+          </span>
+        </Button>
 
         <div
           className={`${buttonClasses} text-center lg:flex-1`}
@@ -65,8 +78,6 @@ const GameControls: React.FC<GameControlsProps> = ({
             Reset
           </span>
         </Button>
-
-        <div className="hidden lg:block lg:flex-1" aria-hidden="true" />
       </div>
     </div>
   );

@@ -23,6 +23,7 @@ const TypingPractice: React.FC = () => {
     language: language,
     inputValue: "",
     randomText: "",
+    typedText: "",
     startTime: null as number | null,
     timeElapsed: 0,
     timeRemaining: customTime,
@@ -30,6 +31,7 @@ const TypingPractice: React.FC = () => {
     isComplete: false,
     currentWordIndex: 0,
     isCustomText: false,
+    isBlankPage: false,
   });
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -48,6 +50,7 @@ const TypingPractice: React.FC = () => {
       language: language,
       randomText: generateRandomWords(10000, wordLists[language] || wordLists["English"]),
       inputValue: "",
+      typedText: "",
       startTime: null,
       timeElapsed: 0,
       timeRemaining: customTime,
@@ -55,6 +58,7 @@ const TypingPractice: React.FC = () => {
       isComplete: false,
       currentWordIndex: 0,
       isCustomText: false,
+      isBlankPage: false,
     }));
   }, [language, customTime]);
 
@@ -66,12 +70,14 @@ const TypingPractice: React.FC = () => {
         randomText: customText,
         isCustomText: true,
         inputValue: "",
+        typedText: "",
         startTime: null,
         timeElapsed: 0,
         timeRemaining: customTime,
         hasStarted: false,
         isComplete: false,
         currentWordIndex: 0,
+        isBlankPage: false,
       }));
       inputRef.current?.focus();
     }
@@ -82,7 +88,7 @@ const TypingPractice: React.FC = () => {
     const prevValue = gameState.inputValue;
     
     // Play sound based on word accuracy
-    if (value.length > prevValue.length) {  // Only check when adding characters
+    if (value.length > prevValue.length && !gameState.isBlankPage) {  // Only check when adding characters and not in blank page mode
       const inputWords = value.split(" ");
       const targetWords = gameState.randomText.split(" ");
       const currentWordIndex = inputWords.length - 1;
@@ -102,10 +108,11 @@ const TypingPractice: React.FC = () => {
     setGameState((prev) => ({
       ...prev,
       inputValue: value,
+      typedText: value,
       hasStarted: true,
       startTime: prev.startTime || Date.now(),
       currentWordIndex: Math.max(value.split(" ").length - 1, prev.currentWordIndex),
-      isComplete: value === prev.randomText,
+      isComplete: !prev.isBlankPage && value === prev.randomText,
     }));
   };
 
@@ -124,6 +131,20 @@ const TypingPractice: React.FC = () => {
     return () => clearInterval(interval);
   }, [gameState.hasStarted, gameState.isComplete, gameState.timeRemaining]);
 
+  const toggleBlankPage = useCallback(() => {
+    setGameState(prev => ({
+      ...prev,
+      isBlankPage: !prev.isBlankPage,
+      inputValue: "",
+      typedText: "",
+      startTime: null,
+      hasStarted: false,
+      isComplete: false,
+      currentWordIndex: 0,
+    }));
+    inputRef.current?.focus();
+  }, []);
+
   const initializeGame = useCallback(() => {
     setGameState((prev) => ({
       ...prev,
@@ -131,12 +152,14 @@ const TypingPractice: React.FC = () => {
         ? prev.randomText
         : generateRandomWords(10000, wordLists[language] || wordLists["English"]),
       inputValue: "",
+      typedText: "",
       startTime: null,
       timeElapsed: 0,
       timeRemaining: customTime,
       hasStarted: false,
       isComplete: false,
       currentWordIndex: 0,
+      isBlankPage: false, // Always go back to normal mode on reset
     }));
     inputRef.current?.focus();
   }, [language, customTime]);
@@ -147,7 +170,7 @@ const TypingPractice: React.FC = () => {
 
   const metrics = usePerformanceMetrics({
     inputValue: gameState.inputValue,
-    randomText: gameState.randomText,
+    randomText: gameState.isBlankPage ? gameState.typedText : gameState.randomText,
     timeElapsed: gameState.timeElapsed,
   });
 
@@ -157,12 +180,13 @@ const TypingPractice: React.FC = () => {
         darkMode ? "bg-gray-900 text-gray-100" : "bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900"
       }`}
     >
-      <main className=" w-full max-w-6xl space-y-2 p-2 ">
+      <main className="w-full max-w-5xl space-y-2 p-2">
         <WordDisplay
-          randomText={gameState.randomText}
+          randomText={gameState.isBlankPage ? gameState.typedText : gameState.randomText}
           inputValue={gameState.inputValue}
           currentWordIndex={gameState.currentWordIndex}
           darkMode={darkMode}
+          isBlankPage={gameState.isBlankPage}
         />
 
         <InputField
@@ -172,7 +196,7 @@ const TypingPractice: React.FC = () => {
           isComplete={gameState.isComplete}
           darkMode={darkMode}
           inputRef={inputRef}
-          placeholder="Start typing to begin......."
+          placeholder={gameState.isBlankPage ? "Type anything..." : "Start typing to begin......."}
           randomText={gameState.randomText}
         />
 
@@ -180,6 +204,8 @@ const TypingPractice: React.FC = () => {
           initializeGame={initializeGame}
           timeRemaining={gameState.timeRemaining}
           darkMode={darkMode}
+          isBlankPage={gameState.isBlankPage}
+          toggleBlankPage={toggleBlankPage}
         />
 
         {gameState.isComplete && (

@@ -6,6 +6,7 @@ interface WordDisplayProps {
   inputValue: string;
   currentWordIndex: number;
   darkMode: boolean;
+  isBlankPage?: boolean;
   onNeedMore?: () => void;
 }
 
@@ -67,6 +68,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
   inputValue,
   currentWordIndex,
   darkMode,
+  isBlankPage,
   onNeedMore
 }) => {
   const [wordsPerLine, setWordsPerLine] = useState(WORDS_PER_LINE_LARGE);
@@ -116,20 +118,29 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   useEffect(() => {
     const container = document.querySelector('.word-display-container') as HTMLElement | null;
-    const currentWord = document.querySelector('.current-word') as HTMLElement | null;
-    if (container && currentWord) {
-      const containerHeight = container.clientHeight;
-      const currentWordTop = currentWord.offsetTop;
-      
-      // Keep current word in the middle of the container
-      const targetPosition = Math.max(0, currentWordTop - containerHeight / 2);
-      
+    if (!container) return;
+
+    if (isBlankPage) {
+      // In blank page mode, scroll to the bottom to show latest text
+      const scrollHeight = container.scrollHeight;
       container.scrollTo({
-        top: targetPosition,
+        top: scrollHeight,
         behavior: 'smooth'
       });
+    } else {
+      // In normal mode, keep current word in the middle
+      const currentWord = document.querySelector('.current-word') as HTMLElement | null;
+      if (currentWord) {
+        const containerHeight = container.clientHeight;
+        const currentWordTop = currentWord.offsetTop;
+        const targetPosition = Math.max(0, currentWordTop - containerHeight / 2);
+        container.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
     }
-  }, [currentWordIndex]);
+  }, [currentWordIndex, isBlankPage, inputValue]);
 
   const inputWords = useMemo(
     () => inputValue.split(" "),
@@ -186,20 +197,35 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   return (
     <div
-      className={`max-w-7xl mx-auto h-[30vh] sm:h-[50vh] rounded-xl p-1 mb-0.5 font-medium shadow-lg transition-all duration-300 ease-in-out sm:p-4 ${
+      className={`max-w-7xl mx-auto h-[30vh] sm:h-[50vh] rounded-xl p-0.5 mb-0.5 font-medium shadow-lg transition-all duration-300 ease-in-out overflow-y-auto sm:p-2 ${
         darkMode
           ? "bg-gray-800/50 text-gray-200 shadow-gray-900/20"
           : "border border-gray-200 bg-white text-gray-800 shadow-gray-200/50"
       }`}
     >
       <div
-        className="h-full overflow-y-auto break-words text-xl leading-[1.6] tracking-normal sm:text-3xl md:text-[2.5rem] md:leading-[1.4] p-2 word-display-container"
+        className="h-full overflow-y-auto break-words text-xl leading-[1.6] tracking-normal sm:text-3xl md:text-[2.5rem] md:leading-[1.4] p-1 word-display-container"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: darkMode ? '#9ca3af #4b5563' : '#d1d5db #f3f4f6'
         }}
       >
-        {displayedWords.map((word, index) => renderWord(word, index, startIndex))}
+        {isBlankPage ? (
+          <div className="h-full p-1 flex flex-col">
+            <div className="text-left word-display-container">
+              {randomText.split(" ").map((word, index) => (
+                <React.Fragment key={index}>
+                  <span className={darkMode ? "text-white" : "text-gray-900"}>
+                    {word}
+                  </span>
+                  {" "}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        ) : (
+          displayedWords.map((word, index) => renderWord(word, index, startIndex))
+        )}
         <style jsx>{`
           .word-display-container::-webkit-scrollbar {
             width: 4px;
