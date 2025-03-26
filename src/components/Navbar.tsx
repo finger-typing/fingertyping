@@ -147,7 +147,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav className={`w-full backdrop-blur-lg ${
-        darkMode ? "bg-slate-900/90 text-white" : "bg-white/90 text-slate-900"
+        darkMode ? "bg-slate-900/90 text-white backdrop-blur-lg" : "bg-white text-slate-900 backdrop-blur-lg"
       } sticky top-0 z-50 shadow-lg transition-all duration-300`}>
         <div className="container mx-auto px-2 py-1">
           <div className="flex items-center justify-between">

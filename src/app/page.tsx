@@ -180,7 +180,7 @@ const TypingPractice: React.FC = () => {
         darkMode ? "bg-gray-900 text-gray-100" : "bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900"
       }`}
     >
-      <main className="w-full max-w-5xl space-y-2 p-2">
+      <main className="w-full max-w-5xl space-y-2">
         <WordDisplay
           randomText={gameState.isBlankPage ? gameState.typedText : gameState.randomText}
           inputValue={gameState.inputValue}

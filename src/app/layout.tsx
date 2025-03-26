@@ -19,11 +19,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fingertyping.com"),
   title: {
-    default: "FingerTyping - Open Source Typing Application",
+    default: "Finger Typing - Open Source Typing Application",
     template: "%s | FingerTyping - Enhance Your Typing Skills",
   },
   description:
-    "FingerTyping: A open-source, free typing application designed to boost your typing speed and accuracy. No ads, no tracking, just pure typing practice.",
+    "Finger Typing: An Open-Source, Free Typing Application Designed For Simplicity And Features. No ads, No tracking, Just Pure Typing.",
   keywords: [
     "typing practice",
     "typing lessons",
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
     "typing improvement",
     "online typing",
   ],
-  authors: [{ name: "FingerTyping Team" }],
-  publisher: "FingerTyping",
+  authors: [{ name: "Finger Typing Team" }],
+  publisher: "Finger Typing",
   formatDetection: {
     email: false,
     address: false,
@@ -60,20 +60,23 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   openGraph: {
     type: "website",
-    title: "FingerTyping - Open Source Typing Application",
+    title: "Finger Typing - Open Source Typing Application",
     description:
-      "FingerTyping: A open-source, free typing application designed to boost your typing speed and accuracy. No ads, no tracking, just pure typing practice.",
+          "Finger Typing: An Open-Source, Free Typing Application Designed For Simplicity And Features. No ads, No tracking, Just Pure Typing.",
+ 
+    locale: "en_US",
     images: ["https://www.fingertyping.com/og-image.png"],
     url: "https://www.fingertyping.com",
     siteName: "FingerTyping",
-    locale: "en_US",
+   
   },
   twitter: {
     card: "summary_large_image",
-    title: "FingerTyping - Open Source Typing Application",
+    title: "Finger Typing - Open Source Typing Application",
     site: "@fingertyping",
     description:
-      "FingerTyping: A open-source, free typing application designed to boost your typing speed and accuracy. No ads, no tracking, just pure typing practice.",
+         "Finger Typing: An Open-Source, Free Typing Application Designed For Simplicity And Features. No ads, No tracking, Just Pure Typing.",
+
     images: ["https://www.fingertyping.com/og-image.png"],
     creator: "@fingertyping",
   },
@@ -120,7 +123,8 @@ export default function RootLayout({
                 priceCurrency: "USD",
               },
               description:
-                "FingerTyping: A open-source, free typing application designed to boost your typing speed and accuracy. No ads, no tracking, just pure typing practice.",
+                "Finger Typing: An Open-Source, Free Typing Application Designed For Simplicity And Features. No ads, No tracking, Just Pure Typing.",
+
               operatingSystem: "Any",
               browserRequirements:
                 "Requires JavaScript and a modern web browser",

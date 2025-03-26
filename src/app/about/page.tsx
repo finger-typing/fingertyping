@@ -59,7 +59,7 @@ export default function About() {
               <span className="font-semibold text-indigo-400 mr-1">
                 FingerTyping
               </span>
-              We want to make a typing website which is complete free , open
+              We want to make a typing website which is complete free ,open
               source, and secure, no data are taken from users. Also main
               important is easy to use. Thats why we are making this website.
               Out GitHub repository is we are revolutionizing typing practice.
