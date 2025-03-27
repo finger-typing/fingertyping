@@ -13,7 +13,7 @@ interface GameControlsProps {
 const formatTimeDisplay = (seconds: number): string => {
   const mins = Math.floor(seconds / 60);
   const secs = seconds % 60;
-  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+  return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
 };
 
 const GameControls: React.FC<GameControlsProps> = ({
@@ -70,19 +70,20 @@ const GameControls: React.FC<GameControlsProps> = ({
       role="group"
       aria-label="Game controls"
     >
-      <div className="flex w-full flex-col items-stretch justify-between gap-0 sm:flex-row">
+      {/* Mobile View: 1 line, 3 columns */}
+      <div className="flex w-full flex-row items-stretch justify-between gap-0 sm:flex-row">
         <Button
           onClick={toggleBlankPage ?? (() => {})}
-          className={`${isBlankPage ? blankPageButtonStyles : buttonStyles} flex-1 rounded-l-xl sm:rounded-r-none`}
+          className={`${isBlankPage ? blankPageButtonStyles : buttonStyles} flex-1 rounded-l-xl sm:rounded-l-xl sm:rounded-r-none`}
           aria-label="Toggle blank page mode"
           disabled={!toggleBlankPage}
         >
           <File size={28} className="stroke-[1.5]" />
-          <span>Blank Mode</span>
+          <span className="hidden sm:inline">Blank Mode</span>
         </Button>
 
         <div
-          className={`${timerStyles} flex-[1.5] sm:rounded-none`}
+          className={`${timerStyles} flex-1 sm:flex-[1.5] sm:rounded-none`}
           role="timer"
           aria-live="polite"
           aria-label={`Time remaining: ${formatTimeDisplay(timeRemaining)}`}
@@ -102,11 +103,11 @@ const GameControls: React.FC<GameControlsProps> = ({
 
         <Button
           onClick={initializeGame}
-          className={`${buttonStyles} flex-1 rounded-r-xl sm:rounded-l-none`}
+          className={`${buttonStyles} flex-1 rounded-r-xl sm:rounded-l-none sm:rounded-r-xl`}
           aria-label="Reset game"
         >
           <RotateCcw size={28} className="stroke-[1.5]" />
-          <span>Reset Game</span>
+          <span className="hidden sm:inline">Reset Game</span>
         </Button>
       </div>
     </div>

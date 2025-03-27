@@ -19,7 +19,7 @@ interface CharacterProps {
 }
 
 // Constants
-export const WORDS_PER_LINE_SMALL = 18;
+export const WORDS_PER_LINE_SMALL = 15;
 export const WORDS_PER_LINE_LARGE = 25;
 export const LINES_TO_SHOW = 1;
 
@@ -197,14 +197,14 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   return (
     <div
-      className={`max-w-5xl mx-auto h-[40vh] sm:h-[60vh] rounded-xl p-0.5 mb-0.5 font-medium shadow-lg transition-all duration-300 ease-in-out overflow-y-auto sm:p-2 ${
+      className={`max-w-5xl mx-auto h-[30vh] sm:h-[60vh] rounded-xl p-0.5 mb-0.5 font-medium shadow-lg transition-all duration-300 ease-in-out overflow-y-auto sm:p-2 ${
         darkMode
           ? "bg-gray-800/50 text-gray-200 shadow-gray-900/20"
           : "border border-gray-200 bg-white text-gray-800 shadow-gray-200/50"
       }`}
     >
       <div
-        className="h-full overflow-y-auto break-words text-xl leading-[1.6] tracking-normal sm:text-3xl md:text-[2.5rem] md:leading-[1.4] p-1 word-display-container"
+        className="h-full overflow-y-auto break-words text-2xl leading-[1.6] tracking-normal sm:text-3xl md:text-[2.5rem] md:leading-[1.4] p-1 word-display-container"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: darkMode ? '#9ca3af #4b5563' : '#d1d5db #f3f4f6'
