@@ -6,7 +6,6 @@ import { wordLists, generateRandomWords } from "../utils/wordLists";
 import WordDisplay from "../components/WordDisplay";
 import InputField from './lesson/components/InputField';
 import GameControls from "../components/GameControls";
-import ShareSection from "../components/ShareSection";
 import Mainpagefooter from "../components/Mainpagefooter";
 import usePerformanceMetrics from "../components/PerformanceMetrics";
 import { useApp } from "@/context/AppContext";
@@ -180,7 +179,7 @@ const TypingPractice: React.FC = () => {
         darkMode ? "bg-gray-900 text-gray-100" : "bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900"
       }`}
     >
-      <main className="w-full max-w-5xl space-y-2">
+      <main className="w-full max-w-5xl space-y-1">
         <WordDisplay
           randomText={gameState.isBlankPage ? gameState.typedText : gameState.randomText}
           inputValue={gameState.inputValue}
@@ -219,8 +218,6 @@ const TypingPractice: React.FC = () => {
             darkMode={darkMode}
           />
         )}
-
-        <ShareSection darkMode={darkMode} />
 
         <Mainpagefooter darkMode={darkMode} />
       </main>

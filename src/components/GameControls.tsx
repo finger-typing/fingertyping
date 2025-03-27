@@ -11,9 +11,9 @@ interface GameControlsProps {
 }
 
 const formatTimeDisplay = (seconds: number): string => {
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
-  return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 };
 
 const GameControls: React.FC<GameControlsProps> = ({
@@ -23,60 +23,90 @@ const GameControls: React.FC<GameControlsProps> = ({
   isBlankPage,
   toggleBlankPage,
 }) => {
-  const buttonClasses = `
-    flex items-center justify-center gap-2 px-6 py-3 rounded-md
-    ${darkMode ? "bg-gray-700/60 text-white" : "bg-white text-gray-800"}
-    shadow-md hover:shadow-lg 
-    transform hover:scale-105 focus:outline-none focus:ring-2
+  const baseStyles = `
+    flex items-center justify-center gap-4 py-4
+    font-medium tracking-wider uppercase
+    shadow-lg transition-all duration-300 ease-in-out
+    transform hover:-translate-y-1 focus:outline-none focus:ring-2
+    border
+  `;
+
+  const buttonStyles = `
+    ${baseStyles}
+    px-6
+    text-sm
     ${
       darkMode
-        ? "focus:ring-green-400 hover:bg-gray-600"
-        : "focus:ring-green-600 hover:bg-gray-100"
+        ? "text-gray-200 hover:bg-gray-700 focus:ring-purple-500/50 border-gray-700"
+        : "text-gray-800 hover:bg-gray-50 focus:ring-purple-600/50 border-gray-200"
     }
-    transition-transform duration-200 ease-in-out
+  `;
+
+  const blankPageButtonStyles = `
+    ${baseStyles}
+    px-6
+    text-base
+    ${
+      darkMode
+        ? "text-white hover:bg-gray-700 focus:ring-blue-500/50 border-gray-700"
+        : "text-gray-800 hover:bg-gray-50 focus:ring-blue-600/50 border-gray-200"
+    }
+  `;
+
+  const timerStyles = `
+    ${baseStyles}
+    px-10
+    ${
+      darkMode
+        ? "text-gray-100 border-gray-700/50"
+        : "text-gray-800 border-gray-200"
+    }
+    cursor-default text-3xl
   `;
 
   return (
     <div
-      className={`mb-2 flex w-full flex-col items-center justify-between rounded-lg p-5 lg:flex-row ${darkMode ? "bg-gray-800/40" : "bg-white"} `}
+      className={`mb-4 flex w-full flex-col items-center justify-between rounded-2xl py-4 ${darkMode ? "bg-gray-900/30" : "bg-gradient-to-br from-white to-gray-50"} border shadow-xl ${darkMode ? "border-gray-800/50" : "border-gray-100"} backdrop-blur-sm`}
       role="group"
       aria-label="Game controls"
     >
-      <div className="grid w-full grid-cols-3 gap-4 lg:flex lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex w-full flex-col items-stretch justify-between gap-0 sm:flex-row">
         <Button
-          onClick={toggleBlankPage || (() => {})}
-          className={`${buttonClasses} ${isBlankPage ? 'bg-blue-600 text-white' : ''} font-semibold lg:flex-1`}
+          onClick={toggleBlankPage ?? (() => {})}
+          className={`${isBlankPage ? blankPageButtonStyles : buttonStyles} flex-1 rounded-l-xl sm:rounded-r-none`}
           aria-label="Toggle blank page mode"
+          disabled={!toggleBlankPage}
         >
-          <File size={25} />
-          <span className="text-md font-mono font-medium sm:text-lg lg:text-lg">
-            Blank
-          </span>
+          <File size={28} className="stroke-[1.5]" />
+          <span>Blank Mode</span>
         </Button>
 
         <div
-          className={`${buttonClasses} text-center lg:flex-1`}
+          className={`${timerStyles} flex-[1.5] sm:rounded-none`}
           role="timer"
+          aria-live="polite"
           aria-label={`Time remaining: ${formatTimeDisplay(timeRemaining)}`}
         >
           <Clock
-            className={`${darkMode ? "text-red-500" : "text-red-500"}`}
             size={25}
+            className={`stroke-[1.5] ${
+              timeRemaining <= 10
+                ? "animate-pulse text-red-500"
+                : darkMode
+                  ? "text-green-400"
+                  : "text-green-600"
+            }`}
           />
-          <p className="text-md font-mono font-medium sm:text-lg lg:text-xl">
-            {formatTimeDisplay(timeRemaining)}s
-          </p>
+          <span className="font-mono">{formatTimeDisplay(timeRemaining)}</span>
         </div>
 
         <Button
           onClick={initializeGame}
-          className={`${buttonClasses} font-semibold lg:flex-1`}
+          className={`${buttonStyles} flex-1 rounded-r-xl sm:rounded-l-none`}
           aria-label="Reset game"
         >
-          <RotateCcw size={25} />
-          <span className="text-md font-mono font-medium sm:text-lg lg:text-lg">
-            Reset
-          </span>
+          <RotateCcw size={28} className="stroke-[1.5]" />
+          <span>Reset Game</span>
         </Button>
       </div>
     </div>

@@ -7,7 +7,7 @@ import {
   FaTelegram,
   FaWhatsapp,
 } from "react-icons/fa6";
-import { FaFacebookMessenger } from "react-icons/fa";
+
 
 // Define the props interface for the Results component
 interface ResultsProps {
@@ -195,7 +195,7 @@ Try it yourself at https://fingertyping.com 🚀`;
       {/* Share Results Section */}
       <div className="mt-4 w-full rounded-lg bg-opacity-50 p-4">
         <p
-          className={`mb-3 text-center text-base font-semibold ${darkMode ? "text-gray-200" : "text-gray-700"}`}
+          className={`mb-3 text-center text-xl font-semibold ${darkMode ? "text-gray-200" : "text-gray-700"}`}
         >
           Share Your Results On Social Media
         </p>
@@ -274,13 +274,7 @@ Try it yourself at https://fingertyping.com 🚀`;
           >
             <FaWhatsapp size={24} />
           </button>
-          <button
-            onClick={() => handleShare("messenger")}
-            className="rounded-full bg-[#00B2FF] p-3 text-white transition-all hover:scale-110 hover:shadow-lg"
-            aria-label="Share on Messenger"
-          >
-            <FaFacebookMessenger size={24} />
-          </button>
+         
         </div>
       </div>
     </div>
