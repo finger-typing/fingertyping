@@ -29,7 +29,7 @@ interface ShareSectionProps {
 
 const ShareSection: React.FC<ShareSectionProps> = ({
   url = "https://fingertyping.com",
-  title = "Check out this amazing tool!",
+  title = "Check out the ultimate open-souce,free, secure typing practice appcation!",
   darkMode = false,
   platforms = [
     "twitter",
