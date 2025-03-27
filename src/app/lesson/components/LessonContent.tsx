@@ -169,10 +169,10 @@ export default function LessonContent() {
         </div>
 
         <div className="flex-1">
-          <div className="mx-auto max-w-5xl rounded-sm bg-white p-5   dark:bg-gray-900">
+          <div className="mx-auto max-w-4xl rounded-sm bg-white p-10   dark:bg-gray-900">
             
 
-            <div className="mb-9 rounded-lg border border-gray-300 bg-white p-2 shadow-sm dark:border-gray-500 dark:bg-gray-800">
+            <div className="mb-2 rounded-lg border border-gray-300 bg-white p-2 shadow-sm dark:border-gray-500 dark:bg-gray-800">
               <TypingInterface
                 currentWord={getCurrentContent()[currentWordIndex]}
                 isCorrect={isCorrect}
@@ -183,7 +183,7 @@ export default function LessonContent() {
               />
             </div>
 
-            <div className="mb-6 rounded-lg border border-gray-300 p-4 dark:border-gray-600">
+            <div className="mb-2 rounded-lg border border-gray-300 p-2 dark:border-gray-600">
               <StatsDisplay
                 wpm={wpm}
                 time={time}
@@ -192,7 +192,7 @@ export default function LessonContent() {
               />
             </div>
 
-            <div className="mb-4 md:hidden">
+            <div className="md:hidden">
               <select
                 title="mobile_lesson"
                 value={currentLesson}

@@ -24,7 +24,7 @@ const GameControls: React.FC<GameControlsProps> = ({
   toggleBlankPage,
 }) => {
   const baseStyles = `
-    flex items-center justify-center gap-4 py-4
+    flex items-center justify-center gap-2 py-2
     font-medium tracking-wider uppercase
     shadow-lg transition-all duration-300 ease-in-out
     transform hover:-translate-y-1 focus:outline-none focus:ring-2
@@ -33,8 +33,8 @@ const GameControls: React.FC<GameControlsProps> = ({
 
   const buttonStyles = `
     ${baseStyles}
-    px-6
-    text-sm
+    px-4
+    text-xs
     ${
       darkMode
         ? "text-gray-200 hover:bg-gray-700 focus:ring-purple-500/50 border-gray-700"
@@ -44,8 +44,8 @@ const GameControls: React.FC<GameControlsProps> = ({
 
   const blankPageButtonStyles = `
     ${baseStyles}
-    px-6
-    text-base
+    px-4
+    text-sm
     ${
       darkMode
         ? "text-white hover:bg-gray-700 focus:ring-blue-500/50 border-gray-700"
@@ -55,7 +55,7 @@ const GameControls: React.FC<GameControlsProps> = ({
 
   const timerStyles = `
     ${baseStyles}
-    px-10
+    px-8
     ${
       darkMode
         ? "text-gray-100 border-gray-700/50"
@@ -66,7 +66,7 @@ const GameControls: React.FC<GameControlsProps> = ({
 
   return (
     <div
-      className={`mb-4 flex w-full flex-col items-center justify-between rounded-2xl py-4 ${darkMode ? "bg-gray-900/30" : "bg-gradient-to-br from-white to-gray-50"} border shadow-xl ${darkMode ? "border-gray-800/50" : "border-gray-100"} backdrop-blur-sm`}
+      className={`mb-2 flex w-full flex-col items-center justify-between rounded-xl py-4 ${darkMode ? "bg-gray-900/30" : "bg-gradient-to-br from-white to-gray-50"} border shadow-xl ${darkMode ? "border-gray-800/50" : "border-gray-100"} backdrop-blur-sm`}
       role="group"
       aria-label="Game controls"
     >
@@ -74,11 +74,11 @@ const GameControls: React.FC<GameControlsProps> = ({
       <div className="flex w-full flex-row items-stretch justify-between gap-0 sm:flex-row">
         <Button
           onClick={toggleBlankPage ?? (() => {})}
-          className={`${isBlankPage ? blankPageButtonStyles : buttonStyles} flex-1 rounded-l-xl sm:rounded-l-xl sm:rounded-r-none`}
+          className={`${isBlankPage ? blankPageButtonStyles : buttonStyles} flex-1 rounded-none sm:rounded-l-xl`}
           aria-label="Toggle blank page mode"
           disabled={!toggleBlankPage}
         >
-          <File size={28} className="stroke-[1.5]" />
+          <File size={24} className="stroke-[1.5]" />
           <span className="hidden sm:inline">Blank Mode</span>
         </Button>
 
@@ -89,7 +89,7 @@ const GameControls: React.FC<GameControlsProps> = ({
           aria-label={`Time remaining: ${formatTimeDisplay(timeRemaining)}`}
         >
           <Clock
-            size={25}
+            size={22}
             className={`stroke-[1.5] ${
               timeRemaining <= 10
                 ? "animate-pulse text-red-500"
@@ -103,10 +103,10 @@ const GameControls: React.FC<GameControlsProps> = ({
 
         <Button
           onClick={initializeGame}
-          className={`${buttonStyles} flex-1 rounded-r-xl sm:rounded-l-none sm:rounded-r-xl`}
+          className={`${buttonStyles} flex-1 rounded-none sm:rounded-r-xl`}
           aria-label="Reset game"
         >
-          <RotateCcw size={28} className="stroke-[1.5]" />
+          <RotateCcw size={24} className="stroke-[1.5]" />
           <span className="hidden sm:inline">Reset Game</span>
         </Button>
       </div>

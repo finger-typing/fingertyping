@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import { AppProvider } from "@/context/AppContext";
 import Navbar from "@/components/Navbar";
+import ThemeProvider from "@/components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -101,6 +102,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html lang="en">
       <head>
@@ -147,9 +149,11 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <AppProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <ThemeProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </ThemeProvider>
         </AppProvider>
       </body>
     </html>

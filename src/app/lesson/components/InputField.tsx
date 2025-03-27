@@ -44,6 +44,7 @@ const InputField: React.FC<InputFieldProps> = ({
       aria-label="Type the text"
       data-testid="typing-input"
       autoComplete="off"
+     
     />
   );
 };
