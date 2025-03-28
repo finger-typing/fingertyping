@@ -89,13 +89,10 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     // Calculate visible lines based on current word
     const currentLine = Math.floor(currentWordIndex / wordsPerLine);
     
-    // Show 3 lines before current line and 2 lines after
-    const linesToShowBefore = 3;
-    const linesToShowAfter = 2;
-    
-    // Calculate start and end indices
-    const startLine = Math.max(0, currentLine - linesToShowBefore);
-    const startIndex = startLine * wordsPerLine;
+    // Always show from beginning to current line plus a few lines after
+    // This ensures all typed words remain visible
+    const startIndex = 0;
+    const linesToShowAfter = 3; // Show a few lines after current position
     const endLine = currentLine + linesToShowAfter;
     const endIndex = Math.min((endLine + 1) * wordsPerLine, textWords.length);
     

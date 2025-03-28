@@ -169,7 +169,7 @@ export default function LessonContent() {
         </div>
 
         <div className="flex-1">
-          <div className="mx-auto max-w-4xl rounded-sm bg-white p-10   dark:bg-gray-900">
+          <div className="mx-auto max-w-5xl rounded-sm bg-white p-10   dark:bg-gray-900">
             
 
             <div className="mb-2 rounded-lg border border-gray-300 bg-white p-2 shadow-sm dark:border-gray-500 dark:bg-gray-800">

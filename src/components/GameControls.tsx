@@ -66,7 +66,7 @@ const GameControls: React.FC<GameControlsProps> = ({
 
   return (
     <div
-      className={`mb-2 flex w-full flex-col items-center justify-between rounded-xl py-4 ${darkMode ? "bg-gray-900/30" : "bg-gradient-to-br from-white to-gray-50"} border shadow-xl ${darkMode ? "border-gray-800/50" : "border-gray-100"} backdrop-blur-sm`}
+      className={`mb-2 flex w-full flex-col items-center justify-between rounded-xl py-1 ${darkMode ? "bg-gray-900/30" : "bg-gradient-to-br from-white to-gray-50"} border shadow-xl ${darkMode ? "border-gray-800/50" : "border-gray-100"} backdrop-blur-sm`}
       role="group"
       aria-label="Game controls"
     >
