@@ -86,7 +86,7 @@ const TypingPractice: React.FC = () => {
     const value = e.target.value;
     const prevValue = gameState.inputValue;
     
-    // Play sound based on word accuracy
+    // Play sound based on character accuracy
     if (value.length > prevValue.length && !gameState.isBlankPage) {  // Only check when adding characters and not in blank page mode
       const inputWords = value.split(" ");
       const targetWords = gameState.randomText.split(" ");
@@ -94,12 +94,18 @@ const TypingPractice: React.FC = () => {
       const currentInputWord = inputWords[currentWordIndex] || "";
       const currentTargetWord = targetWords[currentWordIndex] || "";
       
-      // Compare up to the length of the input word
-      const isCorrectSoFar = currentTargetWord.startsWith(currentInputWord);
-      
-      if (isCorrectSoFar) {
-        audioPlayer.playCorrect();
-      } else {
+      // Check just the last character typed
+      const lastCharIndex = currentInputWord.length - 1;
+      if (lastCharIndex >= 0 && lastCharIndex < currentTargetWord.length) {
+        const isCorrectChar = currentInputWord[lastCharIndex] === currentTargetWord[lastCharIndex];
+        
+        if (isCorrectChar) {
+          audioPlayer.playCorrect();
+        } else {
+          audioPlayer.playIncorrect();
+        }
+      } else if (lastCharIndex >= currentTargetWord.length) {
+        // Extra character beyond target word length
         audioPlayer.playIncorrect();
       }
     }

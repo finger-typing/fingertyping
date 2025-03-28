@@ -14,7 +14,6 @@ interface CharacterProps {
   charCluster: string;
   inputCluster?: string;
   isCurrentChar: boolean;
-  isPastWord: boolean;
   darkMode: boolean;
 }
 
@@ -35,10 +34,9 @@ const getGraphemeClusters = (text: string): string[] => {
 };
 
 // Memoized components
-const Character = memo(({ charCluster, inputCluster, isCurrentChar, isPastWord, darkMode }: CharacterProps) => {
+const Character = memo(({ charCluster, inputCluster, isCurrentChar, darkMode }: CharacterProps) => {
   const getCharacterClass = () => {
-    if (!inputCluster && !isPastWord) return darkMode ? "text-gray-300" : "text-gray-700";
-    if (!inputCluster && isPastWord) return darkMode ? "text-red-500" : "text-red-600";
+    if (!inputCluster) return darkMode ? "text-gray-300" : "text-gray-700";
     return charCluster === inputCluster
       ? "text-green-500"
       : "text-red-500";
@@ -152,6 +150,37 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     const wordClusters = getGraphemeClusters(word);
     const inputClusters = getGraphemeClusters(inputWord);
 
+    // Find the position of the cursor within the word
+    // This helps us place the cursor at the exact character that needs correction
+    // and properly handle backtracking to previous words
+    const findCursorPosition = () => {
+      // If no input yet, cursor should be at the beginning
+      if (inputClusters.length === 0) return 0;
+      
+      // Check if we're at the end of the input for this word
+      const totalInputLength = inputWords.slice(0, wordPos).join(" ").length;
+      const cursorInInput = inputValue.length - totalInputLength;
+      
+      // If cursor is within this word's range in the input
+      if (cursorInInput > 0 && cursorInInput <= inputWord.length + (wordPos > 0 ? 1 : 0)) {
+        // Adjust for space if not the first word
+        const adjustedPosition = wordPos > 0 ? cursorInInput - 1 : cursorInInput;
+        return Math.min(adjustedPosition, inputClusters.length);
+      }
+      
+      // Otherwise find the first mismatch as before
+      for (let i = 0; i < Math.min(inputClusters.length, wordClusters.length); i++) {
+        if (inputClusters[i] !== wordClusters[i]) {
+          return i;
+        }
+      }
+      
+      // If we get here, all characters match up to the length of the shorter word
+      return inputClusters.length;
+    };
+    
+    const cursorPosition = isCurrentWord ? findCursorPosition() : -1;
+
     return (
       <React.Fragment key={wordIndex}>
         <span
@@ -164,13 +193,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
               key={charIndex}
               charCluster={charCluster}
               inputCluster={inputClusters[charIndex]}
-              isCurrentChar={
-                isCurrentWord &&
-                (inputClusters.length === charIndex ||
-                  (inputClusters.length < wordClusters.length &&
-                    inputClusters.length === charIndex))
-              }
-              isPastWord={wordPos < currentWordIndex}
+              isCurrentChar={isCurrentWord && charIndex === cursorPosition}
               darkMode={darkMode}
             />
           ))}
@@ -179,15 +202,28 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
               <span className="text-red-500">
                 {inputWord.slice(word.length)}
               </span>
-              <span
-                className={`absolute bottom-0 left-0 h-[1px] w-full rounded-full ${
-                  darkMode ? "bg-white" : "bg-gray-900"
-                } animate-cursor`}
-              />
+              {cursorPosition >= wordClusters.length && (
+                <span
+                  className={`absolute bottom-0 left-0 h-[1px] w-full rounded-full ${
+                    darkMode ? "bg-white" : "bg-gray-900"
+                  } animate-cursor`}
+                />
+              )}
             </span>
           )}
         </span>
-        {wordIndex < displayedWords.length - 1 && " "}
+        {wordIndex < displayedWords.length - 1 && (
+          <span className="relative">
+            {" "}
+            {isCurrentWord && cursorPosition === wordClusters.length && (
+              <span
+                className={`absolute bottom-0 left-0 h-[2px] w-full rounded-full ${
+                  darkMode ? "bg-white" : "bg-gray-900"
+                } animate-cursor`}
+              />
+            )}
+          </span>
+        )}
       </React.Fragment>
     );
   };
