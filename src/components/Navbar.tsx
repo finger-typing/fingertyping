@@ -37,9 +37,11 @@ const NavButton: React.FC<NavButtonProps> = ({
 }) => {
   const baseClasses = `
     flex items-center px-3 py-1.5 rounded-lg font-medium text-sm
-    ${darkMode
-      ? "border-white/10 bg-slate-800/40 text-white hover:bg-slate-700/50 hover:border-slate-400/50"
-      : "border-slate-200 bg-white/50 text-slate-800 hover:bg-slate-100 hover:border-slate-300"}
+    ${
+      darkMode
+        ? "border-white/10 bg-slate-800/40 text-white hover:bg-slate-700/50 hover:border-slate-400/50"
+        : "border-slate-200 bg-white/50 text-slate-800 hover:bg-slate-100 hover:border-slate-300"
+    }
     transform hover:scale-102 active:scale-98
     transition-all duration-200 ease-in-out
     border backdrop-blur-sm
@@ -146,13 +148,18 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`w-full backdrop-blur-lg ${
-        darkMode ? "bg-slate-900/90 text-white backdrop-blur-lg" : "bg-white text-slate-900 backdrop-blur-lg"
-      } sticky top-0 z-50 shadow-lg transition-all duration-300`}>
+      <nav
+        className={`w-full backdrop-blur-lg ${
+          darkMode
+            ? "bg-slate-900/90 text-white backdrop-blur-lg"
+            : "bg-white text-slate-900 backdrop-blur-lg"
+        } sticky top-0 z-50 shadow-lg transition-all duration-300`}
+      >
         <div className="container mx-auto px-2 py-1">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <button
+                aria-label="Menu"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className={`rounded-lg p-2 lg:hidden ${
                   darkMode ? "hover:bg-slate-800/60" : "hover:bg-slate-100"
@@ -169,19 +176,19 @@ const Navbar: React.FC = () => {
 
               <div className="hidden items-center space-x-2 lg:flex">
                 {navItems.slice(0, 2).map((item, index) => (
-                  <NavButton
-                    key={index}
-                    {...item}
-                    darkMode={darkMode}
-                  />
+                  <NavButton key={index} {...item} darkMode={darkMode} />
                 ))}
               </div>
             </div>
 
             <div className="mx-3 hidden flex-1 justify-center lg:flex">
-              <div className={`rounded-lg border p-1 shadow-md backdrop-blur-lg ${
-                darkMode ? "bg-slate-800/30 border-slate-600/30" : "bg-white/50 border-slate-200"
-              }`}>
+              <div
+                className={`rounded-lg border p-1 shadow-md backdrop-blur-lg ${
+                  darkMode
+                    ? "border-slate-600/30 bg-slate-800/30"
+                    : "border-slate-200 bg-white/50"
+                }`}
+              >
                 <CustomInputs
                   darkMode={darkMode}
                   onCustomTextSubmit={onCustomTextSubmit}
@@ -195,11 +202,7 @@ const Navbar: React.FC = () => {
             <div className="flex items-center space-x-2">
               <div className="hidden items-center space-x-2 lg:flex">
                 {navItems.slice(2).map((item, index) => (
-                  <NavButton
-                    key={index}
-                    {...item}
-                    darkMode={darkMode}
-                  />
+                  <NavButton key={index} {...item} darkMode={darkMode} />
                 ))}
               </div>
               <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -210,14 +213,18 @@ const Navbar: React.FC = () => {
       </nav>
 
       {isMenuOpen && (
-        <div className={`fixed inset-0 z-50 ${
-          darkMode ? "bg-slate-900/95" : "bg-white/95"
-        } overflow-y-auto backdrop-blur-lg lg:hidden`}>
+        <div
+          className={`fixed inset-0 z-50 ${
+            darkMode ? "bg-slate-900/95" : "bg-white/95"
+          } overflow-y-auto backdrop-blur-lg lg:hidden`}
+        >
           <div className="container mx-auto px-4 py-6">
             <div className="mb-8 flex items-center justify-between">
-              <h2 className={`text-xl font-semibold ${
-                darkMode ? "text-white/90" : "text-slate-800"
-              }`}>
+              <h2
+                className={`text-xl font-semibold ${
+                  darkMode ? "text-white/90" : "text-slate-800"
+                }`}
+              >
                 Menu
               </h2>
               <button
@@ -225,8 +232,8 @@ const Navbar: React.FC = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className={`rounded-lg p-2.5 ${
                   darkMode
-                    ? "hover:bg-slate-800/60 text-white/90"
-                    : "hover:bg-slate-100 text-slate-800"
+                    ? "text-white/90 hover:bg-slate-800/60"
+                    : "text-slate-800 hover:bg-slate-100"
                 } transition-all duration-200 hover:scale-105 active:scale-95`}
               >
                 <X size={20} />
@@ -245,14 +252,18 @@ const Navbar: React.FC = () => {
                 ))}
               </div>
 
-              <div className={`mt-8 rounded-xl border ${
-                darkMode
-                  ? "bg-slate-800/30 border-slate-700/30"
-                  : "bg-white/50 border-slate-200"
-              } p-6 backdrop-blur-lg shadow-lg`}>
-                <h3 className={`mb-4 font-medium ${
-                  darkMode ? "text-white/90" : "text-slate-800"
-                }`}>
+              <div
+                className={`mt-8 rounded-xl border ${
+                  darkMode
+                    ? "border-slate-700/30 bg-slate-800/30"
+                    : "border-slate-200 bg-white/50"
+                } p-6 shadow-lg backdrop-blur-lg`}
+              >
+                <h3
+                  className={`mb-4 font-medium ${
+                    darkMode ? "text-white/90" : "text-slate-800"
+                  }`}
+                >
                   Custom Settings
                 </h3>
                 <CustomInputs

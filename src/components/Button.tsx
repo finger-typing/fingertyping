@@ -5,6 +5,7 @@ interface ButtonProps {
   onClick: () => void; // Function to be called when the button is clicked
   className?: string; // Optional additional CSS classes
   disabled?: boolean; // Optional flag to disable the button
+  ariaLabel?: string; // Optional aria-label for accessibility
   children: React.ReactNode; // Content to be rendered inside the button
 }
 
@@ -12,11 +13,13 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   onClick,
   className = "", // Default to empty string if no additional classes are provided
+  ariaLabel = "", // Default to empty string if no aria-label is provided
   disabled = false, // Default to enabled if not specified
   children,
 }) => (
   <button
     onClick={onClick}
+    aria-label={ariaLabel}
     disabled={disabled}
     className={`rounded-lg px-4 py-1 ${className}`} // Combine default and custom classes
   >
