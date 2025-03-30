@@ -111,7 +111,6 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
   const buttonClassName = `
     rounded-lg px-2 py-1 text-sm font-medium
     min-w-[60px]
-    ${isMobile ? "flex-shrink-0 w-16 text-xs max-w-[80px]" : ""}
     transition-all duration-200
     hover:scale-105 active:scale-95
     backdrop-blur-sm
@@ -130,17 +129,19 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
         isMobile
           ? "flex-col space-y-4"
           : "flex-row items-center justify-center space-x-4"
-      }`}
+      } w-full max-w-full`} // Added w-full max-w-full
       role="group"
       aria-label="Custom game settings"
     >
       <form
         onSubmit={handleCustomTimeSubmit}
         className={`flex items-center ${
-          isMobile ? "w-full space-x-3 flex-row" : "space-x-2"
-        }`}
+          isMobile ? "w-full flex-col space-y-2" : "space-x-2"
+        } `} // Changed to flex-col and space-y-2
       >
-        <div className="relative flex flex-1 flex-col">
+        <div className="relative flex w-full flex-1 flex-col">
+          {" "}
+          {/* Added w-full */}
           <input
             type="text"
             id="custom-time"
@@ -150,12 +151,12 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
             aria-label="Custom time in minutes:seconds"
             aria-describedby={timeError ? "time-error" : undefined}
             className={`${inputClassName} ${
-              isMobile ? "w-24 py-2 text-sm" : "max-w-[100px]"
-                      } ${
-                        timeError
-                          ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                          : ""
-                      }`}
+              isMobile ? "py-2 text-sm" : "max-w-[100px]"
+            } ${
+              timeError
+                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                : ""
+            }`}
           />
           {timeError && (
             <span
@@ -169,7 +170,7 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
         </div>
         <button
           type="submit"
-          className={`${buttonClassName} ${isMobile ? "py-2" : ""}`}
+          className={`${buttonClassName} ${isMobile ? "w-full py-2" : ""}`} // Added w-full
           disabled={!!timeError}
         >
           Set Time
@@ -179,8 +180,8 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
       <form
         onSubmit={handleCustomTextSubmit}
         className={`flex items-center ${
-          isMobile ? "w-full space-x-3 flex-row" : "space-x-2"
-        }`}
+          isMobile ? "w-full flex-col space-y-2" : "space-x-2"
+        }`} // Changed to flex-col and space-y-2
       >
         <input
           type="text"
@@ -190,12 +191,12 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
           placeholder="Enter text"
           aria-label="Custom text input"
           className={`${inputClassName} ${
-            isMobile ? "w-32 py-2 text-sm" : "max-w-[150px]"
+            isMobile ? "py-2 text-sm" : "max-w-[120px]"
           }`}
         />
         <button
           type="submit"
-          className={`${buttonClassName} ${isMobile ? "py-2" : ""}`}
+          className={`${buttonClassName} ${isMobile ? "w-full py-2" : ""}`} // Added w-full
         >
           Set Text
         </button>

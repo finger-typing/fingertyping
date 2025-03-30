@@ -169,9 +169,7 @@ export default function LessonContent() {
         </div>
 
         <div className="flex-1">
-          <div className="mx-auto max-w-5xl rounded-sm bg-white p-10   dark:bg-gray-900">
-            
-
+          <div className="mx-auto max-w-5xl rounded-sm bg-white p-2 dark:bg-gray-900">
             <div className="mb-2 rounded-lg border border-gray-300 bg-white p-2 shadow-sm dark:border-gray-500 dark:bg-gray-800">
               <TypingInterface
                 currentWord={getCurrentContent()[currentWordIndex]}
@@ -210,16 +208,16 @@ export default function LessonContent() {
               </select>
             </div>
 
-            <div className="flex flex-col gap-2 md:flex-row md:justify-between">
+            <div className="grid grid-cols-2 gap-2 mt-3">
               <button
                 onClick={resetGame}
-                className="flex items-center justify-center rounded-lg border px-4 py-2 transition-all duration-200 dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-400 dark:hover:text-white border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900 hover:-translate-y-0.5 hover:shadow-sm"
+                className="flex items-center justify-center rounded-lg border border-gray-300 px-2 py-2 text-gray-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-500 hover:text-gray-900 hover:shadow-sm dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-400 dark:hover:text-white"
               >
                 <RefreshCcw className="mr-2 h-4 w-4" /> Reset
               </button>
               <Link
                 href="/"
-                className="flex items-center justify-center rounded-lg border px-4 py-2 transition-all duration-200 dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-400 dark:hover:text-white border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900 hover:-translate-y-0.5 hover:shadow-sm"
+                className="flex items-center justify-center rounded-lg border border-gray-300 px-4 py-2 text-gray-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-500 hover:text-gray-900 hover:shadow-sm dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-400 dark:hover:text-white"
               >
                 <Undo2 className="mr-2 h-4 w-4" /> Home
               </Link>

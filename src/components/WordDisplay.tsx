@@ -154,28 +154,16 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     // This helps us place the cursor at the exact character that needs correction
     // and properly handle backtracking to previous words
     const findCursorPosition = () => {
-      // If no input yet, cursor should be at the beginning
       if (inputClusters.length === 0) return 0;
-      
-      // Check if we're at the end of the input for this word
-      const totalInputLength = inputWords.slice(0, wordPos).join(" ").length;
-      const cursorInInput = inputValue.length - totalInputLength;
-      
-      // If cursor is within this word's range in the input
-      if (cursorInInput > 0 && cursorInInput <= inputWord.length + (wordPos > 0 ? 1 : 0)) {
-        // Adjust for space if not the first word
-        const adjustedPosition = wordPos > 0 ? cursorInInput - 1 : cursorInInput;
-        return Math.min(adjustedPosition, inputClusters.length);
+      // If the current word is not fully typed, place the cursor at the end of the current input
+      if (inputWord.length < wordClusters.length) {
+        return inputClusters.length;
       }
-      
-      // Otherwise find the first mismatch as before
       for (let i = 0; i < Math.min(inputClusters.length, wordClusters.length); i++) {
         if (inputClusters[i] !== wordClusters[i]) {
           return i;
         }
       }
-      
-      // If we get here, all characters match up to the length of the shorter word
       return inputClusters.length;
     };
     
@@ -197,12 +185,12 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
               darkMode={darkMode}
             />
           ))}
-          {inputClusters.length > wordClusters.length && isCurrentWord && (
+          {inputClusters.length > wordClusters.length && (
             <span className="relative">
               <span className="text-red-500">
                 {inputWord.slice(word.length)}
               </span>
-              {cursorPosition >= wordClusters.length && (
+              {isCurrentWord && cursorPosition >= wordClusters.length && (
                 <span
                   className={`absolute bottom-0 left-0 h-[1px] w-full rounded-full ${
                     darkMode ? "bg-white" : "bg-gray-900"
@@ -237,7 +225,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
       }`}
     >
       <div
-        className="h-full overflow-y-auto break-words text-2xl leading-[1.6] tracking-normal sm:text-3xl md:text-[2.5rem] md:leading-[1.4] p-1 word-display-container"
+        className="h-full overflow-y-auto break-words text-2xl leading-[1.6] tracking-normal sm:text-3xl md:text-[2.3rem] md:leading-[1.4] p-1 word-display-container"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: darkMode ? '#9ca3af #4b5563' : '#d1d5db #f3f4f6'
