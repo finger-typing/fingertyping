@@ -75,7 +75,7 @@ const GameControls: React.FC<GameControlsProps> = ({
         <Button
           onClick={toggleBlankPage ?? (() => {})}
           className={`${isBlankPage ? blankPageButtonStyles : buttonStyles} flex-1 rounded-none sm:rounded-l-xl`}
-          aria-label="Toggle blank page mode"
+          ariaLabel="Toggle blank page mode"
           disabled={!toggleBlankPage}
         >
           <File size={24} className="stroke-[1.5]" />
@@ -104,7 +104,7 @@ const GameControls: React.FC<GameControlsProps> = ({
         <Button
           onClick={initializeGame}
           className={`${buttonStyles} flex-1 rounded-none sm:rounded-r-xl`}
-          aria-label="Reset game"
+          ariaLabel="Reset game"
         >
           <RotateCcw size={24} className="stroke-[1.5]" />
           <span className="hidden sm:inline">Reset Game</span>
