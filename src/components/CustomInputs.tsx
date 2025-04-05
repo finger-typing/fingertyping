@@ -95,7 +95,7 @@ export const CustomInputs: React.FC<CustomInputsProps> = ({
   );
 
   const inputClassName = `
-    rounded-lg px-4 py-1.5 text-sm
+    rounded-lg px-4 py-1 text-sm
     w-full min-w-[70px]
     border-2 backdrop-blur-sm
     focus:outline-none focus:ring-2 focus:ring-opacity-50

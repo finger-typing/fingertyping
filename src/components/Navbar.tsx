@@ -185,7 +185,7 @@ const Navbar: React.FC = () => {
               <div
                 className={`rounded-lg border p-1 shadow-md backdrop-blur-lg ${
                   darkMode
-                    ? "border-slate-600/30 bg-slate-800/30"
+                    ? "border-slate-600 bg-slate-800/10"
                     : "border-slate-200 bg-white/50"
                 }`}
               >
@@ -255,7 +255,7 @@ const Navbar: React.FC = () => {
               <div
                 className={`mt-8 rounded-xl border ${
                   darkMode
-                    ? "border-slate-700/30 bg-slate-800/30"
+                    ? "border-slate-700/30 bg-slate-800/40"
                     : "border-slate-200 bg-white/50"
                 } p-6 shadow-lg backdrop-blur-lg`}
               >

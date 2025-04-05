@@ -85,7 +85,7 @@ const TypingPractice: React.FC = () => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const prevValue = gameState.inputValue;
-    
+
     // Play sound based on character accuracy
     if (value.length > prevValue.length && !gameState.isBlankPage) {  // Only check when adding characters and not in blank page mode
       const inputWords = value.split(" ");
@@ -93,12 +93,12 @@ const TypingPractice: React.FC = () => {
       const currentWordIndex = inputWords.length - 1;
       const currentInputWord = inputWords[currentWordIndex] || "";
       const currentTargetWord = targetWords[currentWordIndex] || "";
-      
+
       // Check just the last character typed
       const lastCharIndex = currentInputWord.length - 1;
       if (lastCharIndex >= 0 && lastCharIndex < currentTargetWord.length) {
         const isCorrectChar = currentInputWord[lastCharIndex] === currentTargetWord[lastCharIndex];
-        
+
         if (isCorrectChar) {
           audioPlayer.playCorrect();
         } else {
@@ -173,6 +173,8 @@ const TypingPractice: React.FC = () => {
     disableInspection();
   }, []);
 
+  // Pass the raw input value to the metrics calculator
+  // This ensures all characters (including spaces for skipped words) are counted
   const metrics = usePerformanceMetrics({
     inputValue: gameState.inputValue,
     randomText: gameState.isBlankPage ? gameState.typedText : gameState.randomText,

@@ -9,30 +9,24 @@ const Footer: React.FC = () => {
   const { darkMode } = useApp();
 
   return (
-    <footer
-      className={`w-full border-t ${
-        darkMode ? "border-gray-800 bg-gray-800" : "border-gray-900 bg-white"
-      }`}
-    >
-      <hr />
+    <footer className={`w-full ${darkMode ? "bg-gray-800" : "bg-white"}`}>
       <div className="container mx-auto px-4 py-4">
-        {/* Top Section */}
-        <div className="flex flex-col items-center justify-center space-y-6 text-center">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="flex items-center space-x-2">
-            <span
-              className={`flex items-center justify-center text-xl font-bold ${
-                darkMode ? "text-white" : "text-gray-900"
-              }`}
-            >
-              <a href="/" className="flex items-center space-x-2">
-                <Fingerprint
-                  className={`h-8 w-8 ${
-                    darkMode ? "text-indigo-400" : "text-indigo-600"
-                  }`}
-                />
-                <span>FingerTyping</span>
-              </a>
-            </span>
+            <a href="/" className="flex items-center space-x-2">
+              <Fingerprint
+                className={`h-6 w-6 ${
+                  darkMode ? "text-indigo-400" : "text-indigo-600"
+                }`}
+              />
+              <span
+                className={`text-lg font-semibold ${
+                  darkMode ? "text-white" : "text-gray-900"
+                }`}
+              >
+                FingerTyping
+              </span>
+            </a>
           </div>
 
           <div className="flex items-center space-x-1">
@@ -43,12 +37,12 @@ const Footer: React.FC = () => {
             >
               Made by
             </span>
-            <FaHeart className="h-4 w-5 text-red-500" />
+            <FaHeart className="h-4 w-4 text-red-500" />
             <a
               href="https://www.linkedin.com/in/mdhasibulislamin/"
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-sm font-bold hover:underline ${
+              className={`text-sm font-semibold hover:underline ${
                 darkMode ? "text-gray-200" : "text-gray-800"
               }`}
             >

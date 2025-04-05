@@ -154,16 +154,6 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     // This helps us place the cursor at the exact character that needs correction
     // and properly handle backtracking to previous words
     const findCursorPosition = () => {
-      if (inputClusters.length === 0) return 0;
-      // If the current word is not fully typed, place the cursor at the end of the current input
-      if (inputWord.length < wordClusters.length) {
-        return inputClusters.length;
-      }
-      for (let i = 0; i < Math.min(inputClusters.length, wordClusters.length); i++) {
-        if (inputClusters[i] !== wordClusters[i]) {
-          return i;
-        }
-      }
       return inputClusters.length;
     };
     
@@ -225,7 +215,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
       }`}
     >
       <div
-        className="h-full overflow-y-auto break-words text-2xl leading-[1.6] tracking-normal sm:text-3xl md:text-[2.3rem] md:leading-[1.4] p-1 word-display-container"
+        className="h-full overflow-y-auto break-words text-2xl leading-1 tracking-normal sm:text-3xl md:text-[2.4rem] md:leading-[1.4] p-1 word-display-container"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: darkMode ? '#9ca3af #4b5563' : '#d1d5db #f3f4f6'

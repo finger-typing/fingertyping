@@ -1,4 +1,4 @@
-import React, { ChangeEvent, RefObject, useCallback } from "react";
+import React, { ChangeEvent, KeyboardEvent, RefObject, useCallback } from "react";
 import { audioPlayer } from "../utils/audioUtils";
 
 interface InputFieldProps {
@@ -34,12 +34,40 @@ const InputField: React.FC<InputFieldProps> = ({
     [inputValue, randomText, handleInputChange]
   );
 
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLInputElement>) => {
+      // Prevent Enter key from adding a space and skipping to the next word
+      if (e.key === "Enter") {
+        e.preventDefault();
+        
+        // Get current word information
+        const currentWords = randomText.split(" ");
+        const typedWords = inputValue.split(" ");
+        const currentIndex = typedWords.length - 1;
+        const currentTargetWord = currentWords[currentIndex] || "";
+        const currentTypedWord = typedWords[currentIndex] || "";
+        
+        // Only allow moving to the next word if the current word is typed correctly
+        if (currentTypedWord === currentTargetWord) {
+          // If word is complete, allow adding space to move to next word
+          const newValue = inputValue + " ";
+          handleInputChange({ target: { value: newValue } } as ChangeEvent<HTMLInputElement>);
+        } else {
+          // Play incorrect sound to indicate the word must be completed
+          audioPlayer.playIncorrect();
+        }
+      }
+    },
+    [inputValue, randomText, handleInputChange]
+  );
+
   return (
     <div className="input-container">
       <input
         ref={inputRef}
         value={inputValue}
         onChange={handleKeyInput}
+        onKeyDown={handleKeyDown}
         disabled={isComplete}
         className={getInputClassName(darkMode)}
         {...getInputAttributes()}

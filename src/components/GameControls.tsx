@@ -26,7 +26,7 @@ const GameControls: React.FC<GameControlsProps> = ({
   const baseStyles = `
     flex items-center justify-center gap-2 py-2
     font-medium tracking-wider uppercase
-    shadow-lg transition-all duration-300 ease-in-out
+    ${darkMode ? "shadow-lg" : "shadow-none"} transition-all duration-300 ease-in-out
     transform hover:-translate-y-1 focus:outline-none focus:ring-2
     border
   `;
@@ -66,7 +66,7 @@ const GameControls: React.FC<GameControlsProps> = ({
 
   return (
     <div
-      className={`mb-2 flex w-full flex-col items-center justify-between rounded-xl py-1 ${darkMode ? "bg-gray-900/30" : "bg-gradient-to-br from-white to-gray-50"} border shadow-xl ${darkMode ? "border-gray-800/50" : "border-gray-100"} backdrop-blur-sm`}
+      className={`mb-2 flex w-full flex-col items-center justify-between rounded-xl py-1 ${darkMode ? "bg-gray-900/30" : "bg-gradient-to-br from-white to-gray-50"} border ${darkMode ? "shadow-xl" : "shadow-none"} ${darkMode ? "border-gray-800/50" : "border-gray-100"} backdrop-blur-sm`}
       role="group"
       aria-label="Game controls"
     >
