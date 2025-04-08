@@ -30,21 +30,21 @@ const InputField: React.FC<InputFieldProps> = ({
       disabled={isComplete}
       ref={inputRef}
       placeholder={placeholder}
-      className={`w-full h-20 p-8 rounded-lg text-lg transition-all duration-200 ${
-        darkMode 
-          ? 'bg-gray-800 text-white' 
+      className={`w-full h-16 md:h-20 p-4 md:p-8 rounded-lg text-xl md:text-3xl font-medium transition-all duration-200 ${
+        darkMode
+          ? 'bg-gray-800 text-white'
           : 'bg-white text-gray-800'
-      } ${
-        !hasStarted 
-          ? 'border-2 border-gray-400 focus:border-green-500 focus:ring-2 focus:ring-green-500/50 outline-none' 
-          : isComplete 
-            ? 'border-2 border-green-500' 
+      } placeholder:text-gray-400 placeholder:text-lg md:placeholder:text-xl ${
+        !hasStarted
+          ? 'border-2 border-gray-400 focus:border-green-500 focus:ring-2 focus:ring-green-500/50 outline-none'
+          : isComplete
+            ? 'border-2 border-green-500'
             : 'border-2 border-gray-400 focus:border-green-500 focus:ring-2 focus:ring-green-500/50 outline-none'
       }`}
       aria-label="Type the text"
       data-testid="typing-input"
       autoComplete="off"
-     
+
     />
   );
 };
