@@ -19,7 +19,7 @@ interface CharacterProps {
 
 // Constants
 export const WORDS_PER_LINE_SMALL = 15;
-export const WORDS_PER_LINE_LARGE = 25;
+export const WORDS_PER_LINE_LARGE = 15;
 export const LINES_TO_SHOW = 1;
 
 // Utility functions
@@ -163,7 +163,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
       <React.Fragment key={wordIndex}>
         <span
           className={`relative inline-flex items-center mx-0.5 ${
-            isCurrentWord ? "rounded bg-blue-800/20 px-1 py-[1px] current-word" : "px-0.5"
+            isCurrentWord ? "rounded bg-blue-800/20  current-word" : "px-0.5"
           }`}
         >
           {wordClusters.map((charCluster, charIndex) => (
@@ -208,47 +208,50 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   return (
     <div
-      className={`max-w-5xl mx-auto h-[30vh] sm:h-[60vh] rounded-xl p-0.5 mb-0.5 font-medium shadow-lg transition-all duration-300 ease-in-out overflow-y-auto sm:p-2 ${
+className={`mx-auto h-[35vh] max-w-5xl overflow-y-auto rounded-md p-0.5 font-medium shadow-lg  sm:h-[65vh] sm:p-2 ${
         darkMode
           ? "bg-gray-800/50 text-gray-200 shadow-gray-900/20"
           : "border border-gray-200 bg-white text-gray-800 shadow-gray-200/50"
       }`}
     >
       <div
-        className="h-full overflow-y-auto break-words text-2xl leading-1 tracking-normal sm:text-3xl md:text-[2.4rem] md:leading-[1.4] p-1 word-display-container"
+        className="leading-1 word-display-container h-full overflow-y-auto break-words p-1 text-2xl tracking-normal sm:text-3xl md:text-[2.8rem] md:leading-[1.4]"
         style={{
-          scrollbarWidth: 'thin',
-          scrollbarColor: darkMode ? '#9ca3af #4b5563' : '#d1d5db #f3f4f6'
+          scrollbarWidth: "thin",
+          scrollbarColor: darkMode ? "#9ca3af #4b5563" : "#d1d5db #f3f4f6",
         }}
       >
         {isBlankPage ? (
-          <div className="h-full p-1 flex flex-col">
-            <div className="text-left word-display-container">
+          <div className="flex h-full flex-col p-1">
+            <div className="word-display-container text-left">
               {randomText.split(" ").map((word, index) => (
                 <React.Fragment key={index}>
                   <span className={darkMode ? "text-white" : "text-gray-900"}>
                     {word}
-                  </span>
-                  {" "}
+                  </span>{" "}
                 </React.Fragment>
               ))}
             </div>
           </div>
         ) : (
-          displayedWords.map((word, index) => renderWord(word, index, startIndex))
+          displayedWords.map((word, index) =>
+            renderWord(word, index, startIndex),
+          )
         )}
         <style jsx>{`
           .word-display-container::-webkit-scrollbar {
             width: 4px;
           }
           .word-display-container::-webkit-scrollbar-track {
-            background: ${darkMode ? '#4b5563' : '#f3f4f6'};
+            background: ${darkMode ? "#4b5563" : "#f3f4f6"};
             border-radius: 10px;
           }
           .word-display-container::-webkit-scrollbar-thumb {
-            background-color: ${darkMode ? 'rgba(156, 163, 175, 0.5)' : 'rgba(209, 213, 219, 0.5)'};
+            background-color: ${darkMode
+              ? "rgba(156, 163, 175, 0.5)"
+              : "rgba(209, 213, 219, 0.5)"};
             border-radius: 10px;
-            border: 1px solid ${darkMode ? '#4b5563' : '#f3f4f6'};
+            border: 1px solid ${darkMode ? "#4b5563" : "#f3f4f6"};
             backdrop-filter: blur(5px);
           }
         `}</style>

@@ -86,6 +86,9 @@ const TypingPractice: React.FC = () => {
     const value = e.target.value;
     const prevValue = gameState.inputValue;
 
+    // We'll allow users to move to the next word even if they type a word incorrectly
+    // This will be tracked as a wrong word in the metrics
+
     // Play sound based on character accuracy
     if (value.length > prevValue.length && !gameState.isBlankPage) {  // Only check when adding characters and not in blank page mode
       const inputWords = value.split(" ");

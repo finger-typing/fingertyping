@@ -216,7 +216,7 @@ const Navbar: React.FC = () => {
         <div
           className={`fixed inset-0 z-50 ${
             darkMode ? "bg-slate-900/95" : "bg-white/95"
-          } overflow-y-auto backdrop-blur-lg lg:hidden`}
+          } overflow-y-auto backdrop-blur-lg lg:hidden `}
         >
           <div className="container mx-auto px-4 py-6">
             <div className="mb-8 flex items-center justify-between">
@@ -227,6 +227,8 @@ const Navbar: React.FC = () => {
               >
                 Menu
               </h2>
+
+
               <button
                 title="Close menu"
                 onClick={() => setIsMenuOpen(false)}
@@ -241,6 +243,7 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className="space-y-6">
+              
               <div className="space-y-3">
                 {navItems.map((item, index) => (
                   <NavButton

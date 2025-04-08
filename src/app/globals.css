@@ -53,7 +53,11 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Lato', sans-serif;
-
+  font-size: 16px;
+  line-height: 1.5;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 @layer utilities {

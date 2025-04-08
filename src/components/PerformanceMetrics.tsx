@@ -25,15 +25,8 @@ export const usePerformanceMetrics = ({
   timeElapsed,
 }: PerformanceMetricsProps): MetricsResult => {
   const calculateWPM = (): string => {
-    const inputWords = inputValue.trim().split(/\s+/);
-    const referenceWords = randomText.trim().split(/\s+/);
-
-    let correctWords = 0;
-    for (let i = 0; i < inputWords.length; i++) {
-      if (inputWords[i] === referenceWords[i]) {
-        correctWords++;
-      }
-    }
+    // Get the word stats from our helper function
+    const { correctWords } = correctAndWrongWords();
 
     if (timeElapsed === 0) return "0.00";
     const wpm = correctWords / (timeElapsed / 60);
@@ -41,82 +34,84 @@ export const usePerformanceMetrics = ({
   };
 
   const calculateAccuracy = (): string => {
-    const inputWords = inputValue.trim().split(/\s+/).filter(Boolean);
-    const randomWords = randomText.trim().split(/\s+/).slice(0, inputWords.length);
-    if (inputWords.length === 0) return "0.00";
-    const correctWords = inputWords.filter(
-      (word, i) => word === randomWords[i],
-    ).length;
-    return ((correctWords / inputWords.length) * 100).toFixed(2);
+    const { correctWords, wrongWords } = correctAndWrongWords();
+    const totalWords = correctWords + wrongWords;
+
+    if (totalWords === 0) return "0.00";
+    return ((correctWords / totalWords) * 100).toFixed(2);
   };
 
-  const correctAndWrongWords = () => {
-    const inputWords = inputValue.trim().split(/\s+/).filter(Boolean);
+  const correctAndWrongWords = (): { correctWords: number; wrongWords: number } => {
+    // Get all words including empty strings (which represent skipped words)
+    const rawInputWords = inputValue.split(" ");
     const referenceWords = randomText.trim().split(/\s+/);
+
     let correctWords = 0;
     let wrongWords = 0;
 
-    inputWords.forEach((word, index) => {
-      if (word === referenceWords[index]) {
+    // Process each word position
+    for (let i = 0; i < rawInputWords.length; i++) {
+      const inputWord = rawInputWords[i];
+      const referenceWord = i < referenceWords.length ? referenceWords[i] : null;
+
+      // Skip empty strings at the end (trailing spaces)
+      if (i === rawInputWords.length - 1 && inputWord === "") {
+        continue;
+      }
+
+      // Empty string means the word was skipped - count as wrong
+      if (inputWord === "") {
+        wrongWords++;
+        continue;
+      }
+
+      // A word is correct only if it exactly matches the reference word at the same position
+      if (referenceWord && inputWord === referenceWord) {
         correctWords++;
       } else {
+        // Count as wrong if it doesn't match or if there's no reference word at this position
         wrongWords++;
       }
-    });
-
-    if (inputWords.length > referenceWords.length) {
-      wrongWords += inputWords.length - referenceWords.length;
     }
+
     return { correctWords, wrongWords };
   };
 
   const keystrokes = () => {
-    const inputWords = inputValue.trim().split(" ");
+    // Split by spaces but keep empty strings to detect skipped words
+    const rawInputWords = inputValue.split(" ");
     const referenceWords = randomText.trim().split(" ");
 
     let correctKeystrokes = 0;
     let wrongKeystrokes = 0;
 
-    for (let i = 0; i < inputWords.length; i++) {
-      const inputWord = inputWords[i];
-      const referenceWord = referenceWords[i] || "";
+    // Process each word the user has typed (including empty strings for skipped words)
+    for (let i = 0; i < rawInputWords.length; i++) {
+      const inputWord = rawInputWords[i];
+      // Get the corresponding reference word, or empty string if we're past the end
+      const referenceWord = i < referenceWords.length ? referenceWords[i] : "";
 
-      if (i < inputWords.length - 1) {
-        if (inputWord !== "") {
-          for (let j = 0; j < inputWord.length; j++) {
-            if (j < referenceWord.length) {
-              if (inputWord[j] === referenceWord[j]) {
-                correctKeystrokes++;
-              } else {
-                wrongKeystrokes++;
-              }
+      if (inputWord !== "") {
+        // Compare each character in the word
+        for (let j = 0; j < inputWord.length; j++) {
+          if (j < referenceWord.length) {
+            // Both input and reference have a character at this position
+            if (inputWord[j] === referenceWord[j]) {
+              correctKeystrokes++;
             } else {
               wrongKeystrokes++;
             }
-          }
-          if (inputWord.length < referenceWord.length) {
-            wrongKeystrokes += referenceWord.length - inputWord.length;
-          }
-        }
-      } else {
-        if (inputWord !== "") {
-          for (let j = 0; j < inputWord.length; j++) {
-            if (j < referenceWord.length) {
-              if (inputWord[j] === referenceWord[j]) {
-                correctKeystrokes++;
-              } else {
-                wrongKeystrokes++;
-              }
-            } else {
-              wrongKeystrokes++;
-            }
+          } else {
+            // Extra characters in input word (beyond reference word length)
+            wrongKeystrokes++;
           }
         }
       }
     }
 
-    const backspaceCount = inputValue.length - inputWords.join("").length;
-    correctKeystrokes += backspaceCount;
+    // Count spaces as keystrokes (but don't double-count the last space if present)
+    const spaceCount = inputValue.split(" ").length - 1;
+    correctKeystrokes += spaceCount;
 
     return { correctKeystrokes, wrongKeystrokes };
   };
