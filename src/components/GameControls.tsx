@@ -89,7 +89,7 @@ const GameControls: React.FC<GameControlsProps> = ({
           aria-label={`Time remaining: ${formatTimeDisplay(timeRemaining)}`}
         >
           <Clock
-            size={22}
+            size={35}
             className={`stroke-[1.5] ${
               timeRemaining <= 10
                 ? "animate-pulse text-red-500"
