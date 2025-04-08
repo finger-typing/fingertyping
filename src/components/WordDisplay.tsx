@@ -19,7 +19,7 @@ interface CharacterProps {
 
 // Constants
 export const WORDS_PER_LINE_SMALL = 15;
-export const WORDS_PER_LINE_LARGE = 15;
+export const WORDS_PER_LINE_LARGE = 25;
 export const LINES_TO_SHOW = 1;
 
 // Utility functions
@@ -83,20 +83,20 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
   const { displayedWords, startIndex, needsMoreWords } = useMemo(() => {
     const textWords = randomText.split(" ");
-    
+
     // Calculate visible lines based on current word
     const currentLine = Math.floor(currentWordIndex / wordsPerLine);
-    
+
     // Always show from beginning to current line plus a few lines after
     // This ensures all typed words remain visible
     const startIndex = 0;
     const linesToShowAfter = 3; // Show a few lines after current position
     const endLine = currentLine + linesToShowAfter;
     const endIndex = Math.min((endLine + 1) * wordsPerLine, textWords.length);
-    
+
     // Request more words when approaching the end
     const needsMoreWords = endIndex + wordsPerLine >= textWords.length;
-    
+
     return {
       displayedWords: textWords.slice(startIndex, endIndex),
       startIndex,
@@ -117,11 +117,14 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
 
     if (isBlankPage) {
       // In blank page mode, scroll to the bottom to show latest text
-      const scrollHeight = container.scrollHeight;
-      container.scrollTo({
-        top: scrollHeight,
-        behavior: 'smooth'
-      });
+      const blankPageContent = document.querySelector('.blank-page-content') as HTMLElement | null;
+      if (blankPageContent) {
+        const scrollHeight = blankPageContent.scrollHeight;
+        blankPageContent.scrollTo({
+          top: scrollHeight,
+          behavior: 'smooth'
+        });
+      }
     } else {
       // In normal mode, keep current word in the middle
       const currentWord = document.querySelector('.current-word') as HTMLElement | null;
@@ -156,14 +159,14 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
     const findCursorPosition = () => {
       return inputClusters.length;
     };
-    
+
     const cursorPosition = isCurrentWord ? findCursorPosition() : -1;
 
     return (
       <React.Fragment key={wordIndex}>
         <span
           className={`relative inline-flex items-center mx-0.5 ${
-            isCurrentWord ? "rounded bg-blue-800/20  current-word" : "px-0.5"
+            isCurrentWord ? "current-word relative" : "px-0.5"
           }`}
         >
           {wordClusters.map((charCluster, charIndex) => (
@@ -195,7 +198,7 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
             {" "}
             {isCurrentWord && cursorPosition === wordClusters.length && (
               <span
-                className={`absolute bottom-0 left-0 h-[2px] w-full rounded-full ${
+                className={`absolute bottom-[-10px] left-0 h-[3px] w-full rounded-full ${
                   darkMode ? "bg-white" : "bg-gray-900"
                 } animate-cursor`}
               />
@@ -207,23 +210,23 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
   };
 
   return (
-    <div
-className={`mx-auto h-[35vh] max-w-5xl overflow-y-auto rounded-md p-0.5 font-medium shadow-lg  sm:h-[65vh] sm:p-2 ${
+    <div 
+      className={`mx-auto  h-[35vh] overflow-y-auto rounded-md p-0.5 font-medium shadow-md sm:h-[65vh] sm:p-1 ${
         darkMode
           ? "bg-gray-800/50 text-gray-200 shadow-gray-900/20"
           : "border border-gray-200 bg-white text-gray-800 shadow-gray-200/50"
       }`}
     >
       <div
-        className="leading-1 word-display-container h-full overflow-y-auto break-words p-1 text-2xl tracking-normal sm:text-3xl md:text-[2.8rem] md:leading-[1.4]"
+        className="leading-1 word-display-container h-full overflow-y-auto overflow-x-hidden break-words px-1 text-2xl tracking-normal sm:text-3xl md:text-[2.7rem] md:leading-[1.5]"
         style={{
           scrollbarWidth: "thin",
           scrollbarColor: darkMode ? "#9ca3af #4b5563" : "#d1d5db #f3f4f6",
         }}
       >
         {isBlankPage ? (
-          <div className="flex h-full flex-col p-1">
-            <div className="word-display-container text-left">
+          <div className="flex h-full w-full flex-col p-1">
+            <div className="blank-page-content text-left  mx-auto overflow-y-auto overflow-x-hidden whitespace-normal break-words">
               {randomText.split(" ").map((word, index) => (
                 <React.Fragment key={index}>
                   <span className={darkMode ? "text-white" : "text-gray-900"}>
@@ -239,20 +242,43 @@ className={`mx-auto h-[35vh] max-w-5xl overflow-y-auto rounded-md p-0.5 font-med
           )
         )}
         <style jsx>{`
-          .word-display-container::-webkit-scrollbar {
+          .word-display-container::-webkit-scrollbar,
+          .blank-page-content::-webkit-scrollbar {
             width: 4px;
           }
-          .word-display-container::-webkit-scrollbar-track {
+          .word-display-container::-webkit-scrollbar-track,
+          .blank-page-content::-webkit-scrollbar-track {
             background: ${darkMode ? "#4b5563" : "#f3f4f6"};
             border-radius: 10px;
           }
-          .word-display-container::-webkit-scrollbar-thumb {
+          .word-display-container::-webkit-scrollbar-thumb,
+          .blank-page-content::-webkit-scrollbar-thumb {
             background-color: ${darkMode
               ? "rgba(156, 163, 175, 0.5)"
               : "rgba(209, 213, 219, 0.5)"};
             border-radius: 10px;
             border: 1px solid ${darkMode ? "#4b5563" : "#f3f4f6"};
             backdrop-filter: blur(5px);
+          }
+          .current-word::after {
+            content: '';
+            position: absolute;
+            left: -1px;
+            right: -1px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            background-color: ${darkMode ? "rgba(59, 130, 246, 0.2)" : "rgba(37, 99, 235, 0.15)"};
+            border-radius: 2px;
+            z-index: -1;
+          }
+
+          .blank-page-content {
+            width: 100%;
+            max-width: 80rem; /* This is equivalent to max-w-7xl in Tailwind */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
           }
         `}</style>
       </div>

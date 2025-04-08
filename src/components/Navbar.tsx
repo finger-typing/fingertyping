@@ -9,7 +9,6 @@ import {
   MessageSquare,
   Volume2,
   VolumeX,
-  Github,
 } from "lucide-react";
 import LanguageDropdown from "./LanguageDropdown";
 import CustomInputs from "./CustomInputs";
@@ -36,7 +35,7 @@ const NavButton: React.FC<NavButtonProps> = ({
   className,
 }) => {
   const baseClasses = `
-    flex items-center px-3 py-1.5 rounded-lg font-medium text-sm
+    flex items-center px-2.5 py-1 rounded-lg font-medium text-sm
     ${
       darkMode
         ? "border-white/10 bg-slate-800/40 text-white hover:bg-slate-700/50 hover:border-slate-400/50"
@@ -109,10 +108,20 @@ const Navbar: React.FC = () => {
             "_blank",
           ),
         icon: (
-          <Github
-            size={18}
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="mr-2 transition-transform duration-300 group-hover:rotate-12"
-          />
+          >
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg>
         ),
         label: "Github",
       },
@@ -155,13 +164,13 @@ const Navbar: React.FC = () => {
             : "bg-white text-slate-900 backdrop-blur-lg"
         } sticky top-0 z-50 shadow-lg transition-all duration-300`}
       >
-        <div className="container mx-auto px-2 py-1">
+        <div className="w-full px-4 md:px-6 py-0.5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1.5">
               <button
                 aria-label="Menu"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`rounded-lg p-2 lg:hidden ${
+                className={`rounded-lg p-1.5 lg:hidden ${
                   darkMode ? "hover:bg-slate-800/60" : "hover:bg-slate-100"
                 } transition-all duration-200`}
               >
@@ -181,9 +190,9 @@ const Navbar: React.FC = () => {
               </div>
             </div>
 
-            <div className="mx-3 hidden flex-1 justify-center lg:flex">
+            <div className="mx-2 hidden flex-1 justify-center lg:flex">
               <div
-                className={`rounded-lg border p-1 shadow-md backdrop-blur-lg ${
+                className={`rounded-lg border p-0.5 shadow-md backdrop-blur-lg ${
                   darkMode
                     ? "border-slate-600 bg-slate-800/10"
                     : "border-slate-200 bg-white/50"
@@ -199,8 +208,8 @@ const Navbar: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
-              <div className="hidden items-center space-x-2 lg:flex">
+            <div className="flex items-center space-x-1.5">
+              <div className="hidden items-center space-x-1.5 lg:flex">
                 {navItems.slice(2).map((item, index) => (
                   <NavButton key={index} {...item} darkMode={darkMode} />
                 ))}
@@ -218,7 +227,7 @@ const Navbar: React.FC = () => {
             darkMode ? "bg-slate-900/95" : "bg-white/95"
           } overflow-y-auto backdrop-blur-lg lg:hidden `}
         >
-          <div className="container mx-auto px-4 py-6">
+          <div className="w-full px-4 md:px-6 py-6">
             <div className="mb-8 flex items-center justify-between">
               <h2
                 className={`text-xl font-semibold ${
@@ -243,7 +252,7 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className="space-y-6">
-              
+
               <div className="space-y-3">
                 {navItems.map((item, index) => (
                   <NavButton

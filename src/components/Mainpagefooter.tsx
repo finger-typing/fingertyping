@@ -17,8 +17,8 @@ const footerLinks = [
 
 const MainPageFooter: React.FC<MainPageFooterProps> = ({ darkMode }) => {
   const getThemeClasses = (isDark: boolean) => ({
-    footer: isDark 
-      ? "bg-gray-800/40" 
+    footer: isDark
+      ? "bg-gray-800/40"
       : "bg-white",
     icon: isDark ? "text-indigo-400" : "text-indigo-600",
     title: isDark ? "text-white" : "text-gray-700",
@@ -31,8 +31,8 @@ const MainPageFooter: React.FC<MainPageFooterProps> = ({ darkMode }) => {
   const theme = getThemeClasses(darkMode);
 
   return (
-    <footer className={`mt-5 rounded-lg shadow-lg p-4 md:p-4 lg:p-5 ${theme.footer}`}>
-      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <footer className={`mt-5 rounded-lg shadow-lg p-3 sm:p-4 ${theme.footer}`}>
+      <div className="container-responsive mx-auto px-3 py-6 sm:px-4 sm:py-8">
         <div className="flex flex-col items-center justify-between md:flex-row">
           <div className="mb-8 text-center md:mb-0 md:text-left">
             <div className="flex items-center justify-center md:justify-start">
@@ -50,13 +50,13 @@ const MainPageFooter: React.FC<MainPageFooterProps> = ({ darkMode }) => {
             {footerLinks.map(({ href, text }) => (
               <Link key={href} href={href}>
                 <span className={`
-                  cursor-pointer 
-                  text-sm 
-                  font-medium 
-                  transition-colors 
-                  duration-300 
-                  sm:text-base 
-                  ${theme.link} 
+                  cursor-pointer
+                  text-sm
+                  font-medium
+                  transition-colors
+                  duration-300
+                  sm:text-base
+                  ${theme.link}
                   hover:underline
                 `}>
                   {text}

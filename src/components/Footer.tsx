@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className={`w-full ${darkMode ? "bg-gray-800" : "bg-white"}`}>
-      <div className="container mx-auto px-4 py-4">
+      <div className="container-responsive mx-auto px-3 py-4 sm:px-4">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="flex items-center space-x-2">
             <a href="/" className="flex items-center space-x-2">

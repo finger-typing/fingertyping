@@ -186,11 +186,11 @@ const TypingPractice: React.FC = () => {
 
   return (
     <div
-      className={`flex min-h-screen flex-col items-center ${
+      className={`flex  flex-col items-center ${
         darkMode ? "bg-gray-900 text-gray-100" : "bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900"
       }`}
     >
-      <main className="w-full max-w-5xl space-y-1 p-1">
+      <main className="w-full  space-y-1  p-1 ">
         <WordDisplay
           randomText={gameState.isBlankPage ? gameState.typedText : gameState.randomText}
           inputValue={gameState.inputValue}
