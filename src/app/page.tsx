@@ -186,46 +186,37 @@ const TypingPractice: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col ${
+      className={`flex  flex-col items-center ${
         darkMode ? "bg-gray-900 text-gray-100" : "bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900"
       }`}
     >
-      <main className="flex-1 flex flex-col h-full w-full relative">
-        {/* Mobile-optimized layout with desktop bottom positioning */}
-        <div className="flex flex-col h-full justify-between">
-          {/* WordDisplay with fixed height on mobile to ensure visibility with keyboard */}
-          <div className="flex-1 overflow-auto">
-            <WordDisplay
-              randomText={gameState.isBlankPage ? gameState.typedText : gameState.randomText}
-              inputValue={gameState.inputValue}
-              currentWordIndex={gameState.currentWordIndex}
-              darkMode={darkMode}
-              isBlankPage={gameState.isBlankPage}
-            />
-          </div>
+      <main className="w-full  space-y-1  p-1 ">
+        <WordDisplay
+          randomText={gameState.isBlankPage ? gameState.typedText : gameState.randomText}
+          inputValue={gameState.inputValue}
+          currentWordIndex={gameState.currentWordIndex}
+          darkMode={darkMode}
+          isBlankPage={gameState.isBlankPage}
+        />
 
-          {/* Fixed position for input and controls on mobile, bottom positioning on desktop */}
-          <div className={`w-full mt-auto sticky bottom-0 left-0 right-0 bg-opacity-90 backdrop-blur-sm z-10 pb-1 pt-1 px-1 md:px-2 md:pt-2 md:pb-2 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
-            <InputField
-            inputValue={gameState.inputValue}
-            handleInputChange={handleInputChange}
-            hasStarted={gameState.hasStarted}
-            isComplete={gameState.isComplete}
-            darkMode={darkMode}
-            inputRef={inputRef}
-            placeholder={gameState.isBlankPage ? "Type anything..." : "Start typing to begin..."}
-            randomText={gameState.randomText}
-            />
+        <InputField
+          inputValue={gameState.inputValue}
+          handleInputChange={handleInputChange}
+          hasStarted={gameState.hasStarted}
+          isComplete={gameState.isComplete}
+          darkMode={darkMode}
+          inputRef={inputRef}
+          placeholder={gameState.isBlankPage ? "Type anything..." : "Start typing to begin......."}
+          randomText={gameState.randomText}
+        />
 
-            <GameControls
-            initializeGame={initializeGame}
-            timeRemaining={gameState.timeRemaining}
-            darkMode={darkMode}
-            isBlankPage={gameState.isBlankPage}
-            toggleBlankPage={toggleBlankPage}
-            />
-          </div>
-        </div>
+        <GameControls
+          initializeGame={initializeGame}
+          timeRemaining={gameState.timeRemaining}
+          darkMode={darkMode}
+          isBlankPage={gameState.isBlankPage}
+          toggleBlankPage={toggleBlankPage}
+        />
 
         {gameState.isComplete && (
           <Results

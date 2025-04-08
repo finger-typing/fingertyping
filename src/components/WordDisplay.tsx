@@ -18,8 +18,8 @@ interface CharacterProps {
 }
 
 // Constants
-export const WORDS_PER_LINE_SMALL = 15;
-export const WORDS_PER_LINE_LARGE = 35;
+export const WORDS_PER_LINE_SMALL =5;
+export const WORDS_PER_LINE_LARGE = 25;
 export const LINES_TO_SHOW = 1;
 
 // Utility functions
@@ -210,8 +210,8 @@ const WordDisplay: React.FC<WordDisplayProps> = ({
   };
 
   return (
-    <div
-      className={`mx-auto h-[30vh] md:h-full overflow-y-auto rounded-md p-0.5 font-medium shadow-md sm:p-1 ${
+    <div 
+      className={`mx-auto  h-[25vh] overflow-y-auto rounded-md p-0.5 font-medium shadow-md sm:h-[65vh] sm:p-1 ${
         darkMode
           ? "bg-gray-800/50 text-gray-200 shadow-gray-900/20"
           : "border border-gray-200 bg-white text-gray-800 shadow-gray-200/50"
