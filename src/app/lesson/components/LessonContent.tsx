@@ -10,11 +10,17 @@ import StatsDisplay from "./StatsDisplay";
 import { useApp } from "@/context/AppContext";
 import { audioPlayer } from "@/utils/audioUtils";
 import {
-  LessonOption,
-  Language,
-  LessonOptions,
-  languageLetters,
-} from "./Letter-list";
+  EnglishLessonOptions,
+  BanglaLessonOptions,
+  HindiLessonOptions,
+  UrduLessonOptions,
+  type AllLessonOptions,
+  type EnglishLessonOption,
+  type BanglaLessonOption,
+  type HindiLessonOption,
+  type UrduLessonOption
+} from "./lesson-options";
+import { type Language, languageLetters } from "./lesson-options/LanguageLetters";
 
 export default function LessonContent() {
   const searchParams = useSearchParams();
@@ -30,7 +36,7 @@ export default function LessonContent() {
     contextLanguage as Language,
   );
   const [currentLesson, setCurrentLesson] =
-    useState<LessonOption>("Letters(a-z)");
+    useState<AllLessonOptions>("Letters(a-z)");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [input, setInput] = useState("");
   const [isCorrect, setIsCorrect] = useState(true);
@@ -80,9 +86,28 @@ export default function LessonContent() {
     if (practiceType === "words" && wordList) {
       return wordList.split(",");
     }
-    return currentLanguage === "English"
-      ? LessonOptions[currentLesson].split("")
-      : languageLetters[currentLanguage];
+
+    // Handle different language lesson options
+    if (currentLanguage === "English") {
+      if (Object.keys(EnglishLessonOptions).includes(currentLesson as string)) {
+        return EnglishLessonOptions[currentLesson as EnglishLessonOption].split("");
+      }
+    } else if (currentLanguage === "Bangla") {
+      if (Object.keys(BanglaLessonOptions).includes(currentLesson as string)) {
+        return BanglaLessonOptions[currentLesson as BanglaLessonOption].split("");
+      }
+    } else if (currentLanguage === "Hindi") {
+      if (Object.keys(HindiLessonOptions).includes(currentLesson as string)) {
+        return HindiLessonOptions[currentLesson as HindiLessonOption].split("");
+      }
+    } else if (currentLanguage === "Urdu") {
+      if (Object.keys(UrduLessonOptions).includes(currentLesson as string)) {
+        return UrduLessonOptions[currentLesson as UrduLessonOption].split("");
+      }
+    }
+
+    // Default to all letters for the current language if no specific lesson is selected
+    return languageLetters[currentLanguage];
   };
 
   const playSound = (isCorrect: boolean) => {
@@ -172,7 +197,6 @@ export default function LessonContent() {
       <div className="flex h-full flex-col md:flex-row">
         <div className="h-full md:w-64 md:min-w-[250px]">
           <Sidebar
-            lessonOptions={LessonOptions}
             currentLesson={currentLesson}
             setCurrentLesson={setCurrentLesson}
             currentLanguage={currentLanguage}
@@ -181,7 +205,7 @@ export default function LessonContent() {
 
         <div className="h-full flex-1 overflow-hidden">
           <div className="h-full w-full overflow-y-auto">
-            <div className="mx-auto flex h-full max-w-5xl flex-col rounded-sm bg-white p-2 dark:bg-gray-900">
+            <div className="mx-auto flex h-full max-w-6xl flex-col rounded-sm bg-white p-2 dark:bg-gray-900">
               <div className="mb-2 border border-gray-300 bg-white p-2 shadow-sm dark:border-gray-500 dark:bg-gray-800">
                 <TypingInterface
                   currentWord={getCurrentContent()[currentWordIndex]}
@@ -208,16 +232,46 @@ export default function LessonContent() {
                   title="mobile_lesson"
                   value={currentLesson}
                   onChange={(e) =>
-                    setCurrentLesson(e.target.value as LessonOption)
+                    setCurrentLesson(e.target.value as AllLessonOptions)
                   }
                   className="w-full border border-gray-300 bg-white p-2 text-gray-900 transition-all duration-200 focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                  disabled={currentLanguage !== "English"}
                 >
-                  {Object.keys(LessonOptions).map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  {currentLanguage === "English" &&
+                    Object.keys(EnglishLessonOptions).map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))
+                  }
+                  {currentLanguage === "Bangla" &&
+                    Object.keys(BanglaLessonOptions).map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))
+                  }
+                  {currentLanguage === "Hindi" &&
+                    Object.keys(HindiLessonOptions).map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))
+                  }
+                  {currentLanguage === "Urdu" &&
+                    Object.keys(UrduLessonOptions).map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))
+                  }
+                  {currentLanguage !== "English" &&
+                   currentLanguage !== "Bangla" &&
+                   currentLanguage !== "Hindi" &&
+                   currentLanguage !== "Urdu" &&
+                    <option value="default">
+                      All {currentLanguage} Letters
                     </option>
-                  ))}
+                  }
                 </select>
               </div>
 
