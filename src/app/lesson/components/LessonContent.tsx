@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { RefreshCcw, Undo2 } from "lucide-react";
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
 import Sidebar from "./Sidebar";
 import TypingInterface from "./Typing-Interface";
 import StatsDisplay from "./StatsDisplay";
@@ -18,14 +18,19 @@ import {
 
 export default function LessonContent() {
   const searchParams = useSearchParams();
-  const practiceType = (searchParams.get('type') || 'letters') as 'letters' | 'words';
-  const wordList = searchParams.get('wordList') || '';
+  const practiceType = (searchParams.get("type") || "letters") as
+    | "letters"
+    | "words";
+  const wordList = searchParams.get("wordList") || "";
 
   const { language: contextLanguage, darkMode: contextDarkMode } = useApp();
 
   // State for lesson management
-  const [currentLanguage, setCurrentLanguage] = useState<Language>(contextLanguage as Language);
-  const [currentLesson, setCurrentLesson] = useState<LessonOption>("Letters(a-z)");
+  const [currentLanguage, setCurrentLanguage] = useState<Language>(
+    contextLanguage as Language,
+  );
+  const [currentLesson, setCurrentLesson] =
+    useState<LessonOption>("Letters(a-z)");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [input, setInput] = useState("");
   const [isCorrect, setIsCorrect] = useState(true);
@@ -35,6 +40,7 @@ export default function LessonContent() {
   const [wpm, setWpm] = useState(0);
   const [isGameActive, setIsGameActive] = useState(false);
   const [isSoundEnabled] = useState(true);
+  const [resetCounter, setResetCounter] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Effects
@@ -71,8 +77,8 @@ export default function LessonContent() {
 
   // Helper functions
   const getCurrentContent = () => {
-    if (practiceType === 'words' && wordList) {
-      return wordList.split(',');
+    if (practiceType === "words" && wordList) {
+      return wordList.split(",");
     }
     return currentLanguage === "English"
       ? LessonOptions[currentLesson].split("")
@@ -92,16 +98,16 @@ export default function LessonContent() {
     const value = e.target.value;
     const content = getCurrentContent();
 
-    if (practiceType === 'words') {
+    if (practiceType === "words") {
       const cleanValue = value.trim();
       const expectedWord = content[currentWordIndex];
 
       if (cleanValue === expectedWord) {
-        setInput('');
+        setInput("");
         setIsCorrect(true);
         playSound(true);
         setScore((prevScore) => prevScore + 1);
-        setTypedWords(prev => [...prev, cleanValue]);
+        setTypedWords((prev) => [...prev, cleanValue]);
 
         setCurrentWordIndex((prevIndex) => {
           if (prevIndex >= content.length - 1) {
@@ -113,11 +119,13 @@ export default function LessonContent() {
         if (!isGameActive) setIsGameActive(true);
       } else {
         setInput(value);
-        setIsCorrect(cleanValue === expectedWord.substring(0, cleanValue.length));
+        setIsCorrect(
+          cleanValue === expectedWord.substring(0, cleanValue.length),
+        );
       }
     } else {
-      const cleanValue = value.replace(/\s+/g, '');
-      const targetLength = input.replace(/\s+/g, '').length + 1;
+      const cleanValue = value.replace(/\s+/g, "");
+      const targetLength = input.replace(/\s+/g, "").length + 1;
 
       if (cleanValue.length !== targetLength) return;
 
@@ -125,7 +133,7 @@ export default function LessonContent() {
       const expectedChar = content[currentWordIndex];
 
       if (newChar === expectedChar) {
-        setInput(cleanValue.split('').join(' ') + ' ');
+        setInput(cleanValue.split("").join(" ") + " ");
         setIsCorrect(true);
         playSound(true);
         setScore((prevScore) => prevScore + 1);
@@ -154,12 +162,15 @@ export default function LessonContent() {
     setWpm(0);
     setIsCorrect(true);
     setTypedWords([]);
+
+    // Increment reset counter to trigger focus in TypingInterface
+    setResetCounter((prev) => prev + 1);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="flex min-h-screen flex-col md:flex-row">
-        <div className="md:max-h-screen md:w-64 md:min-w-[250px] md:overflow-y-auto">
+    <div className="h-[calc(100vh-3rem)] overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <div className="flex h-full flex-col md:flex-row">
+        <div className="h-full md:w-64 md:min-w-[250px]">
           <Sidebar
             lessonOptions={LessonOptions}
             currentLesson={currentLesson}
@@ -168,59 +179,62 @@ export default function LessonContent() {
           />
         </div>
 
-        <div className="flex-1">
-          <div className="mx-auto max-w-5xl rounded-sm bg-white p-2 dark:bg-gray-900">
-            <div className="mb-2 rounded-lg border border-gray-300 bg-white p-2 shadow-sm dark:border-gray-500 dark:bg-gray-800">
-              <TypingInterface
-                currentWord={getCurrentContent()[currentWordIndex]}
-                isCorrect={isCorrect}
-                input={input}
-                handleInputChange={handleInputChange}
-                practiceType={practiceType}
-                typedWords={typedWords}
-              />
-            </div>
+        <div className="h-full flex-1 overflow-hidden">
+          <div className="h-full w-full overflow-y-auto">
+            <div className="mx-auto flex h-full max-w-5xl flex-col rounded-sm bg-white p-2 dark:bg-gray-900">
+              <div className="mb-2 border border-gray-300 bg-white p-2 shadow-sm dark:border-gray-500 dark:bg-gray-800">
+                <TypingInterface
+                  currentWord={getCurrentContent()[currentWordIndex]}
+                  isCorrect={isCorrect}
+                  input={input}
+                  handleInputChange={handleInputChange}
+                  practiceType={practiceType}
+                  typedWords={typedWords}
+                  resetCounter={resetCounter}
+                />
+              </div>
 
-            <div className="mb-2 rounded-lg border border-gray-300 p-2 dark:border-gray-600">
-              <StatsDisplay
-                wpm={wpm}
-                time={time}
-                score={score}
-                currentLesson={currentLesson}
-              />
-            </div>
+              <div className="mb-2 border border-gray-300 p-2 dark:border-gray-600">
+                <StatsDisplay
+                  wpm={wpm}
+                  time={time}
+                  score={score}
+                  currentLesson={currentLesson}
+                />
+              </div>
 
-            <div className="md:hidden">
-              <select
-                title="mobile_lesson"
-                value={currentLesson}
-                onChange={(e) =>
-                  setCurrentLesson(e.target.value as LessonOption)
-                }
-                className="w-full rounded-lg border border-gray-300 bg-white p-2 text-gray-900 transition-all duration-200 focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                disabled={currentLanguage !== "English"}
-              >
-                {Object.keys(LessonOptions).map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div>
+              <div className="mt-2 md:hidden">
+                <select
+                  title="mobile_lesson"
+                  value={currentLesson}
+                  onChange={(e) =>
+                    setCurrentLesson(e.target.value as LessonOption)
+                  }
+                  className="w-full border border-gray-300 bg-white p-2 text-gray-900 transition-all duration-200 focus:border-green-600 focus:outline-none focus:ring-1 focus:ring-green-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                  disabled={currentLanguage !== "English"}
+                >
+                  {Object.keys(LessonOptions).map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-            <div className="grid grid-cols-2 gap-2 mt-3">
-              <button
-                onClick={resetGame}
-                className="flex items-center justify-center rounded-lg border border-gray-300 px-2 py-2 text-gray-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-500 hover:text-gray-900 hover:shadow-sm dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-400 dark:hover:text-white"
-              >
-                <RefreshCcw className="mr-2 h-4 w-4" /> Reset
-              </button>
-              <Link
-                href="/"
-                className="flex items-center justify-center rounded-lg border border-gray-300 px-4 py-2 text-gray-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-500 hover:text-gray-900 hover:shadow-sm dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-400 dark:hover:text-white"
-              >
-                <Undo2 className="mr-2 h-4 w-4" /> Home
-              </Link>
+              <div className="mb-2 mt-3 grid grid-cols-2 gap-2">
+                <button
+                  onClick={resetGame}
+                  className="flex items-center justify-center border border-gray-300 px-2 py-2 text-gray-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-500 hover:text-gray-900 hover:shadow-sm dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-400 dark:hover:text-white"
+                >
+                  <RefreshCcw className="mr-2 h-4 w-4" /> Reset
+                </button>
+                <Link
+                  href="/"
+                  className="flex items-center justify-center border border-gray-300 px-4 py-2 text-gray-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-500 hover:text-gray-900 hover:shadow-sm dark:border-gray-600 dark:text-gray-200 dark:hover:border-gray-400 dark:hover:text-white"
+                >
+                  <Undo2 className="mr-2 h-4 w-4" /> Home
+                </Link>
+              </div>
             </div>
           </div>
         </div>

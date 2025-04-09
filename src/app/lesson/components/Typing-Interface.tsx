@@ -7,6 +7,7 @@ interface TypingInterfaceProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   typedWords: string[];
   practiceType?: 'words' | 'letters';
+  resetCounter?: number;
 }
 
 export default function TypingInterface({
@@ -14,16 +15,27 @@ export default function TypingInterface({
   isCorrect,
   input,
   handleInputChange,
-  practiceType = 'letters'
+  practiceType = 'letters',
+  resetCounter = 0
 }: TypingInterfaceProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Auto-focus input field when component mounts
+  // Focus input field when component mounts or when input changes to empty
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-  }, []);
+  }, [input]);
+
+  // Separate useEffect specifically for handling reset button clicks
+  useEffect(() => {
+    if (resetCounter > 0 && inputRef.current) {
+      // Small timeout to ensure focus happens after state updates
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
+    }
+  }, [resetCounter]);
 
   return (
     <div className="py-6 text-center">

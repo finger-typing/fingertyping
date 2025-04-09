@@ -32,12 +32,12 @@ export default function Sidebar({
   currentLanguage,
 }: SidebarProps) {
   return (
-    <aside className="hidden h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-4 shadow-lg dark:from-gray-800 dark:to-gray-900 md:block md:w-64">
+    <aside className="hidden h-full bg-gradient-to-b from-gray-50 to-gray-100 p-4 shadow-lg dark:from-gray-800 dark:to-gray-900 md:block md:w-64">
       <h2 className="mb-8 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
         Lessons
       </h2>
 
-      <div className="flex h-[calc(100vh-10rem)] flex-col justify-between">
+      <div className="flex h-[calc(100%-8rem)] flex-col justify-between overflow-hidden">
         <div className="custom-scrollbar overflow-y-auto px-1">
           <div className="space-y-3">
             {(Object.keys(lessonOptions) as LessonOption[]).map((option) => (
