@@ -12,8 +12,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1.0,
   minimumScale: 1.0,
-  maximumScale: 1.0,
-  userScalable: false,
+  maximumScale: 5.0,
+  userScalable: true,
   viewportFit: "cover",
 };
 
@@ -64,12 +64,12 @@ export const metadata: Metadata = {
     title: "Finger Typing - Open Source Typing Application",
     description:
           "Finger Typing: An Open-Source, Free Typing Application Designed For Simplicity And Features. No ads, No tracking, Just Pure Typing.",
- 
+
     locale: "en_US",
     images: ["https://www.fingertyping.com/og-image.png"],
     url: "https://www.fingertyping.com",
     siteName: "FingerTyping",
-   
+
   },
   twitter: {
     card: "summary_large_image",

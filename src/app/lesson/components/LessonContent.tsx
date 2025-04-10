@@ -195,7 +195,7 @@ export default function LessonContent() {
   return (
     <div className="h-[calc(100vh-3rem)] overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="flex h-full flex-col md:flex-row">
-        <div className="h-full md:w-64 md:min-w-[250px]">
+        <div className="md:w-64 md:min-w-[250px]">
           <Sidebar
             currentLesson={currentLesson}
             setCurrentLesson={setCurrentLesson}
@@ -227,7 +227,7 @@ export default function LessonContent() {
                 />
               </div>
 
-              <div className="mt-2 md:hidden">
+              <div className="mt-2 block md:hidden">
                 <select
                   title="mobile_lesson"
                   value={currentLesson}
