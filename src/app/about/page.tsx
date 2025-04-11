@@ -23,14 +23,10 @@ export default function About() {
             {
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "FingerTyping",
-              "description": "Open source , Free multilingual typing practice platform",
+              "name": "Finger Typing",
+              "description": "Open source - Free multilingual typing practice platform",
               "url": "https://fingertyping.com",
-              "sameAs": [
-                "https://twitter.com/fingertyping",
-                "https://www.facebook.com/fingertyping",
-                "https://www.linkedin.com/company/fingertyping"
-              ]
+             
             }
           `}
         </script>
@@ -60,7 +56,7 @@ export default function About() {
                 FingerTyping
               </span>
               We want to make a typing website which is complete free ,open
-              source, and secure, no data are taken from users. Also main
+              source, and secure, no data are taken from users with best Ui. Also main
               important is easy to use. Thats why we are making this website.
               Out GitHub repository is we are revolutionizing typing practice.
               Our goal is to make high-quality, multilingual typing training
@@ -94,13 +90,13 @@ export default function About() {
                   icon: <FaGlobe className="text-purple-400" aria-hidden="true" />,
                   title: "Multilingual",
                   description:
-                    "Practice typing in over 150 languages, from common to rare scripts.",
+                    "Practice typing in over 100+ languages, from common to rare scripts.",
                 },
                 {
                   icon: <FaCog className="text-orange-400" aria-hidden="true" />,
                   title: "Customizable",
                   description:
-                    "Set your own time limits, choose custom texts, and tailor your learning experience.",
+                    "Set your own time limits, choose custom texts, and  your learning experience.",
                 },
                 {
                   icon: <FaChartLine className="text-red-400" aria-hidden="true" />,
