@@ -18,8 +18,8 @@ interface CharacterProps {
 }
 
 // Constants
-export const WORDS_PER_LINE_SMALL =10;
-export const WORDS_PER_LINE_LARGE = 25;
+export const WORDS_PER_LINE_SMALL =35;
+export const WORDS_PER_LINE_LARGE = 35;
 export const LINES_TO_SHOW = 1;
 
 // Utility functions

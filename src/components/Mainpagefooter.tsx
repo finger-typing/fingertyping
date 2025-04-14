@@ -31,8 +31,8 @@ const MainPageFooter: React.FC<MainPageFooterProps> = ({ darkMode }) => {
   const theme = getThemeClasses(darkMode);
 
   return (
-    <footer className={`mt-5 rounded-lg shadow-lg p-3 sm:p-4 ${theme.footer}`}>
-      <div className="container-responsive mx-auto px-3 py-6 sm:px-4 sm:py-8">
+    <footer className={`mt-1 w-full  p-3 sm:p-4 ${theme.footer}`}>
+      <div className="container-responsive w-full mx-auto px-3 py-6 sm:px-4 sm:py-8">
         <div className="flex flex-col items-center justify-between md:flex-row">
           <div className="mb-8 text-center md:mb-0 md:text-left">
             <div className="flex items-center justify-center md:justify-start">

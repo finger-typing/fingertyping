@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { disableInspection } from "../utils/disableInspection";
 import { wordLists, generateRandomWords } from "../utils/wordLists";
 import WordDisplay from "../components/WordDisplay";
-import InputField from './lesson/components/InputField';
+import InputField from "../components/InputField";
 import GameControls from "../components/GameControls";
 import Mainpagefooter from "../components/Mainpagefooter";
 import usePerformanceMetrics from "../components/PerformanceMetrics";
@@ -34,6 +34,19 @@ const TypingPractice: React.FC = () => {
   });
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Ref for results section
+  const resultsRef = useRef<HTMLDivElement>(null);
+
+  // Add state to track if screen is mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Auto-focus input field when component mounts
   useEffect(() => {
@@ -176,6 +189,15 @@ const TypingPractice: React.FC = () => {
     disableInspection();
   }, []);
 
+  // Scroll to results when typing is complete
+  useEffect(() => {
+    if (gameState.isComplete && resultsRef.current) {
+      resultsRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      // Optionally, focus for accessibility
+      resultsRef.current.focus?.();
+    }
+  }, [gameState.isComplete]);
+
   // Pass the raw input value to the metrics calculator
   // This ensures all characters (including spaces for skipped words) are counted
   const metrics = usePerformanceMetrics({
@@ -186,39 +208,62 @@ const TypingPractice: React.FC = () => {
 
   return (
     <div
-      className={`flex  flex-col items-center ${
-        darkMode ? "bg-gray-900 text-gray-100" : "bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900"
+      className={`flex flex-col items-center ${
+        darkMode
+          ? "bg-gray-900 text-gray-100"
+          : "bg-gradient-to-br from-gray-50 to-blue-50 text-gray-900"
       }`}
     >
-      <main className="w-full  space-y-1  p-1 ">
-        <WordDisplay
-          randomText={gameState.isBlankPage ? gameState.typedText : gameState.randomText}
-          inputValue={gameState.inputValue}
-          currentWordIndex={gameState.currentWordIndex}
-          darkMode={darkMode}
-          isBlankPage={gameState.isBlankPage}
-        />
+      {/* Main content area: fill viewport minus navbar height (3rem = 48px) */}
+      <main
+        className="w-full flex flex-col min-h-[calc(100vh-3rem)] h-[calc(100vh-3rem)]"
+      >
+        {/* WordDisplay: 25% on mobile, 70% on desktop */}
+        <div
+          className={`${isMobile ? 'basis-[25%]' : 'basis-[70%]'} shrink-0 grow-0 min-h-0 overflow-hidden`}
+        >
+          <WordDisplay
+            randomText={gameState.isBlankPage ? gameState.typedText : gameState.randomText}
+            inputValue={gameState.inputValue}
+            currentWordIndex={gameState.currentWordIndex}
+            darkMode={darkMode}
+            isBlankPage={gameState.isBlankPage}
+          />
+        </div>
 
-        <InputField
-          inputValue={gameState.inputValue}
-          handleInputChange={handleInputChange}
-          hasStarted={gameState.hasStarted}
-          isComplete={gameState.isComplete}
-          darkMode={darkMode}
-          inputRef={inputRef}
-          placeholder={gameState.isBlankPage ? "Type anything..." : "Start typing to begin......."}
-          randomText={gameState.randomText}
-        />
+        {/* InputField: 15% on mobile, 25% on desktop */}
+        <div
+          className={`${isMobile ? 'basis-[15%]' : 'basis-[20%]'} shrink-0 grow-0 min-h-0 flex items-center`}
+        >
+          <InputField
+            inputValue={gameState.inputValue}
+            handleInputChange={handleInputChange}
+            hasStarted={gameState.hasStarted}
+            isComplete={gameState.isComplete}
+            darkMode={darkMode}
+            inputRef={inputRef}
+            placeholder={gameState.isBlankPage ? "Type anything..." : "Start typing to begin......."} // Added placeholder prop
+            randomText={gameState.randomText}
+          />
+        </div>
 
-        <GameControls
-          initializeGame={initializeGame}
-          timeRemaining={gameState.timeRemaining}
-          darkMode={darkMode}
-          isBlankPage={gameState.isBlankPage}
-          toggleBlankPage={toggleBlankPage}
-        />
+        {/* GameControls: 10% on mobile, 10% on desktop */}
+        <div
+          className="basis-[10%] shrink-0 grow-0 min-h-0 flex items-center"
+        >
+          <GameControls
+            initializeGame={initializeGame}
+            timeRemaining={gameState.timeRemaining}
+            darkMode={darkMode}
+            isBlankPage={gameState.isBlankPage}
+            toggleBlankPage={toggleBlankPage}
+          />
+        </div>
+      </main>
 
-        {gameState.isComplete && (
+      {/* Results section always appears above the footer */}
+      {gameState.isComplete && (
+        <div ref={resultsRef} tabIndex={-1}>
           <Results
             isComplete={gameState.isComplete}
             timeElapsed={gameState.timeElapsed}
@@ -228,10 +273,11 @@ const TypingPractice: React.FC = () => {
             keystrokes={metrics.keystrokeStats}
             darkMode={darkMode}
           />
-        )}
+        </div>
+      )}
 
-        <Mainpagefooter darkMode={darkMode} />
-      </main>
+      {/* Footer is always at the bottom */}
+      <Mainpagefooter darkMode={darkMode} />
     </div>
   );
 };

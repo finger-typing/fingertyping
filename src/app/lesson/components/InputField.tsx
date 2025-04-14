@@ -30,7 +30,7 @@ const InputField: React.FC<InputFieldProps> = ({
       disabled={isComplete}
       ref={inputRef}
       placeholder={placeholder}
-      className={`w-full h-16 md:h-20 p-4 md:p-8 rounded-lg text-xl md:text-3xl font-medium transition-all duration-200 ${
+      className={`w-full h-20 md:h-28 p-4 md:p-8 rounded-lg text-xl md:text-4xl font-medium ${
         darkMode
           ? 'bg-gray-800 text-white'
           : 'bg-white text-gray-800'
@@ -44,6 +44,9 @@ const InputField: React.FC<InputFieldProps> = ({
       aria-label="Type the text"
       data-testid="typing-input"
       autoComplete="off"
+      autoCorrect="off"
+      autoCapitalize="none"
+
 
     />
   );

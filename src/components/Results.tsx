@@ -438,7 +438,7 @@ Try it yourself at https://fingertyping.com 🚀`;
             <h3 className={`mb-1 md:mb-1 text-center text-sm md:text-3xl font-bold ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
               Finger Typing Results
             </h3>
-            <p className={`text-center text-xs md:text-md mb-2 ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
+            <p className={`text-center text-md md:text-md mt-2 ${darkMode ? "text-green-500" : "text-green-500"}`}>
               {currentDateTime}
             </p>
             <Bar data={allMetricsChartData} options={chartOptions} />
